@@ -1,11 +1,16 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
-        flex: 1,
         marginTop: "5%",
         paddingHorizontal: "5%",
         flexDirection: "row",
         justifyContent: "space-between",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+    },
+    actionButtonHolder: {
+        paddingVertical: "3%",
+        justifyContent: "center",
+        alignItems: 'center',
+
     }
 })

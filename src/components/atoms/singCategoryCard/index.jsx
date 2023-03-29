@@ -12,7 +12,6 @@ const SingleCategoryCard = ({ category, cat, finalObject }) => {
             <View style={styles.divider} />
 
             <TouchableOpacity style={[styles.categoryButtonHolder, { backgroundColor: finalObject.id == category.id ? "#D9D9D9" : "#FFF" }]} onPress={() => {
-                onPress(index)
                 cat == 'mainCategory' ? dispatch(setMainCategory(category)) : cat == 'subCategory' ? dispatch(setSubCategory(category)) : cat == 'productCategory' ? dispatch(setProductCategory(category)) : ""
             }}>
                 <Text style={styles.categoryName}>{category.name}</Text>

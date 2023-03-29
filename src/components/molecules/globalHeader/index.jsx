@@ -5,7 +5,7 @@ import AntiDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-const GlobalHeader = ({ label }) => {
+const GlobalHeader = ({ label, navigation }) => {
     return (
         <View style={styles.topHeader}>
             <View style={styles.topActionsHolder}>

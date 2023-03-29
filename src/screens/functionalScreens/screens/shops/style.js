@@ -5,12 +5,9 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#EDEFF1",
-        // paddingBottom: "20%"
     },
     curve: {
         backgroundColor: "white",
-        // height: height / (Platform.),
-
         position: "absolute",
         top: 0,
         left: 0,
@@ -22,13 +19,12 @@ export default StyleSheet.create({
     },
     header: {
         flexDirection: "row",
-        paddingVertical: "5%",
-        paddingHorizontal: "5%",
+        paddingVertical: "2%",
+        paddingHorizontal: "2%",
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#FFF",
-        // marginTop: "5%",
-        height: 100,
+        height: 80,
 
 
     },
@@ -40,34 +36,29 @@ export default StyleSheet.create({
     },
     addButtonHolder: {
         backgroundColor: "#fd6846",
-        // padding: "3%",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 50,
-        width: 60,
-        height: 60
+        width: 40,
+        height: 40
     },
     image: {
         width: "40%",
         height: "97%",
         resizeMode: "stretch",
         borderRadius: 5,
-        // borderTopLeftRadius: 10,
-        // borderBottomLeftRadius: 10,
+
     },
-    cardsScrollView: {
-        flex: 1
-    },
+
     cards: {
-        // backgroundColor: "green",
         flex: 1,
-        paddingTop: "5%",
         marginTop: "2%",
-        // alignItems: "center",
         paddingHorizontal: "4.5%",
-        // marginBottom: "20%"
-        paddingBottom: "10%",
-        height: height
+        paddingBottom: "40%",
+        height: height,
+
+
+
     },
     shopCard: {
         backgroundColor: "#FFF",
@@ -77,7 +68,6 @@ export default StyleSheet.create({
         borderRadius: 10,
         flexDirection: "row",
         alignItems: "flex-start",
-        // paddingHorizontal: "2%"
         justifyContent: "flex-start",
         borderColor: "gray",
         marginBottom: "3%",
@@ -113,4 +103,12 @@ export default StyleSheet.create({
         marginTop: "4%"
 
     },
+    buttonHolder: {
+        borderColor: "pink",
+        borderRadius: 50,
+        borderWidth: 3,
+        padding: "1%",
+        justifyContent: "center",
+        alignItems: "center"
+    }
 })

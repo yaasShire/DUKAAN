@@ -30,12 +30,16 @@ const UpdateShopDetails = ({ navigation }) => {
                 </View>
             </View>
             <View style={styles.updateImageHolder}>
-                <Image source={updateImage} style={styles.updateImage} />
-                <TouchableOpacity onPress={() => navigation.navigate('updateShopImages')}>
-                    <Text style={styles.updaImagesText}>Update shop images</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('updateShopImages')} >
+                    <View style={styles.updateShopImagesButton}>
+                        <Text style={styles.updaImagesText}>Update shop images</Text>
+                    </View>
                 </TouchableOpacity>
+                <Image source={updateImage} style={styles.updateImage} />
             </View>
-
+            <View style={{ alignItems: "center", marginTop: "5%" }}>
+                <Text style={{ fontWeight: "500", fontSize: 19 }}>Update Shop Details</Text>
+            </View>
             <ScrollView style={styles.fieldsHolder}>
                 <Formik
                     initialValues={{ fullName: "", email: "", phoneNumber: "", city: "" }}

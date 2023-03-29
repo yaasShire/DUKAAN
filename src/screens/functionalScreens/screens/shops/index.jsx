@@ -12,9 +12,67 @@ import Product3 from '../../../../assets/product3.jpg'
 import Product4 from '../../../../assets/product4.jpg'
 import Product5 from '../../../../assets/product7.jpg'
 import Product6 from '../../../../assets/product9.jpg'
+import ShopCard from '../../../../components/molecules/shopCard';
+import shop1 from '../../../../assets/shop1.jpg'
+import shop2 from '../../../../assets/shop2.jpg'
+import shop3 from '../../../../assets/shop4.jpg'
+import shop4 from '../../../../assets/shop5.jpg'
+import shop5 from '../../../../assets/shop6.jpg'
+import shop6 from '../../../../assets/shop7.jpg'
+import shop7 from '../../../../assets/shop8.jpg'
 const Shops = ({ navigation }) => {
+    const shops = [
+        {
+            id: 1,
+            name: "Xiin faniin",
+            image: shop1,
+            numberOfProducts: 2000
+        },
+        {
+            id: 2,
+            name: "Guuleed's shop",
+            image: shop2,
+            numberOfProducts: 4000
+
+        },
+        {
+            id: 3,
+            name: "John's shop",
+            image: shop3,
+            numberOfProducts: 5000
+
+        },
+        {
+            id: 4,
+            name: "Ali's shop",
+            image: shop4,
+            numberOfProducts: 7000
+
+        },
+        {
+            id: 5,
+            name: "Yusuf's shop",
+            image: shop5,
+            numberOfProducts: 9000
+
+        },
+        {
+            id: 6,
+            name: "Zaki's shop",
+            image: shop6,
+            numberOfProducts: 3000
+
+        },
+        {
+            id: 7,
+            name: "Xasan's shop",
+            image: shop7,
+            numberOfProducts: 4000
+
+        },
+    ]
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <View style={styles.curve} />
             <View style={styles.header}>
@@ -23,74 +81,23 @@ const Shops = ({ navigation }) => {
                 </TouchableWithoutFeedback>
                 <Text style={styles.headerText}>Shops</Text>
                 <TouchableWithoutFeedback onPress={() => navigation.navigate("addShop")}>
-                    <View style={styles.addButtonHolder}>
-                        <FontAwesome name='plus' size={25} color="#fff" />
+                    <View style={styles.buttonHolder}>
+                        <View style={styles.addButtonHolder}>
+                            <FontAwesome name='plus' size={20} color="#fff" />
+                        </View>
+
                     </View>
                 </TouchableWithoutFeedback>
             </View>
             <ScrollView style={styles.cards}>
-                <View style={styles.shopCard}>
+                {
+                    shops.map(shop => (
 
-                    <Image source={Product1} style={styles.image} />
-                    <View style={styles.infoHolder}>
-                        <Text style={styles.shopName}>Xiin Faniin</Text>
-                        <View style={styles.productsHolder}>
-                            <AntiDesign name='CodeSandbox' size={19} />
-                            <Text style={styles.stockText}>1000 products</Text>
-                        </View>
-                    </View>
-                    <MaterialCommunityIcons name='dots-vertical' size={30} style={styles.dotIcon} />
-                </View>
-                <View style={styles.shopCard}>
-
-                    <Image source={Product2} style={styles.image} />
-                    <View style={styles.infoHolder}>
-                        <Text style={styles.shopName}>Diamond</Text>
-                        <View style={styles.productsHolder}>
-                            <AntiDesign name='CodeSandbox' size={19} />
-                            <Text style={styles.stockText}>8000 products</Text>
-                        </View>
-                    </View>
-                    <MaterialCommunityIcons name='dots-vertical' size={30} style={styles.dotIcon} />
-                </View>
-                <View style={styles.shopCard}>
-
-                    <Image source={Product3} style={styles.image} />
-                    <View style={styles.infoHolder}>
-                        <Text style={styles.shopName}>VIP CENTER</Text>
-                        <View style={styles.productsHolder}>
-                            <AntiDesign name='CodeSandbox' size={19} />
-                            <Text style={styles.stockText}>7000 products</Text>
-                        </View>
-                    </View>
-                    <MaterialCommunityIcons name='dots-vertical' size={30} style={styles.dotIcon} />
-                </View>
-                <View style={styles.shopCard}>
-
-                    <Image source={Product4} style={styles.image} />
-                    <View style={styles.infoHolder}>
-                        <Text style={styles.shopName}>GUULEED</Text>
-                        <View style={styles.productsHolder}>
-                            <AntiDesign name='CodeSandbox' size={19} />
-                            <Text style={styles.stockText}>5000 products</Text>
-                        </View>
-                    </View>
-                    <MaterialCommunityIcons name='dots-vertical' size={30} style={styles.dotIcon} />
-                </View>
-                <View style={styles.shopCard}>
-
-                    <Image source={Product6} style={styles.image} />
-                    <View style={styles.infoHolder}>
-                        <Text style={styles.shopName}>DAGAB</Text>
-                        <View style={styles.productsHolder}>
-                            <AntiDesign name='CodeSandbox' size={19} />
-                            <Text style={styles.stockText}>9000 products</Text>
-                        </View>
-                    </View>
-                    <MaterialCommunityIcons name='dots-vertical' size={30} style={styles.dotIcon} />
-                </View>
+                        <ShopCard shop={shop} />
+                    ))
+                }
             </ScrollView>
-        </ScrollView>
+        </View>
     )
 }
 

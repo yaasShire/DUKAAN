@@ -25,12 +25,7 @@ const Settings = ({ navigation }) => {
                 </TouchableWithoutFeedback>
             </View>
             <View style={styles.bottomActionsHolder}>
-                <TouchableWithoutFeedback>
-                    <View style={styles.actionButtonHolder}>
-                        <Text style={styles.actionText}>Dashboard</Text>
-                        <Feather name='chevron-right' size={23} color={"#3475f5"} />
-                    </View>
-                </TouchableWithoutFeedback>
+
                 <View style={styles.divider} />
                 <TouchableWithoutFeedback>
                     <View style={styles.actionButtonHolder}>

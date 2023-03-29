@@ -30,5 +30,11 @@ export default StyleSheet.create({
         marginTop: "8%",
         justifyContent: "space-between",
         paddingHorizontal: "5%"
+    },
+    updateShopImagesButton: {
+        backgroundColor: "pink",
+        padding: "5%",
+        justifyContent: "center",
+        alignItems: "center"
     }
 })

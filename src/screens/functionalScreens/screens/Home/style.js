@@ -29,7 +29,7 @@ export default StyleSheet.create({
         paddingVertical: 10
     },
     orderCardsHolder: {
-        // marginBottom: '2%',
+        marginBottom: '2%',
         // paddingBottom: 200
         // paddingVertical: '5%'
     },

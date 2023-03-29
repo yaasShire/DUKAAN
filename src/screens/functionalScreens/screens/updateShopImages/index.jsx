@@ -16,7 +16,7 @@ const ShopImagesUpdate = ({ navigation }) => {
                     <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
                         <MaterialIcons name='keyboard-backspace' size={30} color="#c4cadb" />
                     </TouchableWithoutFeedback>
-                    <View>
+                    <View >
                         <Text style={styles.updateText}>Update  Shop Images</Text>
                     </View>
                     <TouchableWithoutFeedback onPress={() => navigation.goBack()}>

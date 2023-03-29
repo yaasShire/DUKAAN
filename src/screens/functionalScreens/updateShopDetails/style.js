@@ -29,7 +29,8 @@ export default StyleSheet.create({
     updaImagesText: {
         marginTop: "3%",
         color: "blue",
-        fontWeight: "400"
+        fontWeight: "500",
+
     },
     updateText: {
         color: "#FFF",
@@ -47,5 +48,14 @@ export default StyleSheet.create({
     inputHolder: {
         paddingVertical: "10%",
         paddingHorizontal: "5%"
+    },
+    updateShopImagesButton: {
+        backgroundColor: "pink",
+        padding: "1.5%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "3%",
+        borderRadius: 6,
+        marginBottom: "3%"
     }
 })

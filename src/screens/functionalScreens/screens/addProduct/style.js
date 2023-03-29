@@ -11,11 +11,12 @@ export default StyleSheet.create({
         // height: "100%"
     },
     actionButtonHolder: {
-        // 
-        // backgroundColor: "blue",
         paddingVertical: "3%",
         justifyContent: "center",
-        alignItems: 'center'
+        alignItems: 'center',
+        // height: 150,
+        // marginBottom: 100
 
     }
+
 })

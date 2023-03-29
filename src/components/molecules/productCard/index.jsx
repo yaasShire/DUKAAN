@@ -3,24 +3,74 @@ import React from 'react'
 import styles from './style'
 import product1 from '../../../assets/product3.jpg'
 import Entypo from 'react-native-vector-icons/Entypo';
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, navigation }) => {
     const nameShortener = (name) => {
-        return name.length >= 32 ? name.slice(0, 42) + "..." : name
+        return name.length >= 28 ? name.slice(0, 30) + "..." : name
     }
     return (
-        <TouchableWithoutFeedback>
-            <View style={styles.card}>
+
+        <View style={styles.mainHolder}>
+            <View style={styles.contentHolder}>
+                <Image source={item.image} style={styles.image} />
                 <View>
-                    <View >
-                        <Image source={item.image} style={styles.image} />
+                    <Text style={styles.productName}>{item.productName}</Text>
+                    <View style={styles.salesHolder}>
+                        <Text style={styles.numberOfSales}>Sales for the last 30 days:</Text>
+                        <Text style={styles.salesQuantity}>18</Text>
                     </View>
-                    <View style={styles.divider} />
-                    <Text style={styles.productName}>{nameShortener(item.productName)}</Text>
-                    <Text style={styles.price}>$9.99</Text>
-                    <Text style={styles.qtyText}>Qty:400</Text>
+                    <View style={styles.availabelHolder}>
+                        <Text style={styles.availableText}>Available:</Text>
+                        <Text style={styles.availableQunatity}>12</Text>
+                    </View>
                 </View>
+
             </View>
-        </TouchableWithoutFeedback>
+            <View style={styles.actionsHolder}>
+                <TouchableWithoutFeedback>
+                    <View style={styles.deleteTextHolder}>
+                        <View style={styles.updateIcon}>
+                            <Entypo name='trash' color={"#066b6b"} />
+                        </View>
+                        <Text style={styles.updateText}>Delete</Text>
+                    </View>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("updateProduct", { data: item })}>
+                    <View style={styles.updateIconTextHolder}>
+                        <View style={styles.updateIcon}>
+                            <Entypo name='edit' color={"#066b6b"} />
+                        </View>
+                        <Text style={styles.updateText}>Update</Text>
+                    </View>
+
+                </TouchableWithoutFeedback>
+            </View>
+
+        </View>
     )
 }
 export default ProductCard
+
+
+
+ // <TouchableWithoutFeedback>
+        //     <View style={styles.card}>
+        //         <View style={{}}>
+        //             <View>
+        //                 <Image source={item.image} style={styles.image} />
+        //             </View>
+        //             <View style={styles.divider} />
+        //             <Text style={styles.productName}>{nameShortener(item.productName)}</Text>
+        //             <Text style={styles.price}>$9.99</Text>
+        //             <View style={styles.avaiblableTextHolder}>
+        //                 <Text style={styles.availableText}>Available:</Text>
+        //                 <Text style={styles.availableQuantity}>400</Text>
+        //             </View>
+        //         </View>
+        //         <View style={styles.editButtonHolder}>
+        //             <View style={styles.editButton}>
+        //                 <Entypo name='edit' size={12} color="#05e4fc" />
+        //             </View>
+        //             <Text style={styles.updateText}>Update</Text>
+        //         </View>
+        //     </View>
+        // </TouchableWithoutFeedback>

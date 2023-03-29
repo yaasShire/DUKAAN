@@ -5,11 +5,13 @@ import styles from './style'
 import Header from '../../../../components/atoms/header'
 import Filter from '../../../../components/molecules/filter'
 import ProductCard from '../../../../components/molecules/productCard'
-import product1 from '../../../../assets/product1.jpg'
-import product2 from '../../../../assets/product2.jpg'
-import product3 from '../../../../assets/product3.jpg'
-import product4 from '../../../../assets/product4.jpg'
-import product5 from '../../../../assets/product7.jpg'
+import sProduct1 from '../../../../assets/sProduct1.png'
+import sProduct2 from '../../../../assets/sProduct2.png'
+import sProduct3 from '../../../../assets/sProduct3.png'
+import sProduct4 from '../../../../assets/sProduct4.png'
+import sProduct5 from '../../../../assets/sProduct5.png'
+import sProduct6 from '../../../../assets/sProduct6.png'
+import sProduct7 from '../../../../assets/sProduct7.png'
 import AddProductButton from '../../../../components/atoms/addProductButton'
 const ProductsList = ({ navigation }) => {
     const data = [
@@ -18,70 +20,71 @@ const ProductsList = ({ navigation }) => {
             productName: "Gasoline car oil ",
             Qty: 200,
             price: 500,
-            image: product1
+            image: sProduct1
         },
         {
             id: "#JFKLKFD99",
             productName: "Car Oil Super natural",
             Qty: 300,
             price: 400,
-            image: product2
+            image: sProduct2
         },
         {
             id: "#JDJD778",
             productName: "Side View Mirror",
             Qty: 900,
             price: 700,
-            image: product3
+            image: sProduct3
         },
         {
-            id: "#3747JDFHD",
+            id: "#3747JD3FHD",
             productName: "Gamber",
             Qty: 800,
             price: 900,
-            image: product4
+            image: sProduct4
         },
         {
-            id: "#374FHDJSDJ",
+            id: "#374FHDJteSDJ",
             productName: "Air conditioner",
             Qty: 350,
             price: 1000,
-            image: product5
+            image: sProduct5
+        },
+        {
+            id: "#374FHD565JSDJ",
+            productName: "Motor Cleaner",
+            Qty: 350,
+            price: 1000,
+            image: sProduct6
+        },
+        {
+            id: "#37344FHDJSDJ",
+            productName: "Oil For Motor",
+            Qty: 350,
+            price: 1000,
+            image: sProduct7
         },
     ]
 
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <Header />
+            <Header showAddButton={true} navigation={navigation} />
             {/*filter  */}
             <View>
                 <Filter navigation={navigation} />
             </View>
-            {/* filter ends here */}
-
-            {/* <FlatList
-                horizontal={true}
-                style={styles.productCardsHolder}
-                data={data}
-
-                renderItem={({ item }) => (
-                    <ProductCard  item={item} />
-                )}
-            /> */}
-
             <ScrollView>
                 <View style={styles.productCardsHolder}>
 
                     {
                         data.map(item => (
-                            <ProductCard item={item} />
+                            <ProductCard key={item.id} item={item} navigation={navigation} />
                         ))
                     }
                 </View>
 
             </ScrollView>
-            <AddProductButton navigation={navigation} />
         </SafeAreaView>
     )
 }

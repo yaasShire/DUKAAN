@@ -11,7 +11,7 @@ const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" />
-            <Header />
+            <Header navigation={navigation} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
                 <View style={styles.mainCardsHolder}>
                     <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -26,7 +26,7 @@ const Home = ({ navigation }) => {
                     <SellerCardAction icon="cube-sharp" actionName="Products" navigation={navigation} />
                     <SellerCardAction icon="analytics" actionName="Reports" navigation={navigation} />
                 </View>
-                {/* <View style={styles.orderCardsHolder}>
+                <View style={styles.orderCardsHolder}>
                     <Text style={styles.newOrdersText}>New Orders</Text>
                     <Order navigation={navigation} />
                     <Order navigation={navigation} />
@@ -36,8 +36,8 @@ const Home = ({ navigation }) => {
                     <Order navigation={navigation} />
                     <Order navigation={navigation} />
                     <Order navigation={navigation} />
-                </View> */}
-                <NoOrderCard />
+                </View>
+                {/* <NoOrderCard /> */}
             </ScrollView>
 
         </SafeAreaView>

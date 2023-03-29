@@ -16,12 +16,12 @@ import SubCategory from './steps/subCategory';
 const AddProduct = () => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const tabs = new Map();
-    tabs.set(0, <MainCategory index={0} category={mainCategories} title="Please select a category from list below" />);
-    tabs.set(1, <SubCategory index={1} category={subCategories} title="Please select a sub category from list below." />);
-    tabs.set(2, <ProductCategory index={2} category={productCategories} title="Please select a category from list below" />);
-    tabs.set(3, <AddImages index={3} />);
-    tabs.set(4, <RequiredInfo index={4} category={mainCategories} title="Please select a category from list below" />);
-    tabs.set(5, <Offers index={5} category={mainCategories} title="Please select a category from list below" />);
+    tabs.set(0, <MainCategory setCurrentPosition={setCurrentPosition} index={0} category={mainCategories} title="Please select a category from list below" />);
+    tabs.set(1, <SubCategory setCurrentPosition={setCurrentPosition} index={1} category={subCategories} title="Please select a sub category from list below." />);
+    tabs.set(2, <ProductCategory setCurrentPosition={setCurrentPosition} index={2} category={productCategories} title="Please select a category from list below" />);
+    tabs.set(3, <AddImages setCurrentPosition={setCurrentPosition} index={3} />);
+    tabs.set(4, <RequiredInfo setCurrentPosition={setCurrentPosition} index={4} category={mainCategories} title="Please select a category from list below" />);
+    tabs.set(5, <Offers setCurrentPosition={setCurrentPosition} index={5} category={mainCategories} title="Please select a category from list below" />);
 
     const customStyles = {
         stepIndicatorSize: 30,
@@ -59,14 +59,11 @@ const AddProduct = () => {
                 currentPosition={currentPosition}
                 stepCount={6}
                 onPress={handlePosition}
-
             />
-            <ScrollView style={styles.productBodyHolder}>
+            <View style={styles.productBodyHolder}>
                 {tabs.get(currentPosition)}
-            </ScrollView>
-            <View style={styles.actionButtonHolder}>
-                <AddProductActionButton />
             </View>
+
         </SafeAreaView>
     )
 }

@@ -1,43 +1,81 @@
 import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
-    card: {
-        backgroundColor: "#fff",
-        height: height / 3.1,
-        width: width / 2.2,
-        borderRadius: 8,
-        justifyContent: "flex-start",
-        paddingVertical: "2%",
-        paddingHorizontal: "2%",
-        alignItems: "flex-start",
-        marginBottom: 8,
-
+    mainHolder: {
+        width: "100%",
+        // paddingVertical: "3%"
     },
     image: {
-        width: 170,
-        height: height / 5.3,
+        width: 70,
+        height: 70,
+        marginRight: "3%"
+    },
+    contentHolder: {
+        borderBottomColor: "#dce0e0",
+        borderTopColor: "#dce0e0",
+        borderBottomWidth: 1,
+        borderTopWidth: 1,
+        width: "100%",
+        paddingVertical: "2%",
+        flexDirection: "row"
     },
     productName: {
-        fontSize: 17,
-        opacity: 0.5,
+        fontWeight: "500"
+    },
+    numberOfSales: {
+        opacity: 0.6
+    },
+    salesHolder: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    availabelHolder: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    availableText: {
+        opacity: .6,
+        fontSize: 13
+    },
+    availableQunatity: {
+        fontSize: 12,
         fontWeight: "400",
-        textAlign: "left"
-        // backgroundColor: "blue"
     },
-    price: {
-        fontWeight: "500",
-        fontSize: 16,
-        marginTop: 5
+    salesQuantity: {
+        fontSize: 12,
+        fontWeight: "400"
+
     },
-    qtyText: {
-        opacity: 0.5,
+    updateIcon: {
+        borderColor: "#30bfbf",
+        borderWidth: 2,
+        width: 23,
+        height: 23,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: "center"
+    },
+    updateIconTextHolder: {
+        alignItems: "center",
+        alignSelf: "flex-end",
+        marginTop: "1%",
+        marginBottom: "1%",
+        marginRight: "2%"
+    },
+    updateText: {
         fontSize: 13,
-        marginTop: 3
+        color: "#10e0e0"
     },
-    divider: {
-        borderBottomColor: "#f2eeed",
-        borderBottomWidth: 1,
-        marginTop: "3%",
-        marginBottom: "3%"
+    actionsHolder: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-end"
+    },
+    deleteTextHolder: {
+        alignItems: "center",
+        alignSelf: "flex-end",
+        marginTop: "1%",
+        marginBottom: "1%",
+        marginRight: "4%"
     }
 })
