@@ -93,7 +93,7 @@ const Shops = ({ navigation }) => {
                 {
                     shops.map(shop => (
 
-                        <ShopCard shop={shop} />
+                        <ShopCard key={shop.id} shop={shop} navigation={navigation} />
                     ))
                 }
             </ScrollView>

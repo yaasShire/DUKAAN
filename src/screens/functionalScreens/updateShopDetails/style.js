@@ -5,10 +5,9 @@ export default StyleSheet.create({
         flex: 1,
     },
     topHeader: {
-        backgroundColor: "#0c1b32",
+        backgroundColor: "#684970",
         paddingTop: "11%",
         paddingHorizontal: "5%",
-        // paddingVertical: "8%",
         height: 100
     },
     topActionsHolder: {

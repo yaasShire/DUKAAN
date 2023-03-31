@@ -62,8 +62,6 @@ export default StyleSheet.create({
     },
     singleTab: {
         marginRight: "5%",
-
-        paddingVertical: "1%"
     },
     selectedTab: {
         marginRight: "5%",

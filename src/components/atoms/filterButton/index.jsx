@@ -2,9 +2,9 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const FilterButton = ({ mainLabel, navigation }) => {
+const FilterButton = ({ mainLabel, navigation, tab }) => {
     return (
-        <TouchableOpacity style={styles.filterButton} onPress={() => navigation.navigate("mainFilter")}>
+        <TouchableOpacity style={styles.filterButton} onPress={() => navigation.navigate("mainFilter", { target: tab })}>
             <View>
                 <Text style={styles.filterName}>{mainLabel}</Text>
                 <Text style={styles.modeText}>All</Text>

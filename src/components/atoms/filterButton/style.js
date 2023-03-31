@@ -2,10 +2,10 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
     filterButton: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#fff",
         flexDirection: "row",
         width: width / 3,
-        height: height / 13,
+        height: height / 12.8,
         justifyContent: 'space-around',
         alignItems: "center",
         paddingHorizontal: '2%',
@@ -15,15 +15,16 @@ export default StyleSheet.create({
     },
     filterName: {
         opacity: 0.7,
-        fontSize: 15
+        fontSize: 13
     },
     modeText: {
-        fontWeight: "700",
+        fontWeight: "400",
 
     },
     downArrow: {
         opacity: .5,
-        marginLeft: '3%'
+        marginLeft: '3%',
+        marginTop: "10%"
     }
 
 })

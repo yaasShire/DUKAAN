@@ -46,15 +46,15 @@ export default StyleSheet.create({
         borderBottomColor: "#dedcdc",
         borderBottomWidth: 1
     },
-    categoriesSection: {
+    filters: {
         // backgroundColor: "purple",
-        flex: 1,
+        flex: .9,
         borderRightWidth: 1,
         borderRightColor: "#bec4c0",
         backgroundColor: "#e1e6e2",
         paddingLeft: "2%"
     },
-    searchSection: {
+    sideContent: {
         // backgroundColor: "gold",
         flex: 2,
 
@@ -79,19 +79,7 @@ export default StyleSheet.create({
     selectedCount: {
         color: "red"
     },
-    searchHolder: {
-        flexDirection: "row",
-        borderBottomColor: "#e1e6e2",
-        borderBottomWidth: 1,
-        paddingVertical: '5%',
-        paddingHorizontal: "5%",
-        alignItems: "center"
 
-    },
-    input: {
-        marginLeft: "5%",
-        fontSize: 15
-    },
     bottomSection: {
         flex: 0.7,
         flexDirection: "row",
@@ -114,7 +102,8 @@ export default StyleSheet.create({
     clearAllText: {
         color: 'red',
         borderBottomColor: 'red',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        fontSize: 18
     }
 
 })

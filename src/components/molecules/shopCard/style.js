@@ -5,7 +5,7 @@ export default StyleSheet.create({
 
     image: {
         width: "40%",
-        height: "97%",
+        height: "100%",
         resizeMode: "cover",
         borderRadius: 5,
     },
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     },
     shopCard: {
         backgroundColor: "#FFF",
-        height: height / 6,
+        height: height / 8,
         borderWidth: 1,
         width: width / 1.1,
         borderRadius: 10,
@@ -46,14 +46,12 @@ export default StyleSheet.create({
         alignSelf: "flex-start",
         marginTop: "2%",
         marginLeft: "3%",
-        height: "45%",
+        height: "65%",
         justifyContent: "space-around",
         width: 140
     },
     productsHolder: {
-        flexDirection: 'row',
-        alignItems: "center",
-        justifyContent: 'flex-start',
+        alignItems: "flex-start",
     },
     numberOfProducts: {
         marginLeft: "5%"
@@ -66,5 +64,19 @@ export default StyleSheet.create({
         marginLeft: "11%",
         marginTop: "4%"
 
+    },
+    iconProductHolder: {
+        flexDirection: "row"
+    },
+    salesRankHolder: {
+        flexDirection: "row"
+    },
+    salesText: {
+        opacity: .8,
+        marginRight: "2%"
+    },
+    salesQuantity: {
+        fontWeight: "500"
     }
+
 })

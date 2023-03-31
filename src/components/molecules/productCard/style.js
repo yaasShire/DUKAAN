@@ -55,14 +55,14 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: "center"
     },
-    updateIconTextHolder: {
+    buttonIconTextHolder: {
         alignItems: "center",
         alignSelf: "flex-end",
         marginTop: "1%",
         marginBottom: "1%",
-        marginRight: "2%"
+        marginRight: "4%"
     },
-    updateText: {
+    textAction: {
         fontSize: 13,
         color: "#10e0e0"
     },

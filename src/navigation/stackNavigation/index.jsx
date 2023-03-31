@@ -22,6 +22,8 @@ import UpdateImages from '../../screens/functionalScreens/screens/updateShopImag
 import ShopImagesUpdate from '../../screens/functionalScreens/screens/updateShopImages'
 import ChangePassword from '../../screens/functionalScreens/screens/changePassword'
 import UpdateProduct from '../../screens/functionalScreens/updateProduct'
+import UpdateInventoryField from '../../screens/functionalScreens/updateInventoryField'
+import ProductDetails from '../../screens/functionalScreens/screens/productDetails'
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
     return (
@@ -46,6 +48,8 @@ const StackNavigator = () => {
                 <Stack.Screen name='updateShopImages' component={ShopImagesUpdate} options={{ headerShown: false }} />
                 <Stack.Screen name='changePassword' component={ChangePassword} options={{ headerShown: false }} />
                 <Stack.Screen name='updateProduct' component={UpdateProduct} options={{ headerShown: false }} />
+                <Stack.Screen name='updateInventoryField' component={UpdateInventoryField} options={{ headerShown: false }} />
+                <Stack.Screen name='productDetails' component={ProductDetails} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

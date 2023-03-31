@@ -16,49 +16,49 @@ import AddProductButton from '../../../../components/atoms/addProductButton'
 const ProductsList = ({ navigation }) => {
     const data = [
         {
-            id: "#FJLKF99",
+            id: 1,
             productName: "Gasoline car oil ",
             Qty: 200,
             price: 500,
             image: sProduct1
         },
         {
-            id: "#JFKLKFD99",
+            id: 2,
             productName: "Car Oil Super natural",
             Qty: 300,
             price: 400,
             image: sProduct2
         },
         {
-            id: "#JDJD778",
+            id: 3,
             productName: "Side View Mirror",
             Qty: 900,
             price: 700,
             image: sProduct3
         },
         {
-            id: "#3747JD3FHD",
+            id: 4,
             productName: "Gamber",
             Qty: 800,
             price: 900,
             image: sProduct4
         },
         {
-            id: "#374FHDJteSDJ",
+            id: 5,
             productName: "Air conditioner",
             Qty: 350,
             price: 1000,
             image: sProduct5
         },
         {
-            id: "#374FHD565JSDJ",
+            id: 6,
             productName: "Motor Cleaner",
             Qty: 350,
             price: 1000,
             image: sProduct6
         },
         {
-            id: "#37344FHDJSDJ",
+            id: 7,
             productName: "Oil For Motor",
             Qty: 350,
             price: 1000,

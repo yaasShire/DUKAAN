@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
 
     topHeader: {
-        backgroundColor: "#0c1b32",
+        backgroundColor: "#684970",
         paddingTop: "11%",
         paddingHorizontal: "5%",
         height: 100

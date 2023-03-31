@@ -3,11 +3,28 @@ import React from 'react'
 import FilterButton from '../../atoms/filterButton'
 import styles from './style'
 const Filter = ({ navigation }) => {
+    tabs = [
+        {
+            id: 1,
+            name: "Categories"
+        },
+        {
+            id: 2,
+            name: "Brands"
+        },
+        {
+            id: 3,
+            name: "Car model"
+        },
+    ]
     return (
         <View style={styles.filterContainer}>
-            <FilterButton mainLabel="Category" navigation={navigation} />
-            <FilterButton mainLabel="Sub category" navigation={navigation} />
-            <FilterButton mainLabel="P Category" navigation={navigation} />
+            {
+                tabs.map(tab => (
+                    <FilterButton key={tab.id} mainLabel={tab.name} tab={tab} navigation={navigation} />
+                ))
+            }
+
         </View>
     )
 }

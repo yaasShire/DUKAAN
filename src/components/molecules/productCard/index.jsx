@@ -29,17 +29,26 @@ const ProductCard = ({ item, navigation }) => {
                 <TouchableWithoutFeedback>
                     <View style={styles.deleteTextHolder}>
                         <View style={styles.updateIcon}>
-                            <Entypo name='trash' color={"#066b6b"} />
+                            <Entypo name='trash' color={"#ff1900"} />
                         </View>
-                        <Text style={styles.updateText}>Delete</Text>
+                        <Text style={styles.textAction}>Delete</Text>
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => navigation.navigate("updateProduct", { data: item })}>
-                    <View style={styles.updateIconTextHolder}>
+                    <View style={styles.buttonIconTextHolder}>
                         <View style={styles.updateIcon}>
-                            <Entypo name='edit' color={"#066b6b"} />
+                            <Entypo name='edit' color={"#569615"} />
                         </View>
-                        <Text style={styles.updateText}>Update</Text>
+                        <Text style={styles.textAction}>Update</Text>
+                    </View>
+
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("productDetails", { data: item })}>
+                    <View style={styles.buttonIconTextHolder}>
+                        <View style={styles.updateIcon}>
+                            <Entypo name='database' color={"#8c8a1f"} />
+                        </View>
+                        <Text style={styles.textAction}>Details</Text>
                     </View>
 
                 </TouchableWithoutFeedback>

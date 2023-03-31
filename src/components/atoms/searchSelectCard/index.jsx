@@ -24,7 +24,7 @@ const SearchSelecDropDownCard = ({ item }) => {
                     <ScrollView>
                         {
                             item.subCategory.map(item => (
-                                <>
+                                <View key={item.id}>
                                     <TouchableWithoutFeedback onPress={() => {
                                         setSubCategoryId(item.id)
                                         setShowProductCategory(prev => !prev)
@@ -40,7 +40,7 @@ const SearchSelecDropDownCard = ({ item }) => {
                                             <ScrollView>
                                                 {
                                                     item.productCategories.map(item => (
-                                                        <View style={styles.productCategory}>
+                                                        <View style={styles.productCategory} key={item.id}>
                                                             <View style={{ flexDirection: 'row', alignItems: "center" }}>
                                                                 <Checkbox
                                                                     uncheckedColor='green'
@@ -60,7 +60,7 @@ const SearchSelecDropDownCard = ({ item }) => {
                                             </ScrollView>
                                         )
                                     }
-                                </>
+                                </View>
                             ))
                         }
                     </ScrollView>

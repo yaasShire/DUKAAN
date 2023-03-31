@@ -6,10 +6,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FilterHeader from '../../../../components/atoms/filterHeader';
 import MeasurementCategoryItem from './measurementItem';
 import SearchSelecDropDownCard from '../../../../components/atoms/searchSelectCard';
-
-const MainFilter = ({ navigation }) => {
+import CategoriesFilterSectionContent from '../../../../components/molecules/categoriesFilterSection';
+import BrandsFilterSection from '../../../../components/molecules/brandsFilterSection';
+import CarModelFilterSection from '../../../../components/molecules/carModelFilterSection';
+const MainFilter = ({ navigation, route }) => {
     const [selectedItem, setSelectedItem] = useState(true)
-    const [sIndex, setSIndex] = useState(0)
+    const [selectedId, setSelectedId] = useState(route.params.target.id)
+    const [currentContent, setCurrentContent] = useState(route.params.target.name)
     const data = [
         {
             id: 1,
@@ -21,24 +24,9 @@ const MainFilter = ({ navigation }) => {
         },
         {
             id: 3,
-            name: "Car"
+            name: "Car model"
         },
-        {
-            id: 2,
-            name: "Brands"
-        },
-        {
-            id: 3,
-            name: "Car"
-        },
-        {
-            id: 2,
-            name: "Brands"
-        },
-        {
-            id: 3,
-            name: "Car"
-        }
+
 
 
     ]
@@ -615,6 +603,11 @@ const MainFilter = ({ navigation }) => {
         },
 
     ]
+    const contents = new Map()
+    contents.set("Categories", <CategoriesFilterSectionContent categories={categories} />)
+    contents.set("Brands", <BrandsFilterSection />)
+    contents.set("Car model", <CarModelFilterSection />)
+
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -637,33 +630,27 @@ const MainFilter = ({ navigation }) => {
 
             </View>
             <View style={styles.others}>
-                <View style={styles.categoriesSection}>
+                <View style={styles.filters}>
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={data}
                         renderItem={({ item, index }) => (
-                            <MeasurementCategoryItem key={item.id} sIndex={sIndex} index={index} setSIndex={setSIndex} item={item} selectedItem={selectedItem} />
+                            <MeasurementCategoryItem setCurrentContent={setCurrentContent} targetTab={route.params.target} key={item.id} id={item.id} selectedId={selectedId} setSelectedId={setSelectedId} item={item} />
                         )}
                     />
                 </View>
-                <View style={styles.searchSection}>
-                    <View style={styles.searchHolder}>
-                        <Ionicons name='ios-search-outline' size={15} color={'gray'} />
-                        <TextInput placeholder='search' style={styles.input} />
-                    </View>
-                    <ScrollView>
-                        {
-                            categories.map(item => (
-                                <SearchSelecDropDownCard item={item} />
-                            ))
-                        }
-                        {/* <SearchSelecDropDownCard /> */}
-                    </ScrollView>
+                <View style={styles.sideContent}>
+                    {/* <CategoriesFilterSectionContent categories={categories} /> */}
+                    {
+                        contents.get(currentContent)
+                    }
                 </View>
             </View>
             <View style={styles.bottomSection}>
-                <Text style={styles.clearAllText}>Clear all</Text>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("productList")}>
+                    <Text style={styles.clearAllText}>Clear all</Text>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("productList")}>
                     <View style={styles.applyButton}>
                         <Text style={styles.applyText}>Apply</Text>
                     </View>

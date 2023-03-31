@@ -48,7 +48,7 @@ export default function BottomTabs() {
                     tabBarBadge: 3,
                 }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Shipping"
                 component={Home}
                 options={{
@@ -58,7 +58,7 @@ export default function BottomTabs() {
                         <FontAwesome5 name="shipping-fast" color={color} size={25} />
                     ),
                 }}
-            />
+            /> */}
             <Tab.Screen
                 name="Products"
                 component={ProductsList}

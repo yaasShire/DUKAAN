@@ -5,7 +5,7 @@ export default StyleSheet.create({
         flex: 1
     },
     topBoxHolder: {
-        backgroundColor: "#0c1b32",
+        backgroundColor: "#684970",
         height: height / 4.3,
         alignItems: "flex-start",
         paddingHorizontal: "5%"

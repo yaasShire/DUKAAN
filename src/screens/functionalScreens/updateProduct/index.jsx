@@ -25,9 +25,9 @@ const UpdateProduct = ({ navigation, route }) => {
 
     ]
     const updateSections = new Map()
-    updateSections.set(1, <PricingSectionCard />)
-    updateSections.set(2, <InventorySectionCard />)
-    updateSections.set(3, <PricingSectionCard />)
+    updateSections.set(1, <PricingSectionCard navigation={navigation} />)
+    updateSections.set(2, <InventorySectionCard navigation={navigation} />)
+    updateSections.set(3, <PricingSectionCard navigation={navigation} />)
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -63,7 +63,7 @@ const UpdateProduct = ({ navigation, route }) => {
                 {
                     tabs.map(tab => (
                         <TouchableWithoutFeedback key={tab.id} onPress={() => setId(tab.id)}>
-                            <View style={{ height: 33 }}>
+                            <View style={{ height: 31 }}>
                                 <View style={[styles.singleTab]}>
                                     <Text style={styles.tabText}>{tab.name}</Text>
                                 </View>

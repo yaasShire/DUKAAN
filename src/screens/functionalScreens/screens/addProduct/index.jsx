@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './style'
 import StepIndicator from 'react-native-step-indicator';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import AddProductHeader from '../../../../components/molecules/addProductHeader';
+import AddProductHeader from '../../../../components/molecules/brandCard/addProductHeader';
 import AddProductBody from '../../../../components/molecules/addProductBody';
 import { mainCategories, productCategories, subCategories } from '../../../../dataStore';
 import AddProductActionButton from '../../../../components/atoms/addProductActionButton';
