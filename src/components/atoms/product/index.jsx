@@ -3,11 +3,13 @@ import React from 'react'
 import styles from './style'
 import Product3 from '../../../assets/product3.jpg'
 
-const Product = () => {
+const Product = ({ item }) => {
     return (
         <View style={styles.product}>
             <View style={styles.productImageNameHolder}>
-                <Image source={Product3} style={styles.productImage} />
+                <View>
+                    <Image source={item.image} style={styles.productImage} />
+                </View>
                 <View>
                     <Text style={styles.productName}>Gasoline</Text>
                 </View>
@@ -18,7 +20,7 @@ const Product = () => {
             </View>
             <View style={styles.ammountHolder}>
                 <Text style={styles.ammountText}>Ammount</Text>
-                <Text>$50</Text>
+                <Text style={styles.priceText}>$50</Text>
             </View>
         </View>
     )

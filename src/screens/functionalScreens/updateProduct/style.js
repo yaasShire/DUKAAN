@@ -58,25 +58,21 @@ export default StyleSheet.create({
         alignItems: "center",
         borderBottomColor: "#c4c3c0",
         borderBottomWidth: 1,
-        // paddingVertical: 10
     },
     singleTab: {
         marginRight: "5%",
     },
     selectedTab: {
-        marginRight: "5%",
         borderBottomColor: "#ebbb0e",
         borderBottomWidth: 3,
         paddingVertical: "1%",
-        alignItems: "center",
-        justifyContent: 'center'
-        // marginTop: 10
     },
     tabText: {
         fontWeight: "400",
         color: "#14bae3",
-        fontSize: 17,
-        marginBottom: "13%"
+        fontSize: 15,
+        marginBottom: "13%",
+        textAlign: "center"
     },
     productName: {
         fontSize: 18,

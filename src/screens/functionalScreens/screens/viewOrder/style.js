@@ -4,7 +4,16 @@ export default StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: '2%',
         paddingVertical: '3%',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderBottomColor: "#dee0e3",
+        borderBottomWidth: 1,
+        marginBottom: "5%",
+        justifyContent: "space-between",
+        paddingRight: "38%"
+    },
+    divider: {
+        borderBottomColor: "#dee0e3",
+        borderBottomWidth: .5,
     },
     mainHolder: {
         alignItems: 'center',

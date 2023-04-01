@@ -63,7 +63,7 @@ const UpdateProduct = ({ navigation, route }) => {
                 {
                     tabs.map(tab => (
                         <TouchableWithoutFeedback key={tab.id} onPress={() => setId(tab.id)}>
-                            <View style={{ height: 31 }}>
+                            <View style={{ height: 35, justifyContent: "center", }}>
                                 <View style={[styles.singleTab]}>
                                     <Text style={styles.tabText}>{tab.name}</Text>
                                 </View>

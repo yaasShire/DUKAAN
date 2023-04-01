@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView } from 'react-native'
+import { View, Text, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import Feather from 'react-native-vector-icons/Feather';
@@ -56,6 +56,18 @@ const ProductDetails = ({ route, navigation }) => {
                 <Text style={styles.headerText}>Product Details</Text>
             </View>
             <View style={styles.divider} />
+            <View style={styles.contentHolder}>
+                <Text numberOfLines={2} style={styles.productName} >{route.params.data.productName}</Text>
+                <View style={styles.stockHolder}>
+                    <Text numberOfLines={2} style={styles.stockQuantity}>#{route.params.data.inStock}</Text>
+                    <Text style={styles.stockText}>in stock</Text>
+
+                </View>
+                <View style={styles.salesHolder}>
+                    <Text style={styles.salesQuantity}>#{route.params.data.numberOfSales}</Text>
+                    <Text style={styles.salesText}>in Sales</Text>
+                </View>
+            </View>
             <View style={styles.mainImageHolder}>
                 <View style={styles.imageHolder}>
                     <Image source={selectedImage.image} style={styles.image} />
@@ -63,7 +75,7 @@ const ProductDetails = ({ route, navigation }) => {
             </View>
             <View style={styles.divider} />
             <View style={styles.productScrollHolder}>
-                <ScrollView style={styles.mainSubImagesHolder} horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView style={styles.mainSubImagesHolder} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 10 }} >
                     {
                         data.map(item => (
                             <ProductDetailsSubImage key={item.id} data={item} selectedImage={selectedImage} setselectedImage={setselectedImage} />
@@ -72,6 +84,64 @@ const ProductDetails = ({ route, navigation }) => {
                     }
                 </ScrollView>
 
+            </View>
+            <View style={styles.divider} />
+            <View style={styles.moneyTitleHolder}>
+                <Text style={styles.moneyTitle}>Money Section</Text>
+            </View>
+            <View style={styles.moneySection}>
+                <View style={styles.moneyTitleWrapper}>
+                    <Text style={styles.moneyQuantity}>$200</Text>
+                    <Text style={styles.moneyText}>Price</Text>
+                </View>
+                <View>
+                    <Text style={styles.operator}>+</Text>
+                </View>
+                <View style={styles.moneyTitleWrapper}>
+                    <Text style={styles.moneyQuantity}>$4</Text>
+                    <Text style={styles.moneyText}>Shipping</Text>
+                </View>
+                <View>
+                    <Text style={styles.operator}>-</Text>
+                </View>
+                <View style={styles.moneyTitleWrapper}>
+                    <Text style={styles.moneyQuantity}>$0.566</Text>
+                    <Text style={styles.moneyText}>Transaction fee</Text>
+                </View>
+                <View>
+                    <Text style={styles.operator}>=</Text>
+                </View>
+                <View style={styles.moneyTitleWrapper}>
+                    <Text style={styles.moneyQuantity}>$23.5</Text>
+                    <Text style={styles.moneyText}>Gross proceeds</Text>
+                </View>
+            </View>
+            <View style={styles.featuresDetailsHolder}>
+                <View >
+                    <Text style={styles.featureDetailsText}>Features & Details</Text>
+                </View>
+                <View style={styles.features}>
+                    <View style={styles.singleFeatureHolder}>
+                        <View style={styles.dotCircle} />
+                        <Text style={styles.featureText}>Rich of gasoline</Text>
+                    </View>
+                    <View style={styles.singleFeatureHolder}>
+                        <View style={styles.dotCircle} />
+                        <Text style={styles.featureText}>Fast speed mottor</Text>
+                    </View>
+                    <View style={styles.singleFeatureHolder}>
+                        <View style={styles.dotCircle} />
+                        <Text style={styles.featureText}>Car lifespan increases</Text>
+                    </View>
+                </View>
+            </View>
+            <View style={styles.buttonsHolder}>
+                <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
+                    <Text style={styles.updateText}>Canel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.updateProductButton} >
+                    <Text style={styles.updateText}>Update</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )

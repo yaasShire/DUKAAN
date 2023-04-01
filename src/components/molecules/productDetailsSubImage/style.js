@@ -7,7 +7,6 @@ export default StyleSheet.create({
         alignItems: "center",
         borderRadius: 6,
         height: 100,
-        marginRight: 15
     },
     active: {
         borderColor: "green",

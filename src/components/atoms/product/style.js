@@ -92,7 +92,10 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: "100%",
-        marginBottom: '5%'
+        marginBottom: '5%',
+        borderBottomColor: "#dee0e3",
+        borderBottomWidth: 1,
+        paddingVertical: "2%"
     },
     productImage: {
         width: 60,
@@ -139,6 +142,9 @@ export default StyleSheet.create({
     },
     ammountText: {
         fontWeight: "700"
+    },
+    priceText: {
+        fontWeight: "500"
     }
 
 })

@@ -5,7 +5,7 @@ import devliveryIcon from '../../../assets/delivery2.png'
 import shoppingBagImage from '../../../assets/bag.png'
 import bag3 from '../../../assets/bag2.png'
 import AcceptButton from '../../atoms/acceptButton'
-const Order = ({ accept = true, reject = true, status, navigation }) => {
+const Order = ({ accept = true, reject = true, status, navigation, item }) => {
     const [show, setShow] = useState(false)
     return (
         <View style={styles.orderCard}>
@@ -13,18 +13,18 @@ const Order = ({ accept = true, reject = true, status, navigation }) => {
                 <View style={styles.imageOrderIdHolder}>
                     <Image source={bag3} style={{ width: 70, height: 70 }} />
                     <View style={styles.orderStageHolder}>
-                        <Text style={styles.orderNumber}>Order No - 494848</Text>
+                        <Text style={styles.orderNumber}>Order No - {item.orderNo}</Text>
                         {show && <Text style={styles.orderStage}>Order Processing</Text>}
 
                     </View>
                 </View>
-                <Text style={styles.ammount}>$200</Text>
+                <Text style={styles.ammount}>${item.ammount}</Text>
             </View>
             <View style={styles.divider} />
             <View>
                 <View style={styles.nameMinutesHolder}>
                     <View style={styles.nameHolder}>
-                        <Text style={styles.textName}>Yusuf Ahmed Shire</Text>
+                        <Text style={styles.textName}>{item.customerName}</Text>
                     </View>
                     {
                         status && (<View style={styles.statusHolder}>
@@ -40,7 +40,7 @@ const Order = ({ accept = true, reject = true, status, navigation }) => {
             <View style={styles.divider} />
             <View style={styles.actionButtonsHolder}>
                 <View style={styles.viewButtonHolder}>
-                    <AcceptButton title="View Order" navigation={navigation} />
+                    <AcceptButton title="View Order" navigation={navigation} order={item} />
 
                 </View>
             </View>

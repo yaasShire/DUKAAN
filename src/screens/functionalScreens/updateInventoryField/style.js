@@ -34,12 +34,14 @@ export default StyleSheet.create({
 
     input: {
         borderWidth: 1,
-        width: "98%",
-        height: 48,
-        paddingHorizontal: 10,
+        width: "100%",
+        height: 55,
+        paddingHorizontal: 15,
         borderRadius: 6,
         fontSize: 15,
-        fontWeight: "500"
+        fontWeight: "500",
+        borderWidth: 0,
+        backgroundColor: "#d5edda"
 
     },
     label: {
