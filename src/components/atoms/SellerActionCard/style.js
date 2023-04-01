@@ -10,12 +10,6 @@ export default StyleSheet.create({
         borderRadius: 8,
         marginBottom: '5%',
         border: 0.5,
-        // shadowOffset: {
-        //     width: 4,
-        //     height: 4
-        // },
-        // shadowColor: "#000000",
-        // shadowOpacity: 1,
         elevation: 2,
     },
     iconHolder: {

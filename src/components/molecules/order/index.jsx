@@ -13,18 +13,18 @@ const Order = ({ accept = true, reject = true, status, navigation, item }) => {
                 <View style={styles.imageOrderIdHolder}>
                     <Image source={bag3} style={{ width: 70, height: 70 }} />
                     <View style={styles.orderStageHolder}>
-                        <Text style={styles.orderNumber}>Order No - {item.orderNo}</Text>
+                        <Text style={styles.orderNumber}>Order No - {item?.orderNo}</Text>
                         {show && <Text style={styles.orderStage}>Order Processing</Text>}
 
                     </View>
                 </View>
-                <Text style={styles.ammount}>${item.ammount}</Text>
+                <Text style={styles.ammount}>${item?.ammount}</Text>
             </View>
             <View style={styles.divider} />
             <View>
                 <View style={styles.nameMinutesHolder}>
                     <View style={styles.nameHolder}>
-                        <Text style={styles.textName}>{item.customerName}</Text>
+                        <Text style={styles.textName}>{item?.customerName}</Text>
                     </View>
                     {
                         status && (<View style={styles.statusHolder}>

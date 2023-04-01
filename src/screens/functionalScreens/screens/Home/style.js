@@ -64,6 +64,25 @@ export default StyleSheet.create({
     iconActionNameWrapper: {
         flexDirection: 'row',
         alignItems: "center"
+    },
+    messagCountWrapper: {
+        backgroundColor: "#10ebeb",
+        borderRadius: 5,
+        justifyContent: "center",
+        alignItems: "center",
+        // width: 0,
+        // height: 30
+        padding: "2%",
+        paddingHorizontal: "5%"
+    },
+    CardRightSection: {
+        flexDirection: 'row',
+        width: "40%",
+        justifyContent: "flex-end"
+    },
+    messageNumber: {
+        fontWeight: "500",
+        color: "#000"
     }
 
 

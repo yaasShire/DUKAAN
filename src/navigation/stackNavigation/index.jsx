@@ -24,6 +24,7 @@ import ChangePassword from '../../screens/functionalScreens/screens/changePasswo
 import UpdateProduct from '../../screens/functionalScreens/updateProduct'
 import UpdateInventoryField from '../../screens/functionalScreens/updateInventoryField'
 import ProductDetails from '../../screens/functionalScreens/screens/productDetails'
+import Reports from '../../screens/functionalScreens/reports'
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
     return (
@@ -50,6 +51,7 @@ const StackNavigator = () => {
                 <Stack.Screen name='updateProduct' component={UpdateProduct} options={{ headerShown: false }} />
                 <Stack.Screen name='updateInventoryField' component={UpdateInventoryField} options={{ headerShown: false }} />
                 <Stack.Screen name='productDetails' component={ProductDetails} options={{ headerShown: false }} />
+                <Stack.Screen name='reports' component={Reports} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

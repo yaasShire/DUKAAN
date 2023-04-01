@@ -13,7 +13,7 @@ const ViewOrder = ({ navigation, route }) => {
             <ScrollView>
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Ionicons name='chevron-back' size={28} color="gray" />
+                        <Ionicons name='chevron-back' size={30} color="gray" />
                     </TouchableOpacity>
                     <Text style={styles.orderDetailsText}>Order Details</Text>
                 </View>

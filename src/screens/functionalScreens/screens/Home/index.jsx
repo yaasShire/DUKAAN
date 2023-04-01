@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView, FlatList } from 'react-native'
+import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
@@ -139,7 +139,7 @@ const Home = ({ navigation }) => {
             <Header navigation={navigation} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
                 <View style={styles.mainCardsHolder}>
-                    <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 22 }}>
                         <DashboardCard ammount={900} description="Sales Today" />
                         <DashboardCard ammount={800} description="Revenue Today" />
                         <DashboardCard ammount={700} description="Loss Today" />
@@ -152,21 +152,26 @@ const Home = ({ navigation }) => {
                     <SellerCardAction icon="analytics" actionName="Reports" navigation={navigation} />
                 </View>
                 <View style={styles.actionCards}>
-                    <View style={styles.cardAction}>
+                    <TouchableOpacity style={styles.cardAction}>
                         <View style={styles.iconActionNameWrapper}>
                             <MaterialCommunityIcons name='android-messages' size={25} color="gray" />
                             <Text style={styles.actionName}>Messages</Text>
                         </View>
-                        <Feather name='chevron-right' size={25} color="gray" />
-                    </View>
+                        <View style={styles.CardRightSection}>
+                            <View style={styles.messagCountWrapper}>
+                                <Text style={styles.messageNumber}>15</Text>
+                            </View>
+                            <Feather name='chevron-right' size={25} color="gray" />
+                        </View>
+                    </TouchableOpacity>
                     <View style={styles.divider} />
-                    <View style={styles.cardAction}>
+                    <TouchableOpacity style={styles.cardAction}>
                         <View style={styles.iconActionNameWrapper}>
                             <MaterialIcons name='attach-money' size={25} color="gray" />
                             <Text style={styles.actionName}>Manage Returns</Text>
                         </View>
                         <Feather name='chevron-right' size={25} color="gray" />
-                    </View>
+                    </TouchableOpacity>
 
                 </View>
                 <View style={styles.orderCardsHolder}>

@@ -1,12 +1,12 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     card: {
         backgroundColor: '#FFFFFF',
-        width: 180,
+        width: width / 2.32,
         height: 100,
         borderRadius: 5,
         paddingHorizontal: '3%',
-        marginRight: 10
     },
     dollarNumberHolder: {
         flexDirection: 'row'
