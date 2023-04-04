@@ -4,10 +4,12 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#FFF",
-        marginTop: "10%",
+        marginTop: "5%",
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
-        padding: "5%",
+        padding: "2%",
+        borderWidth: 1,
+        borderColor: "#dedede"
     },
     titleText: {
         fontSize: 20,

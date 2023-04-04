@@ -13,7 +13,7 @@ const ChangePassword = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <GlobalHeader label={"Change Password"} navigation={navigation} />
-            <ScrollView style={styles.fieldsHolder}>
+            <ScrollView style={styles.fieldsHolder} contentContainerStyle={{ rowGap: 20 }}>
                 <Formik
                     validationSchema={changePasswordValidation}
                     initialValues={{ currentPassword: "", newPassword: "", confirmPassword: "" }}

@@ -8,6 +8,8 @@ import ferrari from '../../../assets/ferrari.png'
 import buggati from '../../../assets/buggati.png'
 import bmw from '../../../assets/bmw.png'
 import honda from '../../../assets/honda.png'
+import FilterSearchField from '../filterSearchField'
+import BrandNameCheckBox from '../../atoms/brandNameCheckBox'
 const BrandsFilterSection = () => {
     const brands = [
         {
@@ -39,21 +41,19 @@ const BrandsFilterSection = () => {
             id: 6,
             name: "BMW",
             image: bmw
-        }
+        },
     ]
     return (
         <View style={styles.container}>
-            <View>
-                <Text style={styles.title}>Choose brand</Text>
-            </View>
-            <View style={styles.cardsHolder}>
+            <FilterSearchField />
+            <ScrollView contentContainerStyle={{ rowGap: 10 }}>
                 {
                     brands.map(brand => (
-                        <BrandCard key={brand.id} brand={brand} />
+                        <BrandNameCheckBox key={brand.id} brand={brand} />
                     ))
                 }
+            </ScrollView>
 
-            </View>
         </View>
     )
 }

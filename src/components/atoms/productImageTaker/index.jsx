@@ -37,8 +37,7 @@ const ImageTaker = ({ main, image: imageIdentifier, imageURL }) => {
 
 
         }}>
-            {/* {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />} */}
-            {image ? <Image source={{ uri: image }} style={{ width: 162, height: 146, borderRadius: 5 }} /> : <Image source={cameraPlaceHolder} style={{ width: 162, height: 146, borderRadius: 5 }} />}
+            {image ? <Image source={{ uri: image }} style={styles.image} /> : <Image source={cameraPlaceHolder} style={styles.image} />}
             {main && <View style={styles.mainHolder}>
                 <Text style={styles.mainText}>Main</Text>
             </View>}

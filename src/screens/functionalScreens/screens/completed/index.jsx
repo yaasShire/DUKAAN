@@ -126,7 +126,7 @@ const Completed = ({ navigation }) => {
 
     ]
     return (
-        <ScrollView style={styles.cardHolder}>
+        <ScrollView style={styles.cardHolder} contentContainerStyle={{ rowGap: 20 }}>
             {
                 orders.map(item => (
                     <Order status="completed" navigation={navigation} key={item.id} item={item} />

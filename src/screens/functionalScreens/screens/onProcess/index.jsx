@@ -126,7 +126,7 @@ const OnProcess = ({ navigation }) => {
 
     ]
     return (
-        <ScrollView style={styles.onProcessOrders}>
+        <ScrollView style={styles.onProcessOrders} contentContainerStyle={{ rowGap: 20 }}>
             {
                 orders.map(item => (
                     <Order status="Pending" navigation={navigation} key={item.id} item={item} />

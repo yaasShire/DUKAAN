@@ -7,21 +7,20 @@ import Home from '../screens/Home';
 import TopTabs from '../../../navigation/topNavigation';
 import ProductsList from '../screens/productsList';
 import Settings from '../settings';
-import { SafeAreaView } from 'react-native';
+import { Dimensions, SafeAreaView } from 'react-native';
 const Tab = createBottomTabNavigator();
 export default function BottomTabs() {
+    const { width, height } = new Dimensions.get("window")
     return (
         <Tab.Navigator
             initialRouteName="Home"
 
             screenOptions={{
                 tabBarActiveTintColor: '#FF8B03',
-                tabBarStyle: {
-                    height: 85,
-                    paddingBottom: '5%',
-                    padding: '2%',
-                    // marginBottom: 15
-                }
+                tabBarLabelStyle: { fontSize: 12, fontWeight: '500', },
+                tabBarStyle: { height: height / 11.5, },
+                tabBarItemStyle: { marginBottom: 14 }
+
 
             }}
         >

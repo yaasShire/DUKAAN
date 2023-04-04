@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     orderContainer: {
-        padding: 18,
-        marginBottom: 20
+        padding: 15,
+        marginBottom: 15,
     }
 })

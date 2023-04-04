@@ -1,11 +1,19 @@
 import { StyleSheet, Dimensions } from "react-native";
-const { width, height } = new Dimensions.get("screen")
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        // backgroundColor: "yellow",
-        // height: height
-        // height: height / 1.4
         alignItems: "center",
-        marginTop: "3%"
+        flex: 1,
+
+    },
+    actionButtonHolder: {
+        justifyContent: "center",
+        alignItems: 'center',
+        marginTop: "2%"
+    },
+    textTitle: {
+        opacity: .5,
+        textAlign: "center",
+        marginVertical: "3%"
     }
 })

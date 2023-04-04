@@ -10,7 +10,7 @@ const GlobalHeader = ({ label, navigation }) => {
         <View style={styles.topHeader}>
             <View style={styles.topActionsHolder}>
                 <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
-                    <MaterialIcons name='keyboard-backspace' size={30} color="#c4cadb" />
+                    <MaterialIcons name='keyboard-backspace' size={27} color="gray" />
                 </TouchableWithoutFeedback>
                 <View>
                     <Text style={styles.updateText}>{label}</Text>

@@ -5,10 +5,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Product3 from '../../../../assets/product3.jpg'
 import Product from '../../../../components/atoms/product';
-import DecisionButton from '../../../../components/atoms/add';
+import DecisionButton from '../../../../components/atoms/decisionButton';
+import { nameShortner } from '../../../../utils/utilityFunctions';
 const ViewOrder = ({ navigation, route }) => {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <ScrollView>
                 <View style={styles.header}>
@@ -18,15 +19,15 @@ const ViewOrder = ({ navigation, route }) => {
                     <Text style={styles.orderDetailsText}>Order Details</Text>
                 </View>
                 <View style={styles.mainHolder}>
-                    <View style={styles.orderNameIdHolder}>
+                    <View style={styles.orderDetailCard}>
                         <Text style={styles.orderNumber}>Order No : {route.params.order.orderNo}</Text>
                         <View style={styles.nameHolder}>
-                            <Text style={styles.customerName}>{route.params.order.customerName}</Text>
+                            <Text style={styles.customerName} numberOfLines={1}>{route.params.order.customerName}</Text>
                         </View>
                         <View style={styles.divider} />
                         <View style={styles.locationSection}>
                             <View>
-                                <Text style={styles.locationText}>Location</Text>
+                                <Text style={styles.locationTextTitle}>Location :</Text>
                             </View>
                             <View style={styles.locationInfoHolder}>
                                 <View style={styles.locationIconNameHolder}>
@@ -42,13 +43,6 @@ const ViewOrder = ({ navigation, route }) => {
                     </View>
                     {/* product items */}
                     <View style={styles.productHolder}>
-                        {/* <FlatList
-                            data={route.params.products}
-                            renderItem={({ item }) => (
-                                <Product item={item} />
-                                
-                                )}
-                        /> */}
                         <ScrollView>
                             {
                                 route.params.order.products.map(item => (
@@ -60,7 +54,7 @@ const ViewOrder = ({ navigation, route }) => {
 
                     </View>
                     {/* product items ends here */}
-                    <View style={styles.totalAmmount}>
+                    <View style={styles.totalAmmountWapper}>
                         <Text style={styles.totalAmmountText}>Total Ammount</Text>
                         <Text style={styles.totalMoney}>${route.params.order.ammount}</Text>
                     </View>

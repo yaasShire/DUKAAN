@@ -25,6 +25,7 @@ import UpdateProduct from '../../screens/functionalScreens/updateProduct'
 import UpdateInventoryField from '../../screens/functionalScreens/updateInventoryField'
 import ProductDetails from '../../screens/functionalScreens/screens/productDetails'
 import Reports from '../../screens/functionalScreens/reports'
+import TestAnimation from '../../screens/functionalScreens/test'
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
     return (
@@ -52,6 +53,7 @@ const StackNavigator = () => {
                 <Stack.Screen name='updateInventoryField' component={UpdateInventoryField} options={{ headerShown: false }} />
                 <Stack.Screen name='productDetails' component={ProductDetails} options={{ headerShown: false }} />
                 <Stack.Screen name='reports' component={Reports} options={{ headerShown: false }} />
+                <Stack.Screen name='animation' component={TestAnimation} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

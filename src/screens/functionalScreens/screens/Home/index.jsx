@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity, Platform } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
@@ -135,11 +135,11 @@ const Home = ({ navigation }) => {
     ]
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle="light-content" />
+            <StatusBar barStyle={Platform.OS == 'android' ? "light-content" : "dark-content"} />
             <Header navigation={navigation} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
                 <View style={styles.mainCardsHolder}>
-                    <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 22 }}>
+                    <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 35 }}>
                         <DashboardCard ammount={900} description="Sales Today" />
                         <DashboardCard ammount={800} description="Revenue Today" />
                         <DashboardCard ammount={700} description="Loss Today" />
@@ -164,7 +164,6 @@ const Home = ({ navigation }) => {
                             <Feather name='chevron-right' size={25} color="gray" />
                         </View>
                     </TouchableOpacity>
-                    <View style={styles.divider} />
                     <TouchableOpacity style={styles.cardAction}>
                         <View style={styles.iconActionNameWrapper}>
                             <MaterialIcons name='attach-money' size={25} color="gray" />
@@ -177,7 +176,7 @@ const Home = ({ navigation }) => {
                 <View style={styles.orderCardsHolder}>
                     <Text style={styles.newOrdersText}>New Orders</Text>
 
-                    <ScrollView contentContainerStyle={{ rowGap: 5 }}>
+                    <ScrollView contentContainerStyle={{ rowGap: 20, marginBottom: 30, }}>
                         {
                             orders.map((item) => (
                                 <Order navigation={navigation} key={item.id} item={item} />

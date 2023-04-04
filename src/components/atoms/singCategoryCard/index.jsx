@@ -9,7 +9,6 @@ const SingleCategoryCard = ({ category, cat, finalObject }) => {
     const dispatch = useDispatch()
     return (
         <View>
-            <View style={styles.divider} />
 
             <TouchableOpacity style={[styles.categoryButtonHolder, { backgroundColor: finalObject.id == category.id ? "#D9D9D9" : "#FFF" }]} onPress={() => {
                 cat == 'mainCategory' ? dispatch(setMainCategory(category)) : cat == 'subCategory' ? dispatch(setSubCategory(category)) : cat == 'productCategory' ? dispatch(setProductCategory(category)) : ""
@@ -17,7 +16,6 @@ const SingleCategoryCard = ({ category, cat, finalObject }) => {
                 <Text style={styles.categoryName}>{category.name}</Text>
                 <Ionicons name='chevron-forward-outline' size={25} color="#9D9B9B" />
             </TouchableOpacity>
-            <View style={styles.divider} />
         </View>
     )
 }

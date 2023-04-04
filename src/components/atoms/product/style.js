@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     header: {
         flexDirection: 'row',
@@ -9,8 +10,6 @@ export default StyleSheet.create({
     mainHolder: {
         alignItems: 'center',
         width: "100%",
-        // backgroundColor: 'pink',
-
     },
     orderDetailsText: {
         marginLeft: '25%',
@@ -93,42 +92,38 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         width: "100%",
         marginBottom: '5%',
-        borderBottomColor: "#dee0e3",
-        borderBottomWidth: 1,
-        paddingVertical: "2%"
+        borderColor: "#dee0e3",
+        borderWidth: 1,
+        paddingVertical: "2%",
+        paddingHorizontal: "3%",
+        borderRadius: 6
     },
     productImage: {
-        width: 60,
-        height: 60,
+        width: 65,
+        height: 65,
         borderRadius: 10,
-        borderWidth: 2,
-        borderColor: 'pink'
+        borderWidth: 1,
+        borderColor: "#dedede",
     },
     productHolder: {
 
         backgroundColor: '#ffffff',
         width: "100%",
-        shadowOffset: {
-            width: 10,
-            height: 10
-        },
-        shadowColor: "#000",
-        shadowOpacity: 1,
-        shadowRadius: 7,
-        elevation: 10,
         marginTop: '10%',
         paddingVertical: '5%',
         paddingHorizontal: '4%'
     },
     productImageNameHolder: {
         flexDirection: 'row',
-        alignItems: "center"
+        alignItems: "center",
+        // backgroundColor: "pink",
+        width: "55%"
     },
     productName: {
-        fontSize: 17,
+        fontSize: 13,
         fontWeight: "500",
         marginLeft: '7%',
-        marginBottom: '35%'
+        opacity: .8
     },
     qtyHolder: {
         alignItems: 'center',
@@ -138,13 +133,18 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     qtyText: {
-        fontWeight: "700"
+        fontWeight: "500",
+        opacity: .7
     },
     ammountText: {
-        fontWeight: "700"
+        fontWeight: "500",
+        opacity: .7
     },
     priceText: {
-        fontWeight: "500"
-    }
+        fontWeight: "600"
+    },
+    qtyQuantity: {
+        fontWeight: "600"
+    },
 
 })

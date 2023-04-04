@@ -22,5 +22,10 @@ export default StyleSheet.create({
         fontWeight: "600",
         fontSize: 15,
         marginBottom: '2%'
-    }
+    },
+    errorText: {
+        color: "red",
+        marginVertical: "2%"
+    },
+
 })

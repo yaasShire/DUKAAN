@@ -3,13 +3,11 @@ import React from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SearchSelecDropDownCard from '../../atoms/searchSelectCard';
+import FilterSearchField from '../filterSearchField';
 const CategoriesFilterSectionContent = ({ categories }) => {
     return (
-        <>
-            <View style={styles.searchHolder}>
-                <Ionicons name='ios-search-outline' size={15} color={'gray'} />
-                <TextInput placeholder='search' style={styles.input} />
-            </View>
+        <View style={styles.container}>
+            <FilterSearchField />
             <ScrollView>
                 {
                     categories.map(item => (
@@ -17,8 +15,7 @@ const CategoriesFilterSectionContent = ({ categories }) => {
                     ))
                 }
             </ScrollView>
-        </>
+        </View>
     )
 }
-
 export default CategoriesFilterSectionContent

@@ -4,7 +4,7 @@ import styles from './style'
 import ImageTaker from '../../../../../components/atoms/productImageTaker'
 const ShopImages = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <ImageTaker />
         </View>
     )

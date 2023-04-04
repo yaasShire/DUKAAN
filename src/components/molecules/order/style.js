@@ -1,18 +1,13 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     orderCard: {
         backgroundColor: '#FFFFFF',
-        height: 200,
-        // shadowOffset: {
-        //     width: 5,
-        //     height: 5
-        // },
-        // shadowColor: "#000000",
-        // shadowRadius: 6,
-        // shadowOpacity: 1,
+        height: height / 4.2,
+        width: "100%",
         borderRadius: 6,
-        // elevation: 2,
-        marginBottom: '5%'
+        borderColor: "#c2c1bc",
+        borderWidth: .5,
 
     },
     orderNumber: {
@@ -26,21 +21,22 @@ export default StyleSheet.create({
     },
     orderInfo1Holder: {
         flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        paddingRight: '5%',
-        paddingTop: '5%'
+        alignItems: 'center',
+        justifyContent: 'space-around',
     },
     ammount: {
         fontSize: 18,
         fontWeight: "600",
         color: "orange",
+        width: "30%",
+        textAlign: "right"
 
     },
     imageOrderIdHolder: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'flex-start'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+
     },
     orderStageHolder: {
         marginTop: '2%'
@@ -53,27 +49,38 @@ export default StyleSheet.create({
         marginBottom: '2%'
     },
     divider: {
-        borderBottomWidth: 0.5,
-        borderColor: "#c2c1bc"
+        borderBottomWidth: 1,
+        borderBottomColor: "#dee0e3",
     },
     actionButtonsHolder: {
-        padding: '5%',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
+        paddingHorizontal: '6%',
+        justifyContent: 'center',
+        alignItems: "flex-end",
+        flex: 1
+
     },
 
     nameHolder: {
-        paddingHorizontal: '5%',
+        paddingHorizontal: '3%',
         justifyContent: 'center',
         alignItems: "center",
         borderRadius: 5,
         backgroundColor: '#ffffff',
         borderWidth: 1,
-        borderColor: 'gray'
+        borderColor: "#dee0e3",
+        width: "40%"
     },
-    minutesPassedHolder: {
+    timePassedWrapper: {
         fontSize: 10,
-        color: "gray"
+        color: "gray",
+        borderColor: "#dee0e3",
+        borderWidth: 1,
+        paddingHorizontal: "3%"
+    },
+    timePassedText: {
+        fontSize: 10,
+        color: "gray",
+        borderColor: "#dee0e3",
     },
     nameMinutesHolder: {
         flexDirection: 'row',
@@ -86,24 +93,24 @@ export default StyleSheet.create({
         opacity: 0.7
     },
     statusHolder: {
-        paddingHorizontal: '5%',
+        paddingHorizontal: '3%',
         justifyContent: 'center',
         alignItems: "center",
         borderRadius: 5,
-        backgroundColor: 'pink',
         borderWidth: 1,
         borderColor: 'pink',
-        // paddingVertical: '0.5%'
+        borderColor: "#dee0e3",
+
 
     },
     statusText: {
         fontSize: 11,
         opacity: 0.7,
     },
-    viewButtonHolder: {
-        width: '30%',
-        height: '48%',
+    // viewButtonHolder: {
+    //     width: '30%',
+    //     height: '48%',
 
-    }
+    // }
 
 })

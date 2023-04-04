@@ -6,9 +6,28 @@ import { useSelector } from 'react-redux'
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton';
 const SubCategory = ({ category, title, index, setCurrentPosition }) => {
     const subCategory = useSelector((state) => state.productRegistration.subCategory)
+    const [showError, setShowError] = useState(false)
+    const errorHandler = () => {
+        if (!subCategory.id) {
+            setShowError(true)
+            setTimeout(() => {
+                setShowError(false)
+            }, 2000)
+
+        } else {
+            setCurrentPosition(prev => prev + 1)
+        }
+    }
     return (
         <View style={styles.container}>
             <ScrollView>
+                {
+                    showError && (
+                        <View style={styles.errorHolder}>
+                            <Text style={styles.textError}>Please select sub category</Text>
+                        </View>
+                    )
+                }
                 <Text style={styles.textTitle}>{title}</Text>
                 <View style={styles.categoriesHolder}>
                     <View>
@@ -27,7 +46,7 @@ const SubCategory = ({ category, title, index, setCurrentPosition }) => {
             </ScrollView>
 
             <View style={styles.actionButtonHolder}>
-                <AddProductActionButton setCurrentPosition={setCurrentPosition} />
+                <AddProductActionButton label={"Next"} errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
             </View>
         </View>
     )

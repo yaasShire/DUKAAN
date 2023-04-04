@@ -24,7 +24,7 @@ const Order = ({ accept = true, reject = true, status, navigation, item }) => {
             <View>
                 <View style={styles.nameMinutesHolder}>
                     <View style={styles.nameHolder}>
-                        <Text style={styles.textName}>{item?.customerName}</Text>
+                        <Text style={styles.textName} numberOfLines={2}>{item?.customerName}</Text>
                     </View>
                     {
                         status && (<View style={styles.statusHolder}>
@@ -32,17 +32,14 @@ const Order = ({ accept = true, reject = true, status, navigation, item }) => {
                         </View>)
                     }
 
-                    <View>
-                        <Text style={styles.minutesPassedHolder}>3 min ago</Text>
+                    <View style={styles.timePassedWrapper}>
+                        <Text style={styles.timePassedText}>3 min ago</Text>
                     </View>
                 </View>
             </View>
             <View style={styles.divider} />
             <View style={styles.actionButtonsHolder}>
-                <View style={styles.viewButtonHolder}>
-                    <AcceptButton title="View Order" navigation={navigation} order={item} />
-
-                </View>
+                <AcceptButton title="View Order" navigation={navigation} order={item} />
             </View>
         </View>
     )

@@ -9,7 +9,7 @@ import LocationInfo from './steps/locationInfo';
 import ShopImages from './steps/shopImages';
 const AddShop = () => {
     const [currentPosition, setcurrentPosition] = useState(0)
-    const labels = ["Personal data", "Shop data", "Location data"];
+    const labels = ["Personal data", "Shop data", "Location data", "Shop images"];
     const [errorHandlers, setErrorHandlers] = useState(null)
     const handlePosition = (errors) => {
         errorHandlers == null && setcurrentPosition(prev => prev + 1)
@@ -53,12 +53,10 @@ const AddShop = () => {
                 labels={labels}
                 onPress={handlePosition}
             />
-            {/* <View> */}
-            {tabs.get(currentPosition)}
-            {/* </View> */}
-            <View>
-
+            <View style={styles.contentHolder}>
+                {tabs.get(currentPosition)}
             </View>
+
         </ScrollView>
     )
 }

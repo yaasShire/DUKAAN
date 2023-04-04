@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView } from 'react-native'
+import { View, Text, StatusBar, ScrollView, Platform } from 'react-native'
 import React, { useState } from 'react'
 import styles from './style'
 import StepIndicator from 'react-native-step-indicator';
@@ -13,16 +13,15 @@ import RequiredInfo from '../onProcess/requiredInfo';
 import MainCategory from './steps/mainCategory';
 import ProductCategory from './steps/productCategory';
 import SubCategory from './steps/subCategory';
-const AddProduct = () => {
+const AddProduct = ({ navigation }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const tabs = new Map();
-    tabs.set(0, <MainCategory setCurrentPosition={setCurrentPosition} index={0} category={mainCategories} title="Please select a category from list below" />);
-    tabs.set(1, <SubCategory setCurrentPosition={setCurrentPosition} index={1} category={subCategories} title="Please select a sub category from list below." />);
-    tabs.set(2, <ProductCategory setCurrentPosition={setCurrentPosition} index={2} category={productCategories} title="Please select a category from list below" />);
-    tabs.set(3, <AddImages setCurrentPosition={setCurrentPosition} index={3} />);
-    tabs.set(4, <RequiredInfo setCurrentPosition={setCurrentPosition} index={4} category={mainCategories} title="Please select a category from list below" />);
-    tabs.set(5, <Offers setCurrentPosition={setCurrentPosition} index={5} category={mainCategories} title="Please select a category from list below" />);
-
+    tabs.set(0, <MainCategory setCurrentPosition={setCurrentPosition} category={mainCategories} title="Please select a category from list below" />);
+    tabs.set(1, <SubCategory setCurrentPosition={setCurrentPosition} category={subCategories} title="Please select a sub category from list below." />);
+    tabs.set(2, <ProductCategory setCurrentPosition={setCurrentPosition} category={productCategories} title="Please select a category from list below" />);
+    tabs.set(3, <AddImages setCurrentPosition={setCurrentPosition} title="Please insert product image from your device" />);
+    tabs.set(4, <RequiredInfo setCurrentPosition={setCurrentPosition} category={mainCategories} title="Please fill the required information" />);
+    tabs.set(5, <Offers setCurrentPosition={setCurrentPosition} index={5} category={mainCategories} title="Please fill the offers of the product" />);
     const customStyles = {
         stepIndicatorSize: 30,
         currentStepIndicatorSize: 35,
@@ -52,8 +51,8 @@ const AddProduct = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle={'light-content'} />
-            <AddProductHeader />
+            <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
+            <AddProductHeader navigation={navigation} />
             <StepIndicator
                 customStyles={customStyles}
                 currentPosition={currentPosition}

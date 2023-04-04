@@ -2,18 +2,18 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     actionCard: {
-        width: width / 2.32,
-        height: 145,
+        width: width / 2.37,
+        height: height / 6.5,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
         borderRadius: 8,
         marginBottom: '5%',
-        border: 0.5,
-        elevation: 2,
+        borderWidth: 1,
+        borderColor: "#dedfe0"
+
     },
     iconHolder: {
-        padding: '10%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#2C6F74'

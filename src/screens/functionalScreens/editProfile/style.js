@@ -1,41 +1,31 @@
 import { Dimensions, StyleSheet } from "react-native";
-const { width, height } = new Dimensions.get("screen")
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        padding: 15
     },
     topHeader: {
-        backgroundColor: "#684970",
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingTop: "5%",
-        paddingHorizontal: "5%",
-        paddingVertical: "10%",
-        height: height / 3.38
+        height: height / 3.38,
+        backgroundColor: "pink"
     },
     image: {
-        width: 170,
-        height: 170,
+        width: width / 3.3,
+        height: height / 6.5,
         borderRadius: 100,
-        // borderColor: "pink",
-        // borderWidth: 1,
-        resizeMode: "cover",
-        marginTop: "15%",
-        backgroundColor: "pink"
+        resizeMode: "contain",
+    },
 
-    },
-    imageTextHolder: {
-        alignItems: "center",
-        // justifyContent: ""
-    },
     editText: {
         fontSize: 19,
         fontWeight: "400",
-        color: "#FFF",
+        color: "#000",
         opacity: 0.9
     },
     saveText: {
-        color: "#FFF",
+        color: "#000",
         fontSize: 17,
 
     },
@@ -59,6 +49,37 @@ export default StyleSheet.create({
     inputHolder: {
         paddingVertical: "10%",
         paddingHorizontal: "5%"
+    },
+    imageAndButtonWrapper: {
+        height: height / 3.6,
+        alignItems: "center",
+        backgroundColor: "#fff",
+        paddingVertical: "1%",
+        flexDirection: "row",
+        justifyContent: "center",
+        borderRadius: 8,
+        borderColor: "#dedede",
+        borderWidth: 1
+    },
+    imageWrapper: {
+        borderWidth: 2,
+        borderColor: "gray",
+        borderRadius: 100,
+        padding: "1%",
+    },
+    cameraIconWrapper: {
+        backgroundColor: "orange",
+        borderRadius: 50,
+        padding: "2%",
+        alignSelf: "flex-end",
+        position: "absolute",
+        width: 37,
+        height: 37,
+        justifyContent: "center",
+        alignItems: "center",
+        top: 130,
+        right: 115
     }
+
 
 })

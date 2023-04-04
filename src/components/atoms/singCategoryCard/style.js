@@ -1,22 +1,19 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     categoryButtonHolder: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingHorizontal: "4%",
-        height: 60,
-        // marginBottom: '3%'
+        paddingHorizontal: "3%",
+        height: height / 14,
+        borderBottomColor: "#dedede",
+        borderBottomWidth: 1,
+        width: "100%"
     },
-    divider: {
-        borderBottomWidth: .5,
-        borderBottomColor: "#A49D9D",
-        width: "100%",
-        borderRadius: 100,
-        borderRadius: 20
-    },
+
     categoryName: {
-        fontWeight: "600",
-        fontSize: 14
+        fontWeight: "500",
+        fontSize: 15
     }
 })

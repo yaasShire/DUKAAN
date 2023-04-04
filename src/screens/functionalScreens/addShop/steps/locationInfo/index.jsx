@@ -16,7 +16,6 @@ const PersonalInfo = ({ setcurrentPosition }) => {
                 validationSchema={shopLocationValidation}
                 onSubmit={() => {
                     setcurrentPosition(prev => prev + 1)
-
                 }}
             >
                 {

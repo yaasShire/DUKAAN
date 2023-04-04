@@ -2,11 +2,11 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        padding: 15
     },
     fieldsHolder: {
-        marginTop: "15%",
-
+        paddingVertical: "10%",
     },
 
     fieldHolder: {
@@ -36,8 +36,8 @@ export default StyleSheet.create({
     },
     updateButton: {
         backgroundColor: "#3983e1",
-        width: "90%",
-        height: 50,
+        width: "100%",
+        height: height / 17,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 7,
@@ -50,8 +50,8 @@ export default StyleSheet.create({
     },
     cancelButton: {
         backgroundColor: "#dbdad9",
-        width: "90%",
-        height: 50,
+        width: "100%",
+        height: height / 17,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 7

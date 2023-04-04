@@ -3,8 +3,7 @@ const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: "yellow",
-        // paddingHorizontal: 20
+        // padding: 15
     },
     filterHolder: {
         // flex: 0.5,
@@ -41,18 +40,16 @@ export default StyleSheet.create({
         marginRight: 6
     },
     others: {
-        flex: 5,
+        flex: 6,
         flexDirection: 'row',
         borderBottomColor: "#dedcdc",
         borderBottomWidth: 1
     },
     filters: {
-        // backgroundColor: "purple",
         flex: .9,
         borderRightWidth: 1,
         borderRightColor: "#bec4c0",
         backgroundColor: "#e1e6e2",
-        paddingLeft: "2%"
     },
     sideContent: {
         // backgroundColor: "gold",
@@ -85,7 +82,8 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingHorizontal: "5%"
+        paddingHorizontal: "5%",
+        zIndex: -10
     },
     applyButton: {
         width: 120,

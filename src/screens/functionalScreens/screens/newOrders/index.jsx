@@ -126,7 +126,7 @@ const NewOrderStage = ({ navigation }) => {
 
     ]
     return (
-        <ScrollView style={styles.orderContainer}>
+        <ScrollView style={styles.orderContainer} contentContainerStyle={{ rowGap: 20, marginBottom: 80 }}>
             {
                 orders.map(item => (
                     <Order navigation={navigation} key={item.id} item={item} />

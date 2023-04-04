@@ -4,7 +4,7 @@ import styles from './style'
 const AddShopButton = ({ label, handleSubmit, setcurrentPosition }) => {
     return (
         <TouchableOpacity style={styles.buttonHolder} onPress={() => {
-            handleSubmit()
+            handleSubmit && handleSubmit()
         }}>
             <View style={styles.buttonView}>
                 <Text style={styles.text}>{label}</Text>

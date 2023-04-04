@@ -1,11 +1,10 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
 
     topHeader: {
-        backgroundColor: "#684970",
-        paddingTop: "11%",
-        paddingHorizontal: "5%",
-        height: 100
+        height: height / 13,
+        justifyContent: "center",
     },
     topActionsHolder: {
         flexDirection: "row",
@@ -13,12 +12,12 @@ export default StyleSheet.create({
 
     },
     updateText: {
-        color: "#FFF",
+        color: "#000",
         fontSize: 17,
         fontWeight: "400"
     },
     saveText: {
-        color: "#fff",
+        color: "#000",
         fontSize: 17,
         fontWeight: "400"
     },

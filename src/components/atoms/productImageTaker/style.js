@@ -1,31 +1,30 @@
 import { StyleSheet, Dimensions } from "react-native";
-const { width, height } = new Dimensions.get("screen")
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
 
     imageTaker: {
-        // backgroundColor: "pink",
         height: height / 6,
         width: width / 2.5,
         borderRadius: 5,
         borderWidth: 1,
         borderColor: "#928787",
         alignItems: "center",
-        justifyContent: "space-between",
-        marginBottom: "10%"
+        justifyContent: "center",
+        marginBottom: "13%"
 
     },
     mainHolder: {
-        backgroundColor: "#928787",
-        width: "100%",
+        backgroundColor: "pink",
+        width: width / 2.4789,
+        height: height / 31,
         alignSelf: "flex-end",
         alignItems: "center",
         justifyContent: "center",
-        paddingVertical: "2%",
         borderBottomLeftRadius: 5,
         borderBottomRightRadius: 5,
         position: "absolute",
-        top: 125,
-        right: 0
+        top: 110,
+
     },
     mainText: {
         color: "#fff",
@@ -33,5 +32,10 @@ export default StyleSheet.create({
     },
     cameraIcon: {
         marginTop: "17%"
+    },
+    image: {
+        width: "100%",
+        height: "99.9%",
+        resizeMode: "cover"
     }
 })

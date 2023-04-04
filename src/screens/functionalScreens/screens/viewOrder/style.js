@@ -1,5 +1,10 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 15
+    },
     header: {
         flexDirection: 'row',
         paddingHorizontal: '2%',
@@ -27,60 +32,56 @@ export default StyleSheet.create({
         fontWeight: "600"
     },
 
-    orderNameIdHolder: {
+    orderDetailCard: {
         backgroundColor: "#FFFFFF",
         padding: '3%',
-        width: '95%',
-        paddingVertical: '8%',
-        borderRadius: 5,
-        // shadowOffset: {
-        //     width: 10,
-        //     height: 10
-        // },
-        // shadowColor: "#000",
-        // shadowOpacity: 1
+        width: width - 30,
+        paddingVertical: '5%',
+        borderRadius: 6,
+        borderColor: "#dedede",
+        borderWidth: 1
     },
     orderNumber: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: "500",
     },
     customerName: {
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: "400",
-        marginTop: '2%',
-        color: 'black'
+        opacity: .7
     },
     nameHolder: {
-        backgroundColor: "pink",
-        paddingHorizontal: '4%',
-        paddingVertical: '0.5%',
-        width: '48%',
-        borderRadius: 20,
+        borderColor: "#dedede",
+        borderWidth: 1,
+        width: '60%',
+        height: height / 30,
+        borderRadius: 10,
         marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center'
 
     },
-    locationText: {
-        fontSize: 20,
+    locationTextTitle: {
+        fontSize: 16,
         fontWeight: "500",
-        fontStyle: "normal"
+        fontStyle: "normal",
+        opacity: .7
     },
     locationSection: {
         marginTop: '5%'
     },
     divider: {
-        borderBottomWidth: 0.5,
-        borderColor: 'gray',
-        opacity: 0.5,
+        borderBottomWidth: 1,
+        borderColor: '#dedede',
+        opacity: 1,
         width: "100%",
-        marginTop: '10%'
+        marginTop: '5%'
     },
     locationInfoHolder: {
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: '5%',
-        justifyContent: 'space-around'
+        justifyContent: 'space-between'
     },
     locationText: {
         fontSize: 16,
@@ -89,13 +90,14 @@ export default StyleSheet.create({
     locationIconNameHolder: {
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "flex-start",
 
     },
     countryCityHolder: {
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: "space-around",
-        width: '40%'
+        width: width / 2.7
     },
     product: {
         flexDirection: 'row',
@@ -111,20 +113,14 @@ export default StyleSheet.create({
         borderColor: 'pink'
     },
     productHolder: {
-
         backgroundColor: '#ffffff',
-        width: "100%",
-        // shadowOffset: {
-        //     width: 10,
-        //     height: 10
-        // },
-        // shadowColor: "#000",
-        // shadowOpacity: 1,
-        // shadowRadius: 7,
-        elevation: 5,
+        width: width - 30,
         marginTop: '10%',
         paddingVertical: '5%',
-        paddingHorizontal: '4%'
+        paddingHorizontal: '4%',
+        borderWidth: 1,
+        borderColor: '#dedede',
+        borderRadius: 6
     },
     productImageNameHolder: {
         flexDirection: 'row',
@@ -140,51 +136,45 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     ammountHolder: {
-
         alignItems: 'center'
     },
     qtyText: {
         fontWeight: "700"
     },
     ammountText: {
-        fontWeight: "700"
+        fontWeight: "500"
     },
-    totalAmmount: {
+    totalAmmountWapper: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#ffffff",
-        width: "100%",
+        width: width - 30,
         paddingHorizontal: "5%",
-        paddingVertical: "4%",
         marginTop: "5%",
-        // shadowOffset: {
-        //     width: 10,
-        //     height: 10
-        // },
-        // shadowColor: "#000",
-        // shadowOpacity: 1,
-        // shadowRadius: 7,
-        // elevation: 5,
+        height: height / 13,
+        borderRadius: 6,
+        borderColor: '#dedede',
+        borderWidth: 1
+
 
     },
     totalAmmountText: {
-        fontWeight: "600",
-        fontSize: 17
+        fontWeight: "500",
+        fontSize: 16,
+        opacity: .7
     },
     totalMoney: {
         fontWeight: "700",
-        fontSize: 15
+        fontSize: 17
     },
     decisionButtonHolder: {
-        width: "100%",
+        width: width - 35,
         height: 80,
-        paddingVertical: "5%",
         marginTop: '15%',
-        justifyContent: "space-around",
-        paddingHorizontal: '10%',
+        justifyContent: "space-between",
         alignItems: "center",
-        flexDirection: 'row'
+        flexDirection: 'row',
 
     }
 

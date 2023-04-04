@@ -1,93 +1,139 @@
 import { Dimensions, StyleSheet } from "react-native";
-const { width, height } = new Dimensions.get("screen")
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        padding: 15,
+        backgroundColor: "#fff"
     },
-    topBoxHolder: {
-        backgroundColor: "#684970",
-        height: height / 4.3,
-        alignItems: "flex-start",
-        paddingHorizontal: "5%"
-    },
-    textHeader: {
-        fontWeight: "400",
-        fontSize: 18,
-        color: "#fff",
-        marginTop: "10%",
-        opacity: 0.9,
-        textAlign: "left"
-    },
-    image: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        resizeMode: "cover",
-        borderWidth: 3,
-        borderColor: "pink"
-    },
-    card: {
-        backgroundColor: "#FFF",
-        paddingVertical: "5%",
-        alignItems: "flex-start",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingHorizontal: "5%",
-        width: width / 1.2,
-        borderRadius: 10,
-        marginTop: "-25%",
-        marginLeft: 35,
-        height: height / 5,
-        marginBottom: 30,
-        borderWidth: 1,
-        borderColor: "#dbd7d7"
-    },
-    imageNameHolder: {
-        marginLeft: "28%",
-        alignItems: "center"
-    },
-    name: {
-        fontSize: 18,
-        fontWeight: "600"
-    },
-    bottomActionsHolder: {
-        // paddingHorizontal: "5%",
-        backgroundColor: "#FFF",
-        paddingTop: "3%"
-    },
-    actionButtonHolder: {
-        flexDirection: "row",
+    header: {
+        flexDirection: 'row',
         alignItems: "center",
-        backgroundColor: "",
-        justifyContent: "space-between",
+        margin: 0,
+        height: height / 16,
+        justifyContent: "center"
 
-        paddingHorizontal: "5%",
-        paddingVertical: "3%",
-        marginBottom: 10
     },
-    iconHolder: {
-        backgroundColor: "#266bf6",
-        padding: "3%",
-        width: 50,
-        height: 50,
+    settingText: {
+        fontSize: 19,
+        fontWeight: "500",
+
+    },
+    iconBack: {
+        flex: .4
+    },
+    profileCardWrapper: {
+        backgroundColor: "#fff",
+        height: height / 7,
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: "2%",
+        flexDirection: "row",
+        borderWidth: 1,
+        borderColor: "#dedede",
+        borderRadius: 5,
+        marginTop: "4%"
+    },
+    imageWrapper: {
+        borderWidth: 2,
+        padding: "1%",
         borderRadius: 50,
+        borderColor: "#dedede",
+        width: width / 5.1,
+        height: height / 10,
         justifyContent: "center",
         alignItems: "center"
     },
-    actionText: {
-        fontSize: 17,
+    image: {
+        width: width / 5.9,
+        height: height / 12,
+        resizeMode: "stretch",
+        borderRadius: 50,
+
+    },
+    imageNameNumberWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        flex: 1,
+        justifyContent: "space-around",
+    },
+
+    nameNumberWrapper: {
+        width: "70%",
+        alignItems: "flex-start",
+        justifyContent: "center"
+    },
+    name: {
         fontWeight: "400",
+        fontSize: 16
+    },
+    phoneNumber: {
+        fontSize: 14,
         opacity: .8
     },
-    divider: {
-        borderBottomColor: "#e8e3e3",
-        borderBottomWidth: 1,
+    actionCardsWrapper: {
+        backgroundColor: "#fff",
+        padding: "2%",
+        marginTop: "5%"
     },
-    logOutText: {
-        color: "red",
-        fontSize: 17,
+    singleAction: {
+        borderColor: "#dedede",
+        borderWidth: 1,
+        height: height / 13,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "3%",
+        borderRadius: 5,
+        paddingHorizontal: "1%"
+    },
+    nameIconWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flex: 1,
+        height: "55%"
+    },
+    actionName: {
         fontWeight: "400",
-        opacity: .8
-    }
+        fontSize: 15,
+        marginLeft: "3%"
+    },
+    modalHolder: {
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    logoutButton: {
+        backgroundColor: "pink",
+        width: width / 5,
+        height: height / 19,
+        borderRadius: 6,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    logoutButton: {
+        borderRadius: 5,
+    },
+    cacenlButton: {
+        borderRadius: 5,
+    },
+    buttonsHolder: {
+        flexDirection: "row",
+        width: "90%",
+        height: "30%",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: "10%"
+    },
+    logOutModalText: {
+        fontSize: 19,
+        fontWeight: "500"
+    },
+    cancelText: {
+        color: "green"
+    },
+    logoutText: {
+        color: "red"
+    },
 
 })

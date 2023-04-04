@@ -10,7 +10,7 @@ const SearchSelecDropDownCard = ({ item }) => {
     const [subCategoryId, setSubCategoryId] = useState(null)
     return (
         <View style={[styles.wholeCard, { backgroundColor: showSubCategory ? "#e1e6e2" : "#FFF" }]}>
-            <TouchableWithoutFeedback onPress={() => {
+            <TouchableWithoutFeedback thoutFeedback onPress={() => {
                 setShowSubCategory(prev => !prev)
                 setShowProductCategory(false)
             }}>
@@ -28,7 +28,6 @@ const SearchSelecDropDownCard = ({ item }) => {
                                     <TouchableWithoutFeedback onPress={() => {
                                         setSubCategoryId(item.id)
                                         setShowProductCategory(prev => !prev)
-                                        // setShowSubCategory(prev => !prev)
                                     }}>
                                         <View style={[styles.subCategoryCard, { backgroundColor: showSubCategory ? "#e1e6e2" : "#FFF" }]}>
                                             <Text style={[styles.subCategoryText, { color: showProductCategory ? 'red' : "black" }]}>{item.name}</Text>

@@ -1,27 +1,18 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     button: {
         backgroundColor: "#FFFFFF",
-        borderWidth: 0.5,
-        borderColor: "#c2c1bc",
-        // shadowOffset: {
-        //     width: 4,
-        //     height: 4
-        // },
-        // shadowColor: "#000000",
-        // shadowOpacity: 1,
-        // shadowRadius: 5,
+        borderWidth: 1,
+        borderColor: "#dedede",
         justifyContent: 'center',
         alignItems: "center",
-        // padding: '5%',
-        width: '100%',
-        elevation: 5,
-        height: '100%',
-        borderRadius: 3
+        width: width / 4,
+        height: height / 20,
+        borderRadius: 5
     },
     acceptText: {
         fontSize: 12,
         fontWeight: "400"
     },
-    margin: '3%'
 })

@@ -1,17 +1,16 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#EDEFF1",
-
-
     },
     miniHolder: {
-        padding: 18,
-        flex: 1
+        padding: 15,
+        height: height,
     },
     infoCardsHolder: {
-        paddingVertical: '4%',
+        marginBottom: "4%",
+
     },
     mainCardsHolder: {
 
@@ -21,16 +20,7 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-between',
     },
-    ordersHolder: {
-        backgroundColor: "#FFFFFF",
-        borderRadius: 7,
-        padding: '2%',
-        marginTop: 10,
-        paddingVertical: 10
-    },
-    orderCardsHolder: {
-        marginBottom: '2%'
-    },
+
     newOrdersText: {
         fontSize: 19,
         fontWeight: "600",
@@ -39,22 +29,20 @@ export default StyleSheet.create({
     },
     actionCards: {
         backgroundColor: "#fff",
-        paddingVertical: "3%",
         borderRadius: 5,
+        borderWidth: 1,
+        borderColor: "#dedede"
     },
     cardAction: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingVertical: "2%",
         paddingHorizontal: "2%",
-        marginTop: "1%",
-        height: 50
+        height: height / 14,
+        borderBottomColor: "#dedede",
+        borderBottomWidth: .5
     },
-    divider: {
-        borderBottomColor: "#e6ebe7",
-        borderBottomWidth: 1,
-    },
+
     actionName: {
         fontSize: 16,
         fontWeight: "600",
@@ -66,14 +54,11 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     messagCountWrapper: {
-        backgroundColor: "#10ebeb",
+        backgroundColor: "red",
         borderRadius: 5,
         justifyContent: "center",
         alignItems: "center",
-        // width: 0,
-        // height: 30
-        padding: "2%",
-        paddingHorizontal: "5%"
+        paddingHorizontal: "5%",
     },
     CardRightSection: {
         flexDirection: 'row',
@@ -82,7 +67,7 @@ export default StyleSheet.create({
     },
     messageNumber: {
         fontWeight: "500",
-        color: "#000"
+        color: "#fff"
     }
 
 

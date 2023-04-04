@@ -1,16 +1,14 @@
 import { Dimensions, StyleSheet } from "react-native";
-const { width, height } = new Dimensions.get("screen")
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 12
+        padding: 15
     },
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingVertical: "5%",
         alignItems: "center",
-        paddingRight: "40%"
     },
     titleText: {
         fontSize: 18,
@@ -19,28 +17,31 @@ export default StyleSheet.create({
     insightText: {
         backgroundColor: "pink"
     },
+    reportsTestHolder: {
+        flex: 1,
+        alignItems: "center"
+    },
     insightText: {
         fontSize: 20,
         fontWeight: "500"
     },
     insightTextHolder: {
-        marginTop: "8%",
+        marginTop: "5%",
     },
     reportHolder: {
-        marginTop: "10%",
+        marginTop: "5%",
         alignItems: "center",
         paddingVertical: "3%"
     },
     reportInput: {
-        // borderWidth: 1,
         backgroundColor: "#fff",
         elevation: 3,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingHorizontal: "5%",
+        paddingHorizontal: "3%",
         width: "100%",
-        height: 60,
+        height: height / 12,
         borderRadius: 6
     },
     reportText: {
@@ -52,7 +53,7 @@ export default StyleSheet.create({
     },
     reportCardHolder: {
         backgroundColor: "#fff",
-        width: "85%",
+        width: "100%",
         // height: height / 4,
         justifyContent: "space-around",
         alignItems: "center",
@@ -97,5 +98,34 @@ export default StyleSheet.create({
         fontSize: 15,
         marginBottom: "5%",
         opacity: .5
+    },
+    chartHolder: {
+        marginTop: "5%",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: height / 3,
+        padding: "1%"
+    },
+    buttonHolder: {
+        justifyContent: "center",
+        alignItems: "center",
+        height: height / 7,
+        marginTop: "20%",
+    },
+    downloadButton: {
+        backgroundColor: "#0f7ff7",
+        width: width / 1.1,
+        height: height / 11,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        borderRadius: 6,
+    },
+    downloadText: {
+        color: "#fff",
+        fontSize: 19,
+        fontWeight: "500",
+        marginLeft: "5%"
     }
 })

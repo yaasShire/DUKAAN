@@ -1,13 +1,13 @@
 import { Dimensions, StyleSheet } from "react-native";
-const { width, height } = new Dimensions.get("screen")
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        paddingHorizontal: "4%",
-        marginBottom: "10%",
+        flex: 1,
     },
     textTitle: {
         textAlign: "center",
         opacity: 0.5,
+        marginVertical: "2%"
 
     },
     categoriesHolder: {
@@ -15,15 +15,25 @@ export default StyleSheet.create({
         borderColor: "#A49D9D",
         borderRadius: 4,
         backgroundColor: "#fff",
-        marginTop: "3%"
     },
     actionButtonHolder: {
-        paddingVertical: "3%",
         justifyContent: "center",
         alignItems: 'center',
-        // height: 150,
-        marginBottom: 100
+        marginTop: "2%"
+    },
+    errorHolder: {
+        backgroundColor: "#f25555",
+        alignItems: "center",
+        justifyContent: "center",
+        height: height / 17,
+        borderRadius: 5,
+        marginVertical: "5%"
 
+    },
+    textError: {
+        fontWeight: "500",
+        fontSize: 14,
+        color: "#fff"
     }
 
 

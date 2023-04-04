@@ -41,6 +41,7 @@ export const mainCategories = [
     },
 
 
+
 ]
 
 export const subCategories = [

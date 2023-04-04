@@ -3,11 +3,14 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import styles from './style'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntiDesign from 'react-native-vector-icons/AntDesign';
 import Profile from '../../../assets/person2.jpg'
 import EditProfileField from '../../../components/atoms/editProfileField';
 import * as ImagePicker from 'expo-image-picker';
 import { Formik } from 'formik';
 import { editProfileValidation } from '../../../utils/validationSchema/ediProfileValidation';
+import GlobalHeader from '../../../components/molecules/globalHeader';
+import { AntDesign } from '@expo/vector-icons';
 const EditProfile = ({ navigation }) => {
     const [image, setImage] = useState(null)
     const pickImage = async () => {
@@ -26,24 +29,16 @@ const EditProfile = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <View style={styles.topHeader}>
-                <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
-                    <MaterialIcons name='keyboard-backspace' size={30} color="#c4cadb" />
-                </TouchableWithoutFeedback>
-                <View style={styles.imageTextHolder}>
-                    <Text style={styles.editText}>Edit profile</Text>
-                    <View style={styles.imageCameraIconHolder}>
-                        {image ? <Image source={{ uri: image }} style={styles.image} /> : <Image source={Profile} style={styles.image} />}
-                        <TouchableOpacity style={styles.cameraButton} onPress={pickImage}>
-                            <View style={styles.cameraIconHolder}>
-                                <MaterialIcons name='camera-alt' size={28} color="white" />
-                            </View>
-                        </TouchableOpacity>
-                    </View>
+            <View>
+                <GlobalHeader label={"Edit Profile"} navigation={navigation} />
+            </View>
+            <View style={styles.imageAndButtonWrapper}>
+                <View style={styles.imageWrapper}>
+                    {image ? <Image source={{ uri: image }} style={styles.image} /> : <Image source={Profile} style={styles.image} />}
                 </View>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("settings")}>
-                    <Text style={styles.saveText}>SAVE</Text>
-                </TouchableWithoutFeedback>
+                <View style={styles.cameraIconWrapper}>
+                    <AntDesign name='camera' size={22} color="#fff" onPress={pickImage} />
+                </View>
             </View>
             <ScrollView style={{ flex: 1 }}>
                 <Formik
