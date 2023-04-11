@@ -11,15 +11,23 @@ const DecisionButton = ({ title }) => {
     return (
         <>
             <TouchableOpacity style={styles.buttonHolder} onPress={() => {
-                setShowModal(true)
-                setVisible(true)
-                setstatus(title == 'ACCEPT' ? { state: "ACCEPTED", description: "Order is accepted" } : { state: "Rejected", description: "Order is rejected" })
+                if (title == 'ACCEPT' || title == 'REJECT') {
+                    setShowModal(true)
+                    setVisible(true)
+                    setstatus(title == 'ACCEPT' ?
+                        { state: "ACCEPTED", description: "Order is accepted" }
+                        : title == 'ACCEPT'
+                            ? { state: "Rejected", description: "Order is rejected" }
+                            : ""
+                    )
+
+                }
             }}>
                 <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>
             {
                 show && (
-                    <View style={{ backgroundColor: "pink", padding: 20, position: "absolute", top: 100 }}>
+                    <View style={{ padding: 20, position: "absolute", top: 100 }}>
                         <ModalComponent status={status} setVisible={setVisible} visible={visible} showModal={showModal} setShowModal={setShowModal} />
                     </View>
 

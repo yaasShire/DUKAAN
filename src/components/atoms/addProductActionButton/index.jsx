@@ -6,11 +6,9 @@ const AddProductActionButton = ({ setCurrentPosition = () => { }, productCategor
         <TouchableOpacity style={styles.buttonHolder} onPress={() => {
             handleSubmit()
             errorHandler()
-
         }}>
             <Text style={styles.buttonText}>{label}</Text>
         </TouchableOpacity>
     )
 }
-
 export default AddProductActionButton

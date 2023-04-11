@@ -15,5 +15,4 @@ const CarModelCard = ({ car, setSelectedCar, selectedCar }) => {
         </TouchableWithoutFeedback>
     )
 }
-
 export default CarModelCard

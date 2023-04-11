@@ -3,7 +3,7 @@ const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
 
     topHeader: {
-        height: height / 13,
+        height: height / 16,
         justifyContent: "center",
     },
     topActionsHolder: {

@@ -7,22 +7,24 @@ import Product3 from '../../../../assets/product3.jpg'
 import Product from '../../../../components/atoms/product';
 import DecisionButton from '../../../../components/atoms/decisionButton';
 import { nameShortner } from '../../../../utils/utilityFunctions';
+import AppHeader from '../../../../components/molecules/appHeader';
 const ViewOrder = ({ navigation, route }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <ScrollView>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Ionicons name='chevron-back' size={30} color="gray" />
-                    </TouchableOpacity>
-                    <Text style={styles.orderDetailsText}>Order Details</Text>
-                </View>
+            <AppHeader title={"Order Details"} navigation={navigation} color={"#000"} />
+            <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 40 }}>
                 <View style={styles.mainHolder}>
                     <View style={styles.orderDetailCard}>
                         <Text style={styles.orderNumber}>Order No : {route.params.order.orderNo}</Text>
-                        <View style={styles.nameHolder}>
-                            <Text style={styles.customerName} numberOfLines={1}>{route.params.order.customerName}</Text>
+                        <View style={styles.nameDateWrapper}>
+                            <View style={styles.nameHolder}>
+                                <Text style={styles.customerName} numberOfLines={1}>{route.params.order.customerName}</Text>
+                            </View>
+                            <View>
+                                <Text style={styles.dateText}>4/6/2023</Text>
+
+                            </View>
                         </View>
                         <View style={styles.divider} />
                         <View style={styles.locationSection}>
@@ -50,13 +52,16 @@ const ViewOrder = ({ navigation, route }) => {
                                 ))
                             }
                         </ScrollView>
-
-
                     </View>
                     {/* product items ends here */}
                     <View style={styles.totalAmmountWapper}>
-                        <Text style={styles.totalAmmountText}>Total Ammount</Text>
-                        <Text style={styles.totalMoney}>${route.params.order.ammount}</Text>
+                        <View style={styles.titleMoneyWrapper}>
+                            <Text style={styles.totalAmmountText}>Total Pay</Text>
+                            <Text style={styles.totalMoney}>${route.params.order.ammount}</Text>
+                        </View>
+                        <View style={styles.completedHolder}>
+                            <Text style={styles.completedText}>Payment Completed</Text>
+                        </View>
                     </View>
                     <View style={styles.decisionButtonHolder}>
                         <DecisionButton title="REJECT" />

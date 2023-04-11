@@ -4,10 +4,12 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#FFF",
-        marginTop: "10%",
+        marginTop: "5%",
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
-        padding: "5%",
+        padding: "2 %",
+        borderWidth: 1,
+        borderColor: "#dedede"
     },
     titleText: {
         fontSize: 20,
@@ -15,13 +17,17 @@ export default StyleSheet.create({
     },
     fieldsHolder: {
         marginTop: "7%",
-        marginBottom: 100,
-        alignItems: "center"
 
     },
     buttonHolder: {
         marginTop: "10%",
-        alignItems: "center",
+        alignItems: "flex-end",
+        padding: 5,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "100%",
+        marginVertical: "20%",
+        flex: 1
     },
     titleHolder: {
         marginTop: "5%"

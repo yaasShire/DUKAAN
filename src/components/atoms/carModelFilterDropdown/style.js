@@ -25,7 +25,7 @@ export default StyleSheet.create({
         alignItems: "center",
         borderRadius: 4,
         borderColor: "#9ea1a3",
-        borderWidth: 1
+        borderWidth: 1,
     },
     subCategoryItem: {
         borderWidth: 1,

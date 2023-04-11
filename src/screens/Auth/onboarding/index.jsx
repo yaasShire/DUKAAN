@@ -10,23 +10,23 @@ const OnboardingC = ({ navigation }) => {
     return (
 
         <Onboarding
-            onDone={() => navigation.navigate('signup')}
-            onSkip={() => navigation.navigate('signup')}
+            onDone={() => navigation.navigate('addShopFirstTime')}
+            onSkip={() => navigation.navigate('addShopFirstTime')}
             pages={[
                 {
-                    backgroundColor: '#1BB4D6',
+                    backgroundColor: '#3bd1d1',
                     image: <Image source={welcomeImage1} style={styles.image} />,
                     title: 'Mechanic Seller',
                     subtitle: 'Welcome to mechanic seller application we\'re happy to have you',
                 },
                 {
-                    backgroundColor: '#F39B16',
+                    backgroundColor: '#0c7070',
                     image: <Image source={welcomeImage2} style={styles.image} />,
                     title: 'Shop Management',
                     subtitle: 'You can create a shop and upload products right away.',
                 },
                 {
-                    backgroundColor: '#42FF13',
+                    backgroundColor: '#079ff7',
                     image: <Image source={welcomeImage3} style={styles.image} />,
                     title: 'Multiple shops',
                     subtitle: 'You can create multiple shops and manage them separately.',

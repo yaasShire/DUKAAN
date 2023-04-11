@@ -10,7 +10,7 @@ const ShopCard = ({ shop, navigation }) => {
         return name.length > 20 ? name.slice(0, 20) : name
     }
     return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("productList")}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("shopProfile", { data: shop })}>
             <View style={styles.shopCard}>
                 <Image source={shop.image} style={styles.image} />
                 <View style={styles.infoHolder}>

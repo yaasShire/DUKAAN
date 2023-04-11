@@ -17,6 +17,7 @@ import sProduct4 from '../../../../assets/sProduct4.png'
 import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
 import sProduct7 from '../../../../assets/sProduct7.png'
+import HomeScreenReport from '../../../../components/molecules/homeScreenReport'
 const Home = ({ navigation }) => {
     const orders = [
         {
@@ -138,6 +139,11 @@ const Home = ({ navigation }) => {
             <StatusBar barStyle={Platform.OS == 'android' ? "light-content" : "dark-content"} />
             <Header navigation={navigation} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
+                {/* reports */}
+                <View style={styles.reportHolder}>
+                    <HomeScreenReport />
+                </View>
+                {/* reports ends here */}
                 <View style={styles.mainCardsHolder}>
                     <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 35 }}>
                         <DashboardCard ammount={900} description="Sales Today" />
@@ -175,7 +181,6 @@ const Home = ({ navigation }) => {
                 </View>
                 <View style={styles.orderCardsHolder}>
                     <Text style={styles.newOrdersText}>New Orders</Text>
-
                     <ScrollView contentContainerStyle={{ rowGap: 20, marginBottom: 30, }}>
                         {
                             orders.map((item) => (

@@ -5,28 +5,30 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: "#fff",
-        paddingHorizontal: 18,
+        paddingHorizontal: 15,
         borderBottomColor: "#dedcdc",
         borderBottomWidth: 1,
         justifyContent: "space-between"
 
     },
+    menuWrapper: {
+    },
     logoImage: {
         width: 200,
-        height: 200,
+        height: "100%",
         resizeMode: 'cover',
         marginLeft: '30%',
-        alignSelf: "center"
+        alignSelf: "center",
     },
     logoImageHolder: {
         alignSelf: "center",
-        backgroundColor: "blue"
     },
     iconLogoHolder: {
         flexDirection: "row",
         alignItems: "center",
         width: "63%",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        flex: 1,
     },
     addText: {
         fontSize: 11,

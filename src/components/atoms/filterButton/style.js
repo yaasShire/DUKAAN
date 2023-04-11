@@ -4,7 +4,7 @@ export default StyleSheet.create({
     filterButton: {
         backgroundColor: "#fff",
         flexDirection: "row",
-        width: width / 3,
+        width: width / 4,
         height: height / 12.8,
         justifyContent: 'space-around',
         alignItems: "center",
@@ -15,10 +15,12 @@ export default StyleSheet.create({
     },
     filterName: {
         opacity: 0.7,
-        fontSize: 13
+        fontSize: 12,
+
     },
     modeText: {
-        fontWeight: "400",
+        fontWeight: "500",
+        fontSize: 10
 
     },
     downArrow: {

@@ -22,7 +22,8 @@ const ProductsList = ({ navigation }) => {
             price: 500,
             image: sProduct1,
             numberOfSales: 500,
-            inStock: 1200
+            inStock: 1200,
+            shipping: 2
         },
         {
             id: 2,
@@ -31,7 +32,8 @@ const ProductsList = ({ navigation }) => {
             price: 400,
             image: sProduct2,
             numberOfSales: 900,
-            inStock: 1300
+            inStock: 1300,
+            shipping: 4
 
         },
         {
@@ -41,7 +43,8 @@ const ProductsList = ({ navigation }) => {
             price: 700,
             image: sProduct3,
             numberOfSales: 800,
-            inStock: 100
+            inStock: 100,
+            shipping: 3
         },
         {
             id: 4,
@@ -50,7 +53,8 @@ const ProductsList = ({ navigation }) => {
             price: 900,
             image: sProduct4,
             numberOfSales: 1500,
-            inStock: 1500
+            inStock: 1500,
+            shipping: 6
         },
         {
             id: 5,
@@ -59,7 +63,8 @@ const ProductsList = ({ navigation }) => {
             price: 1000,
             image: sProduct5,
             numberOfSales: 200,
-            inStock: 9000
+            inStock: 9000,
+            shipping: 9
         },
         {
             id: 6,
@@ -68,7 +73,8 @@ const ProductsList = ({ navigation }) => {
             price: 1000,
             image: sProduct6,
             numberOfSales: 50,
-            inStock: 1600
+            inStock: 1600,
+            shipping: 7
         },
         {
             id: 7,
@@ -77,7 +83,8 @@ const ProductsList = ({ navigation }) => {
             price: 1000,
             image: sProduct7,
             numberOfSales: 300,
-            inStock: 200
+            inStock: 200,
+            shipping: 12
         },
     ]
 

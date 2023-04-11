@@ -1,15 +1,16 @@
 import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import Feather from 'react-native-vector-icons/Feather'
 import logo from '../../../assets/macanicLogo.png'
 import styles from './style'
 const Header = ({ paddingP = 0, showAddButton, navigation }) => {
     return (
         <View style={[styles.headerHolder]}>
+            <View style={styles.menuWrapper}>
+                <Feather name='menu' size={25} onPress={() => navigation.openDrawer()} />
+            </View>
             <View style={styles.iconLogoHolder}>
-                {/* <TouchableWithoutFeedback>
-                    <FontAwesome5 name="bars" size={25} color="#000" />
-                </TouchableWithoutFeedback> */}
                 <View >
                     <Image source={logo} style={styles.logoImage} />
                 </View>

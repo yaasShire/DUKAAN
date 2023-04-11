@@ -9,22 +9,25 @@ export default StyleSheet.create({
         borderTopRightRadius: 40,
         padding: "2%",
         borderWidth: 1,
-        borderColor: "#dedede"
+        borderColor: "#dedede",
     },
     titleText: {
         fontSize: 20,
         fontWeight: "500"
     },
     fieldsHolder: {
-        marginTop: "7%",
-        marginBottom: 100,
-        alignItems: "center"
-        // height: "100%",
-
+        // marginTop: "7%",
     },
     buttonHolder: {
-        marginTop: "10%",
-        alignItems: "center",
+        marginTop: "5%",
+        alignItems: "flex-end",
+        padding: 5,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "100%",
+        height: height / 6,
+        marginVertical: "20%",
+
     },
     titleHolder: {
         marginTop: "5%"

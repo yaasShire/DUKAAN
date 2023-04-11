@@ -39,7 +39,7 @@ export default StyleSheet.create({
 
     },
     orderStageHolder: {
-        marginTop: '2%'
+        marginTop: '2%',
     },
     orderInfo: {
         flexDirection: 'row',
@@ -54,9 +54,10 @@ export default StyleSheet.create({
     },
     actionButtonsHolder: {
         paddingHorizontal: '6%',
-        justifyContent: 'center',
-        alignItems: "flex-end",
-        flex: 1
+        justifyContent: 'space-between',
+        alignItems: "center",
+        flex: 1,
+        flexDirection: "row",
 
     },
 
@@ -68,14 +69,16 @@ export default StyleSheet.create({
         backgroundColor: '#ffffff',
         borderWidth: 1,
         borderColor: "#dee0e3",
-        width: "40%"
+        paddingVertical: ".5%"
     },
     timePassedWrapper: {
         fontSize: 10,
         color: "gray",
         borderColor: "#dee0e3",
         borderWidth: 1,
-        paddingHorizontal: "3%"
+        paddingHorizontal: "3%",
+        borderRadius: 5,
+        paddingVertical: ".5%"
     },
     timePassedText: {
         fontSize: 10,
@@ -84,9 +87,10 @@ export default StyleSheet.create({
     },
     nameMinutesHolder: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: "3%",
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        paddingHorizontal: "6%",
+        alignItems: 'center',
+        paddingVertical: "3%"
     },
     textName: {
         fontSize: 11,

@@ -27,6 +27,6 @@ export default StyleSheet.create({
     },
     titleHolder: {
         flex: 1,
-        alignItems: "center"
+        alignItems: "center",
     }
 })

@@ -5,8 +5,8 @@ export default StyleSheet.create({
 
     },
     buttonView: {
-        backgroundColor: "#212121",
-        width: 340,
+        backgroundColor: "#139c85",
+        width: 140,
         justifyContent: "center",
         alignItems: "center",
         height: height / 15,

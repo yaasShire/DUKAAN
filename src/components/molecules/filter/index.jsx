@@ -16,6 +16,10 @@ const Filter = ({ navigation }) => {
             id: 3,
             name: "Car model"
         },
+        {
+            id: 4,
+            name: "Shops"
+        },
     ]
     return (
         <View style={styles.filterContainer}>

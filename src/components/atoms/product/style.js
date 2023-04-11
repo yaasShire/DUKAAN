@@ -116,7 +116,6 @@ export default StyleSheet.create({
     productImageNameHolder: {
         flexDirection: 'row',
         alignItems: "center",
-        // backgroundColor: "pink",
         width: "55%"
     },
     productName: {

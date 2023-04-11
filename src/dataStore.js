@@ -43,6 +43,51 @@ export const mainCategories = [
 
 
 ]
+export const shopsList = [
+    {
+        id: 1,
+        name: "Xiin faniin"
+    },
+    {
+        id: 2,
+        name: "Guuleed"
+    },
+    {
+        id: 3,
+        name: "Daahir"
+    },
+    {
+        id: 4,
+        name: "Hayaat"
+    },
+    {
+        id: 5,
+        name: "Hurdaaye"
+    },
+    {
+        id: 6,
+        name: "Barakaat"
+    },
+    {
+        id: 7,
+        name: "Sandheere"
+    },
+    {
+        id: 8,
+        name: "Super cart"
+    },
+    {
+        id: 9,
+        name: "Seylac"
+    },
+    {
+        id: 10,
+        name: "Hirgi"
+    },
+
+
+
+]
 
 export const subCategories = [
     {

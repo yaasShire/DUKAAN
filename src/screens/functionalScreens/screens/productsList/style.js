@@ -1,19 +1,15 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: "#FFF"
-        // padding: 18,
-
+        backgroundColor: "#FFF",
+        height
 
     },
     productCardsHolder: {
         justifyContent: "space-between",
         paddingHorizontal: "3.5%",
-        // paddingVertical: "3%"
     },
     cardsHolder: {
-        // backgroundColor: "red",
-        // flex: 1
     }
 })

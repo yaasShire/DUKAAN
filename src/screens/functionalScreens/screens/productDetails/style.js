@@ -1,18 +1,24 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        paddingVertical: 20,
+        padding: 15
     },
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingRight: "35%",
-        paddingHorizontal: "2%"
+        alignItems: "center"
+    },
+    miniScrollHolder: {
+        flex: 1,
+
     },
     headerText: {
         fontSize: 17,
-        fontWeight: "500"
+        fontWeight: "500",
+        flex: 1,
+        textAlign: "center"
     },
     divider: {
         borderBottomColor: "#e3e5e8",
@@ -66,11 +72,9 @@ export default StyleSheet.create({
         height: 100
     },
     productScrollHolder: {
-        paddingHorizontal: "3%"
     },
     contentHolder: {
-        paddingHorizontal: "3%",
-        marginTop: "5%"
+        marginTop: "3%"
     },
     productName: {
         fontWeight: "500",
@@ -139,17 +143,17 @@ export default StyleSheet.create({
         fontSize: 16
     },
     moneyTitleHolder: {
-        paddingHorizontal: "3%",
         fontWeight: "500",
+        marginTop: "3%"
     },
     moneySection: {
         flexDirection: "row",
         alignItems: "flex-start",
-        paddingHorizontal: "3%",
         justifyContent: "space-between",
         marginTop: "5%",
-        borderBottomColor: "#f2f4f7",
-        borderBottomWidth: .5
+        // borderBottomColor: "#f2f4f7",
+        borderBottomWidth: .5,
+        paddingVertical: "2%"
     },
     moneyTitleWrapper: {
         alignItems: "center",
@@ -173,7 +177,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        marginTop: "3%"
+        marginTop: "1%"
     },
     updateProductButton: {
         backgroundColor: "#fff",

@@ -2,8 +2,8 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 15
+        padding: 15,
+        height,
     },
     header: {
         flexDirection: 'row',
@@ -115,7 +115,7 @@ export default StyleSheet.create({
     productHolder: {
         backgroundColor: '#ffffff',
         width: width - 30,
-        marginTop: '10%',
+        marginTop: '3%',
         paddingVertical: '5%',
         paddingHorizontal: '4%',
         borderWidth: 1,
@@ -152,26 +152,48 @@ export default StyleSheet.create({
         width: width - 30,
         paddingHorizontal: "5%",
         marginTop: "5%",
-        height: height / 13,
+        height: height / 10,
         borderRadius: 6,
         borderColor: '#dedede',
         borderWidth: 1
 
 
     },
+    completedHolder: {
+        backgroundColor: "#37997f",
+        padding: "3%",
+        borderRadius: 50,
+        paddingHorizontal: "5%"
+    },
+    completedText: {
+        color: "#fff",
+        fontWeight: "500"
+    },
     totalAmmountText: {
         fontWeight: "500",
-        fontSize: 16,
-        opacity: .7
+        fontSize: 14,
+        opacity: .5
+    },
+    titleMoneyWrapper: {
+        flex: 1,
     },
     totalMoney: {
         fontWeight: "700",
-        fontSize: 17
+        fontSize: 19
+    },
+    nameDateWrapper: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    dateText: {
+        opacity: .5,
+        fontWeight: "400"
     },
     decisionButtonHolder: {
         width: width - 35,
         height: 80,
-        marginTop: '15%',
+        marginTop: '8%',
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: 'row',

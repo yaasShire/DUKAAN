@@ -1,10 +1,11 @@
 import { Dimensions, StyleSheet, Platform } from "react-native";
-const { width, height } = new Dimensions.get('screen')
+const { width, height } = new Dimensions.get('window')
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#EDEFF1",
+        padding: 15,
+        height
     },
     curve: {
         backgroundColor: "white",
@@ -53,8 +54,6 @@ export default StyleSheet.create({
     cards: {
         flex: 1,
         marginTop: "2%",
-        paddingHorizontal: "4.5%",
-        paddingBottom: "40%",
         height: height,
 
 

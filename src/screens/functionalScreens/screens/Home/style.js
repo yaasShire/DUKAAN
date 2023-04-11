@@ -2,17 +2,19 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        flex: 1,
+        height
     },
     miniHolder: {
         padding: 15,
         height: height,
+        marginBottom: 60
     },
     infoCardsHolder: {
         marginBottom: "4%",
 
     },
     mainCardsHolder: {
+
 
     },
     sellerActionCardHolder: {
@@ -68,6 +70,9 @@ export default StyleSheet.create({
     messageNumber: {
         fontWeight: "500",
         color: "#fff"
+    },
+    reportHolder: {
+        marginVertical: "2%"
     }
 
 

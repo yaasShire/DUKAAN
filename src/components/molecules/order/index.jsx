@@ -4,8 +4,8 @@ import styles from './style'
 import devliveryIcon from '../../../assets/delivery2.png'
 import shoppingBagImage from '../../../assets/bag.png'
 import bag3 from '../../../assets/bag2.png'
-import AcceptButton from '../../atoms/acceptButton'
-const Order = ({ accept = true, reject = true, status, navigation, item }) => {
+import OrderActionButton from '../../atoms/orderActionButton'
+const Order = ({ accept = true, reject = true, status = false, navigation, item, assign = false, refRBSheet }) => {
     const [show, setShow] = useState(false)
     return (
         <View style={styles.orderCard}>
@@ -39,7 +39,12 @@ const Order = ({ accept = true, reject = true, status, navigation, item }) => {
             </View>
             <View style={styles.divider} />
             <View style={styles.actionButtonsHolder}>
-                <AcceptButton title="View Order" navigation={navigation} order={item} />
+                {
+                    assign && (
+                        <OrderActionButton refRBSheet={refRBSheet} title="Assing" assign={assign} navigation={navigation} order={item} />
+                    )
+                }
+                <OrderActionButton title="View Order" navigation={navigation} order={item} />
             </View>
         </View>
     )

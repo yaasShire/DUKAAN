@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Dimensions } from 'react-native'
 import React from 'react'
 import Order from '../../../../components/molecules/order'
 import styles from './style'
@@ -10,6 +10,7 @@ import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
 import sProduct7 from '../../../../assets/sProduct7.png'
 const NewOrderStage = ({ navigation }) => {
+    const { width, height } = new Dimensions.get("window")
     const orders = [
         {
             id: 1,
@@ -126,7 +127,8 @@ const NewOrderStage = ({ navigation }) => {
 
     ]
     return (
-        <ScrollView style={styles.orderContainer} contentContainerStyle={{ rowGap: 20, marginBottom: 80 }}>
+        <ScrollView style={[styles.orderContainer, { height, width }]} contentContainerStyle={{ rowGap: 20, marginBottom: 30, }} showsVerticalScrollIndicator={false} >
+
             {
                 orders.map(item => (
                     <Order navigation={navigation} key={item.id} item={item} />

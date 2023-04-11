@@ -4,7 +4,7 @@ import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const SellerCardAction = ({ icon, actionName, Directory, navigation }) => {
     return (
-        <TouchableOpacity style={[styles.actionCard]} onPress={() => actionName == 'Products' ? navigation.navigate('productList') : actionName == 'Profile' ? navigation.navigate("settings") : actionName == 'Shop' ? navigation.navigate('shops') : actionName == 'Reports' ? navigation.navigate('reports') : ""}>
+        <TouchableOpacity style={[styles.actionCard]} onPress={() => actionName == 'Products' ? navigation.navigate('productList') : actionName == 'Profile' ? navigation.navigate('settings') : actionName == 'Shop' ? navigation.navigate('shops') : actionName == 'Reports' ? navigation.navigate('reports') : ""}>
             <Ionicons name={icon} color="#1BB4D6" size={60} />
             <Text style={styles.actionName}>{actionName}</Text>
 

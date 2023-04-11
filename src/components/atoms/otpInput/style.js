@@ -3,7 +3,6 @@ export default StyleSheet.create({
     inputHolder: {
         width: '20%',
         height: 80,
-        // borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 8,
@@ -16,7 +15,6 @@ export default StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontWeight: "700",
-        // backgroundColor: "pink"
     },
     errorHolder: {
         backgroundColor: '#F0DBDB',
