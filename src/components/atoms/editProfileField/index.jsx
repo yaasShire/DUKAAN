@@ -1,12 +1,14 @@
 import { View, Text, TextInput } from 'react-native'
 import React from 'react'
 import styles from './style'
+import { globalStyles } from '../../../globalConstants/styles'
 const EditProfileField = ({ label, touched, setFieldTouched, errors, values, handleChange, handleBlur, name }) => {
     return (
         <>
             <View style={styles.container}>
                 <Text style={styles.label}>{label}</Text>
                 <TextInput style={styles.input}
+                    placeholderTextColor={globalStyles.colors.primaryGray}
                     onChangeText={(text) => {
                         handleChange(name)(text)
                     }} onBlur={() => {

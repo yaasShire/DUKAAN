@@ -75,14 +75,7 @@ const Settings = ({ navigation }) => {
 
                 </View>
                 <View style={styles.actionCardsWrapper}>
-                    <View style={styles.singleAction}>
-                        <View style={styles.nameIconWrapper}>
-                            <MaterialCommunityIcons name='theme-light-dark' size={27} color='#10002d' />
-                            <Text style={styles.actionName}>Dark Mode</Text>
-                        </View>
-                        {/* <Feather name='chevron-right' size={25} color="gray" /> */}
-                        <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
-                    </View >
+
                     <TouchableOpacity style={styles.singleAction} >
                         <View style={styles.nameIconWrapper}>
                             <MaterialIcons name='privacy-tip' size={27} color="#f29e0c" />

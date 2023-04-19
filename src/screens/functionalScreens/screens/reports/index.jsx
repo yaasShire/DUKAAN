@@ -18,7 +18,12 @@ const Reports = ({ navigation }) => {
         id: 1,
         name: "Monthly Income"
     })
+    const [selectedShop, setSelectedShop] = useState({
+        id: 3,
+        name: "Juba"
+    })
     const [showReport, setShowReport] = useState(false)
+    const [showShops, setShowShops] = useState(false)
     const insightResports = [
         {
             id: 1,
@@ -33,6 +38,22 @@ const Reports = ({ navigation }) => {
             name: "Yearly Income"
         },
     ]
+    // shop data
+    const shops = [
+        {
+            id: 1,
+            name: "Hayat"
+        },
+        {
+            id: 2,
+            name: "Dalab"
+        },
+        {
+            id: 3,
+            name: "Juba"
+        },
+    ]
+    // shop data ends here
     const data1 = [
         { x: -2, y: 1 },
         { x: -1, y: 0 },
@@ -68,22 +89,58 @@ const Reports = ({ navigation }) => {
                 <View style={styles.insightTextHolder}>
                     <Text style={styles.insightText}>Insight Reports</Text>
                 </View>
-                <TouchableOpacity style={styles.reportHolder} onPress={() => setShowReport(prev => !prev)}>
-                    <View style={styles.reportInput}>
-                        <Text style={styles.reportText}>{selectedReport.name}</Text>
-                        <TouchableWithoutFeedback onPress={() => setShowReport(prev => !prev)}>
-                            <Feather name={showReport ? 'chevron-up' : 'chevron-down'} size={23} color='gray' />
-                        </TouchableWithoutFeedback>
-                    </View>
-                </TouchableOpacity>
+                <View style={styles.chooseShopWrapper}>
+                    <Text style={styles.choseShopText}>*Choose Shop</Text>
+                    <TouchableOpacity style={styles.reportHolder} onPress={() => setShowShops(prev => !prev)}>
+                        <View style={styles.reportInput}>
+                            <Text style={styles.reportText}>{selectedShop.name}</Text>
+                            <TouchableWithoutFeedback onPress={() => setShowShops(prev => !prev)}>
+                                <Feather name={showReport ? 'chevron-up' : 'chevron-down'} size={23} color='gray' />
+                            </TouchableWithoutFeedback>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <Text style={styles.chooseReportText}>*Choose Plan</Text>
+                    <TouchableOpacity style={styles.reportHolder} onPress={() => setShowReport(prev => !prev)}>
+                        <View style={styles.reportInput}>
+                            <Text style={styles.reportText}>{selectedReport.name}</Text>
+                            <TouchableWithoutFeedback onPress={() => setShowReport(prev => !prev)}>
+                                <Feather name={showReport ? 'chevron-up' : 'chevron-down'} size={23} color='gray' />
+                            </TouchableWithoutFeedback>
+                        </View>
+                    </TouchableOpacity>
+                </View>
                 {
                     showReport && (
                         <View style={styles.reportsListHolder}>
                             <View style={styles.reportCardHolder}>
 
                                 {insightResports.map(report => (
-                                    <TouchableOpacity onPress={() => setSelectedReport(report)} key={report.id} style={[styles.normalReportMode, (report.id == selectedReport.id && report.name == selectedReport.name) ? styles.selectedReportMode : ""]}>
+                                    <TouchableOpacity onPress={() => {
+                                        setSelectedReport(report)
+                                        setShowReport(false)
+                                    }
+                                    } key={report.id} style={[styles.normalReportMode, (report.id == selectedReport.id && report.name == selectedReport.name) ? styles.selectedReportMode : ""]}>
                                         <Text style={[styles.reportListText]}>{report.name}</Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </View>
+                    )
+                }
+                {
+                    showShops && (
+                        <View style={styles.shopsListHolder}>
+                            <View style={styles.reportCardHolder}>
+
+                                {shops.map(shop => (
+                                    <TouchableOpacity onPress={() => {
+                                        setSelectedShop(shop)
+                                        setShowShops(false)
+                                    }
+                                    } key={shop.id} style={[styles.normalReportMode, (shop.id == selectedShop.id && shop.name == selectedShop.name) ? styles.selectedShopMode : ""]}>
+                                        <Text style={[styles.shopListText]}>{shop.name}</Text>
                                     </TouchableOpacity>
                                 ))}
                             </View>

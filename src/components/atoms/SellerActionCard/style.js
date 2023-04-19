@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     actionCard: {
@@ -6,7 +7,7 @@ export default StyleSheet.create({
         height: height / 6.5,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: globalStyles.colors.miniPrimary,
         borderRadius: 8,
         marginBottom: '5%',
         borderWidth: 1,
@@ -19,8 +20,9 @@ export default StyleSheet.create({
         backgroundColor: '#2C6F74'
     },
     actionName: {
-        fontSize: 19,
+        fontSize: globalStyles.fontSizes.secondary,
         fontWeight: "600",
-        opacity: 0.7
+        opacity: 0.7,
+        color: globalStyles.colors.tertiary
     }
 })

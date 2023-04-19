@@ -5,6 +5,8 @@ import devliveryIcon from '../../../assets/delivery2.png'
 import shoppingBagImage from '../../../assets/bag.png'
 import bag3 from '../../../assets/bag2.png'
 import OrderActionButton from '../../atoms/orderActionButton'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { globalStyles } from '../../../globalConstants/styles'
 const Order = ({ accept = true, reject = true, status = false, navigation, item, assign = false, refRBSheet }) => {
     const [show, setShow] = useState(false)
     return (
@@ -44,7 +46,15 @@ const Order = ({ accept = true, reject = true, status = false, navigation, item,
                         <OrderActionButton refRBSheet={refRBSheet} title="Assing" assign={assign} navigation={navigation} order={item} />
                     )
                 }
-                <OrderActionButton title="View Order" navigation={navigation} order={item} />
+                {
+                    status == "completed" && (
+                        <View style={styles.orderDeliveredCard}>
+                            <Text style={styles.deliveredText}>Order Delivered</Text>
+                            <AntDesign name='check' size={20} color={globalStyles.colors.miniPrimary} />
+                        </View>
+                    )
+                }
+                <OrderActionButton title="Order Details" navigation={navigation} order={item} />
             </View>
         </View>
     )

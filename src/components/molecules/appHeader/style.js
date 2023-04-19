@@ -1,19 +1,24 @@
 import { StyleSheet } from "react-native"
+import { globalStyles } from "../../../globalConstants/styles"
 export default StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: "flex-start",
         alignItems: "center",
-        marginVertical: "2%"
+        marginBottom: "4%"
     },
     headerTitleWrapper: {
         flex: 1,
         alignItems: "center"
     },
     headerTitle: {
-        fontSize: 20,
-        fontWeight: "500",
-        color: "#fff"
+        fontSize: globalStyles.fontSizes.secondary,
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.tertiary
+
+    },
+    cancelText: {
+        color: globalStyles.colors.blue
     },
     buttonHolder: {
         borderColor: "pink",
@@ -24,7 +29,7 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     addButtonHolder: {
-        backgroundColor: "#fd6846",
+        backgroundColor: globalStyles.colors.orange,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 50,
@@ -32,8 +37,8 @@ export default StyleSheet.create({
         height: 40
     },
     saveText: {
-        color: "#000",
-        fontSize: 17,
-        fontWeight: "400"
+        color: globalStyles.colors.black,
+        fontSize: globalStyles.fontSizes.secondary,
+        fontWeight: globalStyles.fontWeights.secondary
     },
 })

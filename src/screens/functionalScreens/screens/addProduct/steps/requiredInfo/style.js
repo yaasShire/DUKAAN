@@ -7,9 +7,12 @@ export default StyleSheet.create({
 
     },
     actionButtonHolder: {
-        justifyContent: "center",
         alignItems: 'center',
-        marginTop: "2%"
+        marginTop: "2%",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "100%"
+
     },
     textTitle: {
         opacity: .5,

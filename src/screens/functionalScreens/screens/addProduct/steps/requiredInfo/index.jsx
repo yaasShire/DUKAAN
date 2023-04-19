@@ -11,7 +11,7 @@ const RequiredInfo = ({ setCurrentPosition, title }) => {
     const dispatch = useDispatch()
     const requiredInfo = useSelector(state => state.productInDetails)
     const handleGo = () => {
-        setCurrentPosition(5)
+        setCurrentPosition(prev => prev + 1)
     }
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -31,7 +31,8 @@ const RequiredInfo = ({ setCurrentPosition, title }) => {
                                     <AddProductField step="requiredInfo" label="Year Of Make" valuesObj={values} name="yearOfMake" values={values.yearOfMake} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
                                 </View>
                                 <View style={styles.actionButtonHolder}>
-                                    <AddProductActionButton label={"Next"} errors={errors} handleSubmit={handleSubmit} />
+                                    <AddProductActionButton action="Prev" label={"Next"} errors={errors} handleSubmit={handleSubmit} />
+                                    <AddProductActionButton action="Next" label={"Next"} errors={errors} handleSubmit={handleSubmit} />
                                 </View>
                             </>
                         )

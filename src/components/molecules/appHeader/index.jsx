@@ -2,7 +2,9 @@ import { View, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-na
 import React from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 import styles from './style'
+import { globalStyles } from '../../../globalConstants/styles';
 const AppHeader = ({ title, navigation, color, screen = "" }) => {
     return (
         <View style={styles.header}>
@@ -11,7 +13,7 @@ const AppHeader = ({ title, navigation, color, screen = "" }) => {
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Text style={styles.cancelText}>Cancel</Text>
                     </TouchableOpacity>
-                ) : ""
+                ) : <Feather name='chevron-left' size={28} color={globalStyles.colors.secondaryGray} onPress={() => navigation.goBack()} style={{ padding: "1%" }} />
             }
             <View style={styles.headerTitleWrapper}>
                 <Text style={[styles.headerTitle, { color }]}>{title}</Text>
@@ -22,7 +24,7 @@ const AppHeader = ({ title, navigation, color, screen = "" }) => {
                     <TouchableWithoutFeedback onPress={() => navigation.navigate("addShop")}>
                         <View style={styles.buttonHolder}>
                             <View style={styles.addButtonHolder}>
-                                <FontAwesome name='plus' size={20} color="#fff" />
+                                <FontAwesome name='plus' size={20} color={globalStyles.colors.miniPrimary} />
                             </View>
 
                         </View>

@@ -8,9 +8,8 @@ const OrderActionButton = ({ title, navigation, order, assign, refRBSheet }) => 
 
 
         }}>
-            <Text style={styles.acceptText}>{title}</Text>
+            <Text style={styles.buttonText}>{title}</Text>
         </TouchableOpacity>
     )
 }
-
 export default OrderActionButton

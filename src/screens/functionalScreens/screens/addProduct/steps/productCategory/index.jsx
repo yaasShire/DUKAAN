@@ -5,25 +5,26 @@ import SingleCategoryCard from '../../../../../../components/atoms/singCategoryC
 import { useSelector } from 'react-redux'
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton';
 
-
 const ProductCategory = ({ category, title, index, setCurrentPosition }) => {
     const productCategory = useSelector((state) => state.productRegistration.productCategory)
     const [showError, setShowError] = useState(false)
-    const errorHandler = () => {
+    const errorHandler = (action) => {
+        if (action == 'Prev') {
+            setCurrentPosition(prev => prev - 1)
+        }
         if (!productCategory.id) {
             setShowError(true)
             setTimeout(() => {
                 setShowError(false)
             }, 2000)
 
-        } else {
+        } else if (action == 'Next') {
             setCurrentPosition(prev => prev + 1)
         }
     }
-
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 {
                     showError && (
                         <View style={styles.errorHolder}>
@@ -48,7 +49,8 @@ const ProductCategory = ({ category, title, index, setCurrentPosition }) => {
                 </View>
             </ScrollView>
             <View style={styles.actionButtonHolder}>
-                <AddProductActionButton errorHandler={errorHandler} label={"Next"} productCategory={productCategory} setCurrentPosition={setCurrentPosition} />
+                <AddProductActionButton errorHandler={errorHandler} action="Prev" label={"Prev"} productCategory={productCategory} setCurrentPosition={setCurrentPosition} />
+                <AddProductActionButton errorHandler={errorHandler} action="Next" label={"Next"} productCategory={productCategory} setCurrentPosition={setCurrentPosition} />
             </View>
         </View>
     )

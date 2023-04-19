@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
 import styles from './style'
-import ImageTaker from '../../atoms/productImageTaker'
+import ImageTaker from '../../../../../../components/atoms/productImageTaker'
 import { useSelector } from 'react-redux'
-import AddProductActionButton from '../../atoms/addProductActionButton'
+import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton'
 const AddImages = ({ setCurrentPosition, title }) => {
     const [showError, setShowError] = useState(false)
     const mainImage = useSelector(state => state.product_Images.mainImage.url)
@@ -12,15 +12,18 @@ const AddImages = ({ setCurrentPosition, title }) => {
     const image4 = useSelector(state => state.product_Images.image4.url)
     const image5 = useSelector(state => state.product_Images.image5.url)
     const image6 = useSelector(state => state.product_Images.image6.url)
-    const errorHandler = () => {
-        if (!mainImage) {
+    const errorHandler = (action) => {
+        if (action == 'Prev') {
+            setCurrentPosition(prev => prev - 1)
+        }
+        else if (action == 'Next') {
+            setCurrentPosition(prev => prev + 1)
+        }
+        else if (!mainImage) {
             setShowError(true)
             setTimeout(() => {
                 setShowError(false)
             }, 2000)
-
-        } else {
-            setCurrentPosition(prev => prev + 1)
         }
     }
     return (
@@ -42,7 +45,8 @@ const AddImages = ({ setCurrentPosition, title }) => {
                 <ImageTaker image={"image6"} imageURL={image6} />
             </View>
             <View style={styles.actionButtonHolder}>
-                <AddProductActionButton errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} label="Next" />
+                <AddProductActionButton errorHandler={errorHandler} action="Prev" setCurrentPosition={setCurrentPosition} label="Prev" />
+                <AddProductActionButton errorHandler={errorHandler} action="Next" setCurrentPosition={setCurrentPosition} label="Next" />
             </View>
 
         </View>

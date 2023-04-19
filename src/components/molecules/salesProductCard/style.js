@@ -1,9 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
     mainHolder: {
         width: "100%",
-        // paddingVertical: "3%"
     },
     image: {
         width: 70,
@@ -11,8 +11,8 @@ export default StyleSheet.create({
         marginRight: "3%"
     },
     contentHolder: {
-        borderBottomColor: "#dce0e0",
-        borderTopColor: "#dce0e0",
+        borderBottomColor: globalStyles.colors.primaryGray,
+        borderTopColor: globalStyles.colors.primaryGray,
         borderBottomWidth: 1,
         borderTopWidth: 1,
         width: "100%",
@@ -20,10 +20,12 @@ export default StyleSheet.create({
         flexDirection: "row"
     },
     productName: {
-        fontWeight: "500"
+        fontWeight: globalStyles.fontWeights.tertiary
     },
     numberOfSales: {
-        opacity: 0.6
+        color: globalStyles.colors.secondaryGray,
+        fontSize: globalStyles.fontSizes.primary2,
+
     },
     salesHolder: {
         flexDirection: "row",
@@ -34,20 +36,20 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     availableText: {
-        opacity: .6,
-        fontSize: 13
+        color: globalStyles.colors.secondaryGray,
+        fontSize: globalStyles.fontSizes.primary2,
     },
     availableQunatity: {
         fontSize: 12,
         fontWeight: "400",
     },
     salesQuantity: {
-        fontSize: 12,
-        fontWeight: "400"
+        fontSize: globalStyles.fontSizes.primary2,
+        fontWeight: globalStyles.fontWeights.secondary
 
     },
     updateIcon: {
-        borderColor: "#30bfbf",
+        borderColor: globalStyles.colors.blue,
         borderWidth: 2,
         width: 23,
         height: 23,
@@ -64,7 +66,7 @@ export default StyleSheet.create({
     },
     textAction: {
         fontSize: 13,
-        color: "#10e0e0"
+        color: globalStyles.colors.blue
     },
     actionsHolder: {
         flexDirection: "row",

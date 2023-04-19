@@ -7,20 +7,23 @@ import AddProductActionButton from '../../../../../../components/atoms/addProduc
 const SubCategory = ({ category, title, index, setCurrentPosition }) => {
     const subCategory = useSelector((state) => state.productRegistration.subCategory)
     const [showError, setShowError] = useState(false)
-    const errorHandler = () => {
+    const errorHandler = (action) => {
+        if (action == 'Prev') {
+            setCurrentPosition(prev => prev - 1)
+        }
         if (!subCategory.id) {
             setShowError(true)
             setTimeout(() => {
                 setShowError(false)
             }, 2000)
 
-        } else {
+        } else if (action == 'Next') {
             setCurrentPosition(prev => prev + 1)
         }
     }
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 {
                     showError && (
                         <View style={styles.errorHolder}>
@@ -46,7 +49,8 @@ const SubCategory = ({ category, title, index, setCurrentPosition }) => {
             </ScrollView>
 
             <View style={styles.actionButtonHolder}>
-                <AddProductActionButton label={"Next"} errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
+                <AddProductActionButton label={"Prev"} action="Prev" errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
+                <AddProductActionButton label={"Next"} action="Next" errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
             </View>
         </View>
     )

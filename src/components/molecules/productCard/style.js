@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
     mainHolder: {
@@ -23,7 +24,8 @@ export default StyleSheet.create({
         fontWeight: "500"
     },
     numberOfSales: {
-        opacity: 0.6
+        color: globalStyles.colors.secondaryGray,
+        fontSize: globalStyles.fontSizes.primary2
     },
     salesHolder: {
         flexDirection: "row",
@@ -35,19 +37,20 @@ export default StyleSheet.create({
     },
     availableText: {
         opacity: .6,
-        fontSize: 13
+        fontSize: globalStyles.fontSizes.primary2
     },
     availableQunatity: {
-        fontSize: 12,
-        fontWeight: "400",
+        fontSize: globalStyles.fontSizes.primary2,
+        fontWeight: globalStyles.fontWeights.secondary,
     },
     salesQuantity: {
-        fontSize: 12,
-        fontWeight: "400"
+        fontSize: globalStyles.fontSizes.primary2,
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.black
 
     },
     updateIcon: {
-        borderColor: "#30bfbf",
+        borderColor: globalStyles.colors.blue,
         borderWidth: 2,
         width: 23,
         height: 23,
@@ -64,7 +67,7 @@ export default StyleSheet.create({
     },
     textAction: {
         fontSize: 13,
-        color: "#10e0e0"
+        color: globalStyles.colors.blue
     },
     actionsHolder: {
         flexDirection: "row",

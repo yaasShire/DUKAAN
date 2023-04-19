@@ -26,6 +26,9 @@ export default StyleSheet.create({
         borderRadius: 4,
         borderColor: "#9ea1a3",
         borderWidth: 1,
+        position: "absolute",
+        width: "100%",
+        top: 140
     },
     subCategoryItem: {
         borderWidth: 1,

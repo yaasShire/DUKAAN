@@ -1,9 +1,11 @@
-import { Dimensions, StyleSheet } from "react-native";
-const { width, height } = new Dimensions.get("window")
+import { Dimensions, StyleSheet, Platform } from "react-native";
+const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 10
+        padding: 15,
+        // height,
+        flex: Platform.OS == 'android' ? 1 : 0,
+        // height: Platform.OS
     },
     header: {
         flexDirection: "row",
@@ -18,5 +20,8 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center'
 
+    },
+    cardsHolder: {
+        marginBottom: "2%"
     }
 })

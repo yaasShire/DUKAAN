@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get("window")
+import { globalStyles } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     reportContainer: {
         // width,
@@ -37,13 +38,13 @@ export default StyleSheet.create({
         zIndex: -1
     },
     salesTextTitle: {
-        fontWeight: "500",
-        fontSize: 14,
-        opacity: .5 ,
-        textTransform: "uppercase"
+        fontWeight: globalStyles.fontWeights.secondary,
+        fontSize: globalStyles.fontSizes.primary2,
+        textTransform: "uppercase",
+        color: globalStyles.colors.secondaryGray
     },
     valueText: {
-        opacity: .6
+        color: globalStyles.colors.secondaryGray
     },
     listHolder: {
         backgroundColor: "#fff",
@@ -81,9 +82,7 @@ export default StyleSheet.create({
         marginVertical: "4%"
     },
     listItemText: {
-        opacity: .6,
-        fontSize: 12
+        color: globalStyles.colors.secondaryGray,
+        fontSize: globalStyles.fontSizes.primary2
     }
-
-
 })

@@ -8,7 +8,7 @@ import sProduct3 from '../../../../assets/sProduct3.png'
 import sProduct4 from '../../../../assets/sProduct4.png'
 import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
-
+import ProductCard from '../../../../components/molecules/productCard'
 const TopSales = ({ navigation }) => {
   const data = [
     {

@@ -4,11 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import OrderTopTabsStack from './orderTabsStack'
 import ViewOrder from '../../../screens/functionalScreens/screens/viewOrder'
 import Courier from '../../../screens/functionalScreens/screens/couriers'
-const MainOrderStack = () => {
+import Header from '../../../components/atoms/header'
+const MainOrderStack = ({ route }) => {
+    // console.warn(route)
     const Stack = createNativeStackNavigator()
     return (
         <Stack.Navigator>
-
             <Stack.Screen name='orderTopTabs' component={OrderTopTabsStack} options={{ headerShown: false }} />
             <Stack.Screen name='viewOrder' component={ViewOrder} options={{ headerShown: false }} />
             <Stack.Screen name='courier' component={Courier} options={{ headerShown: false }} />

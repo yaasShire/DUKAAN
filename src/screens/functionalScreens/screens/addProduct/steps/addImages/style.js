@@ -11,8 +11,9 @@ export default StyleSheet.create({
         flexWrap: "wrap",
     },
     actionButtonHolder: {
-        justifyContent: "center",
         alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
 
     },
     textTitle: {

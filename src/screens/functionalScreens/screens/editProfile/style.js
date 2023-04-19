@@ -2,8 +2,8 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 15
+        padding: 15,
+        height
     },
     topHeader: {
         flexDirection: "row",
@@ -12,10 +12,10 @@ export default StyleSheet.create({
         backgroundColor: "pink"
     },
     image: {
-        width: width / 3.3,
-        height: height / 6.5,
+        width: 120,
+        height: 120,
         borderRadius: 100,
-        resizeMode: "contain",
+        // resizeMode: "contain",
     },
 
     editText: {
@@ -48,7 +48,6 @@ export default StyleSheet.create({
     },
     inputHolder: {
         paddingVertical: "10%",
-        paddingHorizontal: "5%"
     },
     imageAndButtonWrapper: {
         height: height / 3.6,
@@ -70,7 +69,6 @@ export default StyleSheet.create({
     cameraIconWrapper: {
         backgroundColor: "orange",
         borderRadius: 50,
-        padding: "2%",
         alignSelf: "flex-end",
         position: "absolute",
         width: 37,

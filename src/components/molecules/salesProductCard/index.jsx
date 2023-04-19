@@ -29,7 +29,7 @@ const ProductSalesCard = ({ item, navigation }) => {
                     </View>
                     <View style={styles.availabelHolder}>
                         <Text style={styles.availableText}>Sales Total:</Text>
-                        <Text style={styles.availableQunatity}>${item.totalSalesAmmount}</Text>
+                        <Text style={styles.salesQuantity}>${item.totalSalesAmmount}</Text>
                     </View>
                 </View>
 

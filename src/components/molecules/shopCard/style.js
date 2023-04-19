@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet, Platform } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get('screen')
 
 export default StyleSheet.create({
@@ -21,7 +22,7 @@ export default StyleSheet.create({
         height: height
     },
     shopCard: {
-        backgroundColor: "#FFF",
+        backgroundColor: globalStyles.colors.miniPrimary,
         height: height / 8,
         borderWidth: 1,
         width: width / 1.1,
@@ -32,11 +33,11 @@ export default StyleSheet.create({
         borderColor: "gray",
         marginBottom: "3%",
         padding: "1%"
-
     },
     shopName: {
-        fontSize: 16,
-        fontWeight: "500"
+        fontSize: globalStyles.fontSizes.primary3,
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.tertiary
     },
     products: {
         fontSize: 17,
@@ -57,8 +58,10 @@ export default StyleSheet.create({
         marginLeft: "5%"
     },
     stockText: {
-        fontWeight: "500",
-        marginLeft: "1%"
+        fontWeight: globalStyles.fontWeights.tertiary,
+        marginLeft: "1%",
+        fontSize: globalStyles.fontSizes.primary2,
+        color: globalStyles.colors.tertiary
     },
     dotIcon: {
         marginLeft: "11%",
@@ -72,11 +75,12 @@ export default StyleSheet.create({
         flexDirection: "row"
     },
     salesText: {
-        opacity: .8,
+        color: globalStyles.colors.secondaryGray,
         marginRight: "2%"
     },
     salesQuantity: {
-        fontWeight: "500"
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.tertiary,
     }
 
 })

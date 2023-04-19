@@ -16,8 +16,10 @@ import ProductsStack from '../screenStacks/productsStack';
 import Sales from '../screenStacks/sales';
 import MainOrderStack from '../screenStacks/ordersStack/mainOrderStack';
 import MainSalesStack from '../screenStacks/sales/mainSalesStack';
+
 const Tab = createBottomTabNavigator();
-export default function BottomTabs() {
+export default function BottomTabs({ navigation }) {
+
     const { width, height } = new Dimensions.get("window")
     return (
         <Tab.Navigator

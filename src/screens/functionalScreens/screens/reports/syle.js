@@ -3,7 +3,9 @@ const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15
+        padding: 15,
+        zIndex: -1,
+        // height
     },
     header: {
         flexDirection: "row",
@@ -22,16 +24,27 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     insightText: {
-        fontSize: 20,
-        fontWeight: "500"
+        fontSize: 22,
+        fontWeight: "600"
     },
     insightTextHolder: {
-        marginTop: "5%",
+        marginTop: "3%",
     },
     reportHolder: {
-        marginTop: "5%",
+        // marginTop: "2%",
         alignItems: "center",
         paddingVertical: "3%"
+    },
+    chooseShopWrapper: {
+        marginTop: "3%"
+    },
+    choseShopText: {
+        fontSize: 13,
+        fontWeight: "500"
+    },
+    chooseReportText: {
+        fontSize: 13,
+        fontWeight: "500"
     },
     reportInput: {
         backgroundColor: "#fff",
@@ -49,7 +62,18 @@ export default StyleSheet.create({
         fontSize: 16
     },
     reportsListHolder: {
-        alignItems: "center"
+        alignItems: "center",
+        position: "absolute",
+        top: 260,
+        zIndex: 10,
+        width: "100%"
+    },
+    shopsListHolder: {
+        alignItems: "center",
+        position: "absolute",
+        top: 170,
+        zIndex: 10,
+        width: "100%"
     },
     reportCardHolder: {
         backgroundColor: "#fff",
@@ -65,7 +89,23 @@ export default StyleSheet.create({
         fontSize: 16,
         textAlign: "center"
     },
+    shopListText: {
+        fontWeight: "500",
+        fontSize: 16,
+        textAlign: "center"
+    },
     selectedReportMode: {
+        borderColor: "#c5c7c7",
+        borderWidth: 2,
+        width: "90%",
+        height: 60,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 10,
+        borderRadius: 6
+
+    },
+    selectedShopMode: {
         borderColor: "#c5c7c7",
         borderWidth: 2,
         width: "90%",
@@ -111,7 +151,7 @@ export default StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         height: height / 7,
-        marginTop: "20%",
+        marginTop: "5%",
     },
     downloadButton: {
         backgroundColor: "#0f7ff7",

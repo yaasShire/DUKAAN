@@ -14,6 +14,7 @@ import person3 from '../../../../assets/person3.jpg'
 import dwayne from '../../../../assets/dwayne.jpg'
 import chris from '../../../../assets/chris.jpg'
 import captan from '../../../../assets/captanAmerica.webp'
+import AppHeader from "../../../../components/molecules/appHeader";
 const Courier = ({ navigation }) => {
     const data = [
         {
@@ -25,7 +26,7 @@ const Courier = ({ navigation }) => {
             distance: 5
         },
         {
-            id: 1,
+            id: 2,
             name: "Elon Musk",
             image: musk,
             rating1: 3.4,
@@ -33,7 +34,7 @@ const Courier = ({ navigation }) => {
             distance: 3
         },
         {
-            id: 1,
+            id: 3,
             name: "Justin Beiber",
             image: justin,
             rating1: 3.9,
@@ -42,7 +43,7 @@ const Courier = ({ navigation }) => {
 
         },
         {
-            id: 1,
+            id: 4,
             name: "Jordan Melson",
             image: person3,
             rating1: 1.9,
@@ -50,7 +51,7 @@ const Courier = ({ navigation }) => {
             distance: 4
         },
         {
-            id: 1,
+            id: 5,
             name: "They Wayne Johson",
             image: dwayne,
             rating1: 4.9,
@@ -58,7 +59,7 @@ const Courier = ({ navigation }) => {
             distance: 12
         },
         {
-            id: 1,
+            id: 6,
             name: "Chris Hemsworth",
             image: chris,
             rating1: 3.9,
@@ -66,7 +67,7 @@ const Courier = ({ navigation }) => {
             distance: 15
         },
         {
-            id: 1,
+            id: 7,
             name: "Captain America",
             image: captan,
             rating1: 4.9,
@@ -77,16 +78,11 @@ const Courier = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <View style={styles.header}>
-                <MaterialIcons name='keyboard-backspace' size={25} color="gray" onPress={() => navigation.goBack()} />
-                <View style={styles.headerTextWrapper}>
-                    <Text style={styles.headerText}>Nearest Couriers</Text>
-                </View>
-            </View>
-            <ScrollView style={{}} contentContainerStyle={{ rowGap: 10 }} showsVerticalScrollIndicator={false}>
+            <AppHeader title={"Nearest Couriers"} navigation={navigation} />
+            <ScrollView style={styles.cardsHolder} contentContainerStyle={{ rowGap: 10 }} showsVerticalScrollIndicator={false} >
                 {
                     data.map(person => (
-                        <CourierCard person={person} />
+                        <CourierCard person={person} key={person.id} />
                     ))
                 }
             </ScrollView>

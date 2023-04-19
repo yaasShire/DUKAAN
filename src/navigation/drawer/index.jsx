@@ -11,31 +11,39 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MainOrderStack from '../screenStacks/ordersStack/mainOrderStack';
+import HomeStack from '../screenStacks/homeStack';
+import MainSalesStack from '../screenStacks/sales/mainSalesStack';
+import ProductsStack from '../screenStacks/productsStack';
+import SettingsStack from '../screenStacks/settingsStack';
+import Header from '../../components/atoms/header';
 const RightDrawer = createDrawerNavigator();
 const RightDrawerScreen = () => {
     function CustomDrawerContent(props) {
         return (
             <DrawerContentScrollView {...props}>
                 <DrawerItemList {...props} />
-                <View style={{ backgroundColor: "pink", height: 100 }}>
-                    <Text>Hello people</Text>
-                </View>
+
                 <DrawerItem
-                    label="Profile"
+                    label="Orders"
                     onPress={() => props.navigation.jumpTo("Orders")}
                     icon={() => <Ionicons name='person' size={20} color={"gray"} />}
                 />
                 <DrawerItem
-                    label="Help Center"
-                    onPress={() => props.navigation.toggleDrawer()}
+                    label="Sales"
+                    onPress={() => props.navigation.jumpTo("salesStack")}
                     icon={() => <Feather name='help-circle' size={20} color={"gray"} />}
                 />
                 <DrawerItem
-                    label="Privacy & Policy"
-                    onPress={() => props.navigation.toggleDrawer()}
+                    label="Products"
+                    onPress={() => props.navigation.jumpTo("productsStack")}
                     icon={() => <MaterialIcons name='privacy-tip' size={20} color={"gray"} />}
                 />
-                <View style={{ marginTop: 500 }}>
+                <DrawerItem
+                    label="Settings"
+                    onPress={() => props.navigation.jumpTo("settingScreens")}
+                    icon={() => <MaterialIcons name='privacy-tip' size={20} color={"gray"} />}
+                />
+                <View style={{ marginTop: 400 }}>
                     <DrawerItem
                         label="Log out"
                         labelStyle={{ color: "red" }}

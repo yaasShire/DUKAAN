@@ -5,15 +5,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setMainCategory, setProductCategory, setSubCategory, setShopsList } from '../../../redux/products';
 
 import styles from './style'
+import { globalStyles } from '../../../globalConstants/styles';
 const SingleCategoryCard = ({ category, cat, finalObject }) => {
     const dispatch = useDispatch()
     return (
         <View>
-            <TouchableOpacity style={[styles.categoryButtonHolder, { backgroundColor: finalObject.id == category.id ? "#D9D9D9" : "#FFF" }]} onPress={() => {
+            <TouchableOpacity style={[styles.categoryButtonHolder, { backgroundColor: finalObject.id == category.id ? globalStyles.colors.primaryGray : globalStyles.colors.miniPrimary }]} onPress={() => {
                 cat == 'mainCategory' ? dispatch(setMainCategory(category)) : cat == 'subCategory' ? dispatch(setSubCategory(category)) : cat == 'productCategory' ? dispatch(setProductCategory(category)) : cat == 'shopsList' ? dispatch(setShopsList(category)) : ""
             }}>
                 <Text style={styles.categoryName}>{category.name}</Text>
-                <Ionicons name='chevron-forward-outline' size={25} color="#9D9B9B" />
+                <Ionicons name='chevron-forward-outline' size={25} color={globalStyles.colors.primaryGray} />
             </TouchableOpacity>
         </View>
     )

@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -18,9 +19,10 @@ export default StyleSheet.create({
         marginTop: "3%"
     },
     actionButtonHolder: {
-        justifyContent: "center",
         alignItems: 'center',
-        marginTop: "2%"
+        marginTop: "2%",
+        flexDirection: "row",
+        justifyContent: "space-between",
 
 
     },
@@ -34,9 +36,9 @@ export default StyleSheet.create({
 
     },
     textError: {
-        fontWeight: "500",
-        fontSize: 14,
-        color: "#fff"
+        fontWeight: globalStyles.fontWeights.secondary,
+        fontSize: globalStyles.fontSizes.primary3,
+        color: globalStyles.colors.miniPrimary
     }
 
 

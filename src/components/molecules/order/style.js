@@ -1,8 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     orderCard: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: globalStyles.colors.miniPrimary,
         height: height / 4.2,
         width: "100%",
         borderRadius: 6,
@@ -11,11 +12,12 @@ export default StyleSheet.create({
 
     },
     orderNumber: {
-        fontSize: 18,
-        fontWeight: "500"
+        fontSize: globalStyles.fontSizes.secondary,
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.tertiary
     },
     orderStage: {
-        color: "orange",
+        color: globalStyles.colors.orange,
         fontSize: 14,
         fontWeight: "500"
     },
@@ -26,8 +28,8 @@ export default StyleSheet.create({
     },
     ammount: {
         fontSize: 18,
-        fontWeight: "600",
-        color: "orange",
+        fontWeight: globalStyles.fontWeights.tertiary,
+        color: globalStyles.colors.orange,
         width: "30%",
         textAlign: "right"
 
@@ -66,7 +68,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: "center",
         borderRadius: 5,
-        backgroundColor: '#ffffff',
+        backgroundColor: globalStyles.colors.miniPrimary,
         borderWidth: 1,
         borderColor: "#dee0e3",
         paddingVertical: ".5%"
@@ -81,8 +83,8 @@ export default StyleSheet.create({
         paddingVertical: ".5%"
     },
     timePassedText: {
-        fontSize: 10,
-        color: "gray",
+        fontSize: globalStyles.fontSizes.primary2,
+        color: globalStyles.colors.secondaryGray,
         borderColor: "#dee0e3",
     },
     nameMinutesHolder: {
@@ -93,7 +95,7 @@ export default StyleSheet.create({
         paddingVertical: "3%"
     },
     textName: {
-        fontSize: 11,
+        fontSize: globalStyles.fontSizes.primary2,
         opacity: 0.7
     },
     statusHolder: {
@@ -102,19 +104,28 @@ export default StyleSheet.create({
         alignItems: "center",
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: 'pink',
-        borderColor: "#dee0e3",
+        borderColor: globalStyles.colors.primaryGray,
 
 
     },
     statusText: {
-        fontSize: 11,
-        opacity: 0.7,
+        fontSize: globalStyles.fontSizes.primary2,
+        color: globalStyles.colors.secondaryGray,
     },
-    // viewButtonHolder: {
-    //     width: '30%',
-    //     height: '48%',
-
-    // }
+    orderDeliveredCard: {
+        backgroundColor: globalStyles.colors.blue,
+        borderRadius: 5,
+        justifyContent: "space-around",
+        alignItems: "center",
+        height: 45,
+        width: 160,
+        flexDirection: "row",
+        paddingHorizontal: "1%"
+    },
+    deliveredText: {
+        fontSize: 15,
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.miniPrimary
+    }
 
 })

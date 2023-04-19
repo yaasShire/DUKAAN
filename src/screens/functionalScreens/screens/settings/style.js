@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -15,16 +16,16 @@ export default StyleSheet.create({
 
     },
     settingText: {
-        fontSize: 19,
-        fontWeight: "500",
+        fontSize: globalStyles.fontSizes.secondary,
+        fontWeight: globalStyles.fontWeights.tertiary,
 
     },
     iconBack: {
         flex: .4
     },
     profileCardWrapper: {
-        backgroundColor: "#fff",
-        height: height / 7,
+        backgroundColor: globalStyles.colors.white,
+        height: 130,
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: "2%",
@@ -32,24 +33,20 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: "#dedede",
         borderRadius: 5,
-        marginTop: "4%"
     },
     imageWrapper: {
-        borderWidth: 2,
-        padding: "1%",
+        borderWidth: 1,
         borderRadius: 50,
         borderColor: "#dedede",
-        width: width / 5.1,
-        height: height / 10,
+        width: 110,
+        height: 110,
         justifyContent: "center",
         alignItems: "center"
     },
     image: {
-        width: width / 5.9,
-        height: height / 12,
-        // resizeMode: "cover",
+        width: 100,
+        height: 100,
         borderRadius: 50,
-
     },
     imageNameNumberWrapper: {
         flexDirection: "row",
@@ -59,21 +56,22 @@ export default StyleSheet.create({
     },
 
     nameNumberWrapper: {
-        width: "70%",
+        flex: 1,
         alignItems: "flex-start",
-        justifyContent: "center"
+        justifyContent: "center",
+        marginLeft: "2%"
     },
     name: {
-        fontWeight: "400",
-        fontSize: 16
+        fontWeight: globalStyles.fontWeights.secondary,
+        fontSize: globalStyles.fontSizes.secondary,
+        color: globalStyles.colors.black
     },
     phoneNumber: {
         fontSize: 14,
-        opacity: .8
+        color: globalStyles.colors.secondaryGray
     },
     actionCardsWrapper: {
-        backgroundColor: "#fff",
-        padding: "2%",
+        backgroundColor: globalStyles.colors.white,
         marginTop: "5%"
     },
     singleAction: {
@@ -95,9 +93,10 @@ export default StyleSheet.create({
         height: "55%"
     },
     actionName: {
-        fontWeight: "400",
-        fontSize: 15,
-        marginLeft: "3%"
+        fontWeight: globalStyles.fontWeights.tertiary,
+        fontSize: globalStyles.fontSizes.primary3,
+        marginLeft: "3%",
+        color: globalStyles.colors.black
     },
     modalHolder: {
         alignItems: "center",

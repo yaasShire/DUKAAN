@@ -1,24 +1,22 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     headerHolder: {
         height: "10%",
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: "#fff",
+        backgroundColor: globalStyles.colors.miniPrimary,
         paddingHorizontal: 15,
-        borderBottomColor: "#dedcdc",
-        borderBottomWidth: 1,
-        justifyContent: "space-between"
-
+        justifyContent: "space-between",
+        paddingTop: Platform.OS == 'ios' ? "8%" : 0
     },
     menuWrapper: {
+
     },
     logoImage: {
         width: 200,
-        height: "100%",
+        height: 60,
         resizeMode: 'cover',
-        marginLeft: '30%',
-        alignSelf: "center",
     },
     logoImageHolder: {
         alignSelf: "center",
@@ -26,8 +24,7 @@ export default StyleSheet.create({
     iconLogoHolder: {
         flexDirection: "row",
         alignItems: "center",
-        width: "63%",
-        justifyContent: "space-between",
+        justifyContent: "center",
         flex: 1,
     },
     addText: {

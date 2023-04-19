@@ -1,8 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
     filterButton: {
-        backgroundColor: "#fff",
+        backgroundColor: globalStyles.colors.white,
         flexDirection: "row",
         width: width / 4,
         height: height / 12.8,

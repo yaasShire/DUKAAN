@@ -13,6 +13,7 @@ import { editProfileValidation } from '../../../../utils/validationSchema/ediPro
 import GlobalHeader from '../../../../components/molecules/globalHeader';
 import { AntDesign } from '@expo/vector-icons';
 import AppHeader from '../../../../components/molecules/appHeader';
+import { globalStyles } from '../../../../globalConstants/styles';
 const EditProfile = ({ navigation }) => {
     const [image, setImage] = useState(null)
     const pickImage = async () => {
@@ -39,10 +40,10 @@ const EditProfile = ({ navigation }) => {
                     {image ? <Image source={{ uri: image }} style={styles.image} /> : <Image source={Profile} style={styles.image} />}
                 </View>
                 <View style={styles.cameraIconWrapper}>
-                    <AntDesign name='camera' size={22} color="#fff" onPress={pickImage} />
+                    <AntDesign name='camera' size={22} color={globalStyles.colors.white} onPress={pickImage} />
                 </View>
             </View>
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView style={{ flex: 1, }}>
                 <Formik
                     initialValues={{ fullName: "", email: "", phoneNumber: "", city: "" }}
                     validationSchema={editProfileValidation}

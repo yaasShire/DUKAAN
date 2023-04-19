@@ -1,10 +1,10 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     card: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: globalStyles.colors.miniPrimary,
         width: width / 2.37,
-        // height: height / 10,
         borderRadius: 5,
         paddingHorizontal: '3%',
     },
@@ -14,14 +14,13 @@ export default StyleSheet.create({
     dollarSign: {
         opacity: 0.5,
         marginRight: "3%"
-
     },
     dollarNumber: {
-        fontSize: 20,
-        fontWeight: "800"
+        fontSize: globalStyles.fontSizes.tertiary,
+        fontWeight: globalStyles.fontWeights.tertiary
     },
     description: {
-        opacity: 0.6
+        color: globalStyles.colors.primaryGray
     },
     contentHolder: {
         justifyContent: 'space-between',

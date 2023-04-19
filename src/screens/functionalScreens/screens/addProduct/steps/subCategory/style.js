@@ -17,9 +17,10 @@ export default StyleSheet.create({
         marginTop: "3%"
     },
     actionButtonHolder: {
-        justifyContent: "center",
         alignItems: 'center',
-        marginTop: "2%"
+        marginTop: "2%",
+        flexDirection: "row",
+        justifyContent: "space-between",
 
     },
     errorHolder: {

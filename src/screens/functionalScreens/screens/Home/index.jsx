@@ -18,6 +18,7 @@ import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
 import sProduct7 from '../../../../assets/sProduct7.png'
 import HomeScreenReport from '../../../../components/molecules/homeScreenReport'
+import { globalStyles } from '../../../../globalConstants/styles'
 const Home = ({ navigation }) => {
     const orders = [
         {
@@ -167,7 +168,7 @@ const Home = ({ navigation }) => {
                             <View style={styles.messagCountWrapper}>
                                 <Text style={styles.messageNumber}>15</Text>
                             </View>
-                            <Feather name='chevron-right' size={25} color="gray" />
+                            <Feather name='chevron-right' size={25} color={globalStyles.colors.primaryGray} />
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.cardAction}>

@@ -1,4 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
+import { G } from "react-native-svg";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -27,7 +29,8 @@ export default StyleSheet.create({
         fontSize: 19,
         fontWeight: "600",
         marginTop: '6%',
-        marginBottom: '5%'
+        marginBottom: '5%',
+        color: globalStyles.colors.tertiary
     },
     actionCards: {
         backgroundColor: "#fff",
@@ -46,10 +49,10 @@ export default StyleSheet.create({
     },
 
     actionName: {
-        fontSize: 16,
-        fontWeight: "600",
+        fontSize: globalStyles.fontSizes.secondary,
+        fontWeight: globalStyles.fontWeights.secondary,
         marginLeft: "4%",
-        opacity: .7
+        color: globalStyles.colors.tertiary
     },
     iconActionNameWrapper: {
         flexDirection: 'row',
