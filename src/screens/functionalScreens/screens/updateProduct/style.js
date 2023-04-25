@@ -55,7 +55,6 @@ export default StyleSheet.create({
         marginTop: "5%",
         alignItems: "center",
         borderBottomColor: "#c4c3c0",
-        borderBottomWidth: 1,
     },
     singleTab: {
         marginRight: "5%",

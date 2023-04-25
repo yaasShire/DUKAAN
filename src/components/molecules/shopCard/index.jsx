@@ -12,7 +12,9 @@ const ShopCard = ({ shop, navigation }) => {
     return (
         <TouchableWithoutFeedback onPress={() => navigation.navigate("shopProfile", { data: shop })}>
             <View style={styles.shopCard}>
-                <Image source={shop.image} style={styles.image} />
+                <View style={styles.imageWrapper}>
+                    <Image source={shop.image} style={styles.image} />
+                </View>
                 <View style={styles.infoHolder}>
                     <Text style={styles.shopName}>{nameShortener(shop.name)}</Text>
                     <View style={styles.productsHolder}>

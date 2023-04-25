@@ -101,8 +101,8 @@ const ShopProfile = ({ navigation, route }) => {
                         )}
                     />
                     <View style={styles.buttonsHolder}>
-                        <DecisionButton title="Cancel" />
-                        <DecisionButton title="Update Shop" />
+                        <DecisionButton title="Cancel" navigation={navigation} />
+                        <DecisionButton title="Update Shop" navigation={navigation} />
 
                     </View>
                 </View>

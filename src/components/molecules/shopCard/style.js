@@ -3,9 +3,17 @@ import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get('screen')
 
 export default StyleSheet.create({
-
-    image: {
+    imageWrapper: {
         width: "40%",
+        height: "100%",
+        resizeMode: "cover",
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: globalStyles.colors.primaryGray,
+        padding: ".5%"
+    },
+    image: {
+        width: "100%",
         height: "100%",
         resizeMode: "cover",
         borderRadius: 5,
@@ -24,13 +32,13 @@ export default StyleSheet.create({
     shopCard: {
         backgroundColor: globalStyles.colors.miniPrimary,
         height: height / 8,
+        borderColor: globalStyles.colors.primaryGray,
         borderWidth: 1,
         width: width / 1.1,
         borderRadius: 10,
         flexDirection: "row",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-        borderColor: "gray",
         marginBottom: "3%",
         padding: "1%"
     },

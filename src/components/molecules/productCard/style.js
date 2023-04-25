@@ -4,7 +4,6 @@ const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
     mainHolder: {
         width: "100%",
-        // paddingVertical: "3%"
     },
     image: {
         width: 70,
@@ -12,13 +11,14 @@ export default StyleSheet.create({
         marginRight: "3%"
     },
     contentHolder: {
-        borderBottomColor: "#dce0e0",
-        borderTopColor: "#dce0e0",
-        borderBottomWidth: 1,
+        borderBottomColor: globalStyles.colors.primaryGray,
+        borderTopColor: globalStyles.colors.primaryGray,
+        borderBottomWidth: .25,
         borderTopWidth: 1,
         width: "100%",
         paddingVertical: "2%",
-        flexDirection: "row"
+        flexDirection: "row",
+        marginVertical: "1%"
     },
     productName: {
         fontWeight: "500"

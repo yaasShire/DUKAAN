@@ -26,5 +26,4 @@ const EditProfileField = ({ label, touched, setFieldTouched, errors, values, han
         </>
     )
 }
-
 export default EditProfileField

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './style'
 import ModalComponent from '../../molecules/modal'
 import check from '../../../assets/check.png'
-const DecisionButton = ({ title }) => {
+const DecisionButton = ({ title, navigation }) => {
     const [visible, setVisible] = React.useState(false);
     const [showModal, setShowModal] = React.useState(false);
     const [show, setShow] = useState(true)
@@ -20,8 +20,8 @@ const DecisionButton = ({ title }) => {
                             ? { state: "Rejected", description: "Order is rejected" }
                             : ""
                     )
-
                 }
+                navigation.goBack()
             }}>
                 <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>
@@ -30,7 +30,6 @@ const DecisionButton = ({ title }) => {
                     <View style={{ padding: 20, position: "absolute", top: 100 }}>
                         <ModalComponent status={status} setVisible={setVisible} visible={visible} showModal={showModal} setShowModal={setShowModal} />
                     </View>
-
                 )
             }
         </>

@@ -23,8 +23,6 @@ export default StyleSheet.create({
         marginTop: "2%",
         flexDirection: "row",
         justifyContent: "space-between",
-
-
     },
     errorHolder: {
         backgroundColor: "#f25555",

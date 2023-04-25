@@ -5,8 +5,6 @@ const OrderActionButton = ({ title, navigation, order, assign, refRBSheet }) => 
     return (
         <TouchableOpacity style={styles.button} onPress={() => {
             assign ? navigation.navigate("courier", { order }) : navigation.navigate("viewOrder", { order })
-
-
         }}>
             <Text style={styles.buttonText}>{title}</Text>
         </TouchableOpacity>

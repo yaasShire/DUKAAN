@@ -1,4 +1,5 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, Platform, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -48,17 +49,18 @@ export default StyleSheet.create({
 
     },
     bottomContentWrapper: {
-        top: 120
+        top: 140
     },
     infoWrapper: {
         flexDirection: "row",
         width: "100%",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        marginTop: "5%"
     },
     singleInfoWrapperTitle: {
         fontSize: 13,
         fontWeight: "500",
-        opacity: .5
+        color: globalStyles.colors.secondaryGray
     },
     singleInfoWrapperValue: {
         fontSize: 20,
@@ -80,16 +82,18 @@ export default StyleSheet.create({
         padding: "2%",
     },
     shopName: {
-        fontSize: 23,
-        fontWeight: "500"
+        fontSize: globalStyles.fontSizes.tertiary,
+        fontWeight: globalStyles.fontWeights.tertiary,
+        color: globalStyles.colors.tertiary,
+
     },
     locationText: {
-        fontSize: 14,
+        fontSize: globalStyles.fontSizes.primary2,
         fontWeight: "500",
-        opacity: .7
+        color: globalStyles.colors.secondaryGray
     },
     productImageWrapper: {
-        backgroundColor: "#d7dbd8",
+        backgroundColor: globalStyles.colors.primaryGray,
         borderRadius: 10,
         width: 130,
         height: 130,
@@ -109,19 +113,21 @@ export default StyleSheet.create({
     },
     productsWrapperTitleText: {
         fontSize: 18,
-        fontWeight: "500"
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.tertiary
     },
     productName: {
         fontSize: 15,
-        fontWeight: "500"
+        fontWeight: globalStyles.fontWeights.secondary,
+        color: globalStyles.colors.tertiary
     },
     availableStock: {
         fontSize: 13,
-        opacity: .6
+        color: globalStyles.colors.secondaryGray
     },
     buttonsHolder: {
         flexDirection: "row",
-        top: 50,
+        top: Platform.OS == 'ios' ? 15 : 35,
         justifyContent: "space-around",
         padding: "2%"
     },

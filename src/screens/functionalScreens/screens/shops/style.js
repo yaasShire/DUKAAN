@@ -48,16 +48,11 @@ export default StyleSheet.create({
         height: "97%",
         resizeMode: "stretch",
         borderRadius: 5,
-
     },
-
     cards: {
         flex: 1,
         marginTop: "2%",
         height: height,
-
-
-
     },
     shopCard: {
         backgroundColor: "#FFF",
