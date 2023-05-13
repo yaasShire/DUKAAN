@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './style'
 import product1 from '../../../assets/product3.jpg'
 import Entypo from 'react-native-vector-icons/Entypo';
+import { FAB } from 'react-native-paper';
 const ProductCard = ({ item, navigation }) => {
     const nameShortener = (name) => {
         return name.length >= 28 ? name.slice(0, 30) + "..." : name
@@ -26,15 +27,34 @@ const ProductCard = ({ item, navigation }) => {
 
             </View>
             <View style={styles.actionsHolder}>
-                <TouchableWithoutFeedback>
+                <FAB
+                    icon="delete"
+                    size='small'
+                    style={styles.fab}
+                    onPress={() => console.warn('Pressed')}
+                />
+
+                <FAB
+                    size='small'
+                    icon="pen"
+                    style={styles.fab}
+                    onPress={() => navigation.navigate("updateProduct", { data: item })}
+                />
+                <FAB
+                    icon="database"
+                    size='small'
+                    style={styles.fab}
+                    onPress={() => navigation.navigate("productDetails", { data: item })}
+                />
+                {/* <TouchableWithoutFeedback>
                     <View style={styles.deleteTextHolder}>
                         <View style={styles.updateIcon}>
                             <Entypo name='trash' color={"#ff1900"} />
                         </View>
                         <Text style={styles.textAction}>Delete</Text>
                     </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("updateProduct", { data: item })}>
+                </TouchableWithoutFeedback> */}
+                {/* <TouchableWithoutFeedback onPress={() => navigation.navigate("updateProduct", { data: item })}>
                     <View style={styles.buttonIconTextHolder}>
                         <View style={styles.updateIcon}>
                             <Entypo name='edit' color={"#569615"} />
@@ -42,8 +62,8 @@ const ProductCard = ({ item, navigation }) => {
                         <Text style={styles.textAction}>Update</Text>
                     </View>
 
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("productDetails", { data: item })}>
+                </TouchableWithoutFeedback> */}
+                {/* <TouchableWithoutFeedback onPress={() => navigation.navigate("productDetails", { data: item })}>
                     <View style={styles.buttonIconTextHolder}>
                         <View style={styles.updateIcon}>
                             <Entypo name='database' color={"#8c8a1f"} />
@@ -51,7 +71,8 @@ const ProductCard = ({ item, navigation }) => {
                         <Text style={styles.textAction}>Details</Text>
                     </View>
 
-                </TouchableWithoutFeedback>
+                </TouchableWithoutFeedback> */}
+
             </View>
 
         </View>

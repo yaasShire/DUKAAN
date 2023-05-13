@@ -3,7 +3,8 @@ const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         backgroundColor: "#FFF",
-        flex: 1
+        flex: 1,
+        padding: 10
     },
     productCardsHolder: {
         justifyContent: "space-between",

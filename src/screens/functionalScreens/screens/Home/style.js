@@ -68,7 +68,8 @@ export default StyleSheet.create({
     CardRightSection: {
         flexDirection: 'row',
         width: "40%",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        alignItems: "center"
     },
     messageNumber: {
         fontWeight: "500",

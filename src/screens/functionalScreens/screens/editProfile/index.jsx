@@ -6,13 +6,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntiDesign from 'react-native-vector-icons/AntDesign';
 import Profile from '../../../../assets/person2.jpg'
 import EditProfileField from '../../../../components/atoms/editProfileField';
-
 import * as ImagePicker from 'expo-image-picker';
 import { Formik } from 'formik';
 import { editProfileValidation } from '../../../../utils/validationSchema/ediProfileValidation';
 import GlobalHeader from '../../../../components/molecules/globalHeader';
 import { AntDesign } from '@expo/vector-icons';
-import AppHeader from '../../../../components/molecules/appHeader';
+import AppHeader from '../../../../components/molecules/header';
 import { globalStyles } from '../../../../globalConstants/styles';
 const EditProfile = ({ navigation }) => {
     const [image, setImage] = useState(null)
@@ -33,14 +32,14 @@ const EditProfile = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <View>
-                <AppHeader title={"Edit Profile"} navigation={navigation} screen="Edit Profile" />
+                <AppHeader title={"Edit Profile"} navigation={navigation} screen="Edit Profile" backButton={true} />
             </View>
             <View style={styles.imageAndButtonWrapper}>
                 <View style={styles.imageWrapper}>
                     {image ? <Image source={{ uri: image }} style={styles.image} /> : <Image source={Profile} style={styles.image} />}
                 </View>
                 <View style={styles.cameraIconWrapper}>
-                    <AntDesign name='camera' size={22} color={globalStyles.colors.white} onPress={pickImage} />
+                    <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />
                 </View>
             </View>
             <ScrollView style={{ flex: 1, }}>

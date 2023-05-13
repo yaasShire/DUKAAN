@@ -6,19 +6,19 @@ export default StyleSheet.create({
         width: "100%",
     },
     image: {
-        width: 70,
-        height: 70,
+        width: 60,
+        height: 60,
         marginRight: "3%"
     },
     contentHolder: {
-        borderBottomColor: globalStyles.colors.primaryGray,
+        borderBottomColor: globalStyles.colors.green,
         borderTopColor: globalStyles.colors.primaryGray,
-        borderBottomWidth: .25,
+        borderBottomWidth: .5,
         borderTopWidth: 1,
         width: "100%",
         paddingVertical: "2%",
         flexDirection: "row",
-        marginVertical: "1%"
+        // marginVertical: "1%"
     },
     productName: {
         fontWeight: "500"
@@ -72,7 +72,9 @@ export default StyleSheet.create({
     actionsHolder: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        flex: 1,
+
     },
     deleteTextHolder: {
         alignItems: "center",
@@ -80,5 +82,11 @@ export default StyleSheet.create({
         marginTop: "1%",
         marginBottom: "1%",
         marginRight: "4%"
-    }
+    },
+    fab: {
+
+        margin: 4,
+        marginHorizontal: 6
+
+    },
 })

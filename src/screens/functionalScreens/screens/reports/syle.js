@@ -1,11 +1,12 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
         zIndex: -1,
-        // height
+        backgroundColor: globalStyles.colors.miniPrimary
     },
     header: {
         flexDirection: "row",
@@ -25,7 +26,8 @@ export default StyleSheet.create({
     },
     insightText: {
         fontSize: 22,
-        fontWeight: "600"
+        fontWeight: "600",
+        color: globalStyles.colors.tertiary
     },
     insightTextHolder: {
         marginTop: "3%",
@@ -40,7 +42,8 @@ export default StyleSheet.create({
     },
     choseShopText: {
         fontSize: 13,
-        fontWeight: "500"
+        fontWeight: "500",
+        color: globalStyles.colors.tertiary
     },
     chooseReportText: {
         fontSize: 13,
@@ -87,12 +90,14 @@ export default StyleSheet.create({
     reportListText: {
         fontWeight: "500",
         fontSize: 16,
-        textAlign: "center"
+        textAlign: "center",
+        color: globalStyles.colors.tertiary
     },
     shopListText: {
         fontWeight: "500",
         fontSize: 16,
-        textAlign: "center"
+        textAlign: "center",
+        color: globalStyles.colors.tertiary
     },
     selectedReportMode: {
         borderColor: "#c5c7c7",
@@ -129,7 +134,7 @@ export default StyleSheet.create({
     },
     description1: {
         fontWeight: "500",
-        color: "blue",
+        color: globalStyles.colors.blue,
         fontSize: 19,
         marginBottom: "1%"
     },
@@ -137,7 +142,8 @@ export default StyleSheet.create({
         fontWeight: "500",
         fontSize: 15,
         marginVertical: "3%",
-        opacity: .5
+        // opacity: .5,
+        color: globalStyles.colors.secondaryGray
     },
     chartHolder: {
         marginTop: "5%",
@@ -163,7 +169,7 @@ export default StyleSheet.create({
         borderRadius: 6,
     },
     downloadText: {
-        color: "#fff",
+        color: globalStyles.colors.miniPrimary,
         fontSize: 19,
         fontWeight: "500",
         marginLeft: "5%"

@@ -10,7 +10,6 @@ import Reports from '../../../screens/functionalScreens/screens/reports'
 import Settings from '../../../screens/functionalScreens/screens/settings'
 import SettingsStack from '../settingsStack'
 import ShopProfile from '../../../screens/functionalScreens/screens/shopProfile'
-// import BottomTabs from '../../bottomTabs'
 const HomeStack = () => {
     const Stack = createNativeStackNavigator()
     return (
@@ -21,8 +20,7 @@ const HomeStack = () => {
             <Stack.Screen name='addShop' component={AddShop} options={{ headerShown: false }} />
             <Stack.Screen name='reports' component={Reports} options={{ headerShown: false }} />
             <Stack.Screen name='shopProfile' component={ShopProfile} options={{ headerShown: false }} />
-            <Stack.Screen name='settings' component={Settings} options={{ headerShown: false }} />
-            <Stack.Screen name='productList' component={ProductsList} options={{ headerShown: false }} />
+            {/* <Stack.Screen name='settings' component={Settings} options={{ headerShown: false }} /> */}
         </Stack.Navigator>
     )
 }

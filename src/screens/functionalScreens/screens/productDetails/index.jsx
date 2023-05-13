@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style'
 import ProductDetailsSubImage from '../../../../components/molecules/productDetailsSubImage';
-import AppHeader from '../../../../components/molecules/appHeader';
 import sProduct1 from '../../../../assets/sProduct1.png'
 import sProduct2 from '../../../../assets/sProduct2.png'
 import sProduct3 from '../../../../assets/sProduct3.png'
@@ -12,6 +11,7 @@ import sProduct4 from '../../../../assets/sProduct4.png'
 import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
 import sProduct7 from '../../../../assets/sProduct7.png'
+import AppHeader from '../../../../components/molecules/header';
 const ProductDetails = ({ route, navigation }) => {
     const [selectedImage, setselectedImage] = useState({
         id: route.params.data.id,
@@ -51,7 +51,7 @@ const ProductDetails = ({ route, navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : "dark-content"} />
-            <AppHeader title={"Product Details"} navigation={navigation} color="#000" />
+            <AppHeader title={"Product Details"} navigation={navigation} color="#000" backButton={true} />
             <ScrollView style={styles.miniScrollHolder}>
                 <View style={styles.contentHolder}>
                     <Text numberOfLines={2} style={styles.productName} >{route.params.data.productName}</Text>

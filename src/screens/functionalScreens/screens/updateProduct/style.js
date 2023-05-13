@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15
+        padding: 15,
+        backgroundColor: globalStyles.colors.miniPrimary
     },
     header: {
         flexDirection: "row",

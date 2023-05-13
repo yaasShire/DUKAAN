@@ -4,7 +4,6 @@ export default StyleSheet.create({
         backgroundColor: '#EDEFF1',
         flex: 1,
         // padding: '10%'
-        marginBottom: '3%'
     },
     image: {
         width: 300,
@@ -66,7 +65,8 @@ export default StyleSheet.create({
     loginHolder: {
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: "3%"
     },
     textLogin1: {
         opacity: 0.5,

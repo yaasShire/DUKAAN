@@ -5,11 +5,12 @@ import Completed from '../../../screens/functionalScreens/screens/completed';
 import AssignDelivery from '../../../screens/functionalScreens/screens/assignDelivery';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../../../components/atoms/header';
+import AppHeader from '../../../components/molecules/header';
 const Tab = createMaterialTopTabNavigator();
 export default function OrderTopTabsStack({ navigation }) {
     return (
         <>
-            <Header navigation={navigation} />
+            <AppHeader navigation={navigation} menu={true} />
             <Tab.Navigator
                 initialRouteName="newOrders"
                 screenOptions={{

@@ -27,7 +27,7 @@ export default function BottomTabs({ navigation }) {
             screenOptions={{
                 tabBarActiveTintColor: '#FF8B03',
                 tabBarLabelStyle: { fontSize: 11, fontWeight: '500', },
-                tabBarStyle: { height: Platform.OS == 'android' ? 60 : 85, },
+                tabBarStyle: { height: Platform.OS == 'android' ? 50 : 85, },
             }}
         >
             <Tab.Screen

@@ -1,9 +1,11 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15
+        padding: 15,
+        backgroundColor: globalStyles.colors.miniPrimary
     },
     fieldsHolder: {
         paddingVertical: "10%",
@@ -35,7 +37,7 @@ export default StyleSheet.create({
         marginTop: "6%"
     },
     updateButton: {
-        backgroundColor: "#3983e1",
+        backgroundColor: globalStyles.colors.blue,
         width: "100%",
         height: height / 17,
         justifyContent: "center",
@@ -44,12 +46,12 @@ export default StyleSheet.create({
         marginBottom: "4%"
     },
     updateButtonText: {
-        color: "#fff",
+        color: globalStyles.colors.miniPrimary,
         fontSize: 18,
         fontWeight: "600"
     },
     cancelButton: {
-        backgroundColor: "#dbdad9",
+        backgroundColor: globalStyles.colors.primaryGray,
         width: "100%",
         height: height / 17,
         justifyContent: "center",
@@ -57,7 +59,7 @@ export default StyleSheet.create({
         borderRadius: 7
     },
     cancelButtonText: {
-        color: "#000",
+        color: globalStyles.colors.miniPrimary,
         fontSize: 18,
         fontWeight: "600"
     },
@@ -65,7 +67,7 @@ export default StyleSheet.create({
         marginTop: "3%"
     },
     forgotPasswordText: {
-        color: "blue",
+        color: globalStyles.colors.blue,
         fontSize: 17,
     }
 })

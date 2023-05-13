@@ -8,11 +8,12 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik';
 import { changePasswordValidation } from '../../../../utils/validationSchema/changePasswordValidation'
 import ChanePasswordField from '../../../../components/atoms/changePasswordField';
+import AppHeader from '../../../../components/molecules/header';
 const ChangePassword = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <GlobalHeader label={"Change Password"} navigation={navigation} />
+            <AppHeader title={"Change Password"} navigation={navigation} backButton={true} />
             <ScrollView style={styles.fieldsHolder} contentContainerStyle={{ rowGap: 20 }}>
                 <Formik
                     validationSchema={changePasswordValidation}

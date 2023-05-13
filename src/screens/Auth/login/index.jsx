@@ -1,5 +1,5 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, StatusBar } from 'react-native'
-import React from 'react'
+import { View, Image, ScrollView, TouchableOpacity, StatusBar } from 'react-native'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
 import signUpImage from '../../../assets/signupImage.png'
@@ -10,9 +10,39 @@ import googleImage from '../../../assets/google.png'
 import facebookImage from '../../../assets/facebook.png'
 import { Formik } from 'formik'
 import { loginValidationSchema } from '../../../utils/validationSchema/loginValidationSchema'
+import useFetch from '../../../api/signup'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { ActivityIndicator } from 'react-native-paper'
+import { Dialog, Portal, Text } from 'react-native-paper';
 const Login = ({ navigation }) => {
-    const handleSignIn = () => {
-        navigation.navigate('bottomTabs')
+    const [visible, setVisible] = React.useState(false);
+
+    const hideDialog = () => setVisible(false);
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState("")
+    const [data, setData] = useState({})
+    const [showError, setShowError] = useState(false)
+    const handleSignIn = async (values) => {
+        setIsLoading(true)
+        setError("")
+        const { email, password } = values
+        const loginData = new FormData()
+        loginData.append("email", email)
+        loginData.append("password", password)
+        const result = await useFetch(loginData, setError, setIsLoading, 'seller/user/signin')
+        console.warn(result);
+        if (result) {
+            // await AsyncStorage.setItem("user", result)
+            navigation.navigate('bottomTabs')
+        }
+        else if (result == 'undefined') {
+            setShowError(true)
+        }
+
+
+        setTimeout(() => {
+            setError("")
+        }, 2000)
     }
     return (
         <>
@@ -31,16 +61,36 @@ const Login = ({ navigation }) => {
                 <View style={styles.imageHolder}>
                     <Image source={signUpImage} style={styles.image} />
                 </View>
+                {
+                    isLoading && (
+                        <View>
+                            <Portal >
+                                <Dialog style={{ height: 150, justifyContent: "center" }} visible={isLoading} onDismiss={hideDialog}>
+                                    <Dialog.Title style={styles.title}>Loading...</Dialog.Title>
+                                    <ActivityIndicator size={"large"} color='green' />
+                                </Dialog>
+                            </Portal>
+                        </View>
+                    )
+                }
+                {error && (
+                    <View style={styles.messageTextHolder}>
+                        <View style={styles.subMessageWrapper}>
+                            <Text style={styles.messageText}>unauthorized</Text>
+                        </View>
+                    </View>
+                )}
                 <Formik
-                    initialValues={{ phoneNumber: "", password: "" }}
+                    initialValues={{ email: "", password: "" }}
                     validationSchema={loginValidationSchema}
-                    onSubmit={handleSignIn}
+                    onSubmit={(values) => handleSignIn(values)}
                 >
                     {
                         ({ errors, touched, setFieldTouched, handleBlur, handleChange, handleSubmit, values }) => (
                             <>
                                 <View style={styles.fieldsHolder}>
-                                    <TextField title="Phone Number" name="phoneNumber" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                    {/* <TextField title="Phone Number" name="phoneNumber" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} /> */}
+                                    <TextField title="email" name="email" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                     <TextField title="Password" name="password" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                 </View>
                                 <View>
@@ -49,7 +99,13 @@ const Login = ({ navigation }) => {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.buttonHolder}>
-                                    <AuthButton title='Login' handleSubmit={handleSubmit} />
+                                    <AuthButton isLoading={isLoading} title='Login' handleSubmit={() => handleSubmit(values)} />
+                                </View>
+                                <View style={styles.signupLinkWrapper}>
+                                    <TouchableOpacity style={styles.newAccount} onPress={() => navigation.navigate("signup")}>
+                                        <Text style={styles.accountCreation}>Don't have account?</Text>
+                                        <Text style={styles.signUpLink}>Sign up</Text>
+                                    </TouchableOpacity>
                                 </View>
                             </>
                         )

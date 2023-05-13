@@ -33,7 +33,7 @@ const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='drawer'>
+            <Stack.Navigator initialRouteName='login'>
                 <Stack.Screen name='drawer' component={DrawerComponent} options={{ headerShown: false }} />
                 <Stack.Screen name='addShopFirstTime' component={AddShopFirstTime} options={{ headerShown: false }} />
                 <Stack.Screen name='onboarding' component={OnboardingC} options={{ headerShown: false }} />
@@ -44,14 +44,8 @@ const StackNavigator = () => {
                 <Stack.Screen name='newPassword' component={NewPassword} options={{ headerShown: false }} />
                 <Stack.Screen name='success' component={Success} options={{ headerShown: false }} />
                 <Stack.Screen name='bottomTabs' component={BottomTabs} options={{ headerShown: false }} />
-                <Stack.Screen name='viewOrder' component={ViewOrder} options={{ headerShown: false }} />
-                <Stack.Screen name='addProduct' component={AddProduct} options={{ headerShown: false }} />
-                <Stack.Screen name='mainFilter' component={MainFilter} options={{ headerShown: false }} />
-                <Stack.Screen name='shops' component={Shops} options={{ headerShown: false }} />
-                <Stack.Screen name='addShop' component={AddShop} options={{ headerShown: false }} />
                 <Stack.Screen name='editProfile' component={EditProfile} options={{ headerShown: false }} />
                 <Stack.Screen name='updateShopDetails' component={UpdateShopDetails} options={{ headerShown: false }} />
-                <Stack.Screen name='updateShopImages' component={ShopImagesUpdate} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

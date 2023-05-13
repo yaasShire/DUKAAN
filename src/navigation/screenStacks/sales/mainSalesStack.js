@@ -6,11 +6,12 @@ import UpdateProduct from '../../../screens/functionalScreens/screens/updateProd
 import SalesTabs from '.'
 import ProductDetails from '../../../screens/functionalScreens/screens/productDetails'
 import Header from '../../../components/atoms/header'
+import AppHeader from '../../../components/molecules/header'
 const MainSalesStack = ({ navigation }) => {
     const Stack = createNativeStackNavigator()
     return (
         <>
-            <Header navigation={navigation} />
+            <AppHeader navigation={navigation} menu />
 
             <Stack.Navigator>
                 <Stack.Screen name='salesTabs' component={SalesTabs} options={{ headerShown: false }} />

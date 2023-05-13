@@ -7,7 +7,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import sProduct1 from '../../../../assets/sProduct1.png'
 import PricingSectionCard from '../../../../components/molecules/pricingSectionCard';
 import InventorySectionCard from '../../../../components/molecules/inventorySectionCard';
-import AppHeader from '../../../../components/molecules/appHeader';
+import AppHeader from '../../../../components/molecules/header';
 const UpdateProduct = ({ navigation, route }) => {
     const [id, setId] = useState(1)
     const tabs = [
@@ -32,7 +32,7 @@ const UpdateProduct = ({ navigation, route }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <AppHeader title={"Mange Inventory"} navigation={navigation} color={"#000"} />
+            <AppHeader title={"Mange Inventory"} navigation={navigation} color={"#000"} backButton={true} />
             <View style={styles.productHolder}>
                 <Image source={route.params.data.image} style={styles.image} />
                 <View>

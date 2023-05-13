@@ -14,12 +14,10 @@ export default StyleSheet.create({
         opacity: 0.4
     },
     input: {
-        // backgroundColor: "gray",
         borderBottomColor: "#bfbcbb",
         borderBottomWidth: 1,
         height: 40,
         width: "90%",
-        color: globalStyles.colors.tertiary
     },
     errorText: {
         color: "red"

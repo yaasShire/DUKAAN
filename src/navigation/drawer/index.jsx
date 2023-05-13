@@ -16,9 +16,11 @@ import MainSalesStack from '../screenStacks/sales/mainSalesStack';
 import ProductsStack from '../screenStacks/productsStack';
 import SettingsStack from '../screenStacks/settingsStack';
 import Header from '../../components/atoms/header';
+import { Drawer } from 'react-native-paper';
 const RightDrawer = createDrawerNavigator();
 const RightDrawerScreen = () => {
     function CustomDrawerContent(props) {
+        const [active, setActive] = React.useState('');
         return (
             <DrawerContentScrollView {...props}>
                 <DrawerItemList {...props} />

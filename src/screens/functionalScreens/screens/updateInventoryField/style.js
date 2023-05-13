@@ -1,9 +1,11 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15
+        padding: 15,
+        backgroundColor: globalStyles.colors.miniPrimary
     },
 
     header: {
@@ -34,7 +36,7 @@ export default StyleSheet.create({
     input: {
         borderWidth: 1,
         width: "100%",
-        height: 55,
+        height: 60,
         paddingHorizontal: 15,
         borderRadius: 6,
         fontSize: 15,
@@ -46,7 +48,8 @@ export default StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: "500",
-        marginBottom: "2%"
+        marginBottom: "2%",
+        color: globalStyles.colors.tertiary
     },
     buttonHolder: {
         alignItems: "center",
@@ -54,15 +57,18 @@ export default StyleSheet.create({
         width: width / 1.1,
     },
     button: {
-        backgroundColor: "green",
+        backgroundColor: globalStyles.colors.logoColor,
         width: width / 1.1,
-        height: 50,
-        borderRadius: 8,
+        height: 60,
+        borderRadius: 5,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        borderWidth: .5,
+        borderColor: globalStyles.colors.primaryGray
     },
     buttonText: {
-        fontSize: 16,
-        color: "#fff"
+        fontSize: globalStyles.fontSizes.secondary,
+        color: globalStyles.colors.miniPrimary,
+        fontWeight: globalStyles.fontWeights.secondary
     }
 })

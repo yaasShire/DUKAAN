@@ -19,6 +19,8 @@ import sProduct6 from '../../../../assets/sProduct6.png'
 import sProduct7 from '../../../../assets/sProduct7.png'
 import HomeScreenReport from '../../../../components/molecules/homeScreenReport'
 import { globalStyles } from '../../../../globalConstants/styles'
+import AppHeader from '../../../../components/molecules/header'
+import { Badge } from 'react-native-paper'
 const Home = ({ navigation }) => {
     const orders = [
         {
@@ -138,7 +140,8 @@ const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? "light-content" : "dark-content"} />
-            <Header navigation={navigation} />
+            {/* <Header navigation={navigation} /> */}
+            <AppHeader navigation={navigation} menu={false} menu={true} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
                 {/* reports */}
                 <View style={styles.reportHolder}>
@@ -165,9 +168,7 @@ const Home = ({ navigation }) => {
                             <Text style={styles.actionName}>Messages</Text>
                         </View>
                         <View style={styles.CardRightSection}>
-                            <View style={styles.messagCountWrapper}>
-                                <Text style={styles.messageNumber}>15</Text>
-                            </View>
+                            <Badge size={25}  >12</Badge>
                             <Feather name='chevron-right' size={25} color={globalStyles.colors.primaryGray} />
                         </View>
                     </TouchableOpacity>

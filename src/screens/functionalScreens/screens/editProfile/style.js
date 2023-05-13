@@ -1,9 +1,11 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         padding: 15,
-        height
+        height,
+        backgroundColor: globalStyles.colors.miniPrimary
     },
     topHeader: {
         flexDirection: "row",

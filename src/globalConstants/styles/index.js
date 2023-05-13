@@ -11,7 +11,6 @@ const fontWeights = {
     secondary: 500,
     tertiary: 600
 };
-
 const colors = {
     primaryGray: "#c5c7c6",
     secondaryGray: "#8d8f8e",

@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, StatusBar, FlatList } from 'react-native'
 import React from 'react'
 import styles from './style'
 import ProductSalesCard from '../../../../components/molecules/salesProductCard'
@@ -9,6 +9,9 @@ import sProduct4 from '../../../../assets/sProduct4.png'
 import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
 import ProductCard from '../../../../components/molecules/productCard'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import AppHeader from '../../../../components/molecules/header'
+import Filter from '../../../../components/molecules/filter'
 const TopSales = ({ navigation }) => {
   const data = [
     {
@@ -79,13 +82,21 @@ const TopSales = ({ navigation }) => {
     },
   ]
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ rowGap: 0 }} showsVerticalScrollIndicator={false} >
-      {
-        data.map(item => (
-          <ProductSalesCard item={item} navigation={navigation} key={item.id} />
-        )
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle={'light-content'} />
+      {/* <AppHeader showAddButton={true} navigation={navigation} menu={true} addproductButton={true} /> */}
+      {/*filter  */}
+
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ rowGap: 10, }}
+        data={data}
+        renderItem={({ item }) => (
+          <ProductCard key={item.id} item={item} navigation={navigation} />
         )}
-    </ScrollView>
+      />
+
+    </SafeAreaView>
   )
 }
 

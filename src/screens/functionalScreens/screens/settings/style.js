@@ -18,6 +18,7 @@ export default StyleSheet.create({
     settingText: {
         fontSize: globalStyles.fontSizes.secondary,
         fontWeight: globalStyles.fontWeights.tertiary,
+        colors: globalStyles.colors.tertiary
 
     },
     iconBack: {

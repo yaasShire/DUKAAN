@@ -2,13 +2,13 @@ import { View, Text, StatusBar, TextInput, Platform, TouchableOpacity, Touchable
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import Feather from 'react-native-vector-icons/Feather';
-import AppHeader from '../../../../components/molecules/appHeader';
+import AppHeader from '../../../../components/molecules/header';
 import styles from './style'
 const UpdateInventoryField = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'ios' ? 'dark-content' : 'light-content'} />
-            <AppHeader title={"Update Product Details"} navigation={navigation} color={"#000"} />
+            <AppHeader title={"Update Product Details"} navigation={navigation} color={"#000"} backButton={true} />
             <View style={styles.contentHolder}>
                 <View style={styles.inputLableHolder}>
                     <Text style={styles.label}>Price</Text>
@@ -16,7 +16,7 @@ const UpdateInventoryField = ({ navigation }) => {
                 </View>
                 <View style={styles.buttonHolder}>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-                        <Text style={styles.buttonText}>Update</Text>
+                        <Text style={styles.buttonText}>UPDATE</Text>
                     </TouchableOpacity>
                 </View>
 

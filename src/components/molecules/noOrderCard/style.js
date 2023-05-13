@@ -8,7 +8,6 @@ export default StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         borderRadius: 8,
-        marginBottom: "10%"
     },
     image: {
         width: 140,

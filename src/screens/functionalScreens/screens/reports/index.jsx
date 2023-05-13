@@ -3,8 +3,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Feather from 'react-native-vector-icons/Feather';
 import React, { useState } from 'react'
 import styles from './syle'
-import AppHeader from '../../../../components/molecules/appHeader';
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart'
+import AppHeader from '../../../../components/molecules/header';
 import {
     LineChart,
     BarChart,
@@ -13,6 +13,7 @@ import {
     ContributionGraph,
     StackedBarChart,
 } from 'react-native-chart-kit';
+import { globalStyles } from '../../../../globalConstants/styles';
 const Reports = ({ navigation }) => {
     const [selectedReport, setSelectedReport] = useState({
         id: 1,
@@ -83,7 +84,7 @@ const Reports = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <AppHeader title="Reports" navigation={navigation} color="#000" />
+            <AppHeader title="Reports" navigation={navigation} color="#000" backButton={true} />
             <ScrollView showsVerticalScrollIndicator={false} style={{ height: Dimensions.get("window").height }}>
 
                 <View style={styles.insightTextHolder}>
@@ -200,7 +201,7 @@ const Reports = ({ navigation }) => {
                 </View>
                 <View style={styles.buttonHolder}>
                     <TouchableOpacity style={styles.downloadButton}>
-                        <Feather name='download' size={25} color="#fff" />
+                        <Feather name='download' size={25} color={globalStyles.colors.miniPrimary} />
                         <Text style={styles.downloadText}>Download Report</Text>
                     </TouchableOpacity>
                 </View>
