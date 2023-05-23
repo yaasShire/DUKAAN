@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions } from 'react-native'
+import { View, Text, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions, SafeAreaView as RNSafeArea, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import Feather from 'react-native-vector-icons/Feather';
@@ -12,130 +12,172 @@ import sProduct5 from '../../../../assets/sProduct5.png'
 import sProduct6 from '../../../../assets/sProduct6.png'
 import sProduct7 from '../../../../assets/sProduct7.png'
 import AppHeader from '../../../../components/molecules/header';
+import { Carousel } from "react-native-ui-lib/src/components/carousel";
+import Header from '../../../../components/atoms/header';
+import { FAB } from 'react-native-paper';
 const ProductDetails = ({ route, navigation }) => {
     const [selectedImage, setselectedImage] = useState({
         id: route.params.data.id,
         image: route.params.data.image
     })
+    const IMAGES = [
+
+        require('../../../../assets/images/mechanic1.jpg'),
+        require('../../../../assets/images/mechanic2.jpg'),
+        require('../../../../assets/images/mechanic3.jpg'),
+        require('../../../../assets/images/mechanic4.jpg'),
+    ]
     data = [
         {
             id: 1,
-            image: sProduct1,
+            image: require('../../../../assets/images/mechanic1.jpg'),
         },
         {
             id: 2,
-            image: sProduct2,
+            image: require('../../../../assets/images/mechanic1.jpg'),
         },
         {
             id: 3,
-            image: sProduct3,
+            image: require('../../../../assets/images/mechanic2.jpg'),
         },
         {
             id: 4,
-            image: sProduct4,
+            image: require('../../../../assets/images/mechanic3.jpg'),
         },
         {
             id: 5,
-            image: sProduct5,
+            image: require('../../../../assets/images/mechanic4.jpg'),
         },
         {
             id: 6,
-            image: sProduct6,
+            image: require('../../../../assets/images/mechanic3.jpg'),
         },
         {
             id: 7,
-            image: sProduct7,
+            image: require('../../../../assets/images/mechanic2.jpg'),
+        },
+    ]
+
+    const brands = [
+        {
+            id: 1,
+            name: 'Ferrari',
+            image: require('../../../../assets/ferrari.png'),
+        },
+        {
+            id: 2,
+            name: 'Honda',
+            image: require('../../../../assets/honda.png'),
+        },
+        {
+            id: 3,
+            name: 'lambo',
+            image: require('../../../../assets/lambo.png'),
+        },
+        {
+            id: 4,
+            name: 'BMW',
+            image: require('../../../../assets/bmw.png'),
         },
     ]
     const { width, height } = new Dimensions.get("window")
+    console.warn(route.params);
     return (
-        <SafeAreaView style={styles.container}>
-            <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : "dark-content"} />
-            <AppHeader title={"Product Details"} navigation={navigation} color="#000" backButton={true} />
-            <ScrollView style={styles.miniScrollHolder}>
-                <View style={styles.contentHolder}>
-                    <Text numberOfLines={2} style={styles.productName} >{route.params.data.productName}</Text>
-                    <View style={styles.stockHolder}>
-                        <Text numberOfLines={2} style={styles.stockQuantity}>#{route.params.data.inStock}</Text>
-                        <Text style={styles.stockText}>in stock</Text>
+        <View style={styles.container}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <StatusBar barStyle='light-content' />
+                {/* <Header /> */}
+                <View>
+                    <View style={{ height: 350, width: "100%", }}>
+                        <Carousel
+                            autoplay={true}
+                            loop={true}
+                            showCounter={Platform.OS == 'android' ? true : false}
+                            pageControlPosition='over'
+                            style={{}}>
+                            {
+                                IMAGES.map(image => (
+                                    <Image key={image} source={image} style={{ width: "100%", resizeMode: "stretch", height: "100%" }} />
+                                ))
+                            }
+                        </Carousel>
+                    </View>
+                    <View style={styles.bottomSection}>
+                        <View>
+                            <View style={{ alignItems: "flex-end", paddingVertical: "3%" }}>
+                                <FAB
+                                    icon="pen"
+                                    style={styles.fab}
+                                    onPress={() => navigation.navigate("updateProduct", { data: route.params.data })}
 
-                    </View>
-                    <View style={styles.salesHolder}>
-                        <Text style={styles.salesQuantity}>#{route.params.data.inSales}</Text>
-                        <Text style={styles.salesText}>in Sales</Text>
-                    </View>
-                </View>
-                <View style={styles.mainImageHolder}>
-                    <View style={styles.imageHolder}>
-                        <Image source={selectedImage.image} style={styles.image} />
-                    </View>
-                </View>
-                <View style={styles.divider} />
-                <View style={styles.productScrollHolder}>
-                    <ScrollView style={styles.mainSubImagesHolder} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 10 }} >
-                        {
-                            data.map(item => (
-                                <ProductDetailsSubImage key={item.id} data={item} selectedImage={selectedImage} setselectedImage={setselectedImage} />
-                            ))
-
-                        }
-                    </ScrollView>
-
-                </View>
-                <View style={styles.divider} />
-                <View style={styles.moneyTitleHolder}>
-                    <Text style={styles.moneyTitle}>Money Section</Text>
-                </View>
-                <View style={styles.moneySection}>
-                    <View style={styles.moneyTitleWrapper}>
-                        <Text style={styles.moneyQuantity}>${route.params.data.price}</Text>
-                        <Text style={styles.moneyText}>Price</Text>
-                    </View>
-                    <View>
-                        <Text style={styles.operator}>+</Text>
-                    </View>
-                    <View style={styles.moneyTitleWrapper}>
-                        <Text style={styles.moneyQuantity}>${route.params.data.shipping}</Text>
-                        <Text style={styles.moneyText}>Shipping</Text>
-                    </View>
-                    <View>
-                        <Text style={styles.operator}>-</Text>
-                    </View>
-                    <View style={styles.moneyTitleWrapper}>
-                        <Text style={styles.moneyQuantity}>$0.566</Text>
-                        <Text style={styles.moneyText}>Transaction fee</Text>
-                    </View>
-                    <View>
-                        <Text style={styles.operator}>=</Text>
-                    </View>
-                    <View style={styles.moneyTitleWrapper}>
-                        <Text style={styles.moneyQuantity}>$23.5</Text>
-                        <Text style={styles.moneyText}>Gross proceeds</Text>
-                    </View>
-                </View>
-                <View style={styles.featuresDetailsHolder}>
-                    <View >
-                        <Text style={styles.featureDetailsText}>Features & Details</Text>
-                    </View>
-                    <View style={styles.features}>
-                        <View style={styles.singleFeatureHolder}>
-                            <View style={styles.dotCircle} />
-                            <Text style={styles.featureText}>Rich of gasoline</Text>
+                                />
+                            </View>
+                            <View style={styles.namePriceSection}>
+                                <Text style={styles.name}>Car Engine Oil</Text>
+                                <View style={styles.priceValueWrapper}>
+                                    <Text style={styles.priceTile}>price</Text>
+                                    <Text style={styles.priceValue}>$150</Text>
+                                </View>
+                            </View>
                         </View>
-                        <View style={styles.singleFeatureHolder}>
-                            <View style={styles.dotCircle} />
-                            <Text style={styles.featureText}>Fast speed mottor</Text>
+                        <View style={styles.brandsWrapper}>
+                            <Text style={styles.availableBrandsText}>Available Brands</Text>
+                            <FlatList
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                                contentContainerStyle={styles.flatListStyle}
+                                data={brands}
+                                renderItem={({ item }) => (
+                                    <View style={styles.brandWrapper}>
+                                        <Image source={item.image} style={styles.brandImage} />
+                                    </View>
+                                )}
+                            />
                         </View>
-                        <View style={styles.singleFeatureHolder}>
-                            <View style={styles.dotCircle} />
-                            <Text style={styles.featureText}>Car lifespan increases</Text>
+                        <View style={styles.totalSalesWrapper}>
+                            <Text style={styles.sectionLabel}>Total Sales</Text>
+                            <Text style={styles.totalSalesValue}>$500</Text>
                         </View>
+                        <View style={styles.infoCardsWrapper}>
+                            <View style={styles.infoCard}>
+                                <View style={styles.rowContent}>
+                                    <View style={styles.dotTextValueWrapper}>
+                                        <View style={styles.dot} />
+                                        <Text style={styles.textTitle}>Stock</Text>
+                                    </View>
+                                    <Text style={styles.valueText}>200</Text>
+                                </View>
+                                <View style={styles.rowContent}>
+                                    <View style={styles.dotTextValueWrapper}>
+                                        <View style={styles.dot} />
+                                        <Text style={styles.textTitle}>Sales</Text>
+                                    </View>
+                                    <Text style={styles.valueText}>200</Text>
+                                </View>
+                            </View>
+                            <View style={styles.detailsSection}>
+                                <Text style={styles.sectionLabel}>Product Details</Text>
+                                <View style={styles.infoCard}>
+                                    <View style={styles.rowDetailContent}>
+                                        <View style={styles.dot} />
+                                        <Text style={styles.textTitle}>This product is focused on the engine of the card.</Text>
+                                    </View>
+                                    <View style={styles.rowDetailContent}>
+                                        <View style={styles.dot} />
+                                        <Text style={styles.textTitle}>Takes car of your car nicely on the long run.</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+
+
                     </View>
                 </View>
-
 
             </ScrollView>
-        </SafeAreaView>
+
+        </View>
+
     )
 }
 

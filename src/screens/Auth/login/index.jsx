@@ -10,10 +10,11 @@ import googleImage from '../../../assets/google.png'
 import facebookImage from '../../../assets/facebook.png'
 import { Formik } from 'formik'
 import { loginValidationSchema } from '../../../utils/validationSchema/loginValidationSchema'
-import useFetch from '../../../api/signup'
+import useFetch from '../../../api/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator } from 'react-native-paper'
 import { Dialog, Portal, Text } from 'react-native-paper';
+import { formDataGenerator } from '../../../utils/utilityFunctions'
 const Login = ({ navigation }) => {
     const [visible, setVisible] = React.useState(false);
 
@@ -25,25 +26,22 @@ const Login = ({ navigation }) => {
     const handleSignIn = async (values) => {
         setIsLoading(true)
         setError("")
-        const { email, password } = values
-        const loginData = new FormData()
-        loginData.append("email", email)
-        loginData.append("password", password)
-        const result = await useFetch(loginData, setError, setIsLoading, 'seller/user/signin')
+        const data = formDataGenerator(values)
+        const result = await useFetch(data, setError, setIsLoading, 'seller/user/signin')
         console.warn(result);
         if (result) {
             // await AsyncStorage.setItem("user", result)
-            navigation.navigate('bottomTabs')
+            // navigation.navigate('bottomTabs')
         }
-        else if (result == 'undefined') {
+        else if (result?.message) {
             setShowError(true)
+            setError(result.message)
         }
-
-
         setTimeout(() => {
             setError("")
         }, 2000)
     }
+   
     return (
         <>
             <StatusBar barStyle="white-content" />
@@ -54,8 +52,8 @@ const Login = ({ navigation }) => {
                         <Text style={styles.title2}>MECHANICS</Text>
                     </View>
                     <View>
-                        <Text style={styles.description}>Welcome back you've </Text>
-                        <Text style={styles.description}> been missed.</Text>
+                        <Text style={styles.description}>Access your account </Text>
+                        <Text style={styles.description}> easily by login.</Text>
                     </View>
                 </View>
                 <View style={styles.imageHolder}>
@@ -73,10 +71,10 @@ const Login = ({ navigation }) => {
                         </View>
                     )
                 }
-                {error && (
+                {showError && (
                     <View style={styles.messageTextHolder}>
                         <View style={styles.subMessageWrapper}>
-                            <Text style={styles.messageText}>unauthorized</Text>
+                            <Text style={styles.messageText}>{error}</Text>
                         </View>
                     </View>
                 )}

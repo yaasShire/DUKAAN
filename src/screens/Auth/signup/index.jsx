@@ -13,8 +13,11 @@ import bannerImage from '../../../assets/signup.png'
 import { signupValidationSchema } from '../../../utils/validationSchema/signUpValidationSchema'
 import { Formik } from 'formik'
 import TextFieldC from '../../../components/atoms/textInput'
-import useFetch from '../../../api/signup'
+import useFetch from '../../../api/auth'
 import { openInbox } from 'react-native-email-link'
+import Feather from 'react-native-vector-icons/Feather';
+import { formDataGenerator } from '../../../utils/utilityFunctions';
+
 const SignUp = ({ navigation }) => {
     const [visible, setVisible] = React.useState(false);
     const showDialog = () => setVisible(true);
@@ -24,24 +27,26 @@ const SignUp = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
-    // setTimeout(() => {
-    //     setIsLoading(false)
-    // }, 2000)
+    setTimeout(() => {
+        setIsLoading(false)
+    }, 2000)
     const handleSignUp = async (values) => {
         setData(null)
         setIsLoading(true)
         showDialog()
-
-        // !isLoading && navigation.navigate('bottomTabs')
-        const { name, phone_number, email, password } = values
-        const userData = new FormData()
-        userData.append("name", name)
-        userData.append("email", email)
-        userData.append("phone_number", phone_number)
-        userData.append("password", password)
-        const result = await useFetch(userData, setError, setIsLoading, 'seller/user/signup')
+        setError(null)
+        const data = formDataGenerator(values)
+        const result = await useFetch(data, setError, setIsLoading, 'seller/user/signup')
         setData(result?.status)
-        console.warn(result)
+
+        // console.warn(result)
+        if (result?.email) {
+            setError(result?.email[0])
+        }
+        setTimeout(() => {
+            result?.email[0] ? '' :
+                !isLoading && navigation.navigate('bottomTabs')
+        }, 1500)
     }
     return (
         <>
@@ -50,22 +55,34 @@ const SignUp = ({ navigation }) => {
                     <Portal>
                         <Dialog visible={visible} onDismiss={hideDialog} style={{ height: 250 }}>
                             <View style={{ padding: "3%" }}>
-                                <Dialog.Title style={{ textAlign: "center", fontSize: 20, fontWeight: "500" }}>{data ? data : error}</Dialog.Title>
+
+
+                                {error && <Dialog.Icon icon="alert" color='red' size={40} />}
+                                {data &&
+                                    (<View style={{ justifyContent: "center", alignItems: "center" }}>
+                                        <View style={{ backgroundColor: "green", width: 80, height: 80, justifyContent: "center", alignItems: "center", borderRadius: 100 }}>
+                                            <Feather name='check' size={40} color={"#fff"} />
+                                        </View>
+                                    </View>
+                                    )
+                                }
+                                <Dialog.Title style={{ textAlign: "center", fontSize: 20, fontWeight: "600", textTransform: "capitalize" }}>{data ? data : error}</Dialog.Title>
                                 <Dialog.Content>
                                     {
                                         isLoading && <ActivityIndicator size="large" color="#00ff00" />
                                     }
                                 </Dialog.Content>
-                                {
-                                    !isLoading && (
-                                        <View>
-                                            <Button icon="email" mode="contained" onPress={() => openInbox({ message: "Whatcha wanna do?", cancelLabel: "Go back!" })} >Check your mail to verify</Button>
 
-                                        </View>
-
-                                    )
-                                }
                                 <View>
+                                    {/* {
+                                        (!isLoading && data) && (
+                                            <View>
+                                                <Button icon="email" mode="contained" onPress={() => openInbox({ message: "Whatcha wanna do?", cancelLabel: "Go back!" })} >Check your mail to verify</Button>
+
+                                            </View>
+
+                                        )
+                                    } */}
 
                                 </View>
                             </View>
@@ -76,7 +93,7 @@ const SignUp = ({ navigation }) => {
             <StatusBar barStyle="dark-white" />
             <ScrollView style={styles.container}>
                 <View style={styles.titlesHolder}>
-                    <View >
+                    <View style={styles.uperText} >
                         <Text style={styles.title1}>welcome to</Text>
                         <Text style={styles.title2}>MECHANICS</Text>
                     </View>

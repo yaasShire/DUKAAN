@@ -54,7 +54,7 @@ const AddShop = ({ navigation }) => {
                 customStyles={customStyles}
                 currentPosition={currentPosition}
                 labels={labels}
-                onPress={handlePosition}
+            // onPress={handlePosition}
             />
             <View style={styles.contentHolder}>
                 {tabs.get(currentPosition)}

@@ -22,7 +22,7 @@ const ProductsList = ({ navigation }) => {
             productName: "Gasoline car oil ",
             Qty: 200,
             price: 500,
-            image: sProduct1,
+            image: require('../../../../assets/images/mechanic1.jpg'),
             numberOfSales: 500,
             inStock: 1200,
             shipping: 2
@@ -32,7 +32,7 @@ const ProductsList = ({ navigation }) => {
             productName: "Car Oil Super natural",
             Qty: 300,
             price: 400,
-            image: sProduct2,
+            image: require('../../../../assets/images/mechanic2.jpg'),
             numberOfSales: 900,
             inStock: 1300,
             shipping: 4
@@ -43,7 +43,7 @@ const ProductsList = ({ navigation }) => {
             productName: "Side View Mirror",
             Qty: 900,
             price: 700,
-            image: sProduct3,
+            image: require('../../../../assets/images/mechanic3.jpg'),
             numberOfSales: 800,
             inStock: 100,
             shipping: 3
@@ -53,7 +53,7 @@ const ProductsList = ({ navigation }) => {
             productName: "Gamber",
             Qty: 800,
             price: 900,
-            image: sProduct4,
+            image: require('../../../../assets/images/mechanic4.jpg'),
             numberOfSales: 1500,
             inStock: 1500,
             shipping: 6
@@ -63,31 +63,12 @@ const ProductsList = ({ navigation }) => {
             productName: "Air conditioner",
             Qty: 350,
             price: 1000,
-            image: sProduct5,
+            image: require('../../../../assets/images/mechanic3.jpg'),
             numberOfSales: 200,
             inStock: 9000,
             shipping: 9
         },
-        {
-            id: 6,
-            productName: "Motor Cleaner",
-            Qty: 350,
-            price: 1000,
-            image: sProduct6,
-            numberOfSales: 50,
-            inStock: 1600,
-            shipping: 7
-        },
-        {
-            id: 7,
-            productName: "Oil For Motor",
-            Qty: 350,
-            price: 1000,
-            image: sProduct7,
-            numberOfSales: 300,
-            inStock: 200,
-            shipping: 12
-        },
+
     ]
 
     return (

@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, TouchableWithoutFeedback, Image, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './style'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -28,8 +28,11 @@ import product5 from '../../../../assets/sProduct5.png'
 import product6 from '../../../../assets/sProduct6.png'
 import product7 from '../../../../assets/sProduct7.png'
 import AppHeader from '../../../../components/molecules/appHeader';
+import { useFetchData } from '../../../../api/fetchData';
+import { FlatList } from 'react-native-gesture-handler';
 const Shops = ({ navigation }) => {
-    const shops = [
+    const [shops, setshops] = useState([])
+    const shopss = [
         {
             id: 1,
             name: "Xiin faniin",
@@ -281,20 +284,29 @@ const Shops = ({ navigation }) => {
 
         },
     ]
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data } = await useFetchData('seller/shop/view')
+            setshops(data)
+        }
+        fetchData()
+    }, [])
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <AppHeader title="Shops" navigation={navigation} color={"#000"} screen={"Shops"} />
-            <ScrollView style={styles.cards} showsVerticalScrollIndicator={false}>
-                {
-                    shops.map(shop => (
-
-                        <ShopCard key={shop.id} shop={shop} navigation={navigation} />
-                    ))
-                }
-            </ScrollView>
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ rowGap: 15 }}
+                style={styles.cards}
+                data={shopss}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <ShopCard shop={item} navigation={navigation} />
+                )}
+            />
+            {/* </ScrollView> */}
         </SafeAreaView>
     )
 }
-
 export default Shops

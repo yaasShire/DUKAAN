@@ -1,211 +1,155 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { globalStyles } from "../../../../globalConstants/styles";
-const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15,
-        backgroundColor: globalStyles.colors.miniPrimary
+        // padding: 15,
+        backgroundColor: globalStyles.style.whiteMode.primarybgColor
     },
-    header: {
+    bottomSection: {
+        backgroundColor: "#fff",
+        height: "100%",
+        padding: 15
+    },
+    namePriceSection: {
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center"
-    },
-    miniScrollHolder: {
-        flex: 1,
-
-    },
-    headerText: {
-        fontSize: 17,
-        fontWeight: "500",
-        flex: 1,
-        textAlign: "center"
-    },
-    divider: {
-        borderBottomColor: "#e3e5e8",
-        opacity: .5,
-        borderWidth: .4,
-        marginTop: "2%"
-    },
-    mainImageHolder: {
         alignItems: "center",
-        marginTop: "2%",
-        height: "25%",
-        justifyContent: "center"
     },
-    imageHolder: {
-        backgroundColor: "#e3e1de",
-        borderWidth: .5,
-        borderColor: "#adaba8",
-        width: "60%",
+    name: {
+        fontSize: 20,
+        fontWeight: "700",
+        color: globalStyles.colors.tertiary,
+        textTransform: "capitalize"
+    },
+
+    priceValueWrapper: {
         justifyContent: "center",
         alignItems: "center",
-        height: "90%",
-
     },
-    backIconHolder: {
-        // backgroundColor: "gray",
-        padding: "2%"
-    },
-    image: {
-        width: 150,
-        height: 150
-    },
-    mainSubImagesHolder: {
-        marginTop: "5%",
-        paddingHorizontal: "1%",
-        paddingVertical: "3%"
-
-    },
-    productSubImage: {
-        backgroundColor: "#e3e1de",
-        width: "25%",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 6
-    },
-    active: {
-        borderColor: "green",
-        borderWidth: 1
-    },
-    subImage: {
-        width: 100,
-        height: 100
-    },
-    productScrollHolder: {
-    },
-    contentHolder: {
-        marginTop: "3%"
-    },
-    productName: {
-        fontWeight: "500",
-        fontSize: 18
-    },
-    stockHolder: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
-    stockText: {
-        fontWeight: "400",
-        opacity: .7,
-        fontSize: 15,
-        fontWeight: "400"
-    },
-    stockQuantity: {
-        fontSize: 15,
-        fontWeight: "500",
-        marginRight: "2%",
-    },
-    salesText: {
-        fontWeight: "400",
-        opacity: .7,
-        fontSize: 15,
-        fontWeight: "400"
-    },
-    salesQuantity: {
-        marginRight: "2%",
-        fontSize: 15,
-        fontWeight: "500"
-    },
-    salesHolder: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
-    featuresDetailsHolder: {
-        paddingHorizontal: "3%",
-        paddingVertical: "4%",
-    },
-    featureDetailsText: {
-        fontWeight: "500",
-        fontSize: 16
-    },
-    featureText: {
-        fontWeight: "500",
+    priceTile: {
         fontSize: 14,
-        opacity: .6
+        fontWeight: "400",
+        color: globalStyles.colors.secondaryGray
     },
-    singleFeatureHolder: {
-        flexDirection: "row",
+    priceValue: {
+        fontWeight: "700",
+        fontSize: 20,
+        marginTop: "5%"
+    },
+    availableBrandsText: {
+        fontWeight: "600",
+        fontSize: 16,
+        textTransform: "uppercase",
+        opacity: .7
+
+
+    },
+    brandsWrapper: {
+        // backgroundColor: "pink",
+        marginTop: "3%",
+        paddingVertical: "3%"
+    },
+    brandWrapper: {
+        backgroundColor: "#f5f0f0",
+        borderRadius: 10,
+        width: 60,
+        height: 60,
+        justifyContent: "center",
         alignItems: "center",
+        borderWidth: .1
     },
-    dotCircle: {
-        width: 6,
-        height: 6,
-        backgroundColor: "purple",
-        borderRadius: 100,
+    brandImage: {
+        width: 50,
+        height: 50
+    },
+    flatListStyle: {
+        // columnGap: 10,
+        width: "100%",
+        paddingVertical: "3%",
+        columnGap: 15
+    },
+    infoCard: {
+        borderWidth: 1,
+        borderColor: "gray",
+        paddingVertical: "2%",
+        marginVertical: "2%",
+        borderRadius: 10,
+        paddingHorizontal: "2%",
+        borderColor: globalStyles.colors.primaryGray,
+        elevation: 5
+    },
+    infoCardsWrapper: {
+        // paddingVertical: "2%"
+    },
+    rowContent: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginVertical: "2%"
+    },
+    textTitle: {
+        fontSize: 15,
+        fontWeight: "600",
+        color: globalStyles.colors.tertiary
+    },
+    valueText: {
+        fontSize: 15,
+        fontWeight: "700",
+    },
+    totalSalesValue: {
+        fontSize: 20,
+        fontWeight: "700",
+    },
+    dot: {
+        width: 10,
+        height: 10,
+        borderRadius: "50%",
+        backgroundColor: globalStyles.colors.logoColor,
         marginRight: "2%"
     },
-    features: {
-        marginTop: "2%",
-        marginLeft: "2%"
-    },
-    moneyTitle: {
-        fontWeight: "500",
-        fontSize: 16
-    },
-    moneyTitleHolder: {
-        fontWeight: "500",
-        marginTop: "3%"
-    },
-    moneySection: {
+    dotTextValueWrapper: {
         flexDirection: "row",
-        alignItems: "flex-start",
         justifyContent: "space-between",
-        marginTop: "5%",
-        // borderBottomColor: "#f2f4f7",
-        borderBottomWidth: .5,
-        paddingVertical: "2%"
-    },
-    moneyTitleWrapper: {
         alignItems: "center",
-        justifyContent: "center"
+        minWidth: 52,
     },
-    moneyQuantity: {
-        fontWeight: "600",
-        fontSize: 17,
-    },
-    moneyText: {
-        opacity: .6,
-        fontSize: 11,
-        width: 70,
-        textAlign: "center"
-    },
-    operator: {
-        fontWeight: "700",
-        fontSize: 20
-    },
-    buttonsHolder: {
+    dotDetailTextValueWrapper: {
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "flex-start",
         alignItems: "center",
-        marginTop: "1%"
+        minWidth: 52,
     },
-    updateProductButton: {
-        backgroundColor: "#fff",
+    sectionLabel: {
+        fontSize: 19,
+        fontWeight: "600"
+    },
+    detailsSection: {
+        marginTop: "2%"
+    },
+    detaileWrapper: {
+        minWidth: 52,
+    },
+    rowDetailContent: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: "2%"
+    },
+    totalSalesWrapper: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginVertical: "3%"
+    },
+    fab: {
+        // position: 'absolute',
+        // margin: 16,
+        // right: 0,
+        // bottom: 50,
+        width: 50,
+        height: 35,
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 8,
-        width: 130,
-        height: 50,
-        borderColor: "#ebedeb",
-        borderWidth: 3
+        backgroundColor: globalStyles.colors.logoColor,
     },
-    cancelButton: {
-        backgroundColor: "#fff",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 8,
-        width: 130,
-        height: 50,
-        borderColor: "#ebedeb",
-        borderWidth: 3
-    },
-    updateText: {
-        fontWeight: "500",
-        fontSize: 17,
-        color: "#000"
-    }
-
 
 })

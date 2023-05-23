@@ -13,6 +13,9 @@ import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import DecisionButton from '../../../../components/atoms/decisionButton'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppHeader from '../../../../components/molecules/appHeader'
+import { GridList, GridListItem, GridView } from 'react-native-ui-lib'
+import { Feather } from '@expo/vector-icons'
+import { globalStyles } from '../../../../globalConstants/styles'
 const ShopProfile = ({ navigation, route }) => {
     const data = [
         {
@@ -46,17 +49,28 @@ const ShopProfile = ({ navigation, route }) => {
             stock: 850
         },
     ]
+    const ShopHeader = () => (
+        <View>
+            <Text>Products</Text>
+        </View>
+    )
+    // defaultSource={product1}
+    // blurRadius={15}
+    // loadingIndicatorSource
+    // onError
+    // onLoadStart
+    // onLoadEnd
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <ImageBackground style={styles.bannerWrapper} source={mechanicBanner}>
+            <ImageBackground onLoadEnd={() => console.warn('load end')} onLoadStart={() => console.warn('load started')} fadeDuration={2000} blurRadius={15} style={styles.bannerWrapper} source={mechanicBanner}>
                 <AppHeader title={"Shop Profile"} navigation={navigation} color={"#fff"} />
             </ImageBackground>
             <View style={styles.miniWrapper}>
                 <View style={styles.cardWrapper}>
                     <View style={styles.profileCard}>
                         <View style={styles.profileImageWrapper}>
-                            <Image source={route.params.data.image} style={styles.image} />
+                            <Image accessible={false} source={route.params.data.image} style={styles.image} />
                         </View>
                         <View style={styles.shopNameLocationWrapper}>
                             <Text style={styles.shopName}>{route.params.data.name}</Text>
@@ -81,6 +95,12 @@ const ShopProfile = ({ navigation, route }) => {
                 <View style={styles.bottomContentWrapper}>
                     <View style={styles.productsWrapperTitle}>
                         <Text style={styles.productsWrapperTitleText}>Products</Text>
+                        <View style={styles.sellAllWrapper}>
+                            <Text>See all</Text>
+                            <TouchableOpacity>
+                                <Feather size={23} color={globalStyles.colors.secondaryGray} name='chevron-right' />
+                            </TouchableOpacity>
+                        </View>
                     </View>
                     <FlatList
                         horizontal={true}
@@ -95,7 +115,7 @@ const ShopProfile = ({ navigation, route }) => {
                                 </View>
                                 <View style={styles.productNameStockWrapper}>
                                     <Text style={styles.productName}>{item.name}</Text>
-                                    <Text style={styles.availableStock}>{item.stock} pieces</Text>
+                                    <Text style={styles.availableStock}>{item.stock}pieces</Text>
                                 </View>
                             </View>
                         )}

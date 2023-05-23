@@ -20,13 +20,12 @@ export default StyleSheet.create({
 
     },
     buttonHolder: {
-        marginTop: "10%",
         alignItems: "flex-end",
         padding: 5,
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%",
-        marginVertical: "20%",
+        marginVertical: "8%",
         flex: 1
     },
     titleHolder: {

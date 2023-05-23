@@ -29,11 +29,12 @@ import Courier from '../../screens/functionalScreens/screens/couriers'
 import SalesTabs from '../screenStacks/sales'
 import AddShopFirstTime from '../../screens/functionalScreens/screens/addShopFirstTime'
 import DrawerComponent from '../drawer'
+import Test from './Test'
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='login'>
+            <Stack.Navigator initialRouteName='bottomTabs'>
                 <Stack.Screen name='drawer' component={DrawerComponent} options={{ headerShown: false }} />
                 <Stack.Screen name='addShopFirstTime' component={AddShopFirstTime} options={{ headerShown: false }} />
                 <Stack.Screen name='onboarding' component={OnboardingC} options={{ headerShown: false }} />
@@ -46,6 +47,7 @@ const StackNavigator = () => {
                 <Stack.Screen name='bottomTabs' component={BottomTabs} options={{ headerShown: false }} />
                 <Stack.Screen name='editProfile' component={EditProfile} options={{ headerShown: false }} />
                 <Stack.Screen name='updateShopDetails' component={UpdateShopDetails} options={{ headerShown: false }} />
+                <Stack.Screen name='test' component={Test} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

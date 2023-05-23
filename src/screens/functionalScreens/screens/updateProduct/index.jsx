@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Image, TouchableWithoutFeedback } from 'react-native'
+import { View, StatusBar, Image, TouchableWithoutFeedback } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import styles from './style'
@@ -8,7 +8,10 @@ import sProduct1 from '../../../../assets/sProduct1.png'
 import PricingSectionCard from '../../../../components/molecules/pricingSectionCard';
 import InventorySectionCard from '../../../../components/molecules/inventorySectionCard';
 import AppHeader from '../../../../components/molecules/header';
+import { Tab, Text, TabView } from '@rneui/themed';
+import { globalStyles } from '../../../../globalConstants/styles';
 const UpdateProduct = ({ navigation, route }) => {
+    const [index, setIndex] = React.useState(0);
     const [id, setId] = useState(1)
     const tabs = [
         {
@@ -35,7 +38,7 @@ const UpdateProduct = ({ navigation, route }) => {
             <AppHeader title={"Mange Inventory"} navigation={navigation} color={"#000"} backButton={true} />
             <View style={styles.productHolder}>
                 <Image source={route.params.data.image} style={styles.image} />
-                <View>
+                <View style={{ flex: 1, alignItems: "flex-start", justifyContent: "space-around" }}>
                     <Text style={styles.productName}>{route.params.data.productName}</Text>
                     <View style={styles.holder}>
                         <Text style={styles.textTitle}>Status:</Text>
@@ -55,7 +58,47 @@ const UpdateProduct = ({ navigation, route }) => {
                     </View>
                 </View>
             </View>
-            <View style={styles.tabsHolder}>
+            <View style={{ flex: 1, marginTop: "5%" }}>
+                <Tab
+                    value={index}
+                    onChange={(e) => setIndex(e)}
+                    indicatorStyle={{
+                        backgroundColor: 'white',
+                        height: 3,
+                    }}
+                    variant="primary"
+                    buttonStyle={{ backgroundColor: globalStyles.colors.logoColor }}
+                >
+                    <Tab.Item
+                        title="Pricing"
+                        titleStyle={{ fontSize: 12 }}
+                        icon={{ name: 'price-tag', type: 'foundation', color: 'white' }}
+                    />
+                    <Tab.Item
+                        title="Inventory"
+                        titleStyle={{ fontSize: 12 }}
+                        icon={{ name: 'inventory', type: 'materialIcons', color: 'white' }}
+                    />
+                    <Tab.Item
+                        title="Sales"
+                        titleStyle={{ fontSize: 12 }}
+                        icon={{ name: 'burst-sale', type: 'foundation', color: 'white' }}
+                    />
+                </Tab>
+                <TabView value={index} onChange={setIndex} animationType="spring">
+                    <TabView.Item style={{ width: "100%" }}>
+                        <PricingSectionCard />
+                    </TabView.Item>
+                    <TabView.Item style={{ width: "100%" }}>
+                        <InventorySectionCard />
+                    </TabView.Item>
+                    <TabView.Item style={{ width: "100%" }}>
+                        <PricingSectionCard />
+                    </TabView.Item>
+                </TabView>
+            </View>
+
+            {/* <View style={styles.tabsHolder}>
                 {
                     tabs.map(tab => (
                         <TouchableWithoutFeedback key={tab.id} onPress={() => setId(tab.id)}>
@@ -68,12 +111,12 @@ const UpdateProduct = ({ navigation, route }) => {
                         </TouchableWithoutFeedback>
                     ))
                 }
-            </View>
-            <View>
+            </View> */}
+            {/* <View>
                 {
                     updateSections.get(id)
                 }
-            </View>
+            </View> */}
 
         </SafeAreaView>
     )

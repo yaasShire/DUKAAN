@@ -5,20 +5,17 @@ export default StyleSheet.create({
         flex: 1,
     },
     imageWrapper: {
-        paddingHorizontal: "5%",
         flexDirection: "row",
         justifyContent: "space-between",
         flexWrap: "wrap",
         alignItems: "center"
     },
     buttonHolder: {
-        marginTop: "10%",
         alignItems: "flex-end",
-        padding: 5,
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-between",
         width: "100%",
-        marginVertical: "20%",
-        flex: 1
+        flex: 1,
+
     },
 })

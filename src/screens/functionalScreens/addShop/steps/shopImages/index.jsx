@@ -17,8 +17,8 @@ const ShopImages = ({ setcurrentPosition, navigation }) => {
                 <ShopImageTaker />
             </View>
             <View style={styles.buttonHolder}>
-                <CancelButton disabled={true} label="Previous" setcurrentPosition={setcurrentPosition} />
-                <AddShopButton label="Next" setcurrentPosition={setcurrentPosition} navigation={navigation} />
+                <CancelButton disabled={false} label="Previous" setcurrentPosition={setcurrentPosition} />
+                <AddShopButton label="Finish" navigation={navigation} />
             </View>
         </View>
     )

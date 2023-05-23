@@ -23,7 +23,7 @@ const PersonalInfo = ({ setcurrentPosition, setErrorHandlers }) => {
                     ({ values, errors, handleBlur, handleChange, handleSubmit, touched, setTouched, setFieldTouched }) => {
                         setErrorHandlers(errors)
                         return (
-                            <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false}>
+                            <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 15 }}>
                                 <AddShopField label={'Owner name'} name="ownerName" values={values.ownerName} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                                 <AddShopField label={'Owner email'} name="ownerEmail" values={values.ownerEmail} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                                 <AddShopField label={'Owner phone number'} name="ownerPhoneNumber" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />

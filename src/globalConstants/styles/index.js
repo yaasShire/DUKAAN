@@ -23,7 +23,18 @@ const colors = {
     bgColor: "#01061c"
 }
 
+const style = {
+    whiteMode: {
+        primarybgColor: "#fefefe",
+        secondaryColor: "#ffffff",
+    },
+    darkMode: {
+
+    }
+
+}
+
 
 export const globalStyles = {
-    fontSizes, fontWeights, colors
+    fontSizes, fontWeights, colors, style
 }

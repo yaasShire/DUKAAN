@@ -8,15 +8,35 @@ import { store } from './src/redux/store';
 import { SafeAreaView } from 'react-native';
 import { Provider as PaperProfider } from 'react-native-paper';
 import DrawerComponent from './src/navigation/drawer';
+// import { useFonts,  } from 'expo-font'
+import * as Font from 'expo-font'
+import AppLoading from 'expo-app-loading';
+import { useCallback, useEffect, useState } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+
 export default function App() {
   const Stack = createNativeStackNavigator()
+
+  const [fontsLoaded] = Font.useFonts({
+    'AstroSpace-0Wl3o': require('./src/assets/fonts/AstroSpace-0Wl3o.otf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    // <></>
     <Provider store={store}>
       <PaperProfider>
         <StackNavigator />
       </PaperProfider>
     </Provider>
+
   );
 }
 

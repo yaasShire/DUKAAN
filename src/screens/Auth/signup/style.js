@@ -11,22 +11,32 @@ export default StyleSheet.create({
         resizeMode: "cover"
     },
     titlesHolder: {
-        paddingVertical: '8%'
+        height: 150,
+        paddingTop: "4%",
+        justifyContent: "space-around"
+    },
+    uperText: {
     },
     title1: {
         textAlign: "center",
         fontSize: 20,
-        fontWeight: "500"
+        fontWeight: "500",
+        fontFamily: "AstroSpace-0Wl3o",
+        marginVertical: "2%"
     },
     title2: {
         fontSize: 30,
-        fontWeight: "700",
-        textAlign: "center"
+        fontWeight: "600",
+        textAlign: "center",
+        fontFamily: "AstroSpace-0Wl3o"
     },
     description: {
         textAlign: 'center',
         opacity: 0.8,
-        fontSize: 15
+        fontSize: 15,
+        fontFamily: "AstroSpace-0Wl3o",
+        marginVertical: "1%"
+
     },
     imageHolder: {
         justifyContent: 'center',

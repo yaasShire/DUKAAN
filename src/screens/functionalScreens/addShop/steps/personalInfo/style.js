@@ -16,18 +16,12 @@ export default StyleSheet.create({
         fontWeight: "500"
     },
     fieldsHolder: {
-        // marginTop: "7%",
     },
     buttonHolder: {
-        marginTop: "5%",
         alignItems: "flex-end",
-        padding: 5,
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%",
-        height: height / 6,
-        marginVertical: "20%",
-
     },
     titleHolder: {
         marginTop: "5%"

@@ -9,8 +9,12 @@ export default StyleSheet.create({
         resizeMode: 'contain',
     },
     logoImageHolder: {
-        alignSelf: "center",
-        alignSelf: "center",
+
+        position: "absolute",
+        left: "30%",
+
+
+
     },
     addText: {
         fontSize: 11,

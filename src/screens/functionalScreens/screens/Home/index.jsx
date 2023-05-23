@@ -141,7 +141,7 @@ const Home = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? "light-content" : "dark-content"} />
             {/* <Header navigation={navigation} /> */}
-            <AppHeader navigation={navigation} menu={false} menu={true} />
+            <AppHeader showLogo={true} navigation={navigation} menu={true} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
                 {/* reports */}
                 <View style={styles.reportHolder}>

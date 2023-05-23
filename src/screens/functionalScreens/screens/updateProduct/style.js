@@ -27,12 +27,20 @@ export default StyleSheet.create({
         marginTop: "8%",
         borderBottomColor: "#b6baba",
         borderBottomWidth: .5,
-        paddingVertical: "3%"
+        paddingVertical: "3%",
+        height: "30%",
+        backgroundColor: globalStyles.style.whiteMode.secondaryColor,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: globalStyles.colors.miniPrimary,
+        elevation: 5
+
     },
     image: {
-        width: 75,
-        height: 75,
-        marginRight: "2%"
+        width: 130,
+        height: 150,
+        marginRight: "2%",
+        borderRadius: 5
     },
     holder: {
         flexDirection: "row",
@@ -40,13 +48,14 @@ export default StyleSheet.create({
         marginBottom: "2%"
     },
     textTitle: {
-        opacity: 0.6,
+        opacity: 0.8,
         fontSize: 16,
-        marginRight: "1%"
+        marginRight: "1%",
+        fontWeight: "600"
     },
     valueText: {
-        fontWeight: "400",
-        fontSize: 15.5
+        fontWeight: "700",
+        fontSize: 16,
     },
     statusText: {
         color: "green"
@@ -74,8 +83,9 @@ export default StyleSheet.create({
         textAlign: "center"
     },
     productName: {
-        fontSize: 18,
-        fontWeight: "600"
+        fontSize: 20,
+        fontWeight: "700",
+        color: globalStyles.colors.tertiary
     }
 
 })

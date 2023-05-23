@@ -73,8 +73,9 @@ export default StyleSheet.create({
         top: -40,
         borderRadius: 50,
         // padding: ".5%",
-        borderWidth: 2,
-        borderColor: "pink"
+        borderWidth: 1,
+        borderColor: globalStyles.colors.logoColor,
+
     },
     shopNameLocationWrapper: {
         alignItems: "center",
@@ -109,12 +110,21 @@ export default StyleSheet.create({
         resizeMode: "contain"
     },
     productsWrapperTitle: {
-        marginVertical: "1%"
+        marginVertical: "1%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
     },
     productsWrapperTitleText: {
         fontSize: 18,
         fontWeight: globalStyles.fontWeights.secondary,
         color: globalStyles.colors.tertiary
+    },
+    sellAllWrapper: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: 75
     },
     productName: {
         fontSize: 15,

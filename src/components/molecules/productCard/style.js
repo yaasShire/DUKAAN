@@ -8,7 +8,8 @@ export default StyleSheet.create({
     image: {
         width: 60,
         height: 60,
-        marginRight: "3%"
+        marginRight: "3%",
+        borderRadius: 5
     },
     contentHolder: {
         borderBottomColor: globalStyles.colors.green,

@@ -4,7 +4,6 @@ export default StyleSheet.create({
     fieldHolder: {
         alignItems: "flex-start",
         justifyContent: "center",
-        marginBottom: "5%"
     },
     inputHolder: {
         height: height / 14,

@@ -1,94 +1,62 @@
-import { Dimensions, StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import { globalStyles } from "../../../globalConstants/styles";
-const { width, height } = new Dimensions.get('screen')
-
 export default StyleSheet.create({
-    imageWrapper: {
-        width: "40%",
-        height: "100%",
-        resizeMode: "cover",
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: globalStyles.colors.primaryGray,
-        padding: ".5%"
-    },
     image: {
-        width: "100%",
-        height: "100%",
-        resizeMode: "cover",
-        borderRadius: 5,
+        width: 120,
+        height: 127,
+        borderRadius: 10
     },
-    cardsScrollView: {
-        flex: 1
-    },
-    cards: {
-        flex: 1,
-        paddingTop: "5%",
-        marginTop: "2%",
-        paddingHorizontal: "4.5%",
-        paddingBottom: "10%",
-        height: height
-    },
-    shopCard: {
-        backgroundColor: globalStyles.colors.miniPrimary,
-        height: height / 8,
+    shopCardWrapper: {
+        backgroundColor: globalStyles.style.whiteMode.secondaryColor,
+        borderWidth: .5,
         borderColor: globalStyles.colors.primaryGray,
-        borderWidth: 1,
-        width: width / 1.1,
+        width: "100%",
+        height: 145,
+        padding: "2%",
         borderRadius: 10,
-        flexDirection: "row",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
-        marginBottom: "3%",
-        padding: "1%"
+        elevation: 3,
+
+    },
+    imageInfoWrapper: {
+        flexDirection: "row"
+    },
+    infoWrapper: {
+        justifyContent: "space-between",
+        flex: .9,
+        flexDirection: "row"
+
+    },
+    buttonInfoWrapper: {
+        flex: 1,
+        justifyContent: "space-between",
+        marginLeft: 5,
     },
     shopName: {
-        fontSize: globalStyles.fontSizes.primary3,
-        fontWeight: globalStyles.fontWeights.secondary,
-        color: globalStyles.colors.tertiary
+        fontWeight: "700",
+        fontSize: 16
     },
-    products: {
-        fontSize: 17,
-        opacity: 0.6
+    salesWrapper: {
+        flexDirection: "row"
     },
-    infoHolder: {
-        alignSelf: "flex-start",
-        marginTop: "2%",
-        marginLeft: "3%",
-        height: "65%",
-        justifyContent: "space-around",
-        width: 140
+    keyText: {
+        color: "gray",
     },
-    productsHolder: {
-        alignItems: "flex-start",
-    },
-    numberOfProducts: {
-        marginLeft: "5%"
-    },
-    stockText: {
-        fontWeight: globalStyles.fontWeights.tertiary,
-        marginLeft: "1%",
-        fontSize: globalStyles.fontSizes.primary2,
-        color: globalStyles.colors.tertiary
-    },
-    dotIcon: {
-        marginLeft: "11%",
-        marginTop: "4%"
+    valueText: {
+        fontWeight: "700",
 
     },
-    iconProductHolder: {
-        flexDirection: "row"
+    buttonStyle: {
+        borderRadius: 10,
+        backgroundColor: globalStyles.colors.logoColor,
     },
-    salesRankHolder: {
-        flexDirection: "row"
+    btnText: {
+        fontSize: 14,
+        fontWeight: "600",
     },
-    salesText: {
-        color: globalStyles.colors.secondaryGray,
-        marginRight: "2%"
+    iconStyle: {
+        marginHorizontal: "3%",
     },
-    salesQuantity: {
-        fontWeight: globalStyles.fontWeights.secondary,
-        color: globalStyles.colors.tertiary,
+    address: {
+        color: "gray"
     }
-
 })
