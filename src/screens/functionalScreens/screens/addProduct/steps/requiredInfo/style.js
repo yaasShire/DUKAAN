@@ -4,15 +4,15 @@ export default StyleSheet.create({
     container: {
         alignItems: "center",
         flex: 1,
-
+        // backgroundColor: "blue",
+        height: "100%"
     },
     actionButtonHolder: {
-        alignItems: 'center',
-        marginTop: "2%",
+        alignItems: 'flex-end',
         flexDirection: "row",
         justifyContent: "space-between",
-        width: "100%"
-
+        width: "100%",
+        // flex: 1,
     },
     textTitle: {
         opacity: .5,

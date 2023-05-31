@@ -9,14 +9,16 @@ import { Entypo } from '@expo/vector-icons';
 import { Button } from 'react-native-paper';
 import { globalStyles } from '../../../globalConstants/styles';
 import { Fontisto } from '@expo/vector-icons';
-const ShopCard = ({ shop, navigation }) => {
+import shopPlaceHolder from '../../../assets/images/shopPlaceHolder.png'
+const ShopCard = ({ shop, navigation, profileData }) => {
     const nameShortener = (name) => {
         return name.length > 20 ? name.slice(0, 20) : name
     }
     return (
         <View style={styles.shopCardWrapper}>
             <View style={styles.imageInfoWrapper}>
-                <Image source={shop.image} style={styles.image} />
+                <Image source={shop?.photos ? { uri: "https://sweyn.co.uk/storage/images/shops/" + shop?.photos } : shopPlaceHolder} style={styles.image} />
+                {/* <Image source={{uri: "https://sweyn.co.uk/storage/images/shops/"+shop.photos}} /> */}
                 <View style={styles.buttonInfoWrapper}>
                     <View style={styles.infoWrapper}>
                         <View>
@@ -31,9 +33,9 @@ const ShopCard = ({ shop, navigation }) => {
                             <Fontisto name='shopping-store' size={20} color={globalStyles.colors.logoColor} />
                         </View>
                     </View>
-                    <Button onPressIn={() => {
+                    <Button onPress={() => {
                         navigation.navigate('shopProfile', { data: shop })
-                    }} style={styles.buttonStyle} mode="contained" onPress={() => console.log('Pressed')}>
+                    }} style={styles.buttonStyle} mode="contained" >
                         <Entypo style={styles.iconStyle} name='shop' size={15} />
                         <Text style={styles.btnText}>View Shop</Text>
                     </Button>

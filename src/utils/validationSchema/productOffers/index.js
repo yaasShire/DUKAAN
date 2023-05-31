@@ -7,7 +7,7 @@ export const productOfferDetails = yup.object().shape({
     price: yup
         .string()
         .required('required'),
-    sellerSKU: yup
+    description: yup
         .string()
         .required('required')
 })

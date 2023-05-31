@@ -4,7 +4,8 @@ export default StyleSheet.create({
     image: {
         width: 120,
         height: 127,
-        borderRadius: 10
+        borderRadius: 10,
+        resizeMode: "center"
     },
     shopCardWrapper: {
         backgroundColor: globalStyles.style.whiteMode.secondaryColor,
@@ -14,7 +15,6 @@ export default StyleSheet.create({
         height: 145,
         padding: "2%",
         borderRadius: 10,
-        elevation: 3,
 
     },
     imageInfoWrapper: {
@@ -33,7 +33,8 @@ export default StyleSheet.create({
     },
     shopName: {
         fontWeight: "700",
-        fontSize: 16
+        fontSize: 16,
+        textTransform: "capitalize"
     },
     salesWrapper: {
         flexDirection: "row"

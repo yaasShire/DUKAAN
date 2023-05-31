@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, ScrollView, FlatList, I18nManager, } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
 import Header from '../../../../components/atoms/header'
@@ -15,7 +15,13 @@ import sProduct7 from '../../../../assets/sProduct7.png'
 import AddProductButton from '../../../../components/atoms/addProductButton'
 import AppHeader from '../../../../components/molecules/header'
 import { AnimatedFAB } from 'react-native-paper';
+import { fetchData, useFetch } from '../../../../hooks/useFetch'
+import AppLoader from '../../../../components/molecules/AppLoader'
+import AppError from '../../../../components/molecules/AppError'
 const ProductsList = ({ navigation }) => {
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
+    const [products, setProducts] = useState([])
     const data = [
         {
             id: 1,
@@ -70,23 +76,43 @@ const ProductsList = ({ navigation }) => {
         },
 
     ]
-
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const { data } = await fetchData('seller/products/view', setError, setIsLoading)
+            setProducts(data.data)
+        }
+        fetchProducts()
+    }, [])
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <AppHeader showAddButton={true} navigation={navigation} menu={true} addproductButton={true} />
+            <AppHeader showAddButton={true} navigation={navigation} menu={false} addproductButton={true} />
             {/*filter  */}
             <View>
                 <Filter navigation={navigation} />
             </View>
             <FlatList
+                keyExtractor={(item) => item.UPID}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ rowGap: 10, }}
-                data={data}
+                data={products}
+                scrollsToTop={true}
+                initialNumToRender={10}
+                scrollIndicatorInsets={10}
                 renderItem={({ item }) => (
                     <ProductCard key={item.id} item={item} navigation={navigation} />
                 )}
             />
+            {
+                isLoading && (
+                    <AppLoader />
+                )
+            }
+            {
+                error && (
+                    <AppLoader />
+                )
+            }
 
         </SafeAreaView>
     )

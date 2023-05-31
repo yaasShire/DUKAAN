@@ -10,10 +10,12 @@ export default StyleSheet.create({
         marginVertical: "3%"
     },
     actionButtonHolder: {
-        alignItems: 'center',
+        alignItems: 'flex-end',
         marginTop: "2%",
         flexDirection: "row",
         justifyContent: "space-between",
+        // flex: 1,
+        width: "100%"
     },
 
 })

@@ -3,28 +3,32 @@ import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     card: {
-        backgroundColor: globalStyles.colors.miniPrimary,
-        width: width / 2.37,
+        backgroundColor: "#30a195",
+        minWidth: 135,
+        height: 85,
         borderRadius: 5,
-        paddingHorizontal: '3%',
+        justifyContent: "center",
+        alignItems: "center",
     },
     dollarNumberHolder: {
         flexDirection: 'row'
     },
     dollarSign: {
-        opacity: 0.5,
-        marginRight: "3%"
+        // opacity: 0.5,
+        color: "#fff"
     },
     dollarNumber: {
-        fontSize: globalStyles.fontSizes.tertiary,
-        fontWeight: globalStyles.fontWeights.tertiary
+        fontSize: 25,
+        fontWeight: globalStyles.fontWeights.tertiary,
+        color: "#fff"
     },
     description: {
-        color: globalStyles.colors.primaryGray
+        color: globalStyles.colors.miniPrimary,
+        opacity: .9
     },
     contentHolder: {
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         flex: 1,
-        paddingVertical: '10%'
+        // paddingVertical: '10%'
     },
 })

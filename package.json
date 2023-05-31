@@ -62,7 +62,8 @@
     "react-native-ui-lib": "^7.3.6",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "expo-linear-gradient": "~12.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

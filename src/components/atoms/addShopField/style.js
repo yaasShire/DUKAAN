@@ -4,13 +4,15 @@ export default StyleSheet.create({
     fieldHolder: {
         alignItems: "flex-start",
         justifyContent: "center",
+        zIndex: -10
     },
     inputHolder: {
         height: height / 14,
         width: width / 1.13,
         backgroundColor: "#e9f8ee",
         borderRadius: 10,
-        marginTop: "2%"
+        marginTop: "2%",
+        zIndex: -10
     },
     input: {
         height: "100%",
@@ -21,7 +23,7 @@ export default StyleSheet.create({
     label: {
         opacity: .4,
         fontSize: 14,
-        fontWeight: "500"
+        fontWeight: "500",
     },
     errorHolder: {
         backgroundColor: "#e8c3cd",

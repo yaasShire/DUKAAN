@@ -15,14 +15,14 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: "#A49D9D",
         borderRadius: 4,
-        backgroundColor: globalStyles.colors.miniPrimary,
+        backgroundColor: "#fff",
+        marginTop: "3%"
     },
     actionButtonHolder: {
-        justifyContent: "center",
-        alignItems: 'center',
+        justifyContent: "space-between",
+        alignItems: 'flex-start',
         marginTop: "2%",
         flexDirection: "row",
-        justifyContent: "space-between"
     },
     errorHolder: {
         backgroundColor: globalStyles.colors.orange,

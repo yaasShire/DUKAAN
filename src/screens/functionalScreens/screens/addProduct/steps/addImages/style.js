@@ -11,10 +11,10 @@ export default StyleSheet.create({
         flexWrap: "wrap",
     },
     actionButtonHolder: {
-        alignItems: 'center',
+        alignItems: 'flex-end',
         flexDirection: "row",
         justifyContent: "space-between",
-
+        flex: 1,
     },
     textTitle: {
         opacity: .5,

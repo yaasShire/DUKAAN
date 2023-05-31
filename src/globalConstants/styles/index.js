@@ -34,6 +34,8 @@ const style = {
 
 }
 
+export const screenPadding = 15
+
 
 export const globalStyles = {
     fontSizes, fontWeights, colors, style

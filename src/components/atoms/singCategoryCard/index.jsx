@@ -6,11 +6,12 @@ import { setMainCategory, setProductCategory, setSubCategory, setShopsList } fro
 
 import styles from './style'
 import { globalStyles } from '../../../globalConstants/styles';
-const SingleCategoryCard = ({ category, cat, finalObject }) => {
+const SingleCategoryCard = ({ category, cat, finalObject, idType = "USID" }) => {
+    const targetId = idType == 'id' ? 'id' : 'USID'
     const dispatch = useDispatch()
     return (
         <View>
-            <TouchableOpacity style={[styles.categoryButtonHolder, { backgroundColor: finalObject.id == category.id ? globalStyles.colors.primaryGray : globalStyles.colors.miniPrimary }]} onPress={() => {
+            <TouchableOpacity style={[styles.categoryButtonHolder, { backgroundColor: finalObject[targetId] == category[targetId] ? globalStyles.colors.primaryGray : globalStyles.colors.miniPrimary }]} onPress={() => {
                 cat == 'mainCategory' ? dispatch(setMainCategory(category)) : cat == 'subCategory' ? dispatch(setSubCategory(category)) : cat == 'productCategory' ? dispatch(setProductCategory(category)) : cat == 'shopsList' ? dispatch(setShopsList(category)) : ""
             }}>
                 <Text style={styles.categoryName}>{category.name}</Text>

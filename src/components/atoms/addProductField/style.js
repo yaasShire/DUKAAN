@@ -21,7 +21,7 @@ export default StyleSheet.create({
     label: {
         fontWeight: "600",
         fontSize: 15,
-        marginBottom: '2%'
+        marginBottom: '4%'
     },
     errorText: {
         color: "red",

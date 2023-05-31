@@ -3,15 +3,17 @@ import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     actionCard: {
-        width: width / 2.37,
+        width: width / 2.3,
         height: height / 6.5,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
+        paddingVertical: "4%",
         alignItems: 'center',
         backgroundColor: globalStyles.colors.miniPrimary,
         borderRadius: 8,
         marginBottom: '5%',
-        borderWidth: 1,
-        borderColor: "#dedfe0"
+        borderWidth: .5,
+        borderColor: "#dedfe0",
+        elevation: 3
 
     },
     iconHolder: {
@@ -24,5 +26,10 @@ export default StyleSheet.create({
         fontWeight: "600",
         opacity: 0.7,
         color: globalStyles.colors.tertiary
+    },
+    image: {
+        width: 60,
+        height: 60,
+        resizeMode: "center"
     }
 })

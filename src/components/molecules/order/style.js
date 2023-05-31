@@ -48,7 +48,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         paddingHorizontal: '5%',
         paddingVertical: '2%',
-        marginBottom: '2%'
+        // marginBottom: '2%'
     },
     divider: {
         borderBottomWidth: 1,

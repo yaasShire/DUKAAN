@@ -4,24 +4,28 @@ import styles from './style'
 import product1 from '../../../assets/product3.jpg'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { FAB } from 'react-native-paper';
+import productImagePlaceHolder from '../../../assets/images/productImagePlaceHolder.jpg'
 const ProductCard = ({ item, navigation }) => {
     const nameShortener = (name) => {
         return name.length >= 28 ? name.slice(0, 30) + "..." : name
     }
     return (
-
         <View style={styles.mainHolder}>
             <View style={styles.contentHolder}>
-                <Image source={item.image} style={styles.image} />
+                <Image source={item?.photo ? { uri: "https://sweyn.co.uk/storage/images/" + item?.photo } : productImagePlaceHolder} style={styles.image} />
                 <View>
-                    <Text style={styles.productName}>{item.productName}</Text>
+                    <Text style={styles.productName}>{item.name}</Text>
                     <View style={styles.salesHolder}>
                         <Text style={styles.numberOfSales}>Sales for the last 30 days:</Text>
                         <Text style={styles.salesQuantity}>18</Text>
                     </View>
                     <View style={styles.availabelHolder}>
+                        <Text style={styles.availableText}>Price:</Text>
+                        <Text style={styles.availableQunatity}>${item?.price}</Text>
+                    </View>
+                    <View style={styles.availabelHolder}>
                         <Text style={styles.availableText}>Available:</Text>
-                        <Text style={styles.availableQunatity}>12</Text>
+                        <Text style={styles.availableQunatity}>{item?.quantity_avaliable}</Text>
                     </View>
                 </View>
 

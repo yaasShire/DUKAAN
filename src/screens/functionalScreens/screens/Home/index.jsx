@@ -1,6 +1,5 @@
-import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity, Platform } from 'react-native'
+import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity, Platform, SafeAreaView } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
 import Header from '../../../../components/atoms/header'
 import DashboardCard from '../../../../components/atoms/dashboardCard'
@@ -10,17 +9,18 @@ import NoOrderCard from '../../../../components/molecules/noOrderCard'
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import sProduct1 from '../../../../assets/sProduct1.png'
-import sProduct2 from '../../../../assets/sProduct2.png'
-import sProduct3 from '../../../../assets/sProduct3.png'
-import sProduct4 from '../../../../assets/sProduct4.png'
-import sProduct5 from '../../../../assets/sProduct5.png'
-import sProduct6 from '../../../../assets/sProduct6.png'
-import sProduct7 from '../../../../assets/sProduct7.png'
+
 import HomeScreenReport from '../../../../components/molecules/homeScreenReport'
 import { globalStyles } from '../../../../globalConstants/styles'
 import AppHeader from '../../../../components/molecules/header'
 import { Badge } from 'react-native-paper'
+// icons
+import ProductImage from '../../../../assets/images/product.png'
+import reportImage from '../../../../assets/images/report.png'
+import shopImage from '../../../../assets/images/shop.png'
+import profileImage from '../../../../assets/images/profile.png'
+// icons ends here
+
 const Home = ({ navigation }) => {
     const orders = [
         {
@@ -37,7 +37,7 @@ const Home = ({ navigation }) => {
                     ammount: 30,
                     orderId: 1,
                     customerName: "Nuur Ali Ahmed",
-                    image: sProduct1
+                    image: require('../../../../assets/sProduct1.png')
                 },
                 {
                     id: 2,
@@ -47,7 +47,7 @@ const Home = ({ navigation }) => {
                     ammount: 16,
                     orderId: 1,
                     customerName: "Nuur Ali Ahmed",
-                    image: sProduct2
+                    image: require('../../../../assets/sProduct2.png')
                 },
             ]
         },
@@ -65,7 +65,7 @@ const Home = ({ navigation }) => {
                     ammount: 30,
                     orderId: 2,
                     customerName: "Faarah Ahmed Haaji",
-                    image: sProduct3
+                    image: require('../../../../assets/sProduct3.png')
                 },
                 {
                     id: 2,
@@ -75,7 +75,7 @@ const Home = ({ navigation }) => {
                     ammount: 20,
                     orderId: 2,
                     customerName: "Abdi Naasir Nuur Huseyn",
-                    image: sProduct4
+                    image: require('../../../../assets/sProduct4.png')
                 },
             ]
         },
@@ -93,7 +93,7 @@ const Home = ({ navigation }) => {
                     ammount: 48,
                     orderId: 3,
                     customerName: "Muumin Abdi wali Qaasim",
-                    image: sProduct5
+                    image: require('../../../../assets/sProduct5.png')
                 },
                 {
                     id: 2,
@@ -103,7 +103,7 @@ const Home = ({ navigation }) => {
                     ammount: 28,
                     orderId: 3,
                     customerName: "Nuur Ali Ahmed",
-                    image: sProduct6
+                    image: require('../../../../assets/sProduct6.png')
                 },
             ]
         },
@@ -121,7 +121,7 @@ const Home = ({ navigation }) => {
                     ammount: 63,
                     orderId: 4,
                     customerName: "Muumin Abdi wali Qaasim",
-                    image: sProduct5
+                    image: require('../../../../assets/sProduct5.png')
                 },
                 {
                     id: 2,
@@ -131,7 +131,7 @@ const Home = ({ navigation }) => {
                     ammount: 36,
                     orderId: 4,
                     customerName: "Nuur Ali Ahmed",
-                    image: sProduct6
+                    image: require('../../../../assets/sProduct6.png')
                 },
             ]
         },
@@ -139,62 +139,42 @@ const Home = ({ navigation }) => {
     ]
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle={Platform.OS == 'android' ? "light-content" : "dark-content"} />
-            {/* <Header navigation={navigation} /> */}
-            <AppHeader showLogo={true} navigation={navigation} menu={true} />
-            <ScrollView showsVerticalScrollIndicator={false} style={styles.miniHolder}>
-                {/* reports */}
-                <View style={styles.reportHolder}>
-                    <HomeScreenReport />
-                </View>
-                {/* reports ends here */}
-                <View style={styles.mainCardsHolder}>
-                    <ScrollView style={[styles.infoCardsHolder]} horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{ columnGap: 35 }}>
-                        <DashboardCard ammount={900} description="Sales Today" />
-                        <DashboardCard ammount={800} description="Revenue Today" />
-                        <DashboardCard ammount={700} description="Loss Today" />
-                    </ScrollView>
-                </View>
-                <View style={styles.sellerActionCardHolder}>
-                    <SellerCardAction icon="person-sharp" actionName="Profile" directory="Ionicons" navigation={navigation} />
-                    <SellerCardAction icon="file-tray-sharp" actionName="Shop" navigation={navigation} />
-                    <SellerCardAction icon="cube-sharp" actionName="Products" navigation={navigation} />
-                    <SellerCardAction icon="analytics" actionName="Reports" navigation={navigation} />
-                </View>
-                <View style={styles.actionCards}>
-                    <TouchableOpacity style={styles.cardAction}>
-                        <View style={styles.iconActionNameWrapper}>
-                            <MaterialCommunityIcons name='android-messages' size={25} color="gray" />
-                            <Text style={styles.actionName}>Messages</Text>
-                        </View>
-                        <View style={styles.CardRightSection}>
-                            <Badge size={25}  >12</Badge>
-                            <Feather name='chevron-right' size={25} color={globalStyles.colors.primaryGray} />
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.cardAction}>
-                        <View style={styles.iconActionNameWrapper}>
-                            <MaterialIcons name='attach-money' size={25} color="gray" />
-                            <Text style={styles.actionName}>Manage Returns</Text>
-                        </View>
-                        <Feather name='chevron-right' size={25} color="gray" />
-                    </TouchableOpacity>
-
-                </View>
-                <View style={styles.orderCardsHolder}>
-                    <Text style={styles.newOrdersText}>New Orders</Text>
-                    <ScrollView contentContainerStyle={{ rowGap: 20, marginBottom: 30, }}>
-                        {
-                            orders.map((item) => (
-                                <Order navigation={navigation} key={item.id} item={item} />
-                            ))
-                        }
+            <StatusBar barStyle='light-content' />
+            <AppHeader showLogo={true} navigation={navigation} menu={false} />
+            <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
+                <View style={styles.topContent}>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.infoCardsWrapper}>
+                        <DashboardCard description={'Today Sales'} ammount={500} sign={true} />
+                        <DashboardCard description={'Total Customers'} ammount={140} sign={false} />
+                        <DashboardCard description={'Expense'} ammount={900} sign={true} />
+                        <DashboardCard description={'Number Of Shops'} ammount={3} sign={false} />
                     </ScrollView>
 
                 </View>
-                {/* <NoOrderCard /> */}
+                <View showsVerticalScrollIndicator={false} nestedScrollEnabled={true} scrollEnabled={true} style={styles.bottomContent}>
+                    <View style={styles.subBottomContent}>
+                        <View style={styles.sellerActionWrapper}>
+                            <SellerCardAction actionName={"Profile"} image={profileImage} navigation={navigation} />
+                            <SellerCardAction actionName={"Shop"} image={shopImage} navigation={navigation} />
+                            <SellerCardAction actionName={"Product"} image={ProductImage} navigation={navigation} />
+                            <SellerCardAction actionName={"Report"} image={reportImage} navigation={navigation} />
+                        </View>
+                        <View style={styles.recentOrdersWrapper}>
+                            <Text style={styles.header}><Text style={{ color: "red", fontSize: 18 }}>*</Text> Recent Orders</Text>
+                        </View>
+                        <FlatList
+                            nestedScrollEnabled={false}
+                            showsVerticalScrollIndicator={false}
+                            contentContainerStyle={{ rowGap: 10, }}
+                            scrollEnabled={false}
+                            data={orders}
+                            renderItem={({ item }) => (
+                                <Order item={item} navigation={navigation} />
+                            )}
+                        />
+                    </View>
+                </View>
             </ScrollView>
-
         </SafeAreaView>
     )
 }

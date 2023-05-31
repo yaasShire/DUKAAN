@@ -4,22 +4,21 @@ import styles from './style'
 import ImageTaker from '../../../../../../components/atoms/productImageTaker'
 import { useSelector } from 'react-redux'
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton'
+import ProductRegistrationError from '../../../../../../components/atoms/productRegistrationError'
 const AddImages = ({ setCurrentPosition, title }) => {
     const [showError, setShowError] = useState(false)
-    const mainImage = useSelector(state => state.product_Images.mainImage.url)
-    const image2 = useSelector(state => state.product_Images.image2.url)
-    const image3 = useSelector(state => state.product_Images.image3.url)
-    const image4 = useSelector(state => state.product_Images.image4.url)
-    const image5 = useSelector(state => state.product_Images.image5.url)
-    const image6 = useSelector(state => state.product_Images.image6.url)
+    const mainImage = useSelector(state => state.productRegistration.images.url1)
+    const image2 = useSelector(state => state.productRegistration.images.url2)
+    const image3 = useSelector(state => state.productRegistration.images.url3)
+    const image4 = useSelector(state => state.productRegistration.images.url4)
     const errorHandler = (action) => {
         if (action == 'Prev') {
             setCurrentPosition(prev => prev - 1)
         }
-        else if (action == 'Next') {
+        else if ((action == 'Next' && mainImage) && (image2 && image3) && image4) {
             setCurrentPosition(prev => prev + 1)
         }
-        else if (!mainImage) {
+        else if ((!mainImage || !image2 || !image3 || !image4)) {
             setShowError(true)
             setTimeout(() => {
                 setShowError(false)
@@ -30,19 +29,17 @@ const AddImages = ({ setCurrentPosition, title }) => {
         <View style={styles.mainContainer}>
             {
                 showError && (
-                    <View style={styles.errorHolder}>
-                        <Text style={styles.textError}>Product main image is required</Text>
-                    </View>
+                    <ProductRegistrationError label='All images is required' />
                 )
             }
             <Text style={styles.textTitle}>{title}</Text>
             <View style={styles.container}>
-                <ImageTaker main={true} imageURL={mainImage} />
-                <ImageTaker image={"image2"} imageURL={image2} />
-                <ImageTaker image={"image3"} imageURL={image3} />
-                <ImageTaker image={"image4"} imageURL={image4} />
-                <ImageTaker image={"image5"} imageURL={image5} />
-                <ImageTaker image={"image6"} imageURL={image6} />
+                <ImageTaker main={true} imageURL={mainImage} img={1} />
+                <ImageTaker image={"image2"} imageURL={image2} img={2} />
+                <ImageTaker image={"image3"} imageURL={image3} img={3} />
+                <ImageTaker image={"image4"} imageURL={image4} img={4} />
+                {/* <ImageTaker image={"image5"} imageURL={image5} img5={img5} />
+                <ImageTaker image={"image6"} imageURL={image6} /> */}
             </View>
             <View style={styles.actionButtonHolder}>
                 <AddProductActionButton errorHandler={errorHandler} action="Prev" setCurrentPosition={setCurrentPosition} label="Prev" />

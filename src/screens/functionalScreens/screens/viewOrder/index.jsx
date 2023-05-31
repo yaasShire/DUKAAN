@@ -21,7 +21,7 @@ const ViewOrder = ({ navigation, route }) => {
                             <View style={styles.nameHolder}>
                                 <Text style={styles.customerName} numberOfLines={1}>{route.params.order.customerName}</Text>
                             </View>
-                            <View>
+                            <View style={styles.dateWrapper}>
                                 <Text style={styles.dateText}>4/6/2023</Text>
 
                             </View>

@@ -1,9 +1,11 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        padding: 15,
+        padding: screenPadding,
         height,
+        backgroundColor: globalStyles.style.whiteMode.primarybgColor
     },
     header: {
         flexDirection: 'row',
@@ -39,7 +41,8 @@ export default StyleSheet.create({
         paddingVertical: '5%',
         borderRadius: 6,
         borderColor: "#dedede",
-        borderWidth: 1
+        borderWidth: 1,
+        elevation: 1
     },
     orderNumber: {
         fontSize: 16,
@@ -53,12 +56,12 @@ export default StyleSheet.create({
     nameHolder: {
         borderColor: "#dedede",
         borderWidth: 1,
-        width: '60%',
         height: height / 30,
         borderRadius: 10,
         marginTop: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingHorizontal: "3%"
 
     },
     locationTextTitle: {
@@ -120,7 +123,9 @@ export default StyleSheet.create({
         paddingHorizontal: '4%',
         borderWidth: 1,
         borderColor: '#dedede',
-        borderRadius: 6
+        borderRadius: 6,
+        elevation: 1
+
     },
     productImageNameHolder: {
         flexDirection: 'row',
@@ -155,12 +160,14 @@ export default StyleSheet.create({
         height: height / 10,
         borderRadius: 6,
         borderColor: '#dedede',
-        borderWidth: 1
+        borderWidth: 1,
+        elevation: 1
+
 
 
     },
     completedHolder: {
-        backgroundColor: "#37997f",
+        backgroundColor: globalStyles.colors.logoColor,
         padding: "3%",
         borderRadius: 50,
         paddingHorizontal: "5%"
@@ -187,8 +194,8 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     dateText: {
-        opacity: .5,
-        fontWeight: "400"
+        fontWeight: "400",
+        color: globalStyles.colors.miniPrimary
     },
     decisionButtonHolder: {
         width: width - 35,
@@ -197,7 +204,12 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: 'row',
-
+    },
+    dateWrapper: {
+        backgroundColor: globalStyles.colors.logoColor,
+        borderRadius: 10,
+        paddingHorizontal: "3%",
+        paddingVertical: "1%"
     }
 
 })

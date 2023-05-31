@@ -1,0 +1,22 @@
+import { StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
+export default StyleSheet.create({
+    container: {
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: globalStyles.colors.miniPrimary,
+        zIndex: 5,
+        // opacity: .3
+    },
+    subContainer: {
+        height: 300,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: 'center'
+    }
+})

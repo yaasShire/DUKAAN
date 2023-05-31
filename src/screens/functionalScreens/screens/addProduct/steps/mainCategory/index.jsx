@@ -4,9 +4,15 @@ import styles from './style'
 import SingleCategoryCard from '../../../../../../components/atoms/singCategoryCard';
 import { useSelector } from 'react-redux'
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton';
+import ProductRegistrationError from '../../../../../../components/atoms/productRegistrationError';
+import { fetchData } from '../../../../../../hooks/useFetch';
+import AppLoader from '../../../../../../components/molecules/AppLoader';
 const MainCategory = ({ category, title, setCurrentPosition }) => {
     const mainCategory = useSelector((state) => state.productRegistration.mainCategory)
     const [showError, setShowError] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
+    const [categories, setCategories] = useState([])
     const errorHandler = (action) => {
         if (action == 'Prev') {
             setCurrentPosition(prev => prev - 1)
@@ -21,36 +27,49 @@ const MainCategory = ({ category, title, setCurrentPosition }) => {
             setCurrentPosition(prev => prev + 1)
         }
     }
+
+
+    useEffect(() => {
+        const fetShops = async () => {
+            const { data } = await fetchData('seller/category/view/', setError, setIsLoading)
+            setCategories(data.data)
+        }
+        fetShops()
+
+    })
+
+
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false} >
                 {
                     showError && (
-                        <View style={styles.errorHolder}>
-                            <Text style={styles.textError}>Please select main category</Text>
-                        </View>
+                        <ProductRegistrationError label='Please select main category' />
                     )
                 }
                 <Text style={styles.textTitle}>{title}</Text>
                 <View style={styles.categoriesHolder}>
-                    <View>
-                        {/* <ScrollView style={{}}> */}
-                        {
-                            category.map((category, index) => (
-                                <SingleCategoryCard key={category.id} category={category}
-                                    cat="mainCategory"
-                                    finalObject={mainCategory}
-                                />
-                            ))
-                        }
-                        {/* </ScrollView> */}
-                    </View>
+                    {
+                        categories.map((category, index) => (
+                            <SingleCategoryCard key={category.id} category={category}
+                                cat="mainCategory"
+                                finalObject={mainCategory}
+                                idType="id"
+                            />
+                        ))
+                    }
+                    {/* </ScrollView> */}
                 </View>
             </ScrollView>
             <View style={styles.actionButtonHolder}>
-                <AddProductActionButton label={"Prev"} action="Prev" errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
+                <AddProductActionButton label={"Prev"} action="Prev" errorHandler={errorHandler} />
                 <AddProductActionButton label={"Next"} action="Next" errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
             </View>
+            {
+                isLoading && (
+                    <AppLoader />
+                )
+            }
         </View>
     )
 }

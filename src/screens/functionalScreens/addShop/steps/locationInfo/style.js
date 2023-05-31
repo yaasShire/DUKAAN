@@ -16,6 +16,7 @@ export default StyleSheet.create({
         fontWeight: "500"
     },
     fieldsHolder: {
+        zIndex: -10
 
     },
     buttonHolder: {
@@ -25,6 +26,8 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         width: "100%",
         marginVertical: "8%",
+        zIndex: -10
+
 
     },
     titleHolder: {

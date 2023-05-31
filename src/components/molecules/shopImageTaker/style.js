@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
 
@@ -6,15 +7,17 @@ export default StyleSheet.create({
         height: height / 6,
         width: width / 2.5,
         borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "#928787",
+        borderWidth: .3,
+        borderColor: globalStyles.colors.secondaryGray,
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: "13%"
+        marginBottom: "13%",
+        // elevation: 1
+
 
     },
     mainHolder: {
-        backgroundColor: "pink",
+        backgroundColor: globalStyles.colors.logoColor,
         width: width / 2.478,
         height: height / 31,
         alignSelf: "flex-end",

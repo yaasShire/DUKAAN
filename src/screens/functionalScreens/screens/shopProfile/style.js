@@ -94,20 +94,27 @@ export default StyleSheet.create({
         color: globalStyles.colors.secondaryGray
     },
     productImageWrapper: {
-        backgroundColor: globalStyles.colors.primaryGray,
+        backgroundColor: globalStyles.style.whiteMode.primarybgColor,
         borderRadius: 10,
-        width: 130,
-        height: 130,
-        elevation: 2
+        width: 100,
+        height: 100,
+        elevation: 1,
+        justifyContent: "center",
+        alignItems: "center",
+
     },
     singleProductWrapper: {
-        width: width / 3.1,
-        alignItems: "flex-start"
+        width: 130,
+        minHeight: 150,
+        alignItems: "center",
+        backgroundColor: "pink",
+        justifyContent: "center"
+
     },
     productImage: {
-        width: 130,
-        height: 130,
-        resizeMode: "contain"
+        width: 100,
+        height: 100,
+        resizeMode: "center"
     },
     productsWrapperTitle: {
         marginVertical: "1%",
@@ -142,6 +149,9 @@ export default StyleSheet.create({
         padding: "2%"
     },
     productNameStockWrapper: {
-        marginVertical: "1%"
+        marginVertical: "1%",
+        backgroundColor: "gray",
+        width: "100%",
+        alignItems: 'flex-start'
     }
 })

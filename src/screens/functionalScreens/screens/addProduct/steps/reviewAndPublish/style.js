@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { globalStyles } from "../../../../../../globalConstants/styles";
+import { WindowDimension } from "../../../../../../utils/utilityFunctions";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -12,17 +13,17 @@ export default StyleSheet.create({
         padding: "2%",
     },
     headerText: {
-        fontSize: globalStyles.fontSizes.primary3,
+        fontSize: globalStyles.fontSizes.secondary,
+        fontWeight: "600",
         color: globalStyles.colors.tertiary,
-
     },
     image: {
-        width: 150,
-        height: 150
+        width: 170,
+        height: 170
     },
     imageWrapper: {
-        backgroundColor: globalStyles.colors.primaryGray,
-        width: width / 1.8,
+        // backgroundColor: globalStyles.colors.primaryGray,
+        width: WindowDimension / 1.1,
         height: height / 5,
         borderRadius: 5,
         justifyContent: 'center',

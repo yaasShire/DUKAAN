@@ -34,7 +34,7 @@ const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='bottomTabs'>
+            <Stack.Navigator initialRouteName='login'>
                 <Stack.Screen name='drawer' component={DrawerComponent} options={{ headerShown: false }} />
                 <Stack.Screen name='addShopFirstTime' component={AddShopFirstTime} options={{ headerShown: false }} />
                 <Stack.Screen name='onboarding' component={OnboardingC} options={{ headerShown: false }} />

@@ -1,11 +1,11 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const SellerCardAction = ({ icon, actionName, Directory, navigation }) => {
+const SellerCardAction = ({ icon, actionName, Directory, navigation, image }) => {
     return (
-        <TouchableOpacity style={[styles.actionCard]} onPress={() => actionName == 'Products' ? navigation.navigate('productsStack', { screen: "productList" }) : actionName == 'Profile' ? navigation.navigate('settingScreens', { screen: "settings" }) : actionName == 'Shop' ? navigation.navigate('shops') : actionName == 'Reports' ? navigation.navigate('reports') : ""}>
-            <Ionicons name={icon} color="#1BB4D6" size={60} />
+        <TouchableOpacity style={[styles.actionCard]} onPress={() => actionName == 'Product' ? navigation.navigate('productsStack', { screen: "productList" }) : actionName == 'Profile' ? navigation.navigate('settingScreens', { screen: "settings" }) : actionName == 'Shop' ? navigation.navigate('shops') : actionName == 'Report' ? navigation.navigate('reports') : ""}>
+            <Image source={image} style={styles.image} />
             <Text style={styles.actionName}>{actionName}</Text>
 
         </TouchableOpacity>

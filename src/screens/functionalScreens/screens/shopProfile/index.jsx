@@ -16,6 +16,8 @@ import AppHeader from '../../../../components/molecules/appHeader'
 import { GridList, GridListItem, GridView } from 'react-native-ui-lib'
 import { Feather } from '@expo/vector-icons'
 import { globalStyles } from '../../../../globalConstants/styles'
+import shopPlaceHolder from '../../../../assets/images/shopPlaceHolder.png'
+
 const ShopProfile = ({ navigation, route }) => {
     const data = [
         {
@@ -63,14 +65,16 @@ const ShopProfile = ({ navigation, route }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <ImageBackground onLoadEnd={() => console.warn('load end')} onLoadStart={() => console.warn('load started')} fadeDuration={2000} blurRadius={15} style={styles.bannerWrapper} source={mechanicBanner}>
+            <ImageBackground fadeDuration={2000} blurRadius={5} style={styles.bannerWrapper} source={mechanicBanner}>
                 <AppHeader title={"Shop Profile"} navigation={navigation} color={"#fff"} />
             </ImageBackground>
             <View style={styles.miniWrapper}>
                 <View style={styles.cardWrapper}>
                     <View style={styles.profileCard}>
                         <View style={styles.profileImageWrapper}>
-                            <Image accessible={false} source={route.params.data.image} style={styles.image} />
+                            {/* <Image accessible={false} source={route.params.data.image} style={styles.image} /> */}
+                            <Image source={route.params.data?.photos ? { uri: "https://sweyn.co.uk/storage/images/shops/" + route.params.data?.photos } : shopPlaceHolder} style={styles.image} />
+
                         </View>
                         <View style={styles.shopNameLocationWrapper}>
                             <Text style={styles.shopName}>{route.params.data.name}</Text>
@@ -79,15 +83,15 @@ const ShopProfile = ({ navigation, route }) => {
                         <View style={styles.infoWrapper}>
                             <View style={styles.singleInfoWrapper}>
                                 <Text style={styles.singleInfoWrapperTitle}>Purchased</Text>
-                                <Text style={styles.singleInfoWrapperValue}>{route.params.data.purchased}</Text>
+                                <Text style={styles.singleInfoWrapperValue}>{route?.params?.data?.purchased}</Text>
                             </View>
                             <View style={styles.singleInfoWrapper}>
                                 <Text style={styles.singleInfoWrapperTitle}>Wished</Text>
-                                <Text style={styles.singleInfoWrapperValue}>{route.params.data.wished}</Text>
+                                <Text style={styles.singleInfoWrapperValue}>{route?.params?.data?.wished}</Text>
                             </View>
                             <View style={styles.singleInfoWrapper}>
                                 <Text style={styles.singleInfoWrapperTitle}>Liked</Text>
-                                <Text style={styles.singleInfoWrapperValue}>{route.params.data.liked}</Text>
+                                <Text style={styles.singleInfoWrapperValue}>{route?.params?.data?.liked}</Text>
                             </View>
                         </View>
                     </View>
@@ -102,7 +106,7 @@ const ShopProfile = ({ navigation, route }) => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <FlatList
+                    {/* <FlatList
                         horizontal={true}
                         contentContainerStyle={{ columnGap: 10 }}
                         showsHorizontalScrollIndicator={false}
@@ -119,7 +123,7 @@ const ShopProfile = ({ navigation, route }) => {
                                 </View>
                             </View>
                         )}
-                    />
+                    /> */}
                     <View style={styles.buttonsHolder}>
                         <DecisionButton title="Cancel" navigation={navigation} />
                         <DecisionButton title="Update Shop" navigation={navigation} />

@@ -5,8 +5,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import cameraPlaceHolder from '../../../assets/camera1.png'
 import * as ImagePicker from 'expo-image-picker';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMainImage, setImage2, setImage3, setImage4, setImage5, setImage6 } from '../../../redux/productImages';
-const ImageTaker = ({ main, image: imageIdentifier, imageURL }) => {
+import { setProductImage1, setProductImage2, setProductImage3, setProductCategory, setProductImage4 } from '../../../redux/products';
+
+const ImageTaker = ({ main, image: img, imageURL, img: imageNumber }) => {
     const [image, setImage] = useState(imageURL);
     const dispatch = useDispatch()
 
@@ -22,12 +23,10 @@ const ImageTaker = ({ main, image: imageIdentifier, imageURL }) => {
 
         if (!result.canceled) {
             setImage(result.assets[0].uri);
-            main ? dispatch(setMainImage(result.assets[0].uri))
-                : imageIdentifier == 'image2' ? dispatch(setImage2(result.assets[0].uri))
-                    : imageIdentifier == 'image3' ? dispatch(setImage3(result.assets[0].uri))
-                        : imageIdentifier == 'image4' ? dispatch(setImage4(result.assets[0].uri))
-                            : imageIdentifier == 'image5' ? dispatch(setImage5(imresult.assets[0].uriage))
-                                : imageIdentifier == 'image6' ? dispatch(setImage6(result.assets[0].uri)) : ""
+            imageNumber == 1 ? dispatch(setProductImage1(result.assets[0].uri))
+                : imageNumber == 2 ? dispatch(setProductImage2(result.assets[0].uri))
+                    : imageNumber == 3 ? dispatch(setProductImage3(result.assets[0].uri))
+                        : imageNumber == 4 ? dispatch(setProductImage4(result.assets[0].uri)) : ""
         }
     };
 

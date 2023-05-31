@@ -16,12 +16,12 @@ const DecisionButton = ({ title, navigation }) => {
                     setVisible(true)
                     setstatus(title == 'ACCEPT' ?
                         { state: "ACCEPTED", description: "Order is accepted" }
-                        : title == 'ACCEPT'
+                        : title == 'REJECT'
                             ? { state: "Rejected", description: "Order is rejected" }
                             : ""
                     )
                 }
-                navigation.goBack()
+                // navigation.goBack()
             }}>
                 <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>

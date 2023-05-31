@@ -9,7 +9,8 @@ export const shopDetailsValidation = yup.object().shape({
         .string()
         .email("Please enter a valid shop email")
         .required('Shop email is required'),
-    shopAddress: yup
+    shopNumber: yup
         .string()
-        .required('Shop address is required')
+        .min(8, ({ min }) => `Shop number must be at least ${min} length`)
+        .required('Shop number is required')
 })

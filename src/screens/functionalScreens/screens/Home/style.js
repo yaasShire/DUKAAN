@@ -1,83 +1,56 @@
-import { Dimensions, StyleSheet } from "react-native";
-import { globalStyles } from "../../../../globalConstants/styles";
-import { G } from "react-native-svg";
-const { width, height } = new Dimensions.get("window")
+import { StyleSheet } from "react-native";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
+import { HeightDimension, WindowDimension } from "../../../../utils/utilityFunctions";
+
 export default StyleSheet.create({
     container: {
-        height
+        flex: 1,
+        backgroundColor: globalStyles.style.whiteMode.secondaryColor
     },
-    miniHolder: {
-        padding: 15,
-        height: height,
-        marginBottom: 60
+    mainScroll: {
+        height: "100%"
     },
-    infoCardsHolder: {
-        marginBottom: "4%",
+    topContent: {
+        backgroundColor: globalStyles.colors.logoColor,
+        height: HeightDimension / 6,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        padding: screenPadding,
+        zIndex: 0
 
     },
-    mainCardsHolder: {
+    bottomContent: {
+        zIndex: 10,
+        backgroundColor: globalStyles.colors.logoColor,
+        marginTop: -2,
+        minHeight: HeightDimension / 1.4,
+        // borderTopLeftRadius: 2,
+        // borderTopRightRadius: 2,
+    },
+    subBottomContent: {
+        // height: HeightDimension,
+        backgroundColor: globalStyles.style.whiteMode.primarybgColor,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        padding: screenPadding,
 
-
     },
-    sellerActionCardHolder: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+    infoCardsWrapper: {
+        columnGap: 10,
+        paddingVertical: 10,
+        // backgroundColor: "pink",
+        // width: "100%"
     },
-
-    newOrdersText: {
-        fontSize: 19,
-        fontWeight: "600",
-        marginTop: '6%',
-        marginBottom: '5%',
-        color: globalStyles.colors.tertiary
-    },
-    actionCards: {
-        backgroundColor: "#fff",
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "#dedede"
-    },
-    cardAction: {
+    sellerActionWrapper: {
         flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingHorizontal: "2%",
-        height: height / 14,
-        borderBottomColor: "#dedede",
-        borderBottomWidth: .5
+        flexWrap: 'wrap',
+        justifyContent: "space-between"
     },
-
-    actionName: {
-        fontSize: globalStyles.fontSizes.secondary,
-        fontWeight: globalStyles.fontWeights.secondary,
-        marginLeft: "4%",
-        color: globalStyles.colors.tertiary
+    recentOrdersWrapper: {
+        marginVertical: "3%"
     },
-    iconActionNameWrapper: {
-        flexDirection: 'row',
-        alignItems: "center"
-    },
-    messagCountWrapper: {
-        backgroundColor: "red",
-        borderRadius: 5,
-        justifyContent: "center",
-        alignItems: "center",
-        paddingHorizontal: "5%",
-    },
-    CardRightSection: {
-        flexDirection: 'row',
-        width: "40%",
-        justifyContent: "flex-end",
-        alignItems: "center"
-    },
-    messageNumber: {
-        fontWeight: "500",
-        color: "#fff"
-    },
-    reportHolder: {
-        marginVertical: "2%"
+    header: {
+        fontSize: 18,
+        fontWeight: "500"
     }
-
-
 })

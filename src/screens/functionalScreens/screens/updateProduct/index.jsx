@@ -87,13 +87,13 @@ const UpdateProduct = ({ navigation, route }) => {
                 </Tab>
                 <TabView value={index} onChange={setIndex} animationType="spring">
                     <TabView.Item style={{ width: "100%" }}>
-                        <PricingSectionCard />
+                        <PricingSectionCard navigation={navigation} />
                     </TabView.Item>
                     <TabView.Item style={{ width: "100%" }}>
-                        <InventorySectionCard />
+                        <InventorySectionCard navigation={navigation} />
                     </TabView.Item>
                     <TabView.Item style={{ width: "100%" }}>
-                        <PricingSectionCard />
+                        <PricingSectionCard navigation={navigation} />
                     </TabView.Item>
                 </TabView>
             </View>

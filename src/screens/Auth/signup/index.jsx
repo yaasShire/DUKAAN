@@ -17,7 +17,7 @@ import useFetch from '../../../api/auth'
 import { openInbox } from 'react-native-email-link'
 import Feather from 'react-native-vector-icons/Feather';
 import { formDataGenerator } from '../../../utils/utilityFunctions';
-
+ 
 const SignUp = ({ navigation }) => {
     const [visible, setVisible] = React.useState(false);
     const showDialog = () => setVisible(true);

@@ -1,5 +1,5 @@
 import { View, Image, ScrollView, TouchableOpacity, StatusBar } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
 import signUpImage from '../../../assets/signupImage.png'
@@ -15,33 +15,34 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator } from 'react-native-paper'
 import { Dialog, Portal, Text } from 'react-native-paper';
 import { formDataGenerator } from '../../../utils/utilityFunctions'
+import { authFetchData } from '../../../hooks/authFetch'
+import { authFormData } from '../../../utils/utilityFunctions'
+import SignLoading from '../../../components/molecules/signLoading'
 const Login = ({ navigation }) => {
-    const [visible, setVisible] = React.useState(false);
-
-    const hideDialog = () => setVisible(false);
     const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState("")
-    const [data, setData] = useState({})
-    const [showError, setShowError] = useState(false)
+    const [error, setError] = useState(null)
+    const [userInfo, setUserInfo] = useState({})
+
     const handleSignIn = async (values) => {
         setIsLoading(true)
-        setError("")
-        const data = formDataGenerator(values)
-        const result = await useFetch(data, setError, setIsLoading, 'seller/user/signin')
-        console.warn(result);
-        if (result) {
-            // await AsyncStorage.setItem("user", result)
-            // navigation.navigate('bottomTabs')
-        }
-        else if (result?.message) {
-            setShowError(true)
-            setError(result.message)
-        }
-        setTimeout(() => {
-            setError("")
-        }, 2000)
+        const payload = authFormData(values)
+        setTimeout(async () => {
+            const data = await authFetchData('seller/user/signin', payload, setError, setIsLoading)
+            if (data.access_token) {
+                console.log(data)
+                await AsyncStorage.setItem("access_token", data?.access_token)
+                await AsyncStorage.setItem("token_type", data?.token_type)
+                await AsyncStorage.setItem("user", JSON.stringify(data?.user))
+                navigation.replace("bottomTabs")
+            }
+            if (!data.access_token) {
+                setError("Un authorized user.")
+                setTimeout(() => {
+                    setError(null)
+                }, 5000)
+            }
+        }, 3000)
     }
-   
     return (
         <>
             <StatusBar barStyle="white-content" />
@@ -60,24 +61,13 @@ const Login = ({ navigation }) => {
                     <Image source={signUpImage} style={styles.image} />
                 </View>
                 {
-                    isLoading && (
-                        <View>
-                            <Portal >
-                                <Dialog style={{ height: 150, justifyContent: "center" }} visible={isLoading} onDismiss={hideDialog}>
-                                    <Dialog.Title style={styles.title}>Loading...</Dialog.Title>
-                                    <ActivityIndicator size={"large"} color='green' />
-                                </Dialog>
-                            </Portal>
+                    error && (
+                        <View style={{ alignItems: 'center', marginVertical: "2%" }}>
+                            <Text style={{ color: "red", fontSize: 17 }}>*User not Authorized</Text>
                         </View>
                     )
                 }
-                {showError && (
-                    <View style={styles.messageTextHolder}>
-                        <View style={styles.subMessageWrapper}>
-                            <Text style={styles.messageText}>{error}</Text>
-                        </View>
-                    </View>
-                )}
+
                 <Formik
                     initialValues={{ email: "", password: "" }}
                     validationSchema={loginValidationSchema}
@@ -97,7 +87,7 @@ const Login = ({ navigation }) => {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.buttonHolder}>
-                                    <AuthButton isLoading={isLoading} title='Login' handleSubmit={() => handleSubmit(values)} />
+                                    <AuthButton title='Login' handleSubmit={() => handleSubmit(values)} />
                                 </View>
                                 <View style={styles.signupLinkWrapper}>
                                     <TouchableOpacity style={styles.newAccount} onPress={() => navigation.navigate("signup")}>
@@ -111,9 +101,14 @@ const Login = ({ navigation }) => {
 
                 </Formik>
 
-
+                {
+                    isLoading && (
+                        <SignLoading />
+                    )
+                }
 
             </ScrollView>
+
         </>
     )
 }

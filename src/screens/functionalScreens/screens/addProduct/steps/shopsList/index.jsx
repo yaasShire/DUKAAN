@@ -4,9 +4,15 @@ import styles from './style'
 import SingleCategoryCard from '../../../../../../components/atoms/singCategoryCard';
 import { useSelector } from 'react-redux'
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton';
+import { fetchData } from '../../../../../../hooks/useFetch'
+import { setShopsList } from '../../../../../../redux/products';
+import AppLoader from '../../../../../../components/molecules/AppLoader'
 const ShopList = ({ category, title, setCurrentPosition }) => {
     const shopList = useSelector((state) => state.productRegistration.shopsList)
     const [showError, setShowError] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+    const [setError, setSetError] = useState(null)
+    const [shopData, setShopData] = useState([])
     const errorHandler = () => {
         if (!shopList.id) {
             setShowError(true)
@@ -18,6 +24,16 @@ const ShopList = ({ category, title, setCurrentPosition }) => {
             setCurrentPosition(prev => prev + 1)
         }
     }
+
+    useEffect(() => {
+        const fetShops = async () => {
+            const { data } = await fetchData('seller/shop/view/', setError, setIsLoading)
+            setShopData(data.data)
+        }
+        fetShops()
+
+    })
+
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -33,8 +49,8 @@ const ShopList = ({ category, title, setCurrentPosition }) => {
                     <View>
                         {/* <ScrollView style={{}}> */}
                         {
-                            category.map((category, index) => (
-                                <SingleCategoryCard key={category.id} category={category}
+                            shopData.map((category, index) => (
+                                <SingleCategoryCard key={category.USID} category={category}
                                     cat="shopsList"
                                     finalObject={shopList}
                                 />
@@ -47,6 +63,11 @@ const ShopList = ({ category, title, setCurrentPosition }) => {
             <View style={styles.actionButtonHolder}>
                 <AddProductActionButton label={"Next"} errorHandler={errorHandler} setCurrentPosition={setCurrentPosition} />
             </View>
+            {
+                isLoading && (
+                    <AppLoader />
+                )
+            }
         </View>
     )
 }
