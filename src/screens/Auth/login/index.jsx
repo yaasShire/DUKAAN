@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator } from 'react-native-paper'
 import { Dialog, Portal, Text } from 'react-native-paper';
 import { formDataGenerator } from '../../../utils/utilityFunctions'
-import { authFetchData } from '../../../hooks/authFetch'
+import { authFetchData } from '../../../hooks/auth'
 import { authFormData } from '../../../utils/utilityFunctions'
 import SignLoading from '../../../components/molecules/signLoading'
 const Login = ({ navigation }) => {
@@ -29,7 +29,6 @@ const Login = ({ navigation }) => {
         setTimeout(async () => {
             const data = await authFetchData('seller/user/signin', payload, setError, setIsLoading)
             if (data.access_token) {
-                console.log(data)
                 await AsyncStorage.setItem("access_token", data?.access_token)
                 await AsyncStorage.setItem("token_type", data?.token_type)
                 await AsyncStorage.setItem("user", JSON.stringify(data?.user))
@@ -46,7 +45,7 @@ const Login = ({ navigation }) => {
     return (
         <>
             <StatusBar barStyle="white-content" />
-            <ScrollView style={styles.container}>
+            <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.titlesHolder}>
                     <View >
                         <Text style={styles.title1}>welcome to</Text>

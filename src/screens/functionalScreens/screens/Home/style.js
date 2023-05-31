@@ -15,7 +15,7 @@ export default StyleSheet.create({
         height: HeightDimension / 6,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        padding: screenPadding,
+        paddingVertical: screenPadding,
         zIndex: 0
 
     },
@@ -38,6 +38,7 @@ export default StyleSheet.create({
     infoCardsWrapper: {
         columnGap: 10,
         paddingVertical: 10,
+        paddingHorizontal: 10
         // backgroundColor: "pink",
         // width: "100%"
     },

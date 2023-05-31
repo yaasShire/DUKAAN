@@ -17,81 +17,38 @@ import useFetch from '../../../api/auth'
 import { openInbox } from 'react-native-email-link'
 import Feather from 'react-native-vector-icons/Feather';
 import { formDataGenerator } from '../../../utils/utilityFunctions';
- 
+import { fetchData } from '../../../hooks/useFetch';
+import SignLoading from '../../../components/molecules/signLoading'
+import { authFetchData } from '../../../hooks/auth';
+import { authFormData } from '../../../utils/utilityFunctions';
+import VerificationMessage from './message';
 const SignUp = ({ navigation }) => {
-    const [visible, setVisible] = React.useState(false);
-    const showDialog = () => setVisible(true);
-
-    const hideDialog = () => setVisible(false);
-
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
-    const [data, setData] = useState(null)
+    const [verificationMessage, setVerificationMessage] = useState(null)
     setTimeout(() => {
         setIsLoading(false)
     }, 2000)
     const handleSignUp = async (values) => {
-        setData(null)
         setIsLoading(true)
-        showDialog()
-        setError(null)
-        const data = formDataGenerator(values)
-        const result = await useFetch(data, setError, setIsLoading, 'seller/user/signup')
-        setData(result?.status)
-
-        // console.warn(result)
-        if (result?.email) {
-            setError(result?.email[0])
-        }
-        setTimeout(() => {
-            result?.email[0] ? '' :
-                !isLoading && navigation.navigate('bottomTabs')
-        }, 1500)
+        const payload = authFormData(values)
+        setTimeout(async () => {
+            const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
+            if (data?.message) {
+                setVerificationMessage(data?.message)
+            }
+            if (data?.email) {
+                setError(data?.email[0])
+                setTimeout(() => {
+                    setError(null)
+                }, 10000)
+            }
+        }, 3000)
     }
     return (
         <>
-            {
-                visible && (
-                    <Portal>
-                        <Dialog visible={visible} onDismiss={hideDialog} style={{ height: 250 }}>
-                            <View style={{ padding: "3%" }}>
-
-
-                                {error && <Dialog.Icon icon="alert" color='red' size={40} />}
-                                {data &&
-                                    (<View style={{ justifyContent: "center", alignItems: "center" }}>
-                                        <View style={{ backgroundColor: "green", width: 80, height: 80, justifyContent: "center", alignItems: "center", borderRadius: 100 }}>
-                                            <Feather name='check' size={40} color={"#fff"} />
-                                        </View>
-                                    </View>
-                                    )
-                                }
-                                <Dialog.Title style={{ textAlign: "center", fontSize: 20, fontWeight: "600", textTransform: "capitalize" }}>{data ? data : error}</Dialog.Title>
-                                <Dialog.Content>
-                                    {
-                                        isLoading && <ActivityIndicator size="large" color="#00ff00" />
-                                    }
-                                </Dialog.Content>
-
-                                <View>
-                                    {/* {
-                                        (!isLoading && data) && (
-                                            <View>
-                                                <Button icon="email" mode="contained" onPress={() => openInbox({ message: "Whatcha wanna do?", cancelLabel: "Go back!" })} >Check your mail to verify</Button>
-
-                                            </View>
-
-                                        )
-                                    } */}
-
-                                </View>
-                            </View>
-                        </Dialog>
-                    </Portal>
-                )
-            }
             <StatusBar barStyle="dark-white" />
-            <ScrollView style={styles.container}>
+            <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.titlesHolder}>
                     <View style={styles.uperText} >
                         <Text style={styles.title1}>welcome to</Text>
@@ -105,10 +62,17 @@ const SignUp = ({ navigation }) => {
                 <View style={styles.imageHolder}>
                     <Image source={bannerImage} style={styles.image} />
                 </View>
+                {
+                    error && (
+                        <View style={{ alignItems: 'center', marginVertical: "2%" }}>
+                            <Text style={{ color: "red", fontSize: 17 }}>{error}</Text>
+                        </View>
+                    )
+                }
                 <Formik
                     validationSchema={signupValidationSchema}
                     initialValues={{ name: "", phone_number: "", email: "", city: "", password: "", confirmPassword: "" }}
-                    onSubmit={handleSignUp}
+                    onSubmit={(values) => handleSignUp(values)}
                 >
                     {
                         ({ values, errors, handleChange, handleBlur, touched, handleSubmit, isValid, setFieldTouched }) => (
@@ -146,7 +110,16 @@ const SignUp = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-
+            {
+                isLoading && (
+                    <SignLoading />
+                )
+            }
+            {
+                verificationMessage && (
+                    <VerificationMessage navigation={navigation} />
+                )
+            }
 
         </>
     )
