@@ -133,7 +133,7 @@ const CarModelFilterSection = () => {
                     }
                 </ScrollView>
             </View>
-            <View style={{ height: "100%", backgroundColor: "pink", flex }}>
+            <View style={{ height: "100%", }}>
                 <CarModelFilterDropdown dropDown={brandDropdown} selected={selectedBrand} set={setSelectedBrand} />
                 <CarModelFilterDropdown dropDown={carModelDropdown} selected={selectedCarModel} set={setSelectedCarModel} />
                 <CarModelFilterDropdown dropDown={yearOfMake} selected={selectedYearOfMake} set={setSelectedYearOfMake} />

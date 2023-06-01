@@ -18,10 +18,12 @@ import { AnimatedFAB } from 'react-native-paper';
 import { fetchData, useFetch } from '../../../../hooks/useFetch'
 import AppLoader from '../../../../components/molecules/AppLoader'
 import AppError from '../../../../components/molecules/AppError'
+import NoProduct from './noProduct'
 const ProductsList = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [products, setProducts] = useState([])
+    const [isNoProducts, setIsNoProducts] = useState(false)
     const data = [
         {
             id: 1,
@@ -80,6 +82,10 @@ const ProductsList = ({ navigation }) => {
         const fetchProducts = async () => {
             const { data } = await fetchData('seller/products/view', setError, setIsLoading)
             setProducts(data.data)
+            if (data.data.length == 0) {
+                console.log("empty")
+                setIsNoProducts(true)
+            }
         }
         fetchProducts()
     }, [])
@@ -110,7 +116,12 @@ const ProductsList = ({ navigation }) => {
             }
             {
                 error && (
-                    <AppLoader />
+                    <AppError error={error} />
+                )
+            }
+            {
+                isNoProducts && (
+                    <NoProduct navigation={navigation} />
                 )
             }
 
