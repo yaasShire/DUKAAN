@@ -13,7 +13,7 @@ const AppHeader = ({ title, navigation, color, screen = "" }) => {
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Text style={styles.cancelText}>Cancel</Text>
                     </TouchableOpacity>
-                ) : <Feather name='chevron-left' size={28} color={globalStyles.colors.secondaryGray} onPress={() => navigation.goBack()} style={{ padding: "1%" }} />
+                ) : <Feather name='chevron-left' size={28} onPress={() => navigation.goBack()} style={{ padding: "1%" }} />
             }
             <View style={styles.headerTitleWrapper}>
                 <Text style={[styles.headerTitle, { color }]}>{title}</Text>

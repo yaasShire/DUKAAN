@@ -18,8 +18,8 @@ export default StyleSheet.create({
     },
     image: {
         width: 300,
-        height: 300,
-        resizeMode: 'cover'
+        height: 180,
+        resizeMode: 'contain'
     },
     textInputHolder: {
         justifyContent: 'center',

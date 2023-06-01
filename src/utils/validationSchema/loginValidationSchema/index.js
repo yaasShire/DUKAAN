@@ -8,7 +8,6 @@ export const loginValidationSchema = yup.object().shape({
     //     .required('Phone number is required'),
     password: yup
         .string()
-        .min(8, ({ min }) => `Password must be at least ${min} characters`)
         .required('Password is required'),
     email: yup
         .string()

@@ -2,9 +2,13 @@ import * as yup from 'yup'
 
 export const forgetPasswordValidation = yup.object().shape({
 
-    phoneNumber: yup
+    name: yup
         .string()
-        .min(9, ({ min }) => `Phone number must be at least ${min} characters`)
-        .required('Phone number is required'),
+        .min(9, ({ min }) => `name must be at least ${min} characters`)
+        .required('name is required'),
+    email: yup
+        .string()
+        .email("Please enter a valid email")
+        .required('email is required'),
 
 })

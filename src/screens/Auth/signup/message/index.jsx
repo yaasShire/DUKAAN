@@ -2,12 +2,12 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import styles from './style'
 import { Button } from 'react-native'
-const VerificationMessage = ({ navigation }) => {
+const VerificationMessage = ({ navigation = "", description = "", screen = "" }) => {
     return (
         <View style={styles.container}>
             <View style={styles.contentWrapper}>
-                <Text style={styles.text}>We have sent verification email, verify by you email and then log in.</Text>
-                <Button title='Log in' onPress={() => navigation.navigate("login")} />
+                <Text style={styles.text}>{description}</Text>
+                <Button title='Log in' onPress={() => navigation.navigate(screen)} />
             </View>
         </View>
     )

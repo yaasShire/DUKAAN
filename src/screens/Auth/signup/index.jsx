@@ -32,18 +32,19 @@ const SignUp = ({ navigation }) => {
     const handleSignUp = async (values) => {
         setIsLoading(true)
         const payload = authFormData(values)
-        setTimeout(async () => {
-            const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
-            if (data?.message) {
-                setVerificationMessage(data?.message)
-            }
-            if (data?.email) {
-                setError(data?.email[0])
-                setTimeout(() => {
-                    setError(null)
-                }, 10000)
-            }
-        }, 3000)
+        // setTimeout(async () => {
+        const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
+        console.log(data)
+        if (data?.message) {
+            setVerificationMessage(data?.message)
+        }
+        if (data?.email) {
+            setError(data?.email[0])
+            // setTimeout(() => {
+            setError(null)
+            // }, 100)
+        }
+        // }, 3000)
     }
     return (
         <>
@@ -117,7 +118,7 @@ const SignUp = ({ navigation }) => {
             }
             {
                 verificationMessage && (
-                    <VerificationMessage navigation={navigation} />
+                    <VerificationMessage navigation={navigation} screen='login' description='We have sent verification email, verify by you email and then log in.' />
                 )
             }
 

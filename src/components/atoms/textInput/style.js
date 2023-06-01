@@ -46,7 +46,7 @@ export default StyleSheet.create({
         paddingHorizontal: '5%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '1%',
+        marginBottom: '3%',
         borderRadius: 8,
         // paddingVertical: '2%'
     },

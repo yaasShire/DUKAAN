@@ -10,9 +10,9 @@ export const authFetchData = async (endpoint, payload, setError, setIsLoading) =
             body: payload
         })
         const data = await response.json();
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 3000)
+        // setTimeout(() => {
+        setIsLoading(false)
+        // }, 3000)
         return data;
     } catch (error) {
         setError(error)
