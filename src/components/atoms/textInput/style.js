@@ -7,12 +7,12 @@ export default StyleSheet.create({
     fieldHolder: {
         backgroundColor: "#ffffff",
         shadowOffset: {
-            width: 5,
-            height: 5
+            width: 1,
+            height: 1
         },
         shadowColor: "#000000",
-        shadowOpacity: 0.7,
-        elevation: 3,
+        shadowOpacity: 0.2,
+        elevation: 1,
         width: '90%',
         height: 65,
         borderRadius: 8,

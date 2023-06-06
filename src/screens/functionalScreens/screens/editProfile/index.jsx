@@ -13,10 +13,16 @@ import GlobalHeader from '../../../../components/molecules/globalHeader';
 import { AntDesign } from '@expo/vector-icons';
 import AppHeader from '../../../../components/molecules/header';
 import { globalStyles } from '../../../../globalConstants/styles';
-const EditProfile = ({ navigation }) => {
-    const [image, setImage] = useState(null)
+import { formValues } from '../../../../utils/utilityFunctions';
+import { postData } from '../../../../hooks/usePost'
+import AppLoader from '../../../../components/molecules/AppLoader';
+import UploadingAnimation from '../../../../components/molecules/uploadingAnimation';
+const EditProfile = ({ navigation, route }) => {
+    const [image, setImage] = useState(route.params.image)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [imageName, setImageName] = useState(null)
     const pickImage = async () => {
-        // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
@@ -25,42 +31,62 @@ const EditProfile = ({ navigation }) => {
         });
         if (!result.canceled) {
             setImage(result.assets[0].uri)
+            const imagePath = result.assets[0].uri.split('/');
+            const name = imagePath[imagePath.length - 1];
+            setImageName(name);
         }
-
     };
+    const handleSaveProfile = async (values) => {
+        setIsLoading(true)
+        profileData = formValues(values, image)
+        const response = await postData('seller/user/update', profileData, setError, setIsLoading)
+        if (response.result.status) {
+            navigation.navigate('settings')
+        }
+    }
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
-            <View>
-                <AppHeader title={"Edit Profile"} navigation={navigation} screen="Edit Profile" backButton={true} />
-            </View>
-            <View style={styles.imageAndButtonWrapper}>
-                <View style={styles.imageWrapper}>
-                    {image ? <Image source={{ uri: image }} style={styles.image} /> : <Image source={Profile} style={styles.image} />}
+            <AppHeader title={"Edit Profile"} navigation={navigation} backButton={true} />
+            <View style={styles.profileCardWrapper}>
+                <View style={styles.imageAndButtonWrapper}>
+                    <View style={styles.imageWrapper}>
+                        <Image style={styles.image} source={image ? { uri: image } : Profile} />
+                    </View>
+                    <View style={styles.cameraIconWrapper}>
+                        <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />
+                    </View>
                 </View>
-                <View style={styles.cameraIconWrapper}>
-                    <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />
-                </View>
             </View>
-            <ScrollView style={{ flex: 1, }}>
+            <View >
                 <Formik
                     initialValues={{ fullName: "", email: "", phoneNumber: "", city: "" }}
                     validationSchema={editProfileValidation}
+                    onSubmit={(values) => handleSaveProfile(values)}
                 >
                     {
                         ({ errors, handleBlur, handleChange, handleSubmit, touched, setFieldTouched, values }) => (
-                            <View style={styles.inputHolder}>
-                                <EditProfileField label="Full Name" name="fullName" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                            <ScrollView scrollEnabled={false} contentContainerStyle={styles.inputHolder}>
+                                <EditProfileField label="Name" name="fullName" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                 <EditProfileField label="Email" name="email" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                 <EditProfileField label="Phone Number" name="phoneNumber" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                <EditProfileField label="City" name="city" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                            </View>
+                                {/* <EditProfileField label="City" name="city" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} /> */}
+                                <TouchableOpacity style={styles.saveButton} onPress={() => handleSubmit(values)} >
+                                    <Text style={styles.buttonText}>Save</Text>
+                                </TouchableOpacity>
+
+                            </ScrollView>
                         )
                     }
                 </Formik>
-
-            </ScrollView>
-        </SafeAreaView>
+            </View>
+            {
+                isLoading && (
+                    <UploadingAnimation />
+                )
+            }
+        </ScrollView>
     )
 }
 

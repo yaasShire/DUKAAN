@@ -1,11 +1,13 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { globalStyles } from "../../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
+import { WindowDimension } from "../../../../utils/utilityFunctions";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        padding: 15,
-        height,
-        backgroundColor: globalStyles.colors.miniPrimary
+        padding: screenPadding,
+        flex: 1,
+        backgroundColor: globalStyles.colors.miniPrimary,
+        // alignItems: "center"
     },
     topHeader: {
         flexDirection: "row",
@@ -13,11 +15,14 @@ export default StyleSheet.create({
         height: height / 3.38,
         backgroundColor: "pink"
     },
+    profileCardWrapper: {
+        alignItems: "center",
+    },
     image: {
-        width: 120,
-        height: 120,
+        width: 100,
+        height: 100,
         borderRadius: 100,
-        // resizeMode: "contain",
+        resizeMode: "cover",
     },
 
     editText: {
@@ -49,27 +54,32 @@ export default StyleSheet.create({
         marginLeft: "-50%"
     },
     inputHolder: {
-        paddingVertical: "10%",
+        paddingVertical: "5%",
+        alignItems: "center",
+        rowGap: 10
     },
     imageAndButtonWrapper: {
-        height: height / 3.6,
+        height: height / 7,
+        width: "100%",
         alignItems: "center",
-        backgroundColor: "#fff",
+        backgroundColor: globalStyles.colors.miniPrimary,
         paddingVertical: "1%",
         flexDirection: "row",
         justifyContent: "center",
         borderRadius: 8,
         borderColor: "#dedede",
-        borderWidth: 1
+        borderWidth: 1,
+        position: "relative",
+
     },
     imageWrapper: {
         borderWidth: 2,
-        borderColor: "gray",
+        borderColor: globalStyles.colors.logoColor,
         borderRadius: 100,
         padding: "1%",
     },
     cameraIconWrapper: {
-        backgroundColor: "orange",
+        backgroundColor: globalStyles.colors.logoColor,
         borderRadius: 50,
         alignSelf: "flex-end",
         position: "absolute",
@@ -77,8 +87,22 @@ export default StyleSheet.create({
         height: 37,
         justifyContent: "center",
         alignItems: "center",
-        top: 130,
-        right: 115
+        top: 90,
+        right: 135
+    },
+    saveButton: {
+        backgroundColor: globalStyles.colors.logoColor,
+        width: "100%",
+        height: 55,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 5,
+        marginTop: "5%"
+    },
+    buttonText: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: globalStyles.colors.miniPrimary
     }
 
 

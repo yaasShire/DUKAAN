@@ -1,6 +1,6 @@
 import { View, Text, StatusBar, Platform, Image, ImageBackground, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './style'
 import mechanicBanner from '../../../../assets/mechanicB.jpg'
 import profile from '../../../../assets/justin.jpg'
@@ -17,8 +17,18 @@ import { GridList, GridListItem, GridView } from 'react-native-ui-lib'
 import { Feather } from '@expo/vector-icons'
 import { globalStyles } from '../../../../globalConstants/styles'
 import shopPlaceHolder from '../../../../assets/images/shopPlaceHolder.png'
+import { useFocusEffect } from '@react-navigation/native'
+import { postData } from '../../../../hooks/usePost'
+import NoProduct from '../../../../assets/images/noShops.png'
+import NoProductForProfile from './components/noProducts'
+import ProductCard from './components/productCard'
+
 
 const ShopProfile = ({ navigation, route }) => {
+    const [products, setProducts] = useState([])
+    const [isNoProducts, setIsNoProducts] = useState(false)
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
     const data = [
         {
             id: 1,
@@ -56,16 +66,35 @@ const ShopProfile = ({ navigation, route }) => {
             <Text>Products</Text>
         </View>
     )
-    // defaultSource={product1}
-    // blurRadius={15}
-    // loadingIndicatorSource
-    // onError
-    // onLoadStart
-    // onLoadEnd
+
+
+
+    useFocusEffect(
+        React.useCallback(() => {
+            const fetchProducts = async () => {
+                const shopId = new FormData()
+                shopId.append('USID', route.params.data.USID)
+                const data = await postData('seller/shop/products', shopId, setError, setIsLoading)
+                setProducts(data.result.data)
+                // console.warn(data.result.data.length);
+                if (!data.result.data.length) {
+                    setIsNoProducts(true)
+                    console.log("empty")
+                }
+            }
+            fetchProducts()
+            return () => {
+                // Actions to perform when the screen loses focus
+            };
+        }, [])
+    );
+
+
+
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <ImageBackground fadeDuration={2000} blurRadius={5} style={styles.bannerWrapper} source={mechanicBanner}>
+            <ImageBackground style={styles.bannerWrapper} source={mechanicBanner}>
                 <AppHeader title={"Shop Profile"} navigation={navigation} color={"#fff"} />
             </ImageBackground>
             <View style={styles.miniWrapper}>
@@ -80,55 +109,54 @@ const ShopProfile = ({ navigation, route }) => {
                             <Text style={styles.shopName}>{route.params.data.name}</Text>
                             <Text style={styles.locationText}>Muqdisho, Benadir</Text>
                         </View>
-                        <View style={styles.infoWrapper}>
+                        {/* <View style={styles.infoWrapper}>
                             <View style={styles.singleInfoWrapper}>
                                 <Text style={styles.singleInfoWrapperTitle}>Purchased</Text>
-                                <Text style={styles.singleInfoWrapperValue}>{route?.params?.data?.purchased}</Text>
+                                <Text style={styles.singleInfoWrapperValue}>200</Text>
                             </View>
                             <View style={styles.singleInfoWrapper}>
                                 <Text style={styles.singleInfoWrapperTitle}>Wished</Text>
-                                <Text style={styles.singleInfoWrapperValue}>{route?.params?.data?.wished}</Text>
+                                <Text style={styles.singleInfoWrapperValue}>100</Text>
                             </View>
                             <View style={styles.singleInfoWrapper}>
                                 <Text style={styles.singleInfoWrapperTitle}>Liked</Text>
-                                <Text style={styles.singleInfoWrapperValue}>{route?.params?.data?.liked}</Text>
+                                <Text style={styles.singleInfoWrapperValue}>380</Text>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
                 </View>
                 <View style={styles.bottomContentWrapper}>
                     <View style={styles.productsWrapperTitle}>
                         <Text style={styles.productsWrapperTitleText}>Products</Text>
-                        <View style={styles.sellAllWrapper}>
+                        {/* <View style={styles.sellAllWrapper}>
                             <Text>See all</Text>
                             <TouchableOpacity>
                                 <Feather size={23} color={globalStyles.colors.secondaryGray} name='chevron-right' />
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
                     </View>
-                    {/* <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ columnGap: 10 }}
-                        showsHorizontalScrollIndicator={false}
-                        data={route.params.data.images}
-                        keyExtractor={item => item.id}
-                        renderItem={({ item }) => (
-                            <View style={styles.singleProductWrapper}>
-                                <View style={styles.productImageWrapper}>
-                                    <Image source={item.image} style={styles.productImage} />
-                                </View>
-                                <View style={styles.productNameStockWrapper}>
-                                    <Text style={styles.productName}>{item.name}</Text>
-                                    <Text style={styles.availableStock}>{item.stock}pieces</Text>
-                                </View>
-                            </View>
-                        )}
-                    /> */}
-                    <View style={styles.buttonsHolder}>
-                        <DecisionButton title="Cancel" navigation={navigation} />
-                        <DecisionButton title="Update Shop" navigation={navigation} />
+                    {
+                        !isNoProducts ?
+                            <FlatList
+                                horizontal={true}
+                                contentContainerStyle={styles.productList}
+                                showsHorizontalScrollIndicator={false}
+                                data={products}
+                                keyExtractor={item => item.id}
+                                renderItem={({ item }) => (
+                                    <ProductCard item={item} />
+                                )}
+                            /> :
+                            (
+                                <NoProductForProfile navigation={navigation} />
 
-                    </View>
+                            )
+                    }
+                    {/* <View style={styles.buttonsHolder}> */}
+                    {/* <DecisionButton title="Cancel" navigation={navigation} /> */}
+                    {/* <DecisionButton title="Update Shop" navigation={navigation} /> */}
+
+                    {/* </View> */}
                 </View>
             </View>
         </SafeAreaView>

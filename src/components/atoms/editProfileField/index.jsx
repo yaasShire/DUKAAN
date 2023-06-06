@@ -1,4 +1,5 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, KeyboardAvoidingView } from 'react-native'
+import { TextInput } from 'react-native-paper'
 import React from 'react'
 import styles from './style'
 import { globalStyles } from '../../../globalConstants/styles'
@@ -6,12 +7,16 @@ const EditProfileField = ({ label, touched, setFieldTouched, errors, values, han
     return (
         <>
             <View style={styles.container}>
-                <Text style={styles.label}>{label}</Text>
-                <TextInput style={styles.input}
+                <TextInput
+                    editable={false}
                     placeholderTextColor={globalStyles.colors.primaryGray}
+                    style={styles.input}
+                    mode="outlined"
+                    label={label}
                     onChangeText={(text) => {
                         handleChange(name)(text)
-                    }} onBlur={() => {
+                    }}
+                    onBlur={() => {
                         handleBlur(name)
                         setFieldTouched(name)
                     }} value={values[name]} numberOfLines={2}

@@ -19,6 +19,7 @@ import { fetchData, useFetch } from '../../../../hooks/useFetch'
 import AppLoader from '../../../../components/molecules/AppLoader'
 import AppError from '../../../../components/molecules/AppError'
 import NoProduct from './noProduct'
+import { useFocusEffect } from '@react-navigation/native'
 const ProductsList = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -78,6 +79,22 @@ const ProductsList = ({ navigation }) => {
         },
 
     ]
+    useFocusEffect(
+        React.useCallback(() => {
+            const fetchProducts = async () => {
+                const { data } = await fetchData('seller/products/view', setError, setIsLoading)
+                setProducts(data.data)
+                if (data.data.length == 0) {
+                    console.log("empty")
+                    setIsNoProducts(true)
+                }
+            }
+            fetchProducts()
+            return () => {
+                // Actions to perform when the screen loses focus
+            };
+        }, [])
+    );
     useEffect(() => {
         const fetchProducts = async () => {
             const { data } = await fetchData('seller/products/view', setError, setIsLoading)

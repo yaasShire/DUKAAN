@@ -8,15 +8,16 @@ import AuthButton from '../../../components/atoms/button'
 import { forgetPasswordValidation } from '../../../utils/validationSchema/forgetPasswordValidation'
 import { Formik } from 'formik'
 import { authFetchData } from '../../../hooks/auth'
-import { authFormData } from '../../../utils/utilityFunctions'
+import { authFormData, formValues } from '../../../utils/utilityFunctions'
 import VerificationMessage from '../signup/message'
+import AppLoader from '../../../components/molecules/AppLoader'
 const ForgetPassword = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [verificationMessage, setVerificationMessage] = useState(false)
     const handleForgetPassword = async (values) => {
         setIsLoading(true)
-        const payload = authFormData(values)
+        const payload = formValues(values)
         // console.log(payload)
         // setTimeout(async () => {
         const data = await authFetchData('seller/user/resetpassword', payload, setError, setIsLoading)
@@ -57,7 +58,12 @@ const ForgetPassword = ({ navigation }) => {
             </ScrollView>
             {
                 verificationMessage && (
-                    <VerificationMessage navigation={navigation} screen='login' description='reset password link is sent your email, check you email' />
+                    <VerificationMessage setVerificationMessage={setVerificationMessage} navigation={navigation} screen='login' description='reset password link is sent your email, check you email' />
+                )
+            }
+            {
+                isLoading && (
+                    <AppLoader />
                 )
             }
         </>

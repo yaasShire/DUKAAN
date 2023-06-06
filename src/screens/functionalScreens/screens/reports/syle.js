@@ -4,7 +4,7 @@ const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15,
+        // padding: 15,
         zIndex: -1,
         backgroundColor: globalStyles.colors.miniPrimary
     },

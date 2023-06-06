@@ -31,7 +31,7 @@ const ProductCategory = ({ category, title, index, setCurrentPosition }) => {
 
     useEffect(() => {
         const fetShops = async () => {
-            const { data } = await fetchData('seller/productcategory/view/', setError, setIsLoading)
+            const { data } = await fetchData('seller/productcategory/view', setError, setIsLoading)
             setProductCategories(data?.data)
         }
         fetShops()

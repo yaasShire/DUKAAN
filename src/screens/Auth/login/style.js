@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
+import { HeightDimension } from "../../../utils/utilityFunctions";
+import { globalStyles } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#EDEFF1',
         flex: 1,
     },
     image: {
-        width: 300,
-        height: 300,
+        width: 170,
+        height: 150,
         resizeMode: "cover"
     },
     titlesHolder: {

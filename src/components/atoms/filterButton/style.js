@@ -6,13 +6,14 @@ export default StyleSheet.create({
         backgroundColor: globalStyles.colors.white,
         flexDirection: "row",
         width: width / 4,
-        height: height / 12.8,
+        height: height / 16,
         justifyContent: 'space-around',
         alignItems: "center",
         paddingHorizontal: '2%',
         borderRightWidth: 1,
-        borderColor: "#EBE4E4"
-
+        borderColor: "#EBE4E4",
+        borderTopWidth: 1,
+        borderTopLeftRadius: 10,
     },
     filterName: {
         opacity: 0.7,

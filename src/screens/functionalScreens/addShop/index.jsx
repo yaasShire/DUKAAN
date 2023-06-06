@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './style'
 import StepIndicator from 'react-native-step-indicator';
@@ -9,27 +9,49 @@ import LocationInfo from './steps/locationInfo';
 import ShopImages from './steps/shopImages';
 import AddProductHeader from '../../../components/molecules/brandCard/addProductHeader';
 import { labels, stepperCustomStyles } from '../../../dataStore';
+import { fetchData } from '../../../hooks/useFetch';
+import { useFocusEffect } from '@react-navigation/native';
 const AddShop = ({ navigation }) => {
     const [currentPosition, setcurrentPosition] = useState(0)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
         ;
+
+    useFocusEffect(
+        React.useCallback(() => {
+            const getUserData = async () => {
+                const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
+                // setUser(userData.data[0]) 
+            }
+            getUserData()
+            return () => {
+                // Actions to perform when the screen loses focus
+            };
+        }, [])
+    );
+
 
     const handlePosition = (position) => {
         setcurrentPosition(position)
     }
+
+
+
     const tabs = new Map();
-    tabs.set(0, <PersonalInfo setcurrentPosition={setcurrentPosition} />)
-    tabs.set(1, <ShopInfo setcurrentPosition={setcurrentPosition} />)
-    tabs.set(2, <LocationInfo setcurrentPosition={setcurrentPosition} />)
-    tabs.set(3, <ShopImages setcurrentPosition={setcurrentPosition} navigation={navigation} />)
+    // tabs.set(0, <PersonalInfo setcurrentPosition={setcurrentPosition} />)
+    tabs.set(0, <ShopInfo setcurrentPosition={setcurrentPosition} />)
+    tabs.set(1, <LocationInfo setcurrentPosition={setcurrentPosition} />)
+    tabs.set(2, <ShopImages setcurrentPosition={setcurrentPosition} navigation={navigation} />)
     const customStyles = stepperCustomStyles
     return (
-        <SafeAreaView style={styles.container} showsVerticalScrollIndicator={false}>
+        <View style={styles.container} showsVerticalScrollIndicator={false}>
+            <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <View>
                 <AddProductHeader label="Add Shop" navigation={navigation} />
             </View>
             <StepIndicator
-                stepCount={4}
+                stepCount={3}
                 customStyles={customStyles}
                 currentPosition={currentPosition}
                 labels={labels}
@@ -39,7 +61,7 @@ const AddShop = ({ navigation }) => {
                 {tabs.get(currentPosition)}
             </View>
 
-        </SafeAreaView>
+        </View>
     )
 }
 

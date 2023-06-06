@@ -5,7 +5,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style'
 import { globalStyles } from '../../../globalConstants/styles';
-const AppHeader = ({ title, navigation, color, screen = "" }) => {
+const AppHeader = ({ title, navigation, color = "#000", screen = "" }) => {
     return (
         <View style={styles.header}>
             {
@@ -13,7 +13,7 @@ const AppHeader = ({ title, navigation, color, screen = "" }) => {
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Text style={styles.cancelText}>Cancel</Text>
                     </TouchableOpacity>
-                ) : <Feather name='chevron-left' size={28} onPress={() => navigation.goBack()} style={{ padding: "1%" }} />
+                ) : <Feather name='chevron-left' size={28} color={color} onPress={() => navigation.goBack()} style={{ padding: "1%" }} />
             }
             <View style={styles.headerTitleWrapper}>
                 <Text style={[styles.headerTitle, { color }]}>{title}</Text>

@@ -6,8 +6,8 @@ export default StyleSheet.create({
         // padding: '10%'
     },
     image: {
-        width: 300,
-        height: 300,
+        width: 170,
+        height: 170,
         resizeMode: "cover"
     },
     titlesHolder: {

@@ -1,12 +1,13 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { globalStyles } from "../../../globalConstants/styles";
+import { WindowDimension } from "../../../utils/utilityFunctions";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
         alignItems: "flex-start",
-        width: width,
+        width: "100%",
         justifyContent: "center",
-        marginBottom: 25
+        // marginBottom: 25,
     },
     label: {
         fontSize: 14,
@@ -14,10 +15,9 @@ export default StyleSheet.create({
         opacity: 0.4
     },
     input: {
-        borderBottomColor: "#bfbcbb",
-        borderBottomWidth: 1,
-        height: 40,
-        width: "90%",
+        height: 55,
+        width: "100%",
+        fontSize: 18,
     },
     errorText: {
         color: "red"

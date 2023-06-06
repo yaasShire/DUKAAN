@@ -16,8 +16,8 @@ const ProductCard = ({ item, navigation }) => {
                 <View>
                     <Text style={styles.productName}>{item.name}</Text>
                     <View style={styles.salesHolder}>
-                        <Text style={styles.numberOfSales}>Sales for the last 30 days:</Text>
-                        <Text style={styles.salesQuantity}>18</Text>
+                        {/* <Text style={styles.numberOfSales}>Sales for the last 30 days:</Text>
+                        <Text style={styles.salesQuantity}>18</Text> */}
                     </View>
                     <View style={styles.availabelHolder}>
                         <Text style={styles.availableText}>Price:</Text>

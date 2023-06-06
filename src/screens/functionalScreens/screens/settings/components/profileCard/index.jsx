@@ -1,14 +1,15 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Feather } from '@expo/vector-icons'
 import ProfileImage from '../../../../../../assets/person2.jpg'
 import styles from './style'
-const ProfileCard = ({ user }) => {
+import profilePlaceholder from '../../../../../../assets/images/profilePlaceholder.jpg'
+const ProfileCard = ({ user, navigation, }) => {
     return (
-        <TouchableOpacity style={styles.profileCardWrapper} onPress={() => navigation.navigate("editProfile")}>
+        <TouchableOpacity style={styles.profileCardWrapper} onPress={() => navigation.navigate("editProfile", { image: "https://sweyn.co.uk/storage/images/avatar/" + user.profile_picture })}>
             <View style={styles.imageNameNumberWrapper}>
                 <View style={styles.imageWrapper}>
-                    <Image source={ProfileImage} style={styles.image} />
+                    <Image source={user?.profile_picture ? { uri: "https://sweyn.co.uk/storage/images/avatar/" + user?.profile_picture } : profilePlaceholder} style={styles.image} />
                 </View>
                 <View style={styles.nameNumberWrapper}>
                     <Text style={styles.name}>{user?.name}</Text>

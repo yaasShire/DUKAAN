@@ -6,12 +6,26 @@ export const fetchData = async (endPoint, setError, setIsLoading) => {
     const token_type = await AsyncStorage.getItem("token_type")
     try {
         if (access_token && token_type) {
-            const data = (await API.get(endPoint, {
-                headers: {
-                    'Authorization': `${token_type} ${access_token}`
-                }
-            })).data
-            setIsLoading(false)
+            // const data = (await API.get(endPoint, {
+            //     headers: {
+            //         'Authorization': `${token_type} ${access_token}`
+            //     }
+            // })).data
+            // console.log(data)
+            // setIsLoading(false)
+            // return { data }
+
+            // console.warn(token_type)
+            // console.warn(access_token)
+            const result = await fetch(`https://www.sweyn.co.uk/v1/${endPoint}`, {
+                // method: "GET",
+                headers: new Headers({
+                    'Authorization': `${token_type} ${access_token}`,
+                }),
+
+            })
+            // console.warn(access_token)
+            const data = await result.json()
             return { data }
         }
     } catch (error) {

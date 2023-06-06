@@ -42,14 +42,15 @@ export default StyleSheet.create({
         borderRadius: 10,
         width: width / 1.2,
         alignItems: "center",
-        height: height / 3,
+        height: height / 4,
         top: -170,
         elevation: 3,
-        position: "absolute"
+        position: "absolute",
+        justifyContent: "center"
 
     },
     bottomContentWrapper: {
-        top: 140
+        top: 110
     },
     infoWrapper: {
         flexDirection: "row",
@@ -70,7 +71,7 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     profileImageWrapper: {
-        top: -40,
+        // top: 20,
         borderRadius: 50,
         // padding: ".5%",
         borderWidth: 1,
@@ -96,36 +97,39 @@ export default StyleSheet.create({
     productImageWrapper: {
         backgroundColor: globalStyles.style.whiteMode.primarybgColor,
         borderRadius: 10,
-        width: 100,
-        height: 100,
+        width: 110,
+        height: 110,
         elevation: 1,
         justifyContent: "center",
         alignItems: "center",
-
+        borderWidth: 1,
+        borderColor: globalStyles.colors.logoColor
     },
     singleProductWrapper: {
         width: 130,
         minHeight: 150,
         alignItems: "center",
-        backgroundColor: "pink",
         justifyContent: "center"
 
     },
     productImage: {
-        width: 100,
-        height: 100,
-        resizeMode: "center"
+        width: "100%",
+        height: "100%",
+        resizeMode: "center",
+
     },
     productsWrapperTitle: {
         marginVertical: "1%",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginBottom: "6%"
     },
     productsWrapperTitleText: {
         fontSize: 18,
         fontWeight: globalStyles.fontWeights.secondary,
-        color: globalStyles.colors.tertiary
+        color: globalStyles.colors.tertiary,
+        marginBottom: "2%"
     },
     sellAllWrapper: {
         flexDirection: "row",
@@ -144,14 +148,29 @@ export default StyleSheet.create({
     },
     buttonsHolder: {
         flexDirection: "row",
-        top: Platform.OS == 'ios' ? 15 : 35,
-        justifyContent: "space-around",
-        padding: "2%"
+        top: Platform.OS == 'ios' ? 28 : 35,
+        justifyContent: "space-between",
+        padding: "2%",
+        // flex: 1,
+        alignItems: "flex-end"
     },
     productNameStockWrapper: {
         marginVertical: "1%",
-        backgroundColor: "gray",
-        width: "100%",
+        width: "81%",
         alignItems: 'flex-start'
+    },
+    noProductsWrapper: {
+        height: "45%",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    noProductImage: {
+        width: 180,
+        height: 120,
+        resizeMode: "contain"
+    },
+    productList: {
+        width: "100%",
+        height: 160
     }
 })

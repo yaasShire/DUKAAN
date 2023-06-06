@@ -16,14 +16,14 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 50,
         borderColor: "#dedede",
-        width: 110,
-        height: 110,
+        width: 90,
+        height: 90,
         justifyContent: "center",
         alignItems: "center"
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         borderRadius: 50,
     },
     imageNameNumberWrapper: {

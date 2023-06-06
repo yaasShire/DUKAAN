@@ -7,7 +7,6 @@ const AppLoader = () => {
     return (
         <View style={styles.container}>
             <LottieView source={require('../../../assets/animations/loading.json')} autoPlay loop />
-            {/* <Text>Loading...</Text> */}
         </View>
     )
 }

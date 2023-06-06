@@ -19,6 +19,7 @@ import ProductImage from '../../../../assets/images/product.png'
 import reportImage from '../../../../assets/images/report.png'
 import shopImage from '../../../../assets/images/shop.png'
 import profileImage from '../../../../assets/images/profile.png'
+import { Image } from 'react-native'
 // icons ends here
 
 const Home = ({ navigation }) => {
@@ -138,7 +139,8 @@ const Home = ({ navigation }) => {
 
     ]
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle='light-content' />
             <AppHeader showLogo={true} navigation={navigation} menu={false} />
             <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
@@ -175,7 +177,7 @@ const Home = ({ navigation }) => {
                     </View>
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     )
 }
 

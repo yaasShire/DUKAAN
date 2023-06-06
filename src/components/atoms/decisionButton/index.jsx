@@ -11,6 +11,7 @@ const DecisionButton = ({ title, navigation }) => {
     return (
         <>
             <TouchableOpacity style={styles.buttonHolder} onPress={() => {
+                if (title == 'CANCEL') navigation.goBack()
                 if (title == 'ACCEPT' || title == 'REJECT') {
                     setShowModal(true)
                     setVisible(true)

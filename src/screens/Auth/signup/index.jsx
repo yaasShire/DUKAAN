@@ -16,7 +16,7 @@ import TextFieldC from '../../../components/atoms/textInput'
 import useFetch from '../../../api/auth'
 import { openInbox } from 'react-native-email-link'
 import Feather from 'react-native-vector-icons/Feather';
-import { formDataGenerator } from '../../../utils/utilityFunctions';
+import { formDataGenerator, formValues } from '../../../utils/utilityFunctions';
 import { fetchData } from '../../../hooks/useFetch';
 import SignLoading from '../../../components/molecules/signLoading'
 import { authFetchData } from '../../../hooks/auth';
@@ -31,7 +31,7 @@ const SignUp = ({ navigation }) => {
     }, 2000)
     const handleSignUp = async (values) => {
         setIsLoading(true)
-        const payload = authFormData(values)
+        const payload = formValues(values)
         // setTimeout(async () => {
         const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
         console.log(data)
@@ -48,7 +48,8 @@ const SignUp = ({ navigation }) => {
     }
     return (
         <>
-            <StatusBar barStyle="dark-white" />
+            <SafeAreaView />
+            <StatusBar barStyle="light-content" />
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.titlesHolder}>
                     <View style={styles.uperText} >

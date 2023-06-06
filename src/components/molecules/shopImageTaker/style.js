@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
@@ -11,7 +11,7 @@ export default StyleSheet.create({
         borderColor: globalStyles.colors.secondaryGray,
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: "13%",
+        marginBottom: "5%",
         // elevation: 1
 
 
@@ -26,7 +26,8 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 5,
         borderBottomRightRadius: 5,
         position: "absolute",
-        top: 120,
+        top: Platform.OS == 'ios' ? 120 : 111,
+        // left: .1
 
     },
     mainText: {

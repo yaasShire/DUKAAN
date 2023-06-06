@@ -12,11 +12,12 @@ export default StyleSheet.create({
     },
     topContent: {
         backgroundColor: globalStyles.colors.logoColor,
-        height: HeightDimension / 6,
+        height: HeightDimension / 5,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         paddingVertical: screenPadding,
-        zIndex: 0
+        zIndex: 0,
+        top: 24
 
     },
     bottomContent: {
@@ -24,11 +25,11 @@ export default StyleSheet.create({
         backgroundColor: globalStyles.colors.logoColor,
         marginTop: -2,
         minHeight: HeightDimension / 1.4,
-        // borderTopLeftRadius: 2,
-        // borderTopRightRadius: 2,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+
     },
     subBottomContent: {
-        // height: HeightDimension,
         backgroundColor: globalStyles.style.whiteMode.primarybgColor,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
@@ -39,8 +40,6 @@ export default StyleSheet.create({
         columnGap: 10,
         paddingVertical: 10,
         paddingHorizontal: 10
-        // backgroundColor: "pink",
-        // width: "100%"
     },
     sellerActionWrapper: {
         flexDirection: "row",

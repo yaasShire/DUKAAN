@@ -40,7 +40,7 @@ const ChangePassword = ({ navigation }) => {
                                     <TouchableOpacity style={styles.cancelButton} onPress={handleSubmit}>
                                         <Text style={styles.cancelButtonText}>Cancel</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={styles.forgotPasswordHolder}>
+                                    <TouchableOpacity style={styles.forgotPasswordHolder} onPress={() => navigation.replace("forgetPassword")}>
                                         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
                                     </TouchableOpacity>
                                 </View>

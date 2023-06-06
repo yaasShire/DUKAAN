@@ -37,20 +37,20 @@ const UpdateProduct = ({ navigation, route }) => {
             <StatusBar barStyle={'light-content'} />
             <AppHeader title={"Mange Inventory"} navigation={navigation} color={"#000"} backButton={true} />
             <View style={styles.productHolder}>
-                <Image source={route.params.data.image} style={styles.image} />
+                <Image source={route.params?.data?.image} style={styles.image} />
                 <View style={{ flex: 1, alignItems: "flex-start", justifyContent: "space-around" }}>
-                    <Text style={styles.productName}>{route.params.data.productName}</Text>
+                    <Text style={styles.productName}>{route.params?.data?.productName}</Text>
                     <View style={styles.holder}>
                         <Text style={styles.textTitle}>Status:</Text>
                         <Text style={[styles.valueText, styles.statusText]}>Active</Text>
                     </View>
                     <View style={styles.holder}>
                         <Text style={styles.textTitle}>Available:</Text>
-                        <Text style={styles.valueText}>{route.params.data.Qty}</Text>
+                        <Text style={styles.valueText}>{route.params?.data?.Qty}</Text>
                     </View>
                     <View style={styles.holder}>
                         <Text style={styles.textTitle}>Price:</Text>
-                        <Text style={styles.valueText}>${route.params.data.price}</Text>
+                        <Text style={styles.valueText}>${route.params?.data?.price}</Text>
                     </View>
                     <View style={styles.holder}>
                         <Text style={styles.textTitle}>Number of sales:</Text>

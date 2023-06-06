@@ -6,6 +6,8 @@ import AssignDelivery from '../../../screens/functionalScreens/screens/assignDel
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../../../components/atoms/header';
 import AppHeader from '../../../components/molecules/header';
+import { Platform } from 'react-native';
+
 const Tab = createMaterialTopTabNavigator();
 export default function OrderTopTabsStack({ navigation }) {
     return (
@@ -16,8 +18,8 @@ export default function OrderTopTabsStack({ navigation }) {
                 screenOptions={{
                     tabBarActiveTintColor: '#000000',
                     tabBarLabelStyle: { fontSize: 9 },
-                    tabBarStyle: { height: 50, justifyContent: "flex-end", },
-                    tabBarLabelStyle: { fontWeight: "500", fontSize: 10 },
+                    tabBarStyle: { height: Platform.OS == 'android' ? 60 : 90, justifyContent: "flex-end" },
+                    tabBarLabelStyle: { fontWeight: "500", fontSize: 10, marginTop: 10 },
                     tabBarIndicatorStyle: { backgroundColor: "orange" }
                 }}
             >

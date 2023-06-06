@@ -30,7 +30,7 @@ const SubCategory = ({ category, title, index, setCurrentPosition }) => {
 
     useEffect(() => {
         const fetShops = async () => {
-            const { data } = await fetchData('seller/subcategory/view/', setError, setIsLoading)
+            const { data } = await fetchData('seller/subcategory/view', setError, setIsLoading)
             setsubCategories(data.data)
         }
         fetShops()

@@ -1,7 +1,8 @@
 import { View, Text, TextInput } from 'react-native'
 import React from 'react'
 import styles from './style'
-const AddShopField = ({ label, touched, errors, handleSubmit, handleBlur, handleChange, values, setFieldTouched, name }) => {
+const AddShopField = ({ label, touched, errors, handleSubmit, user, handleBlur, handleChange, values, setFieldTouched, name }) => {
+
     return (
         <>
             <View style={styles.fieldHolder}>

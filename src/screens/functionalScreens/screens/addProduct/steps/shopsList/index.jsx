@@ -27,7 +27,7 @@ const ShopList = ({ category, title, setCurrentPosition }) => {
 
     useEffect(() => {
         const fetShops = async () => {
-            const { data } = await fetchData('seller/shop/view/', setError, setIsLoading)
+            const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
             setShopData(data.data)
         }
         fetShops()

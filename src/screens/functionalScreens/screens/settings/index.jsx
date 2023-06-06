@@ -1,6 +1,6 @@
 import { View, StatusBar, Image, TouchableWithoutFeedback, Platform, ScrollView, Dimensions } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import styles from './style'
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,32 +14,57 @@ import ProfileCard from './components/profileCard';
 import SingleCardAction from './components/singleCardAction';
 import AppHeader from '../../../../components/molecules/header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const Settings = ({ navigation }) => {
+import { useFocusEffect } from '@react-navigation/native';
+import { fetchData } from '../../../../hooks/useFetch';
+const Settings = ({ navigation, route }) => {
     const { width, height } = new Dimensions.get("window")
     const [visible, setVisible] = React.useState(false);
     const [user, setUser] = useState({})
+    const [imageURL, setImageURL] = useState(route?.params?.image)
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
     const containerStyle = {
         backgroundColor: 'white', height: height / 4, width: width / 1.2, borderRadius: 10, justifyContent: "space-around",
         alignItems: "center", alignSelf: "center"
     };
     const [isSwitchOn, setIsSwitchOn] = useState(false)
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
+
+    useFocusEffect(
+        React.useCallback(() => {
+            const getUserData = async () => {
+                const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
+                setUser(userData.data[0])
+            }
+            getUserData()
+            return () => {
+                // Actions to perform when the screen loses focus
+            };
+        }, [])
+    );
+
     useEffect(() => {
         const getUserData = async () => {
-            const data = await AsyncStorage.getItem('user')
-            setUser(JSON.parse(data))
-            console.log(data)
+            const result = await AsyncStorage.getItem('user')
+            const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
+            const data = JSON.parse(result)
         }
         getUserData()
-    }, [])
+        navigation.addListener('focus', () => {
+            setImageURL(route?.params?.image)
+            getUserData()
+        });
+    }, [navigation])
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <AppHeader title='Settings' />
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollStyle} >
-                <ProfileCard user={user} />
+                <ProfileCard user={user} navigation={navigation} />
                 <View style={styles.actionCardsWrapper}>
                     <SingleCardAction navigation={navigation} name='Reset Password' icon='lock-reset' color='green' screen='changePassword' />
                     <SingleCardAction navigation={navigation} name='Reports' icon='google-analytics' color='#3430f2' screen='reports' />
@@ -70,7 +95,7 @@ const Settings = ({ navigation }) => {
                     </View>
                 </Modal>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     )
 }
 

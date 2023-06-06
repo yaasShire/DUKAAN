@@ -1,4 +1,4 @@
-import { View, Image, ScrollView, TouchableOpacity, StatusBar } from 'react-native'
+import { View, Image, ScrollView, TouchableOpacity, StatusBar, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
@@ -14,7 +14,7 @@ import useFetch from '../../../api/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator } from 'react-native-paper'
 import { Dialog, Portal, Text } from 'react-native-paper';
-import { formDataGenerator } from '../../../utils/utilityFunctions'
+import { formDataGenerator, formValues } from '../../../utils/utilityFunctions'
 import { authFetchData } from '../../../hooks/auth'
 import { authFormData } from '../../../utils/utilityFunctions'
 import SignLoading from '../../../components/molecules/signLoading'
@@ -25,7 +25,7 @@ const Login = ({ navigation }) => {
 
     const handleSignIn = async (values) => {
         setIsLoading(true)
-        const payload = authFormData(values)
+        const payload = formValues(values)
         setTimeout(async () => {
             const data = await authFetchData('seller/user/signin', payload, setError, setIsLoading)
             if (data.access_token) {
@@ -44,7 +44,8 @@ const Login = ({ navigation }) => {
     }
     return (
         <>
-            <StatusBar barStyle="white-content" />
+            <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
+            <SafeAreaView />
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.titlesHolder}>
                     <View >
@@ -74,17 +75,14 @@ const Login = ({ navigation }) => {
                 >
                     {
                         ({ errors, touched, setFieldTouched, handleBlur, handleChange, handleSubmit, values }) => (
-                            <>
+                            <View>
                                 <View style={styles.fieldsHolder}>
-                                    {/* <TextField title="Phone Number" name="phoneNumber" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} /> */}
                                     <TextField title="email" name="email" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                     <TextField title="Password" name="password" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                 </View>
-                                <View>
-                                    <TouchableOpacity style={styles.forgetPasswordHolder} onPress={() => navigation.navigate("forgetPassword")}>
-                                        <Text style={styles.forgetPasswordText}>Forget password?</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                <TouchableOpacity style={styles.forgetPasswordHolder} onPress={() => navigation.navigate("forgetPassword")}>
+                                    <Text style={styles.forgetPasswordText}>Forget password?</Text>
+                                </TouchableOpacity>
                                 <View style={styles.buttonHolder}>
                                     <AuthButton title='Login' handleSubmit={() => handleSubmit(values)} />
                                 </View>
@@ -94,7 +92,7 @@ const Login = ({ navigation }) => {
                                         <Text style={styles.signUpLink}>Sign up</Text>
                                     </TouchableOpacity>
                                 </View>
-                            </>
+                            </View>
                         )
                     }
 

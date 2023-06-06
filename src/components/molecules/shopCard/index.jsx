@@ -11,6 +11,7 @@ import { globalStyles } from '../../../globalConstants/styles';
 import { Fontisto } from '@expo/vector-icons';
 import shopPlaceHolder from '../../../assets/images/shopPlaceHolder.png'
 const ShopCard = ({ shop, navigation, profileData }) => {
+    // console.warn(shop);
     const nameShortener = (name) => {
         return name.length > 20 ? name.slice(0, 20) : name
     }
@@ -25,8 +26,8 @@ const ShopCard = ({ shop, navigation, profileData }) => {
                             <Text style={styles.shopName}>{shop.name}</Text>
                             <Text style={styles.address}>Mogadishu, Somalia</Text>
                             <View style={styles.salesWrapper}>
-                                <Text style={styles.keyText}>Sales rank:</Text>
-                                <Text style={styles.valueText}>700</Text>
+                                {/* <Text style={styles.keyText}>Sales rank:</Text> */}
+                                {/* <Text style={styles.valueText}>700</Text> */}
                             </View>
                         </View>
                         <View>

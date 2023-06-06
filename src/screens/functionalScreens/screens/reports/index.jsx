@@ -81,11 +81,13 @@ const Reports = ({ navigation }) => {
         barPercentage: 0.5,
         useShadowColorFromDataset: false // optional
     };
+
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <AppHeader title="Reports" navigation={navigation} color="#000" backButton={true} />
-            <ScrollView showsVerticalScrollIndicator={false} style={{ height: Dimensions.get("window").height }}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{ height: Dimensions.get("window").height, padding: 15 }}>
 
                 <View style={styles.insightTextHolder}>
                     <Text style={styles.insightText}>Insight Reports</Text>
@@ -207,7 +209,7 @@ const Reports = ({ navigation }) => {
                 </View>
             </ScrollView>
 
-        </SafeAreaView>
+        </View>
     )
 }
 

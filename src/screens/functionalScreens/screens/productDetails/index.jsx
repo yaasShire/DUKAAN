@@ -1,6 +1,6 @@
 import { View, Text, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions, SafeAreaView as RNSafeArea, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './style'
 import ProductDetailsSubImage from '../../../../components/molecules/productDetailsSubImage';
@@ -15,18 +15,20 @@ import AppHeader from '../../../../components/molecules/header';
 import { Carousel } from "react-native-ui-lib/src/components/carousel";
 import Header from '../../../../components/atoms/header';
 import { FAB } from 'react-native-paper';
+import { fetchData } from '../../../../hooks/useFetch';
+import ProductInformationRow from './components/productInfoRaw';
+import BrandCard from './components/brand';
 const ProductDetails = ({ route, navigation }) => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [productImages, setProductImages] = useState([])
+    const [productDetail, setProductDetail] = useState({})
+    const [brandsList, setBrandsList] = useState([])
     const [selectedImage, setselectedImage] = useState({
         id: route.params.data.id,
         image: route.params.data.image
     })
-    const IMAGES = [
 
-        require('../../../../assets/images/mechanic1.jpg'),
-        require('../../../../assets/images/mechanic2.jpg'),
-        require('../../../../assets/images/mechanic3.jpg'),
-        require('../../../../assets/images/mechanic4.jpg'),
-    ]
     data = [
         {
             id: 1,
@@ -80,6 +82,25 @@ const ProductDetails = ({ route, navigation }) => {
             image: require('../../../../assets/bmw.png'),
         },
     ]
+
+    useEffect(() => {
+        const fetchProductData = async () => {
+            const data = await fetchData(`seller/products/view/${route?.params?.data.UPID}`, setError, setIsLoading)
+            console.log(data.data.data[0]);
+            setProductDetail(data.data.data[0])
+            setProductImages(data.data.images)
+
+        }
+        const fetchBrand = async () => {
+            const brandData = await fetchData(`seller/brand/view/${route?.params?.data?.brand}`, setError, setIsLoading)
+            setBrandsList(brandData.data.data)
+        }
+
+        fetchProductData()
+        fetchBrand()
+    }, [])
+
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle='light-content' />
@@ -92,8 +113,8 @@ const ProductDetails = ({ route, navigation }) => {
                         pageControlPosition='over'
                         style={{}}>
                         {
-                            IMAGES.map(image => (
-                                <Image key={image} source={image} style={{ width: "100%", resizeMode: "stretch", height: "100%" }} />
+                            productImages.map(image => (
+                                <Image key={image} source={{ uri: "https://sweyn.co.uk/storage/images/" + image }} style={{ width: "100%", resizeMode: "center", height: "100%" }} />
                             ))
                         }
                     </Carousel>
@@ -109,10 +130,10 @@ const ProductDetails = ({ route, navigation }) => {
                             />
                         </View>
                         <View style={styles.namePriceSection}>
-                            <Text style={styles.name}>Car Engine Oil</Text>
+                            <Text style={styles.name}>{productDetail?.name}</Text>
                             <View style={styles.priceValueWrapper}>
                                 <Text style={styles.priceTile}>price</Text>
-                                <Text style={styles.priceValue}>$150</Text>
+                                <Text style={styles.priceValue}>${productDetail?.price}</Text>
                             </View>
                         </View>
                     </View>
@@ -122,49 +143,32 @@ const ProductDetails = ({ route, navigation }) => {
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
                             contentContainerStyle={styles.flatListStyle}
-                            data={brands}
+                            data={brandsList}
                             renderItem={({ item }) => (
-                                <View style={styles.brandWholeWrapper}>
-                                    <View style={styles.brandWrapper}>
-                                        <Image source={item.image} style={styles.brandImage} />
-                                    </View>
-                                    <Text style={styles.brandName}>{item.name}</Text>
-                                </View>
+                                <BrandCard item={item} />
                             )}
                         />
                     </View>
                     <View style={styles.totalSalesWrapper}>
                         <Text style={styles.sectionLabel}>Total Sales</Text>
-                        <Text style={styles.totalSalesValue}>$500</Text>
+                        <Text style={styles.totalSalesValue}>$0</Text>
                     </View>
                     <View style={styles.infoCardsWrapper}>
                         <View style={styles.infoCard}>
-                            <View style={styles.rowContent}>
+                            {/* <View style={styles.rowContent}>
                                 <View style={styles.dotTextValueWrapper}>
                                     <View style={styles.dot} />
                                     <Text style={styles.textTitle}>Stock</Text>
                                 </View>
                                 <Text style={styles.valueText}>200</Text>
-                            </View>
-                            <View style={styles.rowContent}>
-                                <View style={styles.dotTextValueWrapper}>
-                                    <View style={styles.dot} />
-                                    <Text style={styles.textTitle}>Sales</Text>
-                                </View>
-                                <Text style={styles.valueText}>200</Text>
-                            </View>
+                            </View> */}
+                            <ProductInformationRow text={"Stock"} value={200} />
+                            <ProductInformationRow text={"Sales"} value={0} />
                         </View>
                         <View style={styles.detailsSection}>
                             <Text style={styles.sectionLabel}>Product Details</Text>
                             <View style={styles.infoCard}>
-                                <View style={styles.rowDetailContent}>
-                                    <View style={styles.dot} />
-                                    <Text style={styles.textTitle}>This product is focused on the engine of the card.</Text>
-                                </View>
-                                <View style={styles.rowDetailContent}>
-                                    <View style={styles.dot} />
-                                    <Text style={styles.textTitle}>Takes car of your car nicely on the long run.</Text>
-                                </View>
+                                <ProductInformationRow text={productDetail?.description} />
                             </View>
                         </View>
                     </View>

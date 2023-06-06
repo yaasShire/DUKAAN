@@ -1,3 +1,5 @@
+import { globalStyles } from "./globalConstants/styles"
+
 export const mainCategories = [
     {
         id: 1,
@@ -214,11 +216,11 @@ export const stepperCustomStyles = {
     currentStepStrokeWidth: 3,
     stepStrokeCurrentColor: '#fe7013',
     stepStrokeWidth: 3,
-    stepStrokeFinishedColor: '#fe7013',
+    stepStrokeFinishedColor: globalStyles.colors.logoColor,
     stepStrokeUnFinishedColor: '#aaaaaa',
     separatorFinishedColor: '#fe7013',
     separatorUnFinishedColor: '#aaaaaa',
-    stepIndicatorFinishedColor: '#fe7013',
+    stepIndicatorFinishedColor: globalStyles.colors.logoColor,
     stepIndicatorUnFinishedColor: '#ffffff',
     stepIndicatorCurrentColor: '#ffffff',
     stepIndicatorLabelFontSize: 13,
@@ -232,10 +234,16 @@ export const stepperCustomStyles = {
 }
 
 
-export const labels = ["Personal data", "Shop data", "Location data", "Shop images"]
+export const labels = ["Shop data", "Location data", "Shop images"]
 
 
+// const IMAGES = [
 
+//     require('../../../../assets/images/mechanic1.jpg'),
+//     require('../../../../assets/images/mechanic2.jpg'),
+//     require('../../../../assets/images/mechanic3.jpg'),
+//     require('../../../../assets/images/mechanic4.jpg'),
+// ]
 
 // imports starts here
 // import shop1 from '../../../../assets/shop1.jpg'

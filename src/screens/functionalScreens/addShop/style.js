@@ -5,7 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         padding: 15,
         backgroundColor: "#fff",
-        height: height
+        // height: height
     },
     contentHolder: {
         flex: 1

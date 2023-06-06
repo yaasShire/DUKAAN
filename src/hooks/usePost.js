@@ -8,7 +8,7 @@ export const postData = async (endPoint, payload, setError, setIsLoading) => {
     try {
         if (access_token && token_type) {
             const data = await fetch(`https://www.sweyn.co.uk/v1/${endPoint}`, {
-                method: 'post',
+                method: 'POST',
                 body: payload,
                 headers: {
                     'Authorization': `${token_type} ${access_token}`

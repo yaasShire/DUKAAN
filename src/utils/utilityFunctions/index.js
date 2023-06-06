@@ -21,7 +21,6 @@ export const formDataGenerator = (values, shopImages, shopData) => {
     const imageData6 = shopImages.url6.split('/');
     const image6 = imageData6[imageData6.length - 1];
     // end
-
     const data = new FormData()
     data.append('photos', {
         name: image1,
@@ -80,12 +79,6 @@ export const shopDataGenerator = (shopData, locationData, shopImages) => {
         landmark: locationData?.nearestLANMark,
         longitude: 28.98,
         latitude: 29.376,
-        // photos: shopImages?.url1,
-        // photo2: shopImages?.url2,
-        // photo3: shopImages?.url3,
-        // photo4: shopImages?.url4,
-        // photo5: shopImages?.url5,
-        // photo6: shopImages?.url6,
     }
 }
 
@@ -151,13 +144,23 @@ export const uploadDataGenerator = (values, images) => {
 
 export const { width: WindowDimension, height: HeightDimension } = new Dimensions.get("screen")
 
-
-
-
-export const authFormData = (values) => {
+export const formValues = (values, image) => {
     const data = new FormData();
+
+    if (image) {
+        const profileImage = image.split('/');
+        const imageName = profileImage[profileImage.length - 1];
+        data.append('profile_picture', {
+            name: imageName,
+            uri: image,
+            type: `image/${image.slice(-4)}`
+        })
+    }
+
     const keys = Object.keys(values).map(key => {
-        data.append(key, values[key])
+        if (values[key]) {
+            data.append(key, values[key])
+        }
     })
     return data;
 }

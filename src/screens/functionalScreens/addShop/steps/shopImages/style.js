@@ -8,7 +8,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         flexWrap: "wrap",
-        alignItems: "center"
+        alignItems: "center",
     },
     buttonHolder: {
         alignItems: "flex-end",
@@ -16,6 +16,5 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         width: "100%",
         flex: 1,
-
     },
 })

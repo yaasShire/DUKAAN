@@ -5,7 +5,9 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: "flex-start",
         alignItems: "center",
-        marginBottom: "4%"
+        marginBottom: "4%",
+        paddingHorizontal: 15,
+        marginTop: "2%"
     },
     headerTitleWrapper: {
         flex: 1,

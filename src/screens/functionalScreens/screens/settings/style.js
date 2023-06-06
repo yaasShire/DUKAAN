@@ -7,7 +7,7 @@ export default StyleSheet.create({
         backgroundColor: "#fff"
     },
     scrollStyle: {
-        padding: 15
+        paddingHorizontal: 15
     },
     header: {
         flexDirection: 'row',

@@ -23,7 +23,7 @@ const RequiredInfo = ({ setCurrentPosition, title }) => {
     }
     useEffect(() => {
         const fetchRegions = async () => {
-            const { data } = await fetchData('seller/brand/view/', setError, setIsLoading)
+            const { data } = await fetchData('seller/brand/view', setError, setIsLoading)
             console.log(data)
             setBrandsList(data.data)
         }

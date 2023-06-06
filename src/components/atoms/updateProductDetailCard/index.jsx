@@ -10,7 +10,7 @@ const UpdateProductDetailCard = ({ title, value, navigation }) => {
                 <Text style={styles.actionText}>{title}</Text>
                 <Text style={styles.priceText}>{value}</Text>
             </View>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("updateProduct")}>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate("updateInventoryField")}>
                 {/* <TouchableWithoutFeedback onPress={() => navigation.navigate("updateInventoryField")} >
                     <View style={styles.updateIconTextHolder}>
                         <View style={styles.updateIcon}>
@@ -24,7 +24,7 @@ const UpdateProductDetailCard = ({ title, value, navigation }) => {
                     icon="pen"
                     size='small'
                     style={styles.fab}
-                    onPress={() => navigation.navigate("updateProduct")}
+                    onPress={() => navigation.navigate("updateInventoryField")}
                 />
 
             </TouchableWithoutFeedback>
