@@ -1,10 +1,10 @@
 import * as yup from 'yup'
 
 export const editProfileValidation = yup.object().shape({
-    fullName: yup
+    name: yup
         .string()
         .min(6, ({ min }) => `Full name must be at least ${min} characters`),
-    phoneNumber: yup
+    phone_number: yup
         .string()
         .min(6, ({ min }) => `Phone number must be at least ${min} characters`),
     email: yup
@@ -12,6 +12,9 @@ export const editProfileValidation = yup.object().shape({
         .email("Please enter a valid email"),
     city: yup
         .string()
-        .min(5, ({ min }) => `City must be at least ${min} characters`)
+        .min(5, ({ min }) => `City must be at least ${min} characters`),
+    landmark: yup
+        .string()
+        .min(5, ({ min }) => `landmark must be at least ${min} characters`)
 
 })

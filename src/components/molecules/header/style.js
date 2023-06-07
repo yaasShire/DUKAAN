@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         alignItems: "center",
         flexDirection: "row-reverse",
-        justifyContent: "space-between",
+        justifyContent: "center",
         height: 55,
         marginBottom: 10,
         paddingHorizontal: 15,
@@ -19,8 +19,8 @@ export default StyleSheet.create({
         resizeMode: "contain",
     },
     title: {
-        position: "absolute",
-        right: 120,
+        // position: "absolute",
+        // right: 120,
         fontWeight: "500",
         fontSize: 19
     },
@@ -38,6 +38,8 @@ export default StyleSheet.create({
         borderRadius: 50,
         padding: "1%",
         flexDirection: "row",
+        alignSelf: "flex-end",
+        justifyContent: "flex-end"
     },
     addText: {
         fontSize: 11,

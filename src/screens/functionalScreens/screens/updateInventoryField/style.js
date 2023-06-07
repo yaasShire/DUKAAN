@@ -70,5 +70,11 @@ export default StyleSheet.create({
         fontSize: globalStyles.fontSizes.secondary,
         color: globalStyles.colors.miniPrimary,
         fontWeight: globalStyles.fontWeights.secondary
+    },
+    errorText: {
+        textAlign: "center",
+        color: "red",
+        fontSize: 19,
+        fontWeight: "500"
     }
 })

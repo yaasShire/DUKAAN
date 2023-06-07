@@ -146,10 +146,10 @@ const Home = ({ navigation }) => {
             <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
                 <View style={styles.topContent}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.infoCardsWrapper}>
-                        <DashboardCard description={'Today Sales'} ammount={500} sign={true} />
-                        <DashboardCard description={'Total Customers'} ammount={140} sign={false} />
-                        <DashboardCard description={'Expense'} ammount={900} sign={true} />
-                        <DashboardCard description={'Number Of Shops'} ammount={3} sign={false} />
+                        <DashboardCard description={'Today Sales'} ammount={0} sign={true} />
+                        <DashboardCard description={'Total Customers'} ammount={0} sign={false} />
+                        <DashboardCard description={'Expense'} ammount={0} sign={true} />
+                        <DashboardCard description={'Number Of Shops'} ammount={0} sign={false} />
                     </ScrollView>
 
                 </View>

@@ -1,6 +1,6 @@
 import { View, Text, StatusBar, Image, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './style'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntiDesign from 'react-native-vector-icons/AntDesign';
@@ -17,11 +17,13 @@ import { formValues } from '../../../../utils/utilityFunctions';
 import { postData } from '../../../../hooks/usePost'
 import AppLoader from '../../../../components/molecules/AppLoader';
 import UploadingAnimation from '../../../../components/molecules/uploadingAnimation';
+import { fetchData } from '../../../../hooks/useFetch';
 const EditProfile = ({ navigation, route }) => {
     const [image, setImage] = useState(route.params.image)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [imageName, setImageName] = useState(null)
+    const [user, setUser] = useState({})
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -44,6 +46,14 @@ const EditProfile = ({ navigation, route }) => {
             navigation.navigate('settings')
         }
     }
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const data = await fetchData('seller/user/view', setError, setIsLoading)
+            // console.warn(data.data.data[0])
+            setUser(data.data.data[0])
+        }
+        fetchUserData()
+    }, [])
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <SafeAreaView />
@@ -59,28 +69,28 @@ const EditProfile = ({ navigation, route }) => {
                     </View>
                 </View>
             </View>
-            <View >
+            <ScrollView showsVerticalScrollIndicator={false} >
                 <Formik
-                    initialValues={{ fullName: "", email: "", phoneNumber: "", city: "" }}
+                    initialValues={{ name: "", email: "", phone_number: "", city: "", landmark: "" }}
                     validationSchema={editProfileValidation}
                     onSubmit={(values) => handleSaveProfile(values)}
                 >
                     {
                         ({ errors, handleBlur, handleChange, handleSubmit, touched, setFieldTouched, values }) => (
-                            <ScrollView scrollEnabled={false} contentContainerStyle={styles.inputHolder}>
-                                <EditProfileField label="Name" name="fullName" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                <EditProfileField label="Email" name="email" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                <EditProfileField label="Phone Number" name="phoneNumber" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                            <View scrollEnabled={true} style={styles.inputHolder}>
+                                <EditProfileField user={user} label="Name" name="name" values={values.name} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                <EditProfileField user={user} label="Email" name="email" values={values.email} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                <EditProfileField user={user} label="Phone Number" name="phone_number" values={values.phone_number} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                 {/* <EditProfileField label="City" name="city" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} /> */}
                                 <TouchableOpacity style={styles.saveButton} onPress={() => handleSubmit(values)} >
                                     <Text style={styles.buttonText}>Save</Text>
                                 </TouchableOpacity>
 
-                            </ScrollView>
+                            </View>
                         )
                     }
                 </Formik>
-            </View>
+            </ScrollView>
             {
                 isLoading && (
                     <UploadingAnimation />

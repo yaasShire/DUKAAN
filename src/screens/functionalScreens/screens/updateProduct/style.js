@@ -33,14 +33,20 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         borderColor: globalStyles.colors.miniPrimary,
-        elevation: 5
+        elevation: 5,
+        paddingHorizontal: "2%",
+        alignItems: 'flex-start'
 
     },
     image: {
         width: 130,
         height: 150,
         marginRight: "2%",
-        borderRadius: 5
+        borderRadius: 5,
+        resizeMode: "center",
+        borderRadius: 5,
+        borderColor: globalStyles.colors.logoColor,
+        borderWidth: 1
     },
     holder: {
         flexDirection: "row",

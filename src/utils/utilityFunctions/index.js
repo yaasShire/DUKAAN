@@ -164,3 +164,11 @@ export const formValues = (values, image) => {
     })
     return data;
 }
+
+export const formdataProducer = (values) => {
+    const data = new FormData();
+    const keys = Object.keys(values).map(key => {
+        data.append(key, values[key])
+    })
+    return data;
+}

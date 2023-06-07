@@ -3,31 +3,22 @@ import React from 'react'
 import styles from './style'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { FAB } from 'react-native-paper';
-const UpdateProductDetailCard = ({ title, value, navigation }) => {
+const UpdateProductDetailCard = ({ title, value, navigation, name, productDetail }) => {
     return (
         <View style={styles.pricingSectionCard}>
             <View styles={styles.actionContent}>
                 <Text style={styles.actionText}>{title}</Text>
-                <Text style={styles.priceText}>{value}</Text>
+                <Text style={styles.priceText}>{name == 'price' ? '$' : ""}{value}</Text>
             </View>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("updateInventoryField")}>
-                {/* <TouchableWithoutFeedback onPress={() => navigation.navigate("updateInventoryField")} >
-                    <View style={styles.updateIconTextHolder}>
-                        <View style={styles.updateIcon}>
-                            <Entypo name='edit' color={"#066b6b"} />
-                        </View>
-
-                        <Text style={styles.updateText}>Update</Text>
-                    </View>
-                </TouchableWithoutFeedback> */}
+            <View>
                 <FAB
                     icon="pen"
                     size='small'
                     style={styles.fab}
-                    onPress={() => navigation.navigate("updateInventoryField")}
+                    onPress={() => navigation.navigate("updateInventoryField", { data: { label: title, name, productDetail, value } })}
                 />
 
-            </TouchableWithoutFeedback>
+            </View>
         </View>
     )
 }

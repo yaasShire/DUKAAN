@@ -87,10 +87,12 @@ const Login = ({ navigation }) => {
                                     <AuthButton title='Login' handleSubmit={() => handleSubmit(values)} />
                                 </View>
                                 <View style={styles.signupLinkWrapper}>
-                                    <TouchableOpacity style={styles.newAccount} onPress={() => navigation.navigate("signup")}>
-                                        <Text style={styles.accountCreation}>Don't have account?</Text>
-                                        <Text style={styles.signUpLink}>Sign up</Text>
-                                    </TouchableOpacity>
+                                    <View style={styles.newAccount} >
+                                        <Text style={styles.accountCreation} >Don't have account?</Text>
+                                        <TouchableOpacity onPress={() => navigation.navigate("signup")}>
+                                            <Text style={styles.signUpLink}>Sign up</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
                         )

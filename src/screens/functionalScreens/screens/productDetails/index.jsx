@@ -22,7 +22,7 @@ const ProductDetails = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [productImages, setProductImages] = useState([])
-    const [productDetail, setProductDetail] = useState({})
+    const [productDetail, setProductDetail] = useState(null)
     const [brandsList, setBrandsList] = useState([])
     const [selectedImage, setselectedImage] = useState({
         id: route.params.data.id,
@@ -101,8 +101,10 @@ const ProductDetails = ({ route, navigation }) => {
     }, [])
 
 
+
     return (
         <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle='light-content' />
             <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
                 <View style={styles.upperContent}>
@@ -114,21 +116,23 @@ const ProductDetails = ({ route, navigation }) => {
                         style={{}}>
                         {
                             productImages.map(image => (
-                                <Image key={image} source={{ uri: "https://sweyn.co.uk/storage/images/" + image }} style={{ width: "100%", resizeMode: "center", height: "100%" }} />
+                                <Image key={image} source={{ uri: "https://sweyn.co.uk/storage/images/" + image }} style={{ width: "100%", resizeMode: "cover", height: "100%" }} />
                             ))
                         }
                     </Carousel>
                 </View>
                 <View style={styles.bottomSection}>
                     <View>
-                        <View style={{ alignItems: "flex-end", paddingVertical: "3%" }}>
+                        {/* <View style={{ alignItems: "flex-end", paddingVertical: "3%" }}>
                             <FAB
                                 icon="pen"
                                 style={styles.fab}
-                                onPress={() => navigation.navigate("updateProduct", { data: route.params.data })}
+                                onPress={() => {
+                                    productDetail && navigation.navigate("updateProduct", { data: productDetail })
+                                }}
 
                             />
-                        </View>
+                        </View> */}
                         <View style={styles.namePriceSection}>
                             <Text style={styles.name}>{productDetail?.name}</Text>
                             <View style={styles.priceValueWrapper}>
@@ -162,7 +166,7 @@ const ProductDetails = ({ route, navigation }) => {
                                 </View>
                                 <Text style={styles.valueText}>200</Text>
                             </View> */}
-                            <ProductInformationRow text={"Stock"} value={200} />
+                            <ProductInformationRow text={"Stock"} value={productDetail?.quantity_avaliable} />
                             <ProductInformationRow text={"Sales"} value={0} />
                         </View>
                         <View style={styles.detailsSection}>

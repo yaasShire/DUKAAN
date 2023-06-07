@@ -3,12 +3,11 @@ import { TextInput } from 'react-native-paper'
 import React from 'react'
 import styles from './style'
 import { globalStyles } from '../../../globalConstants/styles'
-const EditProfileField = ({ label, touched, setFieldTouched, errors, values, handleChange, handleBlur, name }) => {
+const EditProfileField = ({ label, touched, setFieldTouched, user, errors, values, handleChange, handleBlur, name }) => {
     return (
         <>
             <View style={styles.container}>
                 <TextInput
-                    editable={false}
                     placeholderTextColor={globalStyles.colors.primaryGray}
                     style={styles.input}
                     mode="outlined"
@@ -19,7 +18,7 @@ const EditProfileField = ({ label, touched, setFieldTouched, errors, values, han
                     onBlur={() => {
                         handleBlur(name)
                         setFieldTouched(name)
-                    }} value={values[name]} numberOfLines={2}
+                    }} value={values ? values : user[name]} numberOfLines={2}
                 />
             </View>
             {(errors[name] && touched[name]) && (

@@ -28,7 +28,6 @@ const RequiredInfo = ({ setCurrentPosition, title }) => {
             setBrandsList(data.data)
         }
         fetchRegions()
-
     }, [])
 
     return (
