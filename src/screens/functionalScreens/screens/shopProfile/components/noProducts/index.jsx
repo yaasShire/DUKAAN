@@ -9,7 +9,7 @@ const NoProductForProfile = ({ navigation }) => {
             <Image source={NoProduct} style={styles.noProductImage} />
             <Text>No product(s)</Text>
             <TouchableOpacity style={styles.button} onPress={() => {
-                navigation.navigation.navigate('productsStack', { screen: "addproduct" })
+                navigation.navigate('productsStack', { screen: "addProduct" })
             }}>
                 <Text style={styles.buttonText}>Add Product</Text>
             </TouchableOpacity>

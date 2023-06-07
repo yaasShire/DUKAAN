@@ -28,6 +28,7 @@ const ReviewAndPublish = ({ navigation }) => {
         setTimeout(async () => {
             const data = await postData('seller/products/create', productData, setError, setIsLoading)
             if (data?.result) {
+                console.warn(data);
                 navigation.replace("productList")
             }
 

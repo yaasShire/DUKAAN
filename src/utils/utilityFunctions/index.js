@@ -91,7 +91,10 @@ export const productDataGenerator = (subCategory, productCategory, shopsList, pr
         rating: Number(5),
         quantity_avaliable: Number(500),
         price: Number(productOffers.price),
-        name: productRequiredInfo.productName
+        name: productRequiredInfo.productName,
+        subcategory: Number(subCategory.id),
+        productcategory: Number(productCategory.id)
+
     }
 }
 
