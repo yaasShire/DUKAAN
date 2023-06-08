@@ -104,7 +104,7 @@ export default StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: "#dedede",
-        resizeMode: "center"
+        resizeMode: "contain"
     },
     productHolder: {
 

@@ -87,12 +87,11 @@ export default StyleSheet.create({
         justifyContent: 'space-between'
     },
     locationText: {
-        fontSize: 16,
+        fontSize: 15,
         opacity: .7,
     },
     locationIconNameHolder: {
-        flexDirection: "row",
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "flex-start",
 
     },

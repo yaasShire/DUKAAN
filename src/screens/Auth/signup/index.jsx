@@ -119,7 +119,7 @@ const SignUp = ({ navigation }) => {
             }
             {
                 verificationMessage && (
-                    <VerificationMessage navigation={navigation} screen='login' description='We have sent verification email, verify by you email and then log in.' />
+                    <VerificationMessage setVerificationMessage={setVerificationMessage} navigation={navigation} screen='login' description='We have sent verification email, verify by you email and then log in.' />
                 )
             }
 

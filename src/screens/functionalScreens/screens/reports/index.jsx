@@ -14,6 +14,7 @@ import {
     StackedBarChart,
 } from 'react-native-chart-kit';
 import { globalStyles } from '../../../../globalConstants/styles';
+import { Image } from 'react-native';
 const Reports = ({ navigation }) => {
     const [selectedReport, setSelectedReport] = useState({
         id: 1,
@@ -132,6 +133,7 @@ const Reports = ({ navigation }) => {
                         </View>
                     )
                 }
+                <Image.prefetch te />
                 {
                     showShops && (
                         <View style={styles.shopsListHolder}>

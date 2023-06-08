@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,8 @@ import DecisionButton from '../../../../components/atoms/decisionButton';
 import { nameShortner } from '../../../../utils/utilityFunctions';
 import AppHeader from '../../../../components/molecules/appHeader';
 const ViewOrder = ({ navigation, route }) => {
+    const id = route.params?.order.UOID.split('-')
+    const [orderId, setOrderId] = useState(id[id.length - 1])
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -16,14 +18,13 @@ const ViewOrder = ({ navigation, route }) => {
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: 40 }}>
                 <View style={styles.mainHolder}>
                     <View style={styles.orderDetailCard}>
-                        <Text style={styles.orderNumber}>Order No : {route.params.order.orderNo}</Text>
+                        <Text style={styles.orderNumber}>Order id : {orderId}</Text>
                         <View style={styles.nameDateWrapper}>
                             <View style={styles.nameHolder}>
-                                <Text style={styles.customerName} numberOfLines={1}>{route.params.order.customerName}</Text>
+                                <Text style={styles.customerName} numberOfLines={1}>ALi Nuur Ali</Text>
                             </View>
                             <View style={styles.dateWrapper}>
-                                <Text style={styles.dateText}>4/6/2023</Text>
-
+                                <Text style={styles.dateText}>{route?.params?.order?.createdAt}</Text>
                             </View>
                         </View>
                         <View style={styles.divider} />
@@ -34,7 +35,8 @@ const ViewOrder = ({ navigation, route }) => {
                             <View style={styles.locationInfoHolder}>
                                 <View style={styles.locationIconNameHolder}>
                                     <Ionicons name='ios-location' size={25} color="red" />
-                                    <Text style={styles.locationText}>Hodan, KPP KM4</Text>
+                                    <Text style={styles.locationText}>{route?.params?.order?.additional_information},</Text>
+                                    <Text style={styles.locationText}>{route?.params?.order?.landmark}</Text>
                                 </View>
                                 <View style={styles.countryCityHolder}>
                                     <Text>Mogadishu,</Text>
@@ -46,18 +48,18 @@ const ViewOrder = ({ navigation, route }) => {
                     {/* product items */}
                     <View style={styles.productHolder}>
                         <ScrollView>
-                            {
-                                route.params.order.products.map(item => (
-                                    <Product key={item.id} item={item} />
-                                ))
-                            }
+                            {/* { */}
+                            {/* // route.params?.order?.products?.map(item => ( */}
+                            <Product order={route?.params?.order} />
+                            {/* // )) */}
+                            {/* // } */}
                         </ScrollView>
                     </View>
                     {/* product items ends here */}
                     <View style={styles.totalAmmountWapper}>
                         <View style={styles.titleMoneyWrapper}>
                             <Text style={styles.totalAmmountText}>Total Pay</Text>
-                            <Text style={styles.totalMoney}>${route.params.order.ammount}</Text>
+                            <Text style={styles.totalMoney}>${route?.params?.order?.amount}</Text>
                         </View>
                         <View style={styles.completedHolder}>
                             <Text style={styles.completedText}>Payment Completed</Text>

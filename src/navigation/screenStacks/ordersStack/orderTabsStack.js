@@ -8,11 +8,11 @@ import Header from '../../../components/atoms/header';
 import AppHeader from '../../../components/molecules/header';
 import { Platform } from 'react-native';
 
-const Tab = createMaterialTopTabNavigator();
 export default function OrderTopTabsStack({ navigation }) {
+    const Tab = createMaterialTopTabNavigator();
     return (
         <>
-            <AppHeader navigation={navigation} menu={true} />
+            {/* <AppHeader navigation={navigation} menu={true} /> */}
             <Tab.Navigator
                 initialRouteName="newOrders"
                 screenOptions={{

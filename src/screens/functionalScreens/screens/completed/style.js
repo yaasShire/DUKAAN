@@ -1,10 +1,9 @@
-import { Dimensions, StyleSheet } from "react-native";
-const { width, height } = new Dimensions.get("window")
+import { StyleSheet } from "react-native";
 export default StyleSheet.create({
-    cardHolder: {
+    orderContainer: {
         padding: 15,
-        flex: 1,
-        height: height,
-        marginBottom: 15,
+        rowGap: 10,
+        // flex: 1
+        // marginBottom: 10,
     }
 })

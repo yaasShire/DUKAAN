@@ -12,9 +12,10 @@ export default StyleSheet.create({
 
     },
     orderNumber: {
-        fontSize: globalStyles.fontSizes.secondary,
+        fontSize: globalStyles.fontSizes.primary3,
         fontWeight: globalStyles.fontWeights.secondary,
-        color: globalStyles.colors.tertiary
+        color: globalStyles.colors.tertiary,
+        textTransform: "uppercase"
     },
     orderStage: {
         color: globalStyles.colors.orange,

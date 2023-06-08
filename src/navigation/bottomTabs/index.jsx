@@ -53,7 +53,7 @@ export default function BottomTabs({ navigation }) {
                     tabBarBadge: 3,
                 }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="salesStack"
                 component={MainSalesStack}
                 options={{
@@ -63,7 +63,7 @@ export default function BottomTabs({ navigation }) {
                         <FontAwesome5 name="shipping-fast" color={color} size={25} />
                     ),
                 }}
-            />
+            /> */}
             <Tab.Screen
                 name="productsStack"
                 component={ProductsStack}
