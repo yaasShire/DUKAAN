@@ -21,6 +21,7 @@ const NewOrderStage = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             const fetchProducts = async () => {
+
                 const { data } = await fetchData('seller/shop/view/', setError, setIsLoading)
                 if (data?.data?.length) {
                     setShopsNumber(data?.data?.length)
@@ -28,7 +29,8 @@ const NewOrderStage = ({ navigation }) => {
             }
             fetchProducts()
             const fetchOrders = async () => {
-                const { data } = await fetchData('seller/orders/view/', setError, setIsLoading)
+                setIsLoading(true)
+                const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
                 if (data?.message?.length) {
                     setOrders(data?.message)
                 }

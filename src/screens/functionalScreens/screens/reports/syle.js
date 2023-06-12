@@ -35,7 +35,7 @@ export default StyleSheet.create({
     reportHolder: {
         // marginTop: "2%",
         alignItems: "center",
-        paddingVertical: "3%"
+        paddingVertical: "3%",
     },
     chooseShopWrapper: {
         marginTop: "3%"
@@ -58,7 +58,9 @@ export default StyleSheet.create({
         paddingHorizontal: "3%",
         width: "100%",
         height: height / 12,
-        borderRadius: 6
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: "rgba(0,0,0,.2)"
     },
     reportText: {
         fontWeight: "500",

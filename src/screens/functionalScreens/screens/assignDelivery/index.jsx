@@ -4,6 +4,7 @@ import Order from '../../../../components/molecules/order'
 import styles from './style'
 import { useFocusEffect } from '@react-navigation/native'
 import { fetchData } from '../../../../hooks/useFetch'
+import AppLoader from '../../../../components/molecules/AppLoader'
 const AssignDelivery = ({ navigation }) => {
     const { width, height } = new Dimensions.get("window")
     const [isLoading, setIsLoading] = useState(false)
@@ -12,15 +13,10 @@ const AssignDelivery = ({ navigation }) => {
     const [orders, setOrders] = useState([])
     useFocusEffect(
         React.useCallback(() => {
-            const fetchProducts = async () => {
-                const { data } = await fetchData('seller/shop/view/', setError, setIsLoading)
-                if (data?.data?.length) {
-                    setShopsNumber(data?.data?.length)
-                }
-            }
-            fetchProducts()
+
             const fetchOrders = async () => {
-                const { data } = await fetchData('seller/orders/view/', setError, setIsLoading)
+                setIsLoading(true)
+                const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
                 if (data?.message?.length) {
                     setOrders(data?.message)
                 }
@@ -42,14 +38,21 @@ const AssignDelivery = ({ navigation }) => {
         //     }
 
         // </ScrollView>
-        <FlatList
-            data={orders}
-            contentContainerStyle={styles.orderContainer}
-            keyExtractor={(item) => item.UOID}
-            renderItem={({ item }) => (
-                <Order navigation={navigation} order={item} />
-            )}
-        />
+        <>
+            <FlatList
+                data={orders}
+                contentContainerStyle={styles.orderContainer}
+                keyExtractor={(item) => item.UOID}
+                renderItem={({ item }) => (
+                    <Order navigation={navigation} order={item} />
+                )}
+            />
+            {
+                isLoading && (
+                    <AppLoader />
+                )
+            }
+        </>
     )
 }
 

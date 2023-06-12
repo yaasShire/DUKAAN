@@ -40,7 +40,7 @@ const AddShop = ({ navigation }) => {
     const tabs = new Map();
     // tabs.set(0, <PersonalInfo setcurrentPosition={setcurrentPosition} />)
     tabs.set(0, <ShopInfo setcurrentPosition={setcurrentPosition} />)
-    tabs.set(1, <LocationInfo setcurrentPosition={setcurrentPosition} />)
+    tabs.set(1, <LocationInfo setcurrentPosition={setcurrentPosition} navigation={navigation} />)
     tabs.set(2, <ShopImages setcurrentPosition={setcurrentPosition} navigation={navigation} />)
     const customStyles = stepperCustomStyles
     return (

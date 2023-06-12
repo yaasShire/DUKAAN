@@ -23,7 +23,7 @@ export default StyleSheet.create({
         color: globalStyles.colors.blue
     },
     buttonHolder: {
-        borderColor: "pink",
+        borderColor: globalStyles.colors.logoColor,
         borderRadius: 50,
         borderWidth: 3,
         padding: "1%",
@@ -31,7 +31,7 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     addButtonHolder: {
-        backgroundColor: globalStyles.colors.orange,
+        backgroundColor: globalStyles.colors.logoColor,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 50,

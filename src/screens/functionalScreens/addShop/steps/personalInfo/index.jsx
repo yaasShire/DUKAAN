@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { setPersonalData } from '../../../../../redux/shop'
 import { fetchData } from '../../../../../hooks/useFetch'
 import { useFocusEffect } from '@react-navigation/native'
+
 const PersonalInfo = ({ setcurrentPosition }) => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)

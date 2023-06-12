@@ -22,6 +22,8 @@ import SignLoading from '../../../components/molecules/signLoading'
 import { authFetchData } from '../../../hooks/auth';
 import { authFormData } from '../../../utils/utilityFunctions';
 import VerificationMessage from './message';
+import { globalStyles } from '../../../globalConstants/styles';
+import SpreadingCircles from '../../../components/animations/authCircleAnimation';
 const SignUp = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -50,6 +52,7 @@ const SignUp = ({ navigation }) => {
         <>
             <SafeAreaView />
             <StatusBar barStyle="light-content" />
+            <SpreadingCircles bgColor='pink' />
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.titlesHolder}>
                     <View style={styles.uperText} >
@@ -66,8 +69,8 @@ const SignUp = ({ navigation }) => {
                 </View>
                 {
                     error && (
-                        <View style={{ alignItems: 'center', marginVertical: "2%" }}>
-                            <Text style={{ color: "red", fontSize: 17 }}>{error}</Text>
+                        <View style={styles.errorWrapper}>
+                            <Text style={styles.errorText}>{error}</Text>
                         </View>
                     )
                 }
@@ -89,7 +92,7 @@ const SignUp = ({ navigation }) => {
                                     {/* <TextFieldC title="Choose Location" name="chooseLocation" setFieldTouched={setFieldTouched} values={values.confirmPassword} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} /> */}
                                 </View>
                                 <View style={styles.buttonHolder}>
-                                    <AuthButton isLoading={isLoading} title='Sign up' handleSubmit={() => handleSubmit(values)} errors={errors} />
+                                    <AuthButton isLoading={isLoading} bgColor={globalStyles.colors.logoColor} cWidth="90%" title='Sign up' handleSubmit={() => handleSubmit(values)} errors={errors} />
                                 </View>
                             </>
 

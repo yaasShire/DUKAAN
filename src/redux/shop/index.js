@@ -3,6 +3,10 @@ const initialState = {
     personalData: {},
     shopData: {},
     locationData: {},
+    coordinates: {
+        latitude: 0,
+        longitude: 0
+    },
     shopImages: {
         url1: "",
         url2: "",
@@ -49,11 +53,14 @@ export const ShopSlice = createSlice({
         setImage6: (state, action) => {
             state.shopImages.url6 = action.payload
         },
+        setCoordinates: (state, action) => {
+            state.coordinates = action.payload
+        }
 
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setLocationData, setPersonalData, setShopData, setShopImages, setImage1, setImage2, setImage3, setImage4, setImage5, setImage6 } = ShopSlice.actions
+export const { setLocationData, setPersonalData, setShopData, setShopImages, setImage1, setImage2, setImage3, setImage4, setImage5, setImage6, setCoordinates } = ShopSlice.actions
 
 export default ShopSlice.reducer

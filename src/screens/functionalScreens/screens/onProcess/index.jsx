@@ -21,7 +21,8 @@ const OnProcess = ({ navigation }) => {
             }
             fetchProducts()
             const fetchOrders = async () => {
-                const { data } = await fetchData('seller/orders/view/', setError, setIsLoading)
+                setIsLoading(true)
+                const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
                 if (data?.message?.length) {
                     setOrders(data?.message)
                 }

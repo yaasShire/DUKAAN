@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     fieldHolder: {
@@ -9,16 +10,14 @@ export default StyleSheet.create({
     inputHolder: {
         height: height / 14,
         width: width / 1.13,
-        backgroundColor: "#e9f8ee",
+        backgroundColor: globalStyles.colors.primaryColorRGB,
         borderRadius: 10,
         marginTop: "2%",
-        zIndex: -10
+        // zIndex: -10
     },
     input: {
-        height: "100%",
         width: "100%",
-        paddingHorizontal: 20,
-        fontSize: 16
+        minHeight: 60,
     },
     label: {
         opacity: .4,
@@ -27,9 +26,8 @@ export default StyleSheet.create({
     },
     errorHolder: {
         backgroundColor: "#e8c3cd",
-        paddingHorizontal: "5%",
-        paddingVertical: "3%",
-        width: width / 1.5,
+        paddingHorizontal: "3%",
+        minWidth: width / 1.8,
         borderRadius: 5,
         justifyContent: "center",
         alignItems: "center"
@@ -40,7 +38,7 @@ export default StyleSheet.create({
     mainErrorHolder: {
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: "5%"
+        marginBottom: "3%"
     }
 
 })

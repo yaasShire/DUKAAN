@@ -15,6 +15,7 @@ import {
 } from 'react-native-chart-kit';
 import { globalStyles } from '../../../../globalConstants/styles';
 import { Image } from 'react-native';
+import { HeightDimension } from '../../../../utils/utilityFunctions';
 const Reports = ({ navigation }) => {
     const [selectedReport, setSelectedReport] = useState({
         id: 1,
@@ -88,8 +89,7 @@ const Reports = ({ navigation }) => {
             <SafeAreaView />
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <AppHeader title="Reports" navigation={navigation} color="#000" backButton={true} />
-            <ScrollView showsVerticalScrollIndicator={false} style={{ height: Dimensions.get("window").height, padding: 15 }}>
-
+            <ScrollView showsVerticalScrollIndicator={false} style={{ height: HeightDimension, padding: 15 }}>
                 <View style={styles.insightTextHolder}>
                     <Text style={styles.insightText}>Insight Reports</Text>
                 </View>
@@ -120,7 +120,7 @@ const Reports = ({ navigation }) => {
                         <View style={styles.reportsListHolder}>
                             <View style={styles.reportCardHolder}>
 
-                                {insightResports.map(report => (
+                                {insightResports?.map(report => (
                                     <TouchableOpacity onPress={() => {
                                         setSelectedReport(report)
                                         setShowReport(false)
@@ -133,13 +133,12 @@ const Reports = ({ navigation }) => {
                         </View>
                     )
                 }
-                <Image.prefetch te />
                 {
                     showShops && (
                         <View style={styles.shopsListHolder}>
                             <View style={styles.reportCardHolder}>
 
-                                {shops.map(shop => (
+                                {shops?.map(shop => (
                                     <TouchableOpacity onPress={() => {
                                         setSelectedShop(shop)
                                         setShowShops(false)

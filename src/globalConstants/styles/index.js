@@ -20,7 +20,8 @@ const colors = {
     green: "#51b097",
     blue: "#0ca0f5",
     logoColor: "#23baab",
-    bgColor: "#01061c"
+    bgColor: "#01061c",
+    primaryColorRGB: "rgba(35, 186, 171,.5)"
 }
 
 const style = {

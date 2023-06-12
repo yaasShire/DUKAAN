@@ -2,45 +2,46 @@ import { StyleSheet } from "react-native";
 import { HeightDimension, WindowDimension } from "../../../utils/utilityFunctions";
 export default StyleSheet.create({
     container: {
-        alignItems: "center",
-    },
-    subWrapper: {
-        height: HeightDimension / 14,
-        width: WindowDimension / 1.13,
-        backgroundColor: "#e9f8ee",
-        borderRadius: 10,
-        zIndex: -10,
-    },
-    label: {
-        opacity: .4,
-        fontSize: 14,
-        fontWeight: "500"
+        width: "100%",
+        minHeight: 55,
+        borderWidth: 1,
+        paddingHorizontal: 10,
+        borderRadius: 5,
+        borderColor: "gray"
     },
     listWrapper: {
-        position: "absolute",
-        top: 100,
-        zIndex: 100,
-        backgroundColor: "#fff",
-        width: "100%",
-        borderWidth: .3,
-        borderRadius: 5,
-        paddingVertical: "3%"
+        // height: HeightDimension,
+        // rowGap: 10,
+        // padding: 10
     },
-    mainEroorWrapper: {
-        backgroundColor: "#e8c3cd",
-        paddingHorizontal: "5%",
-        paddingVertical: "3%",
-        width: WindowDimension / 1.5,
-        borderRadius: 5,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    errorText: {
-        color: 'red'
-    },
-    title: {
+    labelStyle: {
         opacity: .4,
         fontSize: 14,
         fontWeight: "500",
+        marginBottom: 6
+    },
+    dataRow: {
+        borderWidth: 1,
+        borderColor: 'gray',
+        paddingHorizontal: 5,
+        borderRadius: 5,
+        height: 60,
+        justifyContent: "center"
+    },
+    errorHolder: {
+        backgroundColor: "#e8c3cd",
+        paddingHorizontal: "3%",
+        minWidth: WindowDimension / 1.8,
+        borderRadius: 5,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    errorText: {
+        color: "red"
+    },
+    mainErrorHolder: {
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: "3%"
     }
 })

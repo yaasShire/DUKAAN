@@ -35,18 +35,32 @@ export default StyleSheet.create({
         borderColor: globalStyles.colors.miniPrimary,
         elevation: 5,
         paddingHorizontal: "2%",
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        justifyContent: "space-around"
 
+    },
+    imageWrapper: {
+        borderColor: globalStyles.colors.logoColor,
+        borderWidth: 1,
+        height: 150,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 5,
+    },
+    infoWrapper: {
+        flex: 1,
+        alignItems: "flex-start",
+        justifyContent: "space-around",
+        paddingVertical: "3%",
+        marginLeft: "3%"
     },
     image: {
         width: 130,
-        height: 150,
+        height: 130,
         marginRight: "2%",
-        borderRadius: 5,
         resizeMode: "center",
         borderRadius: 5,
-        borderColor: globalStyles.colors.logoColor,
-        borderWidth: 1
+
     },
     holder: {
         flexDirection: "row",

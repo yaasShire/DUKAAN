@@ -12,7 +12,13 @@ import { List } from 'react-native-paper';
 import SelectList from '../../../../../components/molecules/selectList'
 import { states, regions } from '../../../../../dataStore'
 import { fetchData } from '../../../../../hooks/useFetch'
-const PersonalInfo = ({ setcurrentPosition }) => {
+import PickLocation from './components/pickLocation'
+import Map from '../../../screens/map'
+import * as Location from 'expo-location';
+import { setCoordinates } from '../../../../../redux/shop'
+import ProductRegistrationHeader from '../../components/productRegistrationHeader'
+
+const PersonalInfo = ({ setcurrentPosition, navigation }) => {
     const [expanded, setExpanded] = React.useState(true);
     const [region, setRegion] = useState("")
     const [state, setState] = useState("")
@@ -20,7 +26,9 @@ const PersonalInfo = ({ setcurrentPosition }) => {
     const [regionsList, setRegionsList] = useState([])
     const [statesList, setStatesList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-
+    const [showMap, setShowMap] = useState(false)
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
     const handlePress = () => setExpanded(!expanded);
     const dispatch = useDispatch()
     const handleDataSubmit = (values) => {
@@ -43,13 +51,34 @@ const PersonalInfo = ({ setcurrentPosition }) => {
         fetchRegions()
 
     }, [])
+
+    const [coordinate, setCoordinate] = useState({
+        latitude: 0,
+        longitude: 0
+    })
+
+    useEffect(() => {
+        (async () => {
+
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            dispatch(setCoordinates({ latitude: location?.coords?.latitude, longitude: location?.coords?.longitude }))
+            setCoordinate({
+                latitude: location?.coords?.latitude,
+                longitude: location?.coords?.longitude,
+            })
+        })();
+    }, []);
     return (
         <View style={styles.container}>
-            <View style={styles.titleHolder}>
-                <Text style={styles.titleText}>Enter Location Details</Text>
-            </View>
+            <ProductRegistrationHeader title="Enter Location Details" />
             <Formik
-                initialValues={{ country: "", state: 0, city: "", region: 0, nearestLANMark: "" }}
+                initialValues={{ country: "", state: "", city: "", region: "", nearestLANMark: "" }}
                 validationSchema={shopLocationValidation}
                 onSubmit={(values) => handleDataSubmit(values)}
             >
@@ -57,12 +86,11 @@ const PersonalInfo = ({ setcurrentPosition }) => {
                     ({ values, errors, handleBlur, handleChange, handleSubmit, touched, setTouched, setFieldTouched }) => (
                         <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 15 }}>
                             <AddShopField label={'Country'} name="country" values={values.country} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            {/* <AddShopField label={'State'} name="state" values={values.state} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} /> */}
                             <AddShopField label={'City'} name="city" values={values.city} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            {/* <AddShopField label={'Region'} name="region" values={values.region} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} /> */}
                             <AddShopField label={'Nearest LAN Mark'} name="nearestLANMark" values={values.nearestLANMark} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <SelectList regionsList={regionsList} name="region" errors={errors} setRegion={setRegion} label={'Region'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <SelectList statesList={statesList} onBlur name="state" errors={errors} setState={setState} label={'State'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <PickLocation coordinate={coordinate} navigation={navigation} setShowMap={setShowMap} />
                             <View style={styles.buttonHolder}>
                                 <CancelButton disabled={false} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
                                 <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />
@@ -71,6 +99,11 @@ const PersonalInfo = ({ setcurrentPosition }) => {
                     )
                 }
             </Formik>
+            {
+                showMap && (
+                    <Map />
+                )
+            }
         </View>
     )
 }

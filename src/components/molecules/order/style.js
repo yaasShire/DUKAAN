@@ -9,6 +9,7 @@ export default StyleSheet.create({
         borderRadius: 6,
         borderColor: "#c2c1bc",
         borderWidth: .5,
+        paddingHorizontal: "3%"
 
     },
     orderNumber: {

@@ -8,6 +8,7 @@ import { shopDetailsValidation } from '../../../../../utils/validationSchema/sho
 import CancelButton from '../../../../../components/atoms/canelButton'
 import { useDispatch } from 'react-redux'
 import { setShopData } from '../../../../../redux/shop'
+import ProductRegistrationHeader from '../../components/productRegistrationHeader'
 const PersonalInfo = ({ setcurrentPosition }) => {
     const dispatch = useDispatch()
     const handleDataSubmit = (values) => {
@@ -16,9 +17,7 @@ const PersonalInfo = ({ setcurrentPosition }) => {
     }
     return (
         <View style={styles.container}>
-            <View style={styles.titleHolder}>
-                <Text style={styles.titleText}>Enter Shop Details</Text>
-            </View>
+            <ProductRegistrationHeader title="Enter Shop Details" />
             <Formik
                 initialValues={{ shopName: "", shopEmail: "", shopNumber: "" }}
                 validationSchema={shopDetailsValidation}
@@ -31,7 +30,7 @@ const PersonalInfo = ({ setcurrentPosition }) => {
                             <AddShopField label={'Shop Email'} name="shopEmail" values={values.shopEmail} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <AddShopField label={'Shop Phone Number'} name="shopNumber" values={values.shopNumber} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <View style={styles.buttonHolder}>
-                                <CancelButton disabled={false} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
+                                <CancelButton disabled={true} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
                                 <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />
                             </View>
                         </ScrollView>

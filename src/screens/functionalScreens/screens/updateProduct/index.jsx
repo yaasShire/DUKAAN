@@ -42,8 +42,10 @@ const UpdateProduct = ({ navigation, route }) => {
             <StatusBar barStyle={'light-content'} />
             <AppHeader title={"Mange Inventory"} navigation={navigation} color={"#000"} backButton={true} />
             <View style={styles.productHolder}>
-                <Image source={{ uri: `https://sweyn.co.uk/storage/images/${productDetail?.photo}` }} style={styles.image} />
-                <View style={{ flex: 1, alignItems: "flex-start", justifyContent: "space-around", paddingVertical: "3%" }}>
+                <View style={styles.imageWrapper}>
+                    <Image source={{ uri: `https://sweyn.co.uk/storage/images/${productDetail?.photo}` }} style={styles.image} />
+                </View>
+                <View style={styles.infoWrapper}>
                     <Text style={styles.productName}>{productDetail?.name}</Text>
                     <View style={styles.holder}>
                         <Text style={styles.textTitle}>Status:</Text>
@@ -84,11 +86,11 @@ const UpdateProduct = ({ navigation, route }) => {
                         titleStyle={{ fontSize: 12 }}
                         icon={{ name: 'inventory', type: 'materialIcons', color: 'white' }}
                     />
-                    {/* <Tab.Item
+                    <Tab.Item
                         title="Categories"
                         titleStyle={{ fontSize: 12 }}
                         icon={{ name: 'burst-sale', type: 'foundation', color: 'white' }}
-                    /> */}
+                    />
                 </Tab>
                 <TabView value={index} onChange={setIndex} animationType="spring">
                     <TabView.Item style={{ width: "100%" }}>
@@ -97,9 +99,9 @@ const UpdateProduct = ({ navigation, route }) => {
                     <TabView.Item style={{ width: "100%" }}>
                         <InventorySectionCard productDetail={productDetail} navigation={navigation} />
                     </TabView.Item>
-                    {/* <TabView.Item style={{ width: "100%" }}>
+                    <TabView.Item style={{ width: "100%" }}>
                         <CategorySectionCard productDetail={productDetail} navigation={navigation} />
-                    </TabView.Item> */}
+                    </TabView.Item>
                 </TabView>
             </View>
         </SafeAreaView>

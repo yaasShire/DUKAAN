@@ -1,47 +1,60 @@
-import { View, Text, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, ScrollView, Pressable, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import styles from './style'
 import { List } from 'react-native-paper'
 import { HeightDimension, WindowDimension } from '../../../utils/utilityFunctions'
 import { regions, states } from '../../../dataStore'
 import { globalStyles } from '../../../globalConstants/styles'
+import { Picker } from "react-native-ui-lib/src/components/picker";
+import { FlatList } from 'react-native-gesture-handler'
 const SelectList = ({ label, list, handleChange, errors, name, value, setState, state, setRegion, setFieldTouched, regionsList, statesList }) => {
     const [show, setShow] = useState(false)
-    const [active, setActive] = useState(value)
-    return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <List.Section title={label} style={{ marginTop: -10 }} titleStyle={styles.title} >
-                <List.Accordion
-                    onPress={() => {
-                        setShow(prev => !prev)
-                        setFieldTouched(name)
-                    }
-                    }
-                    expanded={show}
-                    style={styles.subWrapper}
-                    title={active}
-                >
-                    {(label == 'Region' ? regionsList : label == 'State' ? statesList : "").map(item => (
-                        <List.Item style={{ backgroundColor: "#fff", borderWidth: 1, borderColor: globalStyles.colors.primaryGray, marginTop: 5, borderRadius: 10 }} key={item.id} title={item.name} onPress={() => {
-                            setActive(item?.name)
-                            setShow(prev => !prev)
-                            handleChange(name)((item?.id).toString())
-                        }} />
-                    ))
-                    }
+    const [active, setActive] = useState(`Select ${label}`)
 
-                </List.Accordion>
-            </List.Section>
+    return (
+        <>
+            <Picker
+                style={styles.container}
+                placeholder={active}
+                shearchPlaceHolder="Search"
+                label={label}
+                labelStyle={styles.labelStyle}
+                enableModalBlur={false}
+                topBarProps={{ title: label }}
+            >
+                <FlatList
+                    data={label == 'Region' ? regionsList : label == 'State' ? statesList : ""}
+                    contentContainerStyle={styles.listWrapper}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item }) => (
+                        <Picker.Item
+                            key={item?.id}
+                            label={item.name}
+                            onChange={item => console.warn(item)}
+                            onPress={() => {
+                                setActive(item?.name)
+                                setShow(prev => !prev)
+                                handleChange(name)((item?.id).toString())
+                                // onBlur={() => {
+                                // handleBlur(name)
+                                setFieldTouched(name)
+                                // }}
+
+                            }}
+                        />
+                    )}
+                />
+            </Picker>
             {
                 (errors[name]) && (
-                    <View style={styles.mainEroorWrapper}>
-                        <Text style={styles.errorText}>{errors[name]}</Text>
+                    <View style={styles.mainErrorHolder}>
+                        <View style={styles.errorHolder}>
+                            <Text style={{ color: "red" }}>{errors[name]}</Text>
+                        </View>
                     </View>
                 )
-
             }
-        </ScrollView>
-
+        </>
     )
 }
 

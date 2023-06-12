@@ -11,6 +11,7 @@ import { authFetchData } from '../../../hooks/auth'
 import { authFormData, formValues } from '../../../utils/utilityFunctions'
 import VerificationMessage from '../signup/message'
 import AppLoader from '../../../components/molecules/AppLoader'
+import { globalStyles } from '../../../globalConstants/styles'
 const ForgetPassword = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -49,7 +50,9 @@ const ForgetPassword = ({ navigation }) => {
                                     <TextFieldC title="email" name="email" errors={errors} values={values} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} touched={touched} setFieldTouched={setFieldTouched} />
                                 </View>
                                 <View style={styles.buttonHolder}>
-                                    <AuthButton title="Send" handleSubmit={(values) => handleSubmit(values)} errors={errors} />
+                                    <AuthButton title="Send" bgColor={globalStyles.colors.logoColor} cWidth="90%" handleSubmit={(values) => handleSubmit(values)} errors={errors} />
+                                    {/* <AuthButton isLoading={isLoading} bgColor={globalStyles.colors.logoColor} cWidth="90%" title='Sign up' handleSubmit={() => handleSubmit(values)} errors={errors} /> */}
+
                                 </View>
                             </>
                         )

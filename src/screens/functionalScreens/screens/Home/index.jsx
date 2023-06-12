@@ -30,134 +30,18 @@ const Home = ({ navigation }) => {
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
-    const orderss = [
-        {
-            id: 1,
-            orderNo: 384848,
-            customerName: "Nuur Ali Ahmed",
-            ammount: 46,
-            products: [
-                {
-                    id: 1,
-                    name: "Gasoline",
-                    quantity: 5,
-                    price: 6,
-                    ammount: 30,
-                    orderId: 1,
-                    customerName: "Nuur Ali Ahmed",
-                    image: require('../../../../assets/sProduct1.png')
-                },
-                {
-                    id: 2,
-                    name: "Motor cleaner",
-                    quantity: 4,
-                    price: 4,
-                    ammount: 16,
-                    orderId: 1,
-                    customerName: "Nuur Ali Ahmed",
-                    image: require('../../../../assets/sProduct2.png')
-                },
-            ]
-        },
-        {
-            id: 2,
-            orderNo: 574849,
-            customerName: "Sadaam Daahir Tahliil",
-            ammount: 50,
-            products: [
-                {
-                    id: 1,
-                    name: "Side Mirror oil",
-                    quantity: 5,
-                    price: 6,
-                    ammount: 30,
-                    orderId: 2,
-                    customerName: "Faarah Ahmed Haaji",
-                    image: require('../../../../assets/sProduct3.png')
-                },
-                {
-                    id: 2,
-                    name: "Motor cleaner",
-                    quantity: 5,
-                    price: 4,
-                    ammount: 20,
-                    orderId: 2,
-                    customerName: "Abdi Naasir Nuur Huseyn",
-                    image: require('../../../../assets/sProduct4.png')
-                },
-            ]
-        },
-        {
-            id: 3,
-            orderNo: 390848,
-            customerName: "Safiya mustaf Nuur",
-            ammount: 76,
-            products: [
-                {
-                    id: 1,
-                    name: "Gumber",
-                    quantity: 6,
-                    price: 8,
-                    ammount: 48,
-                    orderId: 3,
-                    customerName: "Muumin Abdi wali Qaasim",
-                    image: require('../../../../assets/sProduct5.png')
-                },
-                {
-                    id: 2,
-                    name: "Air conditioner",
-                    quantity: 4,
-                    price: 7,
-                    ammount: 28,
-                    orderId: 3,
-                    customerName: "Nuur Ali Ahmed",
-                    image: require('../../../../assets/sProduct6.png')
-                },
-            ]
-        },
-        {
-            id: 4,
-            orderNo: 3384848,
-            customerName: "Yahye Shukri Hilowle",
-            ammount: 99,
-            products: [
-                {
-                    id: 1,
-                    name: "Tires",
-                    quantity: 7,
-                    price: 9,
-                    ammount: 63,
-                    orderId: 4,
-                    customerName: "Muumin Abdi wali Qaasim",
-                    image: require('../../../../assets/sProduct5.png')
-                },
-                {
-                    id: 2,
-                    name: "Motor washer",
-                    quantity: 9,
-                    price: 4,
-                    ammount: 36,
-                    orderId: 4,
-                    customerName: "Nuur Ali Ahmed",
-                    image: require('../../../../assets/sProduct6.png')
-                },
-            ]
-        },
-
-    ]
-
 
     useFocusEffect(
         React.useCallback(() => {
             const fetchProducts = async () => {
-                const { data } = await fetchData('seller/shop/view/', setError, setIsLoading)
+                const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
                 if (data?.data?.length) {
                     setShopsNumber(data?.data?.length)
                 }
             }
             fetchProducts()
             const fetchOrders = async () => {
-                const { data } = await fetchData('seller/orders/view/', setError, setIsLoading)
+                const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
                 if (data?.message?.length) {
                     setOrders(data?.message)
                 }
@@ -183,7 +67,6 @@ const Home = ({ navigation }) => {
                         <DashboardCard description={'Expense'} ammount={0} sign={true} />
                         <DashboardCard description={'Number Of Shops'} ammount={shopsNumber} sign={false} />
                     </ScrollView>
-
                 </View>
                 <View showsVerticalScrollIndicator={false} nestedScrollEnabled={true} scrollEnabled={true} style={styles.bottomContent}>
                     <View style={styles.subBottomContent}>
@@ -199,7 +82,7 @@ const Home = ({ navigation }) => {
                         <FlatList
                             nestedScrollEnabled={false}
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={{ rowGap: 10, }}
+                            contentContainerStyle={{ rowGap: 10, paddingVertical: 5 }}
                             keyExtractor={(item) => item?.UOID}
                             scrollEnabled={false}
                             data={orders}

@@ -11,6 +11,5 @@ export default StyleSheet.create({
         bottom: 0,
         backgroundColor: globalStyles.colors.miniPrimary,
         zIndex: 5,
-        // opacity: .3
     }
 })

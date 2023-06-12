@@ -18,6 +18,9 @@ import { formDataGenerator, formValues } from '../../../utils/utilityFunctions'
 import { authFetchData } from '../../../hooks/auth'
 import { authFormData } from '../../../utils/utilityFunctions'
 import SignLoading from '../../../components/molecules/signLoading'
+import { MotiView } from '@motify/components'
+import { globalStyles } from '../../../globalConstants/styles'
+import SpreadingCircles from '../../../components/animations/authCircleAnimation'
 const Login = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -46,6 +49,7 @@ const Login = ({ navigation }) => {
         <>
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <SafeAreaView />
+            <SpreadingCircles bgColor={globalStyles.colors.logoColor} />
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.titlesHolder}>
                     <View >
@@ -84,7 +88,7 @@ const Login = ({ navigation }) => {
                                     <Text style={styles.forgetPasswordText}>Forget password?</Text>
                                 </TouchableOpacity>
                                 <View style={styles.buttonHolder}>
-                                    <AuthButton title='Login' handleSubmit={() => handleSubmit(values)} />
+                                    <AuthButton title='Login' bgColor={globalStyles.colors.logoColor} cWidth="90%" handleSubmit={() => handleSubmit(values)} />
                                 </View>
                                 <View style={styles.signupLinkWrapper}>
                                     <View style={styles.newAccount} >

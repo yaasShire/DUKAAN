@@ -1,9 +1,7 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#EDEFF1',
         flex: 1,
-        // padding: '10%'
     },
     image: {
         width: 170,
@@ -76,7 +74,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: "3%"
+        marginBottom: "10%"
     },
     textLogin1: {
         opacity: 0.5,
@@ -85,5 +83,13 @@ export default StyleSheet.create({
     textLogin2: {
         color: 'blue',
         fontWeight: '600'
+    },
+    errorWrapper: {
+        alignItems: 'center',
+        marginVertical: "2%"
+    },
+    errorText: {
+        color: "red",
+        fontSize: 17
     }
 })
