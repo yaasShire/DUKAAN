@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { globalStyles } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
@@ -46,20 +47,17 @@ export default StyleSheet.create({
         borderBottomWidth: 1
     },
     filters: {
-        flex: .9,
+        flex: 1.1,
         borderRightWidth: 1,
         borderRightColor: "#bec4c0",
         backgroundColor: "#e1e6e2",
     },
     sideContent: {
-        // backgroundColor: "gold",
         flex: 2,
-
         shadowColor: "gray",
         shadowOpacity: 0.5,
         shadowRadius: 10,
         elevation: 6
-
     },
     categoriesItem: {
         flexDirection: "row",
@@ -83,7 +81,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: "5%",
-        zIndex: -10
+        backgroundColor: globalStyles.colors.miniPrimary
     },
     applyButton: {
         width: 120,

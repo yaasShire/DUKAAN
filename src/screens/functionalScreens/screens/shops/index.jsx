@@ -7,7 +7,6 @@ import AppHeader from '../../../../components/molecules/appHeader';
 import { fetchData } from '../../../../hooks/useFetch';
 import AppLoader from '../../../../components/molecules/AppLoader';
 import { Text } from 'react-native-paper';
-import NoShopsImage from '../../../../assets/images/noShops.png'
 import { globalStyles } from '../../../../globalConstants/styles';
 import NoShopFound from './noShop';
 import { useFocusEffect } from '@react-navigation/native';

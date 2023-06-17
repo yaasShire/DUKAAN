@@ -1,4 +1,5 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text } from 'react-native'
+import { TextInput } from 'react-native-paper'
 import React from 'react'
 import styles from './style'
 import { useDispatch } from 'react-redux'
@@ -10,14 +11,16 @@ const AddProductField = ({ name = '', label = '', valuesObj = {}, values = {}, h
     return (
         <View>
             <View style={styles.fieldContainer}>
-                <Text style={styles.label}>{label}</Text>
                 <View>
                     {(errors[name] && touched[name]) && (
                         <Text style={styles.errorText}>{errors[name]}*</Text>
                     )
                     }
                 </View>
+                <Text style={styles.label}>{label}</Text>
+
                 <TextInput
+                    mode='outlined'
                     onChangeText={(text) => {
                         handleChange(name)(text)
                     }} onBlur={() => {
@@ -25,7 +28,10 @@ const AddProductField = ({ name = '', label = '', valuesObj = {}, values = {}, h
                         setFieldTouched(name)
                     }} value={valuesObj[name]}
                     numberOfLines={2}
-                    style={styles.input} />
+                    style={styles.input}
+                />
+
+
             </View>
 
         </View>

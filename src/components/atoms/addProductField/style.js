@@ -8,7 +8,6 @@ export default StyleSheet.create({
         alignItems: "flex-start"
     },
     input: {
-        borderWidth: 1,
         paddingHorizontal: "3%",
         paddingVertical: "1%",
         width: width / 1.12,

@@ -1,6 +1,8 @@
 import { Dimensions } from "react-native"
+import { setMainCategoryFilter, setProductCategoryFilter, setShopFilter, setSubCategoryFilter } from "../../redux/productsFilter"
+import { useDispatch } from "react-redux"
 export const nameShortner = (name) => {
-    return name.length > 16 ? name.slice(0, 15) + '...' : name
+    return name.length > 19 ? name.slice(0, 16) + '...' : name
 }
 export const formatedShopFormData = (values, shopImages, shopData) => {
     const data = new FormData()
@@ -122,4 +124,49 @@ export const formdataProducer = (values) => {
         data.append(key, values[key])
     })
     return data;
+}
+export const getShopImages = (shopData) => {
+    const imageNames = ['photos', 'photo2', 'photo3', 'photo4', 'photo5', 'photo6']
+    const data = imageNames.map((image, index) => (
+
+        shopData[imageNames[index]]
+    ))
+    return data
+}
+
+export const filterData = (data) => {
+    const filteredArray = []
+    if (Object.keys(data?.mainCategoryFilter).length > 0) {
+        filteredArray.push(data?.mainCategoryFilter)
+
+    }
+    if (Object.keys(data?.productCategoryFilter).length > 0) {
+        filteredArray.push(data?.productCategoryFilter)
+
+    }
+    if (Object.keys(data?.subCategoryFilter).length > 0) {
+        filteredArray.push(data?.subCategoryFilter)
+
+    }
+    if (Object.keys(data?.shopFilter).length > 0) {
+        filteredArray.push(data?.shopFilter)
+
+    }
+
+    return filteredArray
+}
+
+export const clearFilterState = (dispatch) => {
+    dispatch(setMainCategoryFilter({}))
+    dispatch(setProductCategoryFilter({}))
+    dispatch(setSubCategoryFilter({}))
+    dispatch(setShopFilter({}))
+}
+
+export const filterFormDataSetter = (state) => {
+    const filterFormData = new FormData()
+    filterFormData.append('USID', state.shopFilter?.USID)
+    filterFormData.append('category', state.mainCategoryFilter?.id)
+    filterFormData.append('subcategory', state.subCategoryFilter?.id)
+    filterFormData.append('productcategory', state.productCategoryFilter?.id)
 }

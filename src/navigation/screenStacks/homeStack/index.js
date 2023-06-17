@@ -12,6 +12,8 @@ import SettingsStack from '../settingsStack'
 import ShopProfile from '../../../screens/functionalScreens/screens/shopProfile'
 import UploadState from '../../../screens/functionalScreens/addShop/uploadState'
 import Map from '../../../screens/functionalScreens/screens/map'
+import ShopProducts from '../../../screens/functionalScreens/screens/shopProducts'
+import EditShopDetails from '../../../screens/functionalScreens/screens/editShopDetails'
 const HomeStack = () => {
     const Stack = createNativeStackNavigator()
     return (
@@ -24,6 +26,8 @@ const HomeStack = () => {
             <Stack.Screen name='shopProfile' component={ShopProfile} options={{ headerShown: false }} />
             <Stack.Screen name='uploadState' component={UploadState} options={{ headerShown: false }} />
             <Stack.Screen name='map' component={Map} options={{ headerShown: false }} />
+            <Stack.Screen name='shopProducts' component={ShopProducts} options={{ headerShown: false }} />
+            <Stack.Screen name='editShopDetails' component={EditShopDetails} options={{ headerShown: false }} />
             {/* <Stack.Screen name='settings' component={Settings} options={{ headerShown: false }} /> */}
         </Stack.Navigator>
     )

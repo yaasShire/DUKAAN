@@ -1,3 +1,6 @@
+import { Dimensions } from "react-native";
+const { height, width } = new Dimensions.get('screen')
+
 const fontSizes = {
     primary1: 10,
     primary2: 13,
@@ -7,9 +10,9 @@ const fontSizes = {
 };
 
 const fontWeights = {
-    primary: 400,
-    secondary: 500,
-    tertiary: 600
+    primary: 500,
+    secondary: 600,
+    tertiary: 700
 };
 const colors = {
     primaryGray: "#c5c7c6",
@@ -35,8 +38,9 @@ const style = {
 
 }
 
-export const screenPadding = 15
-
+export const screenPadding = 10
+export const HeightDimension = height
+export const WidthDimension = width
 
 export const globalStyles = {
     fontSizes, fontWeights, colors, style

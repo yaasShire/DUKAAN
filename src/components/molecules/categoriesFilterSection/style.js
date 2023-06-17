@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
-        // padding: 10
+        flex: 1,
     },
     searchHolder: {
         flexDirection: "row",
@@ -16,4 +16,7 @@ export default StyleSheet.create({
         marginLeft: "5%",
         fontSize: 15
     },
+    categoryListWrapper: {
+        rowGap: 10
+    }
 })

@@ -1,10 +1,14 @@
 import { StyleSheet } from "react-native";
-import { globalStyles } from "../../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15,
+        // padding: 15,
         backgroundColor: globalStyles.colors.miniPrimary
+    },
+    contentWrapper: {
+        flex: 1,
+        padding: screenPadding
     },
     header: {
         flexDirection: "row",

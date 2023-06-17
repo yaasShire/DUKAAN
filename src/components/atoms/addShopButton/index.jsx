@@ -6,10 +6,7 @@ import { formDataGenerator, formatedShopFormData, shopDataGenerator } from '../.
 import { postData } from '../../../hooks/usePost';
 import { API } from '../../../hooks';
 import AppLoader from '../../molecules/AppLoader';
-import { useDispatch } from 'react-redux';
-import { setShopImages } from '../../../redux/shop';
 const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, checkMainImage, setIsLoading }) => {
-    const dispatch = useDispatch()
     const [error, setError] = useState(null)
     const { locationData, personalData, shopData, shopImages, coordinates } = useSelector(state => state.shopRegistration);
     const shopInformation = shopDataGenerator(shopData, locationData, shopImages, coordinates)

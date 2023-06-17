@@ -1,45 +1,47 @@
 import { StyleSheet } from "react-native";
-import { globalStyles } from "../../../../../../globalConstants/styles";
+import { HeightDimension, WidthDimension, globalStyles } from "../../../../../../globalConstants/styles";
 export default StyleSheet.create({
-    card: {
-        // backgroundColor: "pink",
-        width: "60%",
-        height: "100%",
-        borderRadius: 5,
-        paddingVertical: "2%",
-        borderWidth: 1,
-        borderColor: globalStyles.colors.logoColor,
-        paddingHorizontal: "1%",
-
+    container: {
+        width: WidthDimension / 2.5,
+        height: HeightDimension / 4.8,
+        borderRadius: 7,
+        padding: "1%",
+        // borderWidth: 1,
+        // borderColor: globalStyles.colors.logoColor
     },
-    producImageWrapper: {
+    imageWrapper: {
         width: "100%",
-        height: "80%",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        // backgroundColor: "blue"
-
+        height: 130,
+        borderWidth: 1,
+        justifyContent: "center",
+        alignItems: 'center',
+        borderRadius: 10,
+        borderColor: globalStyles.colors.logoColor
     },
     image: {
-        width: "90%",
-        height: "80%",
-        borderRadius: 5,
-        resizeMode: "contain",
+        width: "97%",
+        height: "97%",
+        resizeMode: "cover",
         borderRadius: 5
-
-    },
-    dataWrapper: {
-        flex: 1,
-        justifyContent: "center",
     },
     productName: {
-        fontSize: 16,
-        fontWeight: "500"
+        fontSize: 15,
+        fontWeight: globalStyles.fontWeights.primary
     },
-    qty: {
-        fontSize: 14,
-        fontWeight: "400",
-        opacity: .5,
-        marginVertical: "2%"
+    qtyHolder: {
+        flexDirection: 'row'
+    },
+    qtyText: {
+        opacity: .7
+    },
+    qtyValue: {
+        fontWeight: globalStyles.fontWeights.secondary
+    },
+    divider: {
+        marginVertical: "2%",
+        width: 130
+    },
+    dividerWrapper: {
+        alignItems: "center"
     }
 })

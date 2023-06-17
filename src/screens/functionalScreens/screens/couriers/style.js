@@ -1,11 +1,9 @@
 import { Dimensions, StyleSheet, Platform } from "react-native";
+import { screenPadding } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
-        padding: 15,
-        // height,
-        flex: Platform.OS == 'android' ? 1 : 0,
-        // height: Platform.OS
+        flex: 1
     },
     header: {
         flexDirection: "row",
@@ -22,6 +20,10 @@ export default StyleSheet.create({
 
     },
     cardsHolder: {
-        marginBottom: "2%"
+        padding: screenPadding,
+    },
+    couriersWrapper: {
+        rowGap: 10,
+        padding: screenPadding
     }
 })

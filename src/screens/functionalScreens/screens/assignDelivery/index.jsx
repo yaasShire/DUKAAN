@@ -44,7 +44,7 @@ const AssignDelivery = ({ navigation }) => {
                 contentContainerStyle={styles.orderContainer}
                 keyExtractor={(item) => item.UOID}
                 renderItem={({ item }) => (
-                    <Order navigation={navigation} order={item} />
+                    <Order navigation={navigation} order={item} assign={true} />
                 )}
             />
             {

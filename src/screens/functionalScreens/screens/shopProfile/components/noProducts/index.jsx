@@ -1,9 +1,9 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import styles from './style'
-import NoProduct from '../../../../../../assets/images/noShops.png'
+import NoProduct from '../../../../../../assets/images/notFound.png'
 import { TouchableOpacity } from 'react-native'
-const NoProductForProfile = ({ navigation }) => {
+const NoProductForShopProfile = ({ navigation }) => {
     return (
         <View style={styles.noProductsWrapper}>
             <Image source={NoProduct} style={styles.noProductImage} />
@@ -17,4 +17,4 @@ const NoProductForProfile = ({ navigation }) => {
     )
 }
 
-export default NoProductForProfile
+export default NoProductForShopProfile

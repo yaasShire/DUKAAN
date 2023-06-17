@@ -1,28 +1,38 @@
 import { StyleSheet } from "react-native";
-import { globalStyles } from "../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         alignItems: "center",
-        flexDirection: "row-reverse",
-        justifyContent: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
         height: 55,
         marginBottom: 10,
-        paddingHorizontal: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(184, 191, 189, .3)',
+        paddingHorizontal: screenPadding,
+        backgroundColor: globalStyles.colors.miniPrimary
     },
     logoImageHolder: {
-        position: "absolute",
-        right: "36%"
+        width: 400,
+        alignItems: "center"
     },
     logoImage: {
         width: 120,
         height: 40,
         resizeMode: "contain",
     },
+    titleBackButtonWrapper: {
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     title: {
-        // position: "absolute",
-        // right: 120,
         fontWeight: "500",
-        fontSize: 19
+        fontSize: 19,
+        alignSelf: "center",
+        justifyContent: "center",
+        flex: 1,
+        textAlign: "center"
     },
     addHolder: {
         backgroundColor: "#11bda0",
@@ -36,10 +46,12 @@ export default StyleSheet.create({
         borderColor: "#00ffd5",
         borderWidth: 2,
         borderRadius: 50,
-        padding: "1%",
         flexDirection: "row",
-        alignSelf: "flex-end",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        width: 45,
+        height: 45,
+        justifyContent: "center",
+        alignItems: "center",
     },
     addText: {
         fontSize: 11,
@@ -47,8 +59,6 @@ export default StyleSheet.create({
         color: "#FFF"
     },
     backButton: {
-        position: "absolute",
-        right: 15
     },
     headerTitleWrapper: {
         flex: 1,
@@ -83,4 +93,9 @@ export default StyleSheet.create({
         fontSize: globalStyles.fontSizes.secondary,
         fontWeight: globalStyles.fontWeights.secondary
     },
+    addButtonWrapper: {
+    },
+    filterBtn: {
+
+    }
 })

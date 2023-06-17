@@ -1,16 +1,23 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
-import { Image } from 'react-native'
 import styles from './style'
-const ProductCard = ({ item }) => {
+import { Divider } from 'react-native-paper'
+import { nameShortner } from '../../../../../../utils/utilityFunctions'
+const ProductCard = ({ product }) => {
     return (
-        <View style={styles.card}>
-            <View style={styles.producImageWrapper}>
-                <Image source={{ uri: "https://sweyn.co.uk/storage/images/" + item?.photo }} style={styles.image} />
+        <View style={styles.container}>
+            <View style={styles.imageWrapper}>
+                <Image source={{ uri: `https://sweyn.co.uk/storage/images/${product?.photo}` }} style={styles.image} />
             </View>
-            <View style={styles.dataWrapper}>
-                <Text style={styles.productName}>{item?.name}</Text>
-                <Text style={styles.qty}>Qty:{item?.quantity_avaliable}</Text>
+            <View style={styles.dividerWrapper}>
+                <Divider style={styles.divider} />
+            </View>
+            <View>
+                <Text style={styles.productName}>{nameShortner(product?.name)}</Text>
+                <View style={styles.qtyHolder}>
+                    <Text style={styles.qtyText}>Qty:</Text>
+                    <Text style={styles.qtyValue}>{product?.quantity_avaliable}</Text>
+                </View>
             </View>
         </View>
     )

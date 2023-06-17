@@ -9,7 +9,6 @@ const MeasurementCategoryItem = ({ setCurrentContent, item, id, setSIndex, sInde
         }}>
             <View style={[styles.categoriesItem, { backgroundColor: id == selectedId ? "#fff" : "#e1e6e2" }]}>
                 <Text style={[styles.filterMeasurementText, { opacity: selectedId == id ? 1 : 0.5 }]}>{item.name}</Text>
-                <Text style={styles.selectedCount}>0</Text>
             </View>
         </TouchableWithoutFeedback>
     )

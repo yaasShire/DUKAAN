@@ -11,10 +11,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: "#dedede",
     },
-    titleText: {
-        fontSize: 20,
-        fontWeight: "500"
-    },
+   
     fieldsHolder: {
         zIndex: -10
 
@@ -29,6 +26,10 @@ export default StyleSheet.create({
         zIndex: -10
 
 
+    },
+    titleText: {
+        fontSize: 20,
+        fontWeight: "500"
     },
     titleHolder: {
         marginTop: "5%"

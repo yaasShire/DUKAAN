@@ -18,89 +18,38 @@ import { FAB } from 'react-native-paper';
 import { fetchData } from '../../../../hooks/useFetch';
 import ProductInformationRow from './components/productInfoRaw';
 import BrandCard from './components/brand';
+import NoBrand from './components/noBrand';
 const ProductDetails = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [productImages, setProductImages] = useState([])
     const [productDetail, setProductDetail] = useState(null)
     const [brandsList, setBrandsList] = useState([])
+    const [noBrand, setNoBrand] = useState(false)
     const [selectedImage, setselectedImage] = useState({
         id: route.params.data.id,
         image: route.params.data.image
     })
 
-    data = [
-        {
-            id: 1,
-            image: require('../../../../assets/images/mechanic1.jpg'),
-        },
-        {
-            id: 2,
-            image: require('../../../../assets/images/mechanic1.jpg'),
-        },
-        {
-            id: 3,
-            image: require('../../../../assets/images/mechanic2.jpg'),
-        },
-        {
-            id: 4,
-            image: require('../../../../assets/images/mechanic3.jpg'),
-        },
-        {
-            id: 5,
-            image: require('../../../../assets/images/mechanic4.jpg'),
-        },
-        {
-            id: 6,
-            image: require('../../../../assets/images/mechanic3.jpg'),
-        },
-        {
-            id: 7,
-            image: require('../../../../assets/images/mechanic2.jpg'),
-        },
-    ]
-
-    const brands = [
-        {
-            id: 1,
-            name: 'Ferrari',
-            image: require('../../../../assets/ferrari.png'),
-        },
-        {
-            id: 2,
-            name: 'Honda',
-            image: require('../../../../assets/honda.png'),
-        },
-        {
-            id: 3,
-            name: 'lambo',
-            image: require('../../../../assets/lambo.png'),
-        },
-        {
-            id: 4,
-            name: 'BMW',
-            image: require('../../../../assets/bmw.png'),
-        },
-    ]
-
     useEffect(() => {
         const fetchProductData = async () => {
             const data = await fetchData(`seller/products/view/${route?.params?.data.UPID}`, setError, setIsLoading)
-            console.log(data.data.data[0]);
             setProductDetail(data.data.data[0])
             setProductImages(data.data.images)
 
         }
         const fetchBrand = async () => {
-            const brandData = await fetchData(`seller/brand/view/${route?.params?.data?.brand}`, setError, setIsLoading)
-            setBrandsList(brandData.data.data)
+            const { data } = await fetchData(`seller/brand/view/${route?.params?.data?.brand}`, setError, setIsLoading)
+            if (data?.data?.length == 0) {
+                setNoBrand(true)
+            }
+            setBrandsList(data.data)
+            console.log(data.data)
         }
 
         fetchProductData()
         fetchBrand()
     }, [])
-
-
 
     return (
         <View style={styles.container}>
@@ -123,16 +72,6 @@ const ProductDetails = ({ route, navigation }) => {
                 </View>
                 <View style={styles.bottomSection}>
                     <View>
-                        {/* <View style={{ alignItems: "flex-end", paddingVertical: "3%" }}>
-                            <FAB
-                                icon="pen"
-                                style={styles.fab}
-                                onPress={() => {
-                                    productDetail && navigation.navigate("updateProduct", { data: productDetail })
-                                }}
-
-                            />
-                        </View> */}
                         <View style={styles.namePriceSection}>
                             <Text style={styles.name}>{productDetail?.name}</Text>
                             <View style={styles.priceValueWrapper}>
@@ -143,6 +82,11 @@ const ProductDetails = ({ route, navigation }) => {
                     </View>
                     <View style={styles.brandsWrapper}>
                         <Text style={styles.availableBrandsText}>Available Brands</Text>
+                        {
+                            noBrand && (
+                                <NoBrand />
+                            )
+                        }
                         <FlatList
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}

@@ -16,6 +16,7 @@ import ProductsStack from '../screenStacks/productsStack';
 import Sales from '../screenStacks/sales';
 import MainOrderStack from '../screenStacks/ordersStack/mainOrderStack';
 import MainSalesStack from '../screenStacks/sales/mainSalesStack';
+import { globalStyles } from '../../globalConstants/styles';
 
 const Tab = createBottomTabNavigator();
 export default function BottomTabs({ navigation }) {
@@ -25,7 +26,7 @@ export default function BottomTabs({ navigation }) {
         <Tab.Navigator
             initialRouteName="HomeS"
             screenOptions={{
-                tabBarActiveTintColor: '#FF8B03',
+                tabBarActiveTintColor: globalStyles.colors.logoColor,
                 tabBarLabelStyle: { fontSize: 11, fontWeight: '500', },
                 tabBarStyle: { height: Platform.OS == 'android' ? 50 : 85, },
             }}

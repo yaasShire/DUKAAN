@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import NoShopsImage from '../../../../../assets/images/noShops.png'
+import NoShopsImage from '../../../../../assets/images/notFound.png'
 import styles from './style'
 
 const NoShopFound = ({ navigation }) => {

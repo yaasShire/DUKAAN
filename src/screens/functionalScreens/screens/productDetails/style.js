@@ -8,7 +8,6 @@ export default StyleSheet.create({
     },
     bottomSection: {
         backgroundColor: "#fff",
-        // height: "100%",
         padding: screenPadding,
         zIndex: 10,
         height: HeightDimension / 1.19,

@@ -7,628 +7,55 @@ import FilterHeader from '../../../../components/atoms/filterHeader';
 import MeasurementCategoryItem from './measurementItem';
 import SearchSelecDropDownCard from '../../../../components/atoms/searchSelectCard';
 import CategoriesFilterSectionContent from '../../../../components/molecules/categoriesFilterSection';
-import BrandsFilterSection from '../../../../components/molecules/brandsFilterSection';
-import CarModelFilterSection from '../../../../components/molecules/carModelFilterSection';
+import BrandsFilterSection from '../../../../components/molecules/subCategorySection';
+import CarModelFilterSection from '../../../../components/molecules/productCategorySection';
+import SubCategorySection from '../../../../components/molecules/subCategorySection';
+import ProductCategorySection from '../../../../components/molecules/productCategorySection';
+import ApplyButton from './components/applyButton';
+import SelectedFilterDataRow from './components/selectedFilterDataRow';
+import { useSelector } from 'react-redux';
+import ShopSectionCard from '../../../../components/molecules/shopSectionCard';
+import AppLoader from '../../../../components/molecules/AppLoader';
 const MainFilter = ({ navigation, route }) => {
     const [selectedItem, setSelectedItem] = useState(true)
-    const [selectedId, setSelectedId] = useState(route.params.target.id)
-    const [currentContent, setCurrentContent] = useState(route.params.target.name)
+    const [selectedId, setSelectedId] = useState(1)
+    const [currentContent, setCurrentContent] = useState("Main category")
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
     const data = [
         {
             id: 1,
-            name: "Categories"
+            name: "Main category"
         },
         {
             id: 2,
-            name: "Brands"
+            name: "Sub category"
         },
         {
             id: 3,
-            name: "Car model"
+            name: "Product category"
+        },
+        {
+            id: 4,
+            name: "Shop"
         },
 
 
 
     ]
-    const categories = [
-        {
-            id: 1,
-            name: "Body parts",
-            subCategory: [
+    const stateData = useSelector(state => state.productsFilter)
 
-                {
-                    id: 1,
-                    name: "Mirror",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 2,
-                    name: "Bumper",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 3,
-                    name: "Lock system",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 4,
-                    name: "Fender",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 5,
-                    name: "Bonnet",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 6,
-                    name: "Door components",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 7,
-                    name: "Boot",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-
-            ]
-        },
-        {
-            id: 2,
-            name: "Air conditioner",
-            subCategory: [
-
-                {
-                    id: 1,
-                    name: "Mirror",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 2,
-                    name: "Bumper",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 3,
-                    name: "Lock system",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 4,
-                    name: "Fender",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 5,
-                    name: "Bonnet",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 6,
-                    name: "Door components",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 7,
-                    name: "Boot",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-
-            ]
-        },
-        {
-            id: 3,
-            name: "Tires",
-            subCategory: [
-
-                {
-                    id: 1,
-                    name: "Mirror",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 2,
-                    name: "Bumper",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 3,
-                    name: "Lock system",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 4,
-                    name: "Fender",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 5,
-                    name: "Bonnet",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 6,
-                    name: "Door components",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-                {
-                    id: 7,
-                    name: "Boot",
-                    productCategories: [
-                        {
-                            id: 1,
-                            name: "Mirror"
-                        },
-                        {
-                            id: 2,
-                            name: "Side view mirror"
-                        },
-                        {
-                            id: 3,
-                            name: "Mirror trim"
-                        },
-                        {
-                            id: 4,
-                            name: "Mirror actuator"
-                        },
-                        {
-                            id: 5,
-                            name: "Inner rear"
-                        },
-                    ]
-                },
-
-            ]
-        },
-
-    ]
     const contents = new Map()
-    contents.set("Categories", <CategoriesFilterSectionContent categories={categories} />)
-    contents.set("Brands", <BrandsFilterSection />)
-    contents.set("Car model", <CarModelFilterSection />)
-
+    contents.set("Main category", <CategoriesFilterSectionContent />)
+    contents.set("Sub category", <SubCategorySection />)
+    contents.set("Product category", <ProductCategorySection />)
+    contents.set("Shop", <ShopSectionCard />)
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
-            <View >
-                <View style={styles.filterHolder}>
-                    <FilterHeader navigation={navigation} />
-                </View>
-                <ScrollView style={[styles.selectedListHolder]} horizontal={true} showsHorizontalScrollIndicator={false} >
-                    {
-                        data.map(item => (
-                            <View key={item.id} style={styles.selectedItem}>
-                                <Text style={styles.textSelectedItem}>{item.name}</Text>
-                                <TouchableWithoutFeedback >
-                                    <Ionicons name='close-outline' size={22} />
-                                </TouchableWithoutFeedback>
-                            </View>
-                        ))
-                    }
-                </ScrollView>
-
-            </View>
+            <FilterHeader navigation={navigation} />
+            <SelectedFilterDataRow stateData={stateData} data={data} />
             <View style={styles.others}>
                 <View style={styles.filters}>
                     <FlatList
@@ -650,15 +77,14 @@ const MainFilter = ({ navigation, route }) => {
                 <TouchableWithoutFeedback onPress={() => navigation.navigate("productList")}>
                     <Text style={styles.clearAllText}>Clear all</Text>
                 </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("productList")}>
-                    <View style={styles.applyButton}>
-                        <Text style={styles.applyText}>Apply</Text>
-                    </View>
-                </TouchableWithoutFeedback>
+                <ApplyButton setIsLoading={setIsLoading} setError={setError} navigation={navigation} />
             </View>
-
-
-        </SafeAreaView>
+            {
+                isLoading && (
+                    <AppLoader />
+                )
+            }
+        </View>
     )
 }
 

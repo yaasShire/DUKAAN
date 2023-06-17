@@ -15,6 +15,7 @@ import dwayne from '../../../../assets/dwayne.jpg'
 import chris from '../../../../assets/chris.jpg'
 import captan from '../../../../assets/captanAmerica.webp'
 import AppHeader from "../../../../components/molecules/appHeader";
+import { FlatList } from "react-native";
 const Courier = ({ navigation }) => {
     const data = [
         {
@@ -76,17 +77,21 @@ const Courier = ({ navigation }) => {
         },
     ]
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <AppHeader title={"Nearest Couriers"} navigation={navigation} />
-            <ScrollView style={styles.cardsHolder} contentContainerStyle={{ rowGap: 10 }} showsVerticalScrollIndicator={false} >
-                {
-                    data.map(person => (
-                        <CourierCard person={person} key={person.id} />
-                    ))
-                }
-            </ScrollView>
-        </SafeAreaView>
+
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                data={data}
+                keyExtractor={(item) => item?.id}
+                contentContainerStyle={styles.couriersWrapper}
+                renderItem={({ item }) => (
+                    <CourierCard person={item} />
+                )}
+            />
+        </View>
     );
 }
 export default Courier

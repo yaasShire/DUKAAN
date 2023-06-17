@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { globalStyles } from "../../../../../globalConstants/styles";
+import { globalStyles } from "../../../../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         justifyContent: "center",

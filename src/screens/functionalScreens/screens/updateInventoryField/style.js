@@ -1,10 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { globalStyles } from "../../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15,
         backgroundColor: globalStyles.colors.miniPrimary
     },
 
@@ -30,7 +29,10 @@ export default StyleSheet.create({
         marginTop: "10%"
     },
     contentHolder: {
-        marginTop: "10%"
+        marginTop: "10%",
+        padding: screenPadding,
+        justifyContent: "center",
+        alignItems: "center"
     },
 
     input: {

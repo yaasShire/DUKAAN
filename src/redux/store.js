@@ -4,6 +4,7 @@ import productImages from './productImages'
 import requiredProductInformation from './requiredProductInformation'
 import productOffers from './productOffers'
 import ShopSlice from './shop'
+import productsFilter from './productsFilter'
 export const store = configureStore({
     reducer: {
         productRegistration: products,
@@ -11,5 +12,6 @@ export const store = configureStore({
         offers: productOffers,
         shopRegistration: ShopSlice,
         productInDetails: requiredProductInformation,
+        productsFilter: productsFilter,
     },
 })

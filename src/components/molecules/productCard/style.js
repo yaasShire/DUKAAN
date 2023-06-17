@@ -1,93 +1,90 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { globalStyles } from "../../../globalConstants/styles";
-const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
-    mainHolder: {
-        width: "100%",
+    card: {
+        flexDirection: "row",
+        borderWidth: .4,
+        alignItems: 'center',
+        borderRadius: 15,
+        minHeight: 150,
+        borderColor: 'rgba(184, 191, 189, 1)',
+    },
+    namePriceWrapper: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    imageWrapper: {
+        height: 130,
+        borderRadius: 15,
+        width: "35%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: 'rgba(184, 191, 189, .4)',
+        marginLeft: 10
+    },
+    stockWrapper: {
+        flexDirection: "row",
+        marginTop: 5
+    },
+    stockText: {
+        fontWeight: "500",
+        fontSize: 15,
+        color: globalStyles.colors.logoColor,
+    },
+    stockValue: {
+        fontWeight: globalStyles.fontWeights.tertiary,
+        color: globalStyles.colors.logoColor
     },
     image: {
-        width: 60,
-        height: 60,
-        marginRight: "3%",
-        borderRadius: 5
+        width: "95%",
+        height: 110,
+        // borderRadius: 30,
+        resizeMode: "center",
+
     },
-    contentHolder: {
-        borderBottomColor: globalStyles.colors.green,
-        borderTopColor: globalStyles.colors.primaryGray,
-        borderBottomWidth: .5,
-        borderTopWidth: 1,
-        width: "100%",
-        paddingVertical: "2%",
-        flexDirection: "row",
-        // marginVertical: "1%"
+    rightContentWrapper: {
+        flex: 1,
+        height: "100%",
+        marginLeft: 10,
+
     },
-    productName: {
+    priceWrapper: {
+        backgroundColor: globalStyles.colors.logoColor,
+        width: 100,
+        height: 45,
+        borderBottomLeftRadius: 15,
+        borderTopRightRadius: 15,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    priceText: {
+        fontSize: 18,
+        color: "#fff",
         fontWeight: "500"
     },
-    numberOfSales: {
-        color: globalStyles.colors.secondaryGray,
-        fontSize: globalStyles.fontSizes.primary2
+    productName: {
+        fontWeight: "600",
+        fontSize: 16,
+        color: globalStyles.colors.logoColor
     },
-    salesHolder: {
-        flexDirection: "row",
-        alignItems: "center"
+    description: {
+        fontWeight: "500",
+        fontSize: 14,
+        color: globalStyles.colors.logoColor,
+        opacity: .7
     },
-    availabelHolder: {
-        flexDirection: "row",
-        alignItems: "center"
+    descriptionWrapper: {
+        marginTop: 5
     },
-    availableText: {
-        opacity: .6,
-        fontSize: globalStyles.fontSizes.primary2
-    },
-    availableQunatity: {
-        fontSize: globalStyles.fontSizes.primary2,
-        fontWeight: globalStyles.fontWeights.secondary,
-    },
-    salesQuantity: {
-        fontSize: globalStyles.fontSizes.primary2,
-        fontWeight: globalStyles.fontWeights.secondary,
-        color: globalStyles.colors.black
-
-    },
-    updateIcon: {
-        borderColor: globalStyles.colors.blue,
-        borderWidth: 2,
-        width: 23,
-        height: 23,
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignItems: "center"
-    },
-    buttonIconTextHolder: {
-        alignItems: "center",
-        alignSelf: "flex-end",
-        marginTop: "1%",
-        marginBottom: "1%",
-        marginRight: "4%"
-    },
-    textAction: {
-        fontSize: 13,
-        color: globalStyles.colors.blue
-    },
-    actionsHolder: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "flex-end",
+    actionsWrapper: {
+        // backgroundColor: "blue",
         flex: 1,
-
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        paddingHorizontal: "3%",
+        alignItems: "center"
     },
-    deleteTextHolder: {
-        alignItems: "center",
-        alignSelf: "flex-end",
-        marginTop: "1%",
-        marginBottom: "1%",
-        marginRight: "4%"
-    },
-    fab: {
 
-        margin: 4,
-        marginHorizontal: 6
-
-    },
 })
