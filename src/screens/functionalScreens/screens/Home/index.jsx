@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity, Platform, SafeAreaView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity, Platform, SafeAreaView, RefreshControl } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import styles from './style'
 import Header from '../../../../components/atoms/header'
 import DashboardCard from '../../../../components/atoms/dashboardCard'
@@ -30,36 +30,24 @@ const Home = ({ navigation }) => {
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
+    const [refreshing, setRefreshing] = useState(false)
+    const fetchOrders = async () => {
+        const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
+        if (data?.message?.length) {
+            setOrders(data?.message)
+        }
+    }
 
-    useFocusEffect(
-        React.useCallback(() => {
-            const fetchProducts = async () => {
-                const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
-                if (data?.data?.length) {
-                    setShopsNumber(data?.data?.length)
-                }
-            }
-            fetchProducts()
-            const fetchOrders = async () => {
-                const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
-                if (data?.message?.length) {
-                    setOrders(data?.message)
-                }
-            }
-            fetchOrders()
-
-            return () => {
-                // Actions to perform when the screen loses focus
-            };
-        }, [])
-    );
+    useEffect(() => {
+        fetchOrders()
+    }, [])
 
     return (
         <View style={styles.container}>
             <SafeAreaView />
             <StatusBar barStyle='light-content' />
             <AppHeader showLogo={true} navigation={navigation} menu={false} />
-            <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
+            <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchOrders} />} scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
                 <View style={styles.topContent}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.infoCardsWrapper}>
                         <DashboardCard description={'Today Sales'} ammount={0} sign={true} />

@@ -9,7 +9,7 @@ export default StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: globalStyles.colors.miniPrimary,
+        backgroundColor: "rgba(255, 255, 2555, .4)",
         zIndex: 5,
     }
 })

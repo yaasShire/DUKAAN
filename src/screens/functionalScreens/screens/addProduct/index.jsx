@@ -14,8 +14,10 @@ import MainCategory from './steps/mainCategory';
 import ProductCategory from './steps/productCategory';
 import SubCategory from './steps/subCategory';
 import ShopList from './steps/shopsList';
-import AppHeader from '../../../../components/molecules/appHeader';
+// import AppHeader from '../../../../components/molecules/appHeader';
+import AppHeader from '../../../../components/molecules/header';
 import ReviewAndPublish from './steps/reviewAndPublish';
+import { stepperCustomStyles } from '../../../../dataStore';
 const AddProduct = ({ navigation }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const tabs = new Map();
@@ -27,48 +29,29 @@ const AddProduct = ({ navigation }) => {
     tabs.set(5, <RequiredInfo setCurrentPosition={setCurrentPosition} category={mainCategories} title="Please fill the required information" />);
     tabs.set(6, <Offers setCurrentPosition={setCurrentPosition} index={5} category={mainCategories} title="Please fill the offers of the product" />);
     tabs.set(7, <ReviewAndPublish setCurrentPosition={setCurrentPosition} navigation={navigation} />);
-    const customStyles = {
-        stepIndicatorSize: 30,
-        currentStepIndicatorSize: 35,
-        separatorStrokeWidth: 2,
-        currentStepStrokeWidth: 3,
-        stepStrokeCurrentColor: '#000',
-        stepStrokeWidth: 3,
-        stepStrokeFinishedColor: '#4DDB5B',
-        stepStrokeUnFinishedColor: '#fff',
-        separatorFinishedColor: '#000',
-        separatorUnFinishedColor: '#aaaaaa',
-        stepIndicatorFinishedColor: '#fff',
-        stepIndicatorUnFinishedColor: '#ffffff',
-        stepIndicatorCurrentColor: '#000',
-        stepIndicatorLabelFontSize: 13,
-        currentStepIndicatorLabelFontSize: 13,
-        stepIndicatorLabelCurrentColor: '#fff',
-        stepIndicatorLabelFinishedColor: '#000',
-        stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-        labelColor: '#000000',
-        labelSize: 13,
-        currentStepLabelColor: '#fe7013'
-    }
+    const customStyles = stepperCustomStyles
     const handlePosition = (position) => {
         setCurrentPosition(position)
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <AppHeader navigation={navigation} title={"Add Product"} screen="Add Product" />
-            <StepIndicator
-                customStyles={customStyles}
-                currentPosition={currentPosition}
-                stepCount={8}
-                onPress={handlePosition}
-            />
-            <View style={styles.productBodyHolder}>
-                {tabs.get(currentPosition)}
+            <AppHeader navigation={navigation} cancelButton={true} title={"Add Product"} screen="Add Product" />
+            <View style={styles.subWrapper}>
+                <StepIndicator
+                    customStyles={customStyles}
+                    currentPosition={currentPosition}
+                    stepCount={8}
+                    onPress={handlePosition}
+                />
+                <ScrollView contentContainerStyle={styles.productBodyHolder}>
+                    {tabs.get(currentPosition)}
+                </ScrollView>
             </View>
 
-        </SafeAreaView>
+        </View>
     )
 }
 

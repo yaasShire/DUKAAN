@@ -7,7 +7,6 @@ export default StyleSheet.create({
         alignItems: "flex-start",
         width: "100%",
         justifyContent: "center",
-        // marginBottom: 25,
     },
     label: {
         fontSize: 14,
@@ -15,7 +14,6 @@ export default StyleSheet.create({
         opacity: 0.4
     },
     input: {
-        height: 55,
         width: "100%",
         fontSize: 18,
     },

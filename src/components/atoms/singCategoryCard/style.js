@@ -15,7 +15,7 @@ export default StyleSheet.create({
 
     categoryName: {
         fontWeight: "500",
-        fontSize: 15,
-        color: globalStyles.colors.tertiary
+        fontSize: 18,
+
     }
 })

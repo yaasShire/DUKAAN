@@ -8,24 +8,21 @@ import { fetchData } from '../../../hooks/useFetch'
 import { postData } from '../../../hooks/usePost'
 const UpdateProductCategory = ({ productDetail = {}, name = "", title = "", value = "", data = [] }) => {
     const [selectedId, setSelectedId] = useState(null)
-    const [selectedName, setSelectedName] = useState(`${value}`)
+    const [selectedName, setSelectedName] = useState()
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const updateCategory = async () => {
         const productData = new FormData()
         productData.append('UPID', productDetail?.UPID)
         productData.append(name, Number(selectedId))
-        // console.log(productData)
         const response = await postData('seller/products/update', productData, setError, setIsLoading)
-
     }
-    console.log(productDetail)
     return (
         <Picker
             style={styles.pickerContainer}
             label={title}
             labelStyle={styles.labelStyle}
-            placeholder={selectedName}
+            placeholder={selectedName || value}
         >
             <FlatList
                 data={data}
@@ -34,7 +31,6 @@ const UpdateProductCategory = ({ productDetail = {}, name = "", title = "", valu
                         key={item?.name}
                         label={item?.name}
                         onPress={() => {
-                            // console.log(item)
                             setSelectedId(item?.id)
                             setSelectedName(item?.name)
                             updateCategory()

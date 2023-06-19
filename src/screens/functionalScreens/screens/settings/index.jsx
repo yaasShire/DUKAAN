@@ -1,4 +1,4 @@
-import { View, StatusBar, Image, TouchableWithoutFeedback, Platform, ScrollView, Dimensions } from 'react-native'
+import { View, StatusBar, Image, TouchableWithoutFeedback, Platform, ScrollView, Dimensions, RefreshControl } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import styles from './style'
@@ -12,10 +12,11 @@ import { TouchableOpacity } from 'react-native';
 import { Modal, Portal, Text, Button, Provider, Switch, } from 'react-native-paper';
 import ProfileCard from './components/profileCard';
 import SingleCardAction from './components/singleCardAction';
-import AppHeader from '../../../../components/molecules/header';
+// import AppHeader from '../../../../components/molecules/header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { fetchData } from '../../../../hooks/useFetch';
+import AppHeader from '../../../../components/molecules/header';
 const Settings = ({ navigation, route }) => {
     const { width, height } = new Dimensions.get("window")
     const [visible, setVisible] = React.useState(false);
@@ -25,24 +26,17 @@ const Settings = ({ navigation, route }) => {
     const hideModal = () => setVisible(false);
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
-    const containerStyle = {
-        backgroundColor: 'white', height: height / 4, width: width / 1.2, borderRadius: 10, justifyContent: "space-around",
-        alignItems: "center", alignSelf: "center"
-    };
-    const [isSwitchOn, setIsSwitchOn] = useState(false)
-    const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+    const [refreshing, setRefreshing] = useState(false)
 
 
+    const getUserData = async () => {
+        const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
+        setUser(userData?.data[0])
+        setRefreshing(false)
+    }
     useFocusEffect(
         React.useCallback(() => {
-            const getUserData = async () => {
-                const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
-                setUser(userData.data[0])
-            }
             getUserData()
-            return () => {
-                // Actions to perform when the screen loses focus
-            };
         }, [])
     );
 
@@ -63,20 +57,16 @@ const Settings = ({ navigation, route }) => {
             <SafeAreaView />
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <AppHeader title='Settings' />
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollStyle} >
+            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getUserData} />} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollStyle} >
                 <ProfileCard user={user} navigation={navigation} />
-                <View style={styles.actionCardsWrapper}>
-                    <SingleCardAction navigation={navigation} name='Reset Password' icon='lock-reset' color='green' screen='changePassword' />
-                    <SingleCardAction navigation={navigation} name='Reports' icon='google-analytics' color='#3430f2' screen='reports' />
-                    <SingleCardAction navigation={navigation} name='Add Product' icon='shopping' color='#1da1ab' screen='addProduct' />
-                    <SingleCardAction navigation={navigation} name='Add Shop' icon='store-check' color='#1da1ab' screen='addShop' />
-                </View>
-                <View style={styles.actionCardsWrapper}>
-                    <SingleCardAction navigation={navigation} name='Privacy & Policy' icon='door-closed-lock' color='#f29e0c' screen='' />
-                    <SingleCardAction navigation={navigation} name='Help' icon='help-circle-outline' color='#7d1a7a' screen='' />
-                    <SingleCardAction navigation={navigation} showModal={showModal} name='Log out' icon='logout' color='#ed1909' screen='' />
-                </View>
-                <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+                <SingleCardAction navigation={navigation} name='Reset Password' icon='lock-reset' color='green' screen='changePassword' />
+                <SingleCardAction navigation={navigation} name='Reports' icon='google-analytics' color='#3430f2' screen='reports' />
+                <SingleCardAction navigation={navigation} name='Add Product' icon='shopping' color='#1da1ab' screen='addProduct' />
+                <SingleCardAction navigation={navigation} name='Add Shop' icon='store-check' color='#1da1ab' screen='addShop' />
+                <SingleCardAction navigation={navigation} name='Privacy & Policy' icon='door-closed-lock' color='#f29e0c' screen='' />
+                <SingleCardAction navigation={navigation} name='Help' icon='help-circle-outline' color='#7d1a7a' screen='' />
+                <SingleCardAction navigation={navigation} showModal={showModal} name='Log out' icon='logout' color='#ed1909' screen='' />
+                <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.modalContainerStyle}>
                     <View>
                         <Text style={styles.logOutModalText}>Are you sure to log out ?</Text>
                     </View>

@@ -6,21 +6,19 @@ import { globalStyles } from '../../../globalConstants/styles'
 const EditProfileField = ({ label, touched, setFieldTouched, user, errors, values, handleChange, handleBlur, name }) => {
     return (
         <>
-            <View style={styles.container}>
-                <TextInput
-                    placeholderTextColor={globalStyles.colors.primaryGray}
-                    style={styles.input}
-                    mode="outlined"
-                    label={label}
-                    onChangeText={(text) => {
-                        handleChange(name)(text)
-                    }}
-                    onBlur={() => {
-                        handleBlur(name)
-                        setFieldTouched(name)
-                    }} value={values ? values : user[name]} numberOfLines={2}
-                />
-            </View>
+            <TextInput
+                placeholderTextColor={globalStyles.colors.primaryGray}
+                style={styles.input}
+                mode="outlined"
+                label={label}
+                onChangeText={(text) => {
+                    handleChange(name)(text)
+                }}
+                onBlur={() => {
+                    handleBlur(name)
+                    setFieldTouched(name)
+                }} value={values ? values : user[name]} numberOfLines={2}
+            />
             {(errors[name] && touched[name]) && (
                 <View style={styles.errorHolder}>
                     <Text style={styles.errorText}>{errors[name]}</Text>

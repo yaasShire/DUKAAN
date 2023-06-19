@@ -3,8 +3,7 @@ import { globalStyles, screenPadding } from "../../../../globalConstants/styles"
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        padding: screenPadding,
-        height,
+        flex: 1,
         backgroundColor: globalStyles.style.whiteMode.primarybgColor
     },
     header: {
@@ -23,8 +22,8 @@ export default StyleSheet.create({
         borderBottomWidth: .5,
     },
     mainHolder: {
-        alignItems: 'center',
-        width: "100%",
+        // alignItems: 'center',
+        // width: "100%",
         // backgroundColor: 'pink',
 
     },
@@ -37,8 +36,6 @@ export default StyleSheet.create({
     orderDetailCard: {
         backgroundColor: "#FFFFFF",
         padding: '3%',
-        width: width - 30,
-        paddingVertical: '5%',
         borderRadius: 6,
         borderColor: "#dedede",
         borderWidth: 1,
@@ -116,10 +113,7 @@ export default StyleSheet.create({
     },
     productHolder: {
         backgroundColor: '#ffffff',
-        width: width - 30,
-        marginTop: '3%',
-        paddingVertical: '5%',
-        paddingHorizontal: '4%',
+        padding: '5%',
         borderWidth: 1,
         borderColor: '#dedede',
         borderRadius: 6,
@@ -153,17 +147,12 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#ffffff",
-        width: width - 30,
         paddingHorizontal: "5%",
-        marginTop: "5%",
         height: height / 10,
         borderRadius: 6,
         borderColor: '#dedede',
         borderWidth: 1,
         elevation: 1
-
-
-
     },
     completedHolder: {
         backgroundColor: globalStyles.colors.logoColor,
@@ -197,18 +186,24 @@ export default StyleSheet.create({
         color: globalStyles.colors.miniPrimary
     },
     decisionButtonHolder: {
-        width: width - 35,
-        height: 80,
-        marginTop: '8%',
+        width: "100%",
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: 'row',
+        flex: 1,
+
     },
     dateWrapper: {
         backgroundColor: globalStyles.colors.logoColor,
         borderRadius: 10,
         paddingHorizontal: "3%",
         paddingVertical: "1%"
+    },
+    acionButtonsWrapper: {
+        flex: 1,
+        rowGap: 30,
+        padding: screenPadding
+        // backgroundColor: "blue"
     }
 
 })

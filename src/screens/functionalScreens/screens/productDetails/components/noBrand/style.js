@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
-        backgroundColor: "pink"
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    image: {
+        height: 70,
+        width: 70
     }
 })

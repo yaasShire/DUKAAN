@@ -4,12 +4,12 @@ export default StyleSheet.create({
     pickerContainer: {
         borderBottomColor: "#b6baba",
         borderBottomWidth: .5,
-        height: 50,
+        height: 30,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: "3%",
-        paddingVertical: "3%"
+        paddingVertical: "3%",
     },
     labelStyle: {
         fontSize: 14,

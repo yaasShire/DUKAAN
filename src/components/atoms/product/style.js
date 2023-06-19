@@ -98,13 +98,20 @@ export default StyleSheet.create({
         paddingHorizontal: "3%",
         borderRadius: 6
     },
+    imageWrapper: {
+        borderWidth: 1,
+        borderColor: "#dedede",
+        width: 75,
+        height: 75,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+    },
     productImage: {
         width: 65,
         height: 65,
         borderRadius: 10,
-        borderWidth: 1,
-        borderColor: "#dedede",
-        resizeMode: "contain"
+        resizeMode: "cover"
     },
     productHolder: {
 
@@ -123,7 +130,7 @@ export default StyleSheet.create({
         fontSize: 13,
         fontWeight: "500",
         marginLeft: '7%',
-        opacity: .8
+        opacity: .8,
     },
     qtyHolder: {
         alignItems: 'center',

@@ -5,13 +5,12 @@ export default StyleSheet.create({
     singleAction: {
         borderColor: "#dedede",
         borderWidth: 1,
-        height: HeightDimension / 13,
+        height: 65,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: "3%",
         borderRadius: 5,
-        paddingHorizontal: "1%"
+        paddingHorizontal: "1%",
     },
     nameIconWrapper: {
         flexDirection: "row",

@@ -18,22 +18,15 @@ const ReviewAndPublish = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const logStates = () => {
-        // console.log(subCategory, productCategory, shopsList, productCategory, productRequiredInfo, productOffers)
     }
     const formatedShopData = productDataGenerator(subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images)
     const productData = uploadDataGenerator(formatedShopData, images)
-    // console.log(productData)
     const uploadProduct = async () => {
         setIsLoading(true)
-        setTimeout(async () => {
-            const data = await postData('seller/products/create', productData, setError, setIsLoading)
-            if (data?.result) {
-                console.warn(data);
-                navigation.replace("productList")
-            }
-
-        }, 2000)
-
+        const data = await postData('seller/products/create', productData, setError, setIsLoading)
+        if (data?.result) {
+            navigation.replace("productList")
+        }
     }
     useEffect(() => {
         logStates()

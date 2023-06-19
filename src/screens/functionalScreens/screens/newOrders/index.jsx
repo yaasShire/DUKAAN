@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, Dimensions, FlatList } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, ScrollView, Dimensions, FlatList, RefreshControl } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Order from '../../../../components/molecules/order'
 import styles from './style'
 import sProduct1 from '../../../../assets/sProduct1.png'
@@ -14,40 +14,34 @@ import { fetchData } from '../../../../hooks/useFetch'
 import AppLoader from '../../../../components/molecules/AppLoader'
 const NewOrderStage = ({ navigation }) => {
     const { width, height } = new Dimensions.get("window")
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
-    useFocusEffect(
-        React.useCallback(() => {
-            const fetchProducts = async () => {
+    const [refreshing, setRefreshing] = useState(false)
 
-                const { data } = await fetchData('seller/shop/view/', setError, setIsLoading)
-                if (data?.data?.length) {
-                    setShopsNumber(data?.data?.length)
-                }
-            }
-            fetchProducts()
-            const fetchOrders = async () => {
-                setIsLoading(true)
-                const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
-                if (data?.message?.length) {
-                    setOrders(data?.message)
-                }
-            }
-            fetchOrders()
+    const fetchOrders = async () => {
+        const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
+        if (data?.message?.length) {
+            setOrders(data?.message)
+            setRefreshing(false)
+        }
+    }
+    useEffect(() => {
+        fetchOrders()
+    }, [])
 
-            return () => {
-                // Actions to perform when the screen loses focus
-            };
-        }, [])
-    );
     return (
         <>
             <FlatList
                 data={orders}
                 contentContainerStyle={styles.orderContainer}
                 keyExtractor={(item) => item.UOID}
+                enableEmptySections={true}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={fetchOrders} />
+                }
+
                 renderItem={({ item }) => (
                     <Order navigation={navigation} order={item} />
                 )}

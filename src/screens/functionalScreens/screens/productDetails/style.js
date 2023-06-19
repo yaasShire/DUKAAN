@@ -8,9 +8,8 @@ export default StyleSheet.create({
     },
     bottomSection: {
         backgroundColor: "#fff",
-        padding: screenPadding,
         zIndex: 10,
-        height: HeightDimension / 1.19,
+        height: HeightDimension,
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30
     },
@@ -18,6 +17,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+        padding: screenPadding
     },
     upperContent: {
         height: 350,
@@ -46,16 +46,16 @@ export default StyleSheet.create({
         marginTop: "5%"
     },
     availableBrandsText: {
-        fontWeight: "600",
+        fontWeight: "700",
         fontSize: 16,
         textTransform: "capitalize",
 
 
     },
     brandsWrapper: {
-        // backgroundColor: "pink",
-        marginTop: "3%",
-        paddingVertical: "3%"
+        marginTop: "2%",
+        paddingVertical: "3%",
+        padding: screenPadding
     },
     brandWrapper: {
         backgroundColor: "#f5f0f0",
@@ -88,6 +88,7 @@ export default StyleSheet.create({
         borderColor: globalStyles.colors.primaryGray,
     },
     infoCardsWrapper: {
+        padding: screenPadding
     },
     brandWholeWrapper: {
         alignItems: "center",
@@ -138,10 +139,10 @@ export default StyleSheet.create({
     },
     sectionLabel: {
         fontSize: 16,
-        fontWeight: "600"
+        fontWeight: "700"
     },
     detailsSection: {
-        marginTop: "2%"
+        marginTop: "5%"
     },
     detaileWrapper: {
         minWidth: 52,
@@ -154,7 +155,8 @@ export default StyleSheet.create({
     totalSalesWrapper: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginVertical: "3%"
+        marginVertical: "2%",
+        padding: screenPadding
     },
     fab: {
         // position: 'absolute',

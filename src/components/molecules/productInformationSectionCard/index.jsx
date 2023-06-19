@@ -8,7 +8,6 @@ const ProductInformationSectionCard = ({ navigation, productDetail }) => {
         <View style={styles.actionCardsHolder}>
             <UpdateProductDetailCard productDetail={productDetail} name="name" title="Name" value={productDetail?.name} navigation={navigation} />
             <UpdateProductDetailCard productDetail={productDetail} name="description" title="Description" value={productDetail?.description} navigation={navigation} />
-            {/* <UpdateProductDetailCard title="Discount" value="$12.00" navigation={navigation} /> */}
         </View>
     )
 }

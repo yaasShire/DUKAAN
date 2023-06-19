@@ -1,24 +1,16 @@
-import { View, Text, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions, SafeAreaView as RNSafeArea, FlatList } from 'react-native'
+import { View, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions, SafeAreaView as RNSafeArea, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useEffect, useState } from 'react'
-import Feather from 'react-native-vector-icons/Feather';
+import { Text } from 'react-native-paper';
 import styles from './style'
-import ProductDetailsSubImage from '../../../../components/molecules/productDetailsSubImage';
-import sProduct1 from '../../../../assets/sProduct1.png'
-import sProduct2 from '../../../../assets/sProduct2.png'
-import sProduct3 from '../../../../assets/sProduct3.png'
-import sProduct4 from '../../../../assets/sProduct4.png'
-import sProduct5 from '../../../../assets/sProduct5.png'
-import sProduct6 from '../../../../assets/sProduct6.png'
-import sProduct7 from '../../../../assets/sProduct7.png'
-import AppHeader from '../../../../components/molecules/header';
 import { Carousel } from "react-native-ui-lib/src/components/carousel";
-import Header from '../../../../components/atoms/header';
-import { FAB } from 'react-native-paper';
 import { fetchData } from '../../../../hooks/useFetch';
 import ProductInformationRow from './components/productInfoRaw';
 import BrandCard from './components/brand';
 import NoBrand from './components/noBrand';
+import ProductDetailsCard from './components/productDetailsCard';
+import OtherProducts from './components/otherProducts';
+import Label from './components/label';
 const ProductDetails = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -26,10 +18,7 @@ const ProductDetails = ({ route, navigation }) => {
     const [productDetail, setProductDetail] = useState(null)
     const [brandsList, setBrandsList] = useState([])
     const [noBrand, setNoBrand] = useState(false)
-    const [selectedImage, setselectedImage] = useState({
-        id: route.params.data.id,
-        image: route.params.data.image
-    })
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
         const fetchProductData = async () => {
@@ -38,13 +27,19 @@ const ProductDetails = ({ route, navigation }) => {
             setProductImages(data.data.images)
 
         }
+        const fetchProducts = async () => {
+            const { data } = await fetchData(`seller/products/view`, setError, setIsLoading)
+            if (data?.data?.length > 0) {
+                setProducts(data?.data)
+            }
+        }
+        fetchProducts()
         const fetchBrand = async () => {
             const { data } = await fetchData(`seller/brand/view/${route?.params?.data?.brand}`, setError, setIsLoading)
             if (data?.data?.length == 0) {
                 setNoBrand(true)
             }
             setBrandsList(data.data)
-            console.log(data.data)
         }
 
         fetchProductData()
@@ -71,13 +66,11 @@ const ProductDetails = ({ route, navigation }) => {
                     </Carousel>
                 </View>
                 <View style={styles.bottomSection}>
-                    <View>
-                        <View style={styles.namePriceSection}>
-                            <Text style={styles.name}>{productDetail?.name}</Text>
-                            <View style={styles.priceValueWrapper}>
-                                <Text style={styles.priceTile}>price</Text>
-                                <Text style={styles.priceValue}>${productDetail?.price}</Text>
-                            </View>
+                    <View style={styles.namePriceSection}>
+                        <Text style={styles.name}>{productDetail?.name}</Text>
+                        <View style={styles.priceValueWrapper}>
+                            <Text style={styles.priceTile}>price</Text>
+                            <Text style={styles.priceValue}>${productDetail?.price}</Text>
                         </View>
                     </View>
                     <View style={styles.brandsWrapper}>
@@ -102,25 +95,16 @@ const ProductDetails = ({ route, navigation }) => {
                         <Text style={styles.totalSalesValue}>$0</Text>
                     </View>
                     <View style={styles.infoCardsWrapper}>
-                        <View style={styles.infoCard}>
-                            {/* <View style={styles.rowContent}>
-                                <View style={styles.dotTextValueWrapper}>
-                                    <View style={styles.dot} />
-                                    <Text style={styles.textTitle}>Stock</Text>
-                                </View>
-                                <Text style={styles.valueText}>200</Text>
-                            </View> */}
-                            <ProductInformationRow text={"Stock"} value={productDetail?.quantity_avaliable} />
-                            <ProductInformationRow text={"Sales"} value={0} />
-                        </View>
+                        <Label label={'Sales'} />
+                        <ProductDetailsCard productDetail={productDetail} />
                         <View style={styles.detailsSection}>
-                            <Text style={styles.sectionLabel}>Product Details</Text>
+                            <Label label={'Product Details'} />
                             <View style={styles.infoCard}>
                                 <ProductInformationRow text={productDetail?.description} />
                             </View>
                         </View>
                     </View>
-
+                    <OtherProducts products={products} />
 
                 </View>
             </ScrollView>

@@ -11,6 +11,7 @@ import AddProductHeader from '../../../components/molecules/brandCard/addProduct
 import { labels, stepperCustomStyles } from '../../../dataStore';
 import { fetchData } from '../../../hooks/useFetch';
 import { useFocusEffect } from '@react-navigation/native';
+import AppHeader from '../../../components/molecules/header';
 const AddShop = ({ navigation }) => {
     const [currentPosition, setcurrentPosition] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
@@ -47,18 +48,19 @@ const AddShop = ({ navigation }) => {
         <View style={styles.container} showsVerticalScrollIndicator={false}>
             <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
-            <View>
-                <AddProductHeader label="Add Shop" navigation={navigation} />
-            </View>
-            <StepIndicator
-                stepCount={3}
-                customStyles={customStyles}
-                currentPosition={currentPosition}
-                labels={labels}
-                onPress={handlePosition}
-            />
-            <View style={styles.contentHolder}>
-                {tabs.get(currentPosition)}
+            <AppHeader navigation={navigation} title="Add Shop" cancelButton={true} />
+            {/* <AddProductHeader label="Add Shop" navigation={navigation} /> */}
+            <View style={styles.subWrapper}>
+                <StepIndicator
+                    stepCount={3}
+                    customStyles={customStyles}
+                    currentPosition={currentPosition}
+                    labels={labels}
+                    onPress={handlePosition}
+                />
+                <View style={styles.contentHolder}>
+                    {tabs.get(currentPosition)}
+                </View>
             </View>
 
         </View>

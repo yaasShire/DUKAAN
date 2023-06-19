@@ -11,12 +11,13 @@ import { Formik } from 'formik';
 import { editProfileValidation } from '../../../../utils/validationSchema/ediProfileValidation';
 import GlobalHeader from '../../../../components/molecules/globalHeader';
 import { AntDesign } from '@expo/vector-icons';
-import AppHeader from '../../../../components/molecules/header';
+// import AppHeader from '../../../../components/molecules/header';
 import { globalStyles } from '../../../../globalConstants/styles';
 import { formValues } from '../../../../utils/utilityFunctions';
 import { postData } from '../../../../hooks/usePost'
 import AppLoader from '../../../../components/molecules/AppLoader';
 import UploadingAnimation from '../../../../components/molecules/uploadingAnimation';
+import AppHeader from '../../../../components/molecules/header';
 import { fetchData } from '../../../../hooks/useFetch';
 const EditProfile = ({ navigation, route }) => {
     const [image, setImage] = useState(route.params.image)
@@ -59,37 +60,39 @@ const EditProfile = ({ navigation, route }) => {
             <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <AppHeader title={"Edit Profile"} navigation={navigation} backButton={true} />
-            <View style={styles.profileCardWrapper}>
-                <View style={styles.imageAndButtonWrapper}>
-                    <View style={styles.imageWrapper}>
-                        <Image style={styles.image} source={image ? { uri: image } : Profile} />
-                    </View>
-                    <View style={styles.cameraIconWrapper}>
-                        <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.profileCardWrapper}>
+                    <View style={styles.imageAndButtonWrapper}>
+                        <View style={styles.imageWrapper}>
+                            <Image style={styles.image} source={image ? { uri: image } : Profile} />
+                        </View>
+                        <View style={styles.cameraIconWrapper}>
+                            <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />
+                        </View>
                     </View>
                 </View>
-            </View>
-            <ScrollView showsVerticalScrollIndicator={false} >
-                <Formik
-                    initialValues={{ name: "", email: "", phone_number: "", city: "", landmark: "" }}
-                    validationSchema={editProfileValidation}
-                    onSubmit={(values) => handleSaveProfile(values)}
-                >
-                    {
-                        ({ errors, handleBlur, handleChange, handleSubmit, touched, setFieldTouched, values }) => (
-                            <View scrollEnabled={true} style={styles.inputHolder}>
-                                <EditProfileField user={user} label="Name" name="name" values={values.name} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                <EditProfileField user={user} label="Email" name="email" values={values.email} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                <EditProfileField user={user} label="Phone Number" name="phone_number" values={values.phone_number} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                {/* <EditProfileField label="City" name="city" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} /> */}
-                                <TouchableOpacity style={styles.saveButton} onPress={() => handleSubmit(values)} >
-                                    <Text style={styles.buttonText}>Save</Text>
-                                </TouchableOpacity>
+                <View style={styles.txtWrapper}>
+                    <Formik
+                        initialValues={{ name: "", email: "", phone_number: "", city: "", landmark: "" }}
+                        validationSchema={editProfileValidation}
+                        onSubmit={(values) => handleSaveProfile(values)}
+                    >
+                        {
+                            ({ errors, handleBlur, handleChange, handleSubmit, touched, setFieldTouched, values }) => (
+                                <View style={styles.inputHolder}>
+                                    <EditProfileField user={user} label="Name" name="name" values={values.name} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                    <EditProfileField user={user} label="Email" name="email" values={values.email} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                    <EditProfileField user={user} label="Phone Number" name="phone_number" values={values.phone_number} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                    {/* <EditProfileField label="City" name="city" values={values.fullName} errors={errors} handleBlur={handleBlur} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} /> */}
+                                    <TouchableOpacity style={styles.saveButton} onPress={() => handleSubmit(values)} >
+                                        <Text style={styles.buttonText}>Save</Text>
+                                    </TouchableOpacity>
 
-                            </View>
-                        )
-                    }
-                </Formik>
+                                </View>
+                            )
+                        }
+                    </Formik>
+                </View>
             </ScrollView>
             {
                 isLoading && (

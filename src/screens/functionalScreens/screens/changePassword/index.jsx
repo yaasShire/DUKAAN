@@ -43,7 +43,7 @@ const ChangePassword = ({ navigation }) => {
             <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <AppHeader title={"Change Password"} navigation={navigation} backButton={true} />
-            <ScrollView style={styles.fieldsHolder} contentContainerStyle={{ rowGap: 20 }}>
+            <ScrollView style={styles.fieldsHolder} contentContainerStyle={styles.scrollWrapper}>
                 {
                     error && (
                         <Text style={styles.errorText}>{error}</Text>

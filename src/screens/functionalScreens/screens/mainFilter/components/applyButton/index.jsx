@@ -5,6 +5,7 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearFilterState, filterData } from '../../../../../../utils/utilityFunctions'
 import { postData } from '../../../../../../hooks/usePost'
+import { setFetchedProducts } from '../../../../../../redux/fetchedProducts'
 import { setProductCategoryFilter, setMainCategoryFilter, setShopFilter, setSubCategoryFilter } from '../../../../../../redux/productsFilter'
 const ApplyButton = ({ navigation, setIsLoading, setError }) => {
     const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const ApplyButton = ({ navigation, setIsLoading, setError }) => {
         if (data?.result) {
             clearFilterState(dispatch)
             navigation.navigate("productList", { data: data?.result?.data })
+            dispatch(setFetchedProducts(data?.result?.data))
         }
     }
     return (

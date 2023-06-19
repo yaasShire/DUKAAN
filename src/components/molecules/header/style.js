@@ -5,8 +5,7 @@ export default StyleSheet.create({
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-between",
-        height: 55,
-        marginBottom: 10,
+        height: 70,
         borderBottomWidth: 1,
         borderBottomColor: 'rgba(184, 191, 189, .3)',
         paddingHorizontal: screenPadding,
@@ -35,21 +34,21 @@ export default StyleSheet.create({
         textAlign: "center"
     },
     addHolder: {
-        backgroundColor: "#11bda0",
-        width: 35,
-        height: 35,
-        borderRadius: 50,
+        backgroundColor: globalStyles.colors.logoColor,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         justifyContent: "center",
         alignItems: "center"
     },
     mainButtonHolder: {
-        borderColor: "#00ffd5",
+        borderColor: globalStyles.colors.logoColor,
         borderWidth: 2,
-        borderRadius: 50,
+        borderRadius: 25,
         flexDirection: "row",
         justifyContent: "flex-end",
-        width: 45,
-        height: 45,
+        width: 50,
+        height: 50,
         justifyContent: "center",
         alignItems: "center",
     },
@@ -57,8 +56,6 @@ export default StyleSheet.create({
         fontSize: 11,
         fontWeight: "500",
         color: "#FFF"
-    },
-    backButton: {
     },
     headerTitleWrapper: {
         flex: 1,
@@ -71,7 +68,7 @@ export default StyleSheet.create({
 
     },
     cancelText: {
-        color: globalStyles.colors.blue
+        color: globalStyles.colors.logoColor
     },
     buttonHolder: {
         borderColor: "#00ffd5",

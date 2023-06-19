@@ -4,12 +4,11 @@ import styles from './style'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { FAB } from 'react-native-paper';
 const UpdateProductDetailCard = ({ title, value, navigation, name, productDetail }) => {
-    const [selectedValue, setSelectedValue] = useState(value)
     return (
         <View style={styles.pricingSectionCard}>
             <View styles={styles.actionContent}>
                 <Text style={styles.actionText}>{title}</Text>
-                <Text style={styles.priceText}>{name == 'price' ? '$' : ""}{selectedValue}</Text>
+                <Text style={styles.priceText}>{name == 'price' ? '$' : ""}{value}</Text>
             </View>
             <View>
                 <FAB

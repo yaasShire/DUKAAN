@@ -5,6 +5,7 @@ import requiredProductInformation from './requiredProductInformation'
 import productOffers from './productOffers'
 import ShopSlice from './shop'
 import productsFilter from './productsFilter'
+import fetchedProducts from './fetchedProducts'
 export const store = configureStore({
     reducer: {
         productRegistration: products,
@@ -13,5 +14,6 @@ export const store = configureStore({
         shopRegistration: ShopSlice,
         productInDetails: requiredProductInformation,
         productsFilter: productsFilter,
+        fetchedProducts: fetchedProducts
     },
 })

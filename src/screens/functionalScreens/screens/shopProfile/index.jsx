@@ -12,7 +12,7 @@ import { getShopImages } from '../../../../utils/utilityFunctions'
 import NoProductForShopProfile from './components/noProducts'
 import { FAB } from 'react-native-paper'
 import EditShopButton from './components/editButton'
-
+import ProductSmallCard from '../../../../components/molecules/productSmallCard'
 const ShopProfile = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -78,7 +78,7 @@ const ShopProfile = ({ route, navigation }) => {
                                     data={products}
                                     keyExtractor={item => item.id}
                                     renderItem={({ item }) => (
-                                        <ProductCard product={item} />
+                                        <ProductSmallCard product={item} />
                                     )}
                                 /> :
                                 <NoProductForShopProfile navigation={navigation} />

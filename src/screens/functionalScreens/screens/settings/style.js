@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { globalStyles } from "../../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -7,7 +7,10 @@ export default StyleSheet.create({
         backgroundColor: "#fff"
     },
     scrollStyle: {
-        paddingHorizontal: 15
+        paddingHorizontal: screenPadding,
+        // flex: 1,
+        rowGap: 25,
+        paddingVertical: screenPadding,
     },
     header: {
         flexDirection: 'row',
@@ -73,7 +76,6 @@ export default StyleSheet.create({
     },
     actionCardsWrapper: {
         backgroundColor: globalStyles.colors.white,
-        marginTop: "5%"
     },
     singleAction: {
         borderColor: "#dedede",
@@ -135,5 +137,13 @@ export default StyleSheet.create({
     logoutText: {
         color: "red"
     },
+    modalContainerStyle: {
+        backgroundColor: 'white',
+        height: height / 4,
+        width: width / 1.2,
+        borderRadius: 10,
+        justifyContent: "space-around",
+        alignItems: "center", alignSelf: "center"
+    }
 
 })

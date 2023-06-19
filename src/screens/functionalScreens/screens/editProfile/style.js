@@ -4,10 +4,8 @@ import { WindowDimension } from "../../../../utils/utilityFunctions";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
-        padding: screenPadding,
         flex: 1,
         backgroundColor: globalStyles.colors.miniPrimary,
-        // alignItems: "center"
     },
     topHeader: {
         flexDirection: "row",
@@ -17,6 +15,10 @@ export default StyleSheet.create({
     },
     profileCardWrapper: {
         alignItems: "center",
+        padding: screenPadding
+    },
+    txtWrapper: {
+        padding: screenPadding
     },
     image: {
         width: 100,
@@ -56,7 +58,7 @@ export default StyleSheet.create({
     inputHolder: {
         paddingVertical: "5%",
         alignItems: "center",
-        rowGap: 10
+        rowGap: 30,
     },
     imageAndButtonWrapper: {
         height: height / 7,

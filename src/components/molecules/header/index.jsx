@@ -9,42 +9,18 @@ import darawalLogo from '../../../assets/darawalLogo.png'
 import AnimatedButton from '../../../components/atoms/animatedButton'
 import { FontAwesome } from '@expo/vector-icons';
 import { globalStyles } from '../../../globalConstants/styles';
-const AppHeader = ({ title = "", backButton = false, menu = false, navigation, addproductButton = false, showLogo = false, screen = "", color = "", showFilter = true }) => {
+const AppHeader = ({ title = "", backButton = false, menu = false, navigation, addproductButton = false, showLogo = false, screen = "", color = "", showFilter = false, addShopButton = false, cancelButton = false }) => {
     return (
         <View style={styles.container}>
             {
                 backButton && (
                     <View style={styles.backButton}>
-                        <Feather name='chevron-left' size={30} onPress={() => navigation.goBack()} />
+                        <Feather name='chevron-left' size={35} onPress={() => navigation.goBack()} />
                     </View>
                 )
             }
             {
-                addproductButton &&
-                <View style={styles.addButtonWrapper}>
-                    <TouchableOpacity style={styles.mainButtonHolder} onPress={() => navigation.navigate('addProduct')}>
-                        <View style={styles.addHolder}>
-                            <Text style={styles.addText}>ADD</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            }
-            {
-                title ? <Text style={styles.title}>{title}</Text> : showLogo ? <View style={styles.logoImageHolder}>
-                    <Image source={darawalLogo} style={styles.logoImage} />
-                </View> : ""
-            }
-
-            {
-                showFilter && (
-                    <Pressable style={styles.filterBtn} onPress={() => navigation.navigate("mainFilter", { target: "" })}>
-                        <Feather name='filter' size={30} color={globalStyles.colors.logoColor} />
-                    </Pressable>
-                )
-            }
-
-            {
-                screen == 'Add Product' && (
+                cancelButton && (
                     <View >
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <Text style={styles.cancelText}>Cancel</Text>
@@ -52,7 +28,42 @@ const AppHeader = ({ title = "", backButton = false, menu = false, navigation, a
                     </View>
                 )
             }
+
             {
+                addproductButton &&
+                <Pressable style={styles.mainButtonHolder} onPress={() => navigation.navigate('addProduct')}>
+                    <View style={styles.addHolder}>
+                        <FontAwesome name='plus' size={20} color={globalStyles.colors.miniPrimary} />
+                    </View>
+                </Pressable>
+            }
+            {
+                title ? <Text style={styles.title}>{title}</Text> : showLogo ? <View style={styles.logoImageHolder}>
+                    <Image source={darawalLogo} style={styles.logoImage} />
+                </View> : ""
+            }
+            {
+                addShopButton && (
+                    <Pressable style={styles.mainButtonHolder} onPress={() => navigation.navigate("addShop")}>
+                        <View style={styles.addHolder}>
+                            <FontAwesome name='plus' size={20} color={globalStyles.colors.miniPrimary} />
+                        </View>
+
+                    </Pressable>
+                )
+            }
+
+            {
+                showFilter && (
+                    <Pressable style={styles.filterBtn} onPress={() => navigation.navigate("mainFilter", { target: "" })}>
+                        <Feather name='sliders' size={30} color={globalStyles.colors.logoColor} />
+                        {/* <FontAwesome name='sliders' size={30} color={globalStyles.colors.logoColor} /> */}
+                    </Pressable>
+                )
+            }
+
+
+            {/* {
                 screen == 'Shops' ? (
                     <TouchableOpacity style={styles.mainButtonHolder} onPress={() => navigation.navigate('addProduct')}>
                         <View style={styles.addHolder}>
@@ -64,7 +75,7 @@ const AppHeader = ({ title = "", backButton = false, menu = false, navigation, a
                         <Text style={styles.saveText}>Save</Text>
                     </TouchableWithoutFeedback>
                 ) : ""
-            }
+            } */}
         </View>
     );
 };

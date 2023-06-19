@@ -9,7 +9,7 @@ const Product = ({ order }) => {
     return (
         <View style={styles.product}>
             <View style={styles.productImageNameHolder}>
-                <View>
+                <View style={styles.imageWrapper}>
                     <Image source={{ uri: "https://sweyn.co.uk/storage/images/" + order?.photo }} style={styles.productImage} />
                 </View>
                 <View>
