@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { HeightDimension } from "../../../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -36,6 +37,24 @@ export default StyleSheet.create({
         fontWeight: "500",
         fontSize: 14,
         color: "#fff"
+    },
+    listWrapper: {
+        flex: 1,
+        backgroundColor: "pink"
+    },
+    noCategory: {
+        flex: 1,
+        height: HeightDimension / 2,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    image: {
+        width: 200,
+        height: 200
+    },
+    notFoundText: {
+        fontSize: 15,
+        fontWeight: "400"
     }
 
 

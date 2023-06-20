@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity, Platform, SafeAreaView, RefreshControl } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './style'
 import Header from '../../../../components/atoms/header'
 import DashboardCard from '../../../../components/atoms/dashboardCard'
@@ -22,15 +22,14 @@ import profileImage from '../../../../assets/images/profile.png'
 import { Image } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
 import { fetchData } from '../../../../hooks/useFetch'
-// import NoOrderCard from '../../../../components/molecules/noOrderCard'
-// icons ends here
-
 const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
     const [refreshing, setRefreshing] = useState(false)
+    const [index, setIndex] = useState(0)
+    const ref = useRef()
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {
@@ -38,9 +37,17 @@ const Home = ({ navigation }) => {
         }
     }
 
+    const fetchShopData = async () => {
+        const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
+        if (data?.data) {
+            setShopsNumber(data?.data?.length)
+        }
+    }
     useEffect(() => {
+        fetchShopData()
         fetchOrders()
     }, [])
+
 
     return (
         <View style={styles.container}>
@@ -55,6 +62,7 @@ const Home = ({ navigation }) => {
                         <DashboardCard description={'Expense'} ammount={0} sign={true} />
                         <DashboardCard description={'Number Of Shops'} ammount={shopsNumber} sign={false} />
                     </ScrollView>
+
                 </View>
                 <View showsVerticalScrollIndicator={false} nestedScrollEnabled={true} scrollEnabled={true} style={styles.bottomContent}>
                     <View style={styles.subBottomContent}>

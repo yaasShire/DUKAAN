@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, ScrollView, RefreshControl } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import SingleCategoryCard from '../../../../../../components/atoms/singCategoryCard';
@@ -7,13 +7,16 @@ import AddProductActionButton from '../../../../../../components/atoms/addProduc
 import ProductRegistrationError from '../../../../../../components/atoms/productRegistrationError';
 import { fetchData } from '../../../../../../hooks/useFetch';
 import AppLoader from '../../../../../../components/molecules/AppLoader';
+import NotFound from '../components/notFound';
 
 const ProductCategory = ({ category, title, index, setCurrentPosition }) => {
     const productCategory = useSelector((state) => state.productRegistration.productCategory)
+    const subCategory = useSelector((state) => state.productRegistration.subCategory)
     const [showError, setShowError] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [productCategories, setProductCategories] = useState([])
+    const [refreshing, setRefreshing] = useState(false)
     const errorHandler = (action) => {
         if (action == 'Prev') {
             setCurrentPosition(prev => prev - 1)
@@ -29,17 +32,17 @@ const ProductCategory = ({ category, title, index, setCurrentPosition }) => {
         }
     }
 
+    const fetchProductCategories = async () => {
+        const { data } = await fetchData(`seller/productcategory/get/${subCategory?.id}`, setError, setIsLoading)
+        setProductCategories(data?.data)
+    }
     useEffect(() => {
-        const fetShops = async () => {
-            const { data } = await fetchData('seller/productcategory/view', setError, setIsLoading)
-            setProductCategories(data?.data)
-        }
-        fetShops()
+        fetchProductCategories()
 
     }, [])
     return (
         <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchProductCategories} />}>
                 {
                     showError && (
                         <ProductRegistrationError label='Please select product category' />
@@ -47,19 +50,24 @@ const ProductCategory = ({ category, title, index, setCurrentPosition }) => {
                 }
                 <Text style={styles.textTitle}>{title}</Text>
                 <View style={styles.categoriesHolder}>
-                    <View>
-                        <ScrollView style={{}}>
-                            {
-                                productCategories.map((category, index) => (
-                                    <SingleCategoryCard key={category.id} category={category}
-                                        cat="productCategory"
-                                        finalObject={productCategory}
-                                        idType='id'
-                                    />
-                                ))
-                            }
-                        </ScrollView>
-                    </View>
+
+                    <ScrollView style={{}}>
+                        {
+                            productCategories.map((category, index) => (
+                                <SingleCategoryCard key={category.id} category={category}
+                                    cat="productCategory"
+                                    finalObject={productCategory}
+                                    idType='id'
+                                />
+                            ))
+                        }
+                    </ScrollView>
+                    {
+                        productCategories?.length == 0 && (
+                            <NotFound />
+                        )
+                    }
+
                 </View>
             </ScrollView>
             <View style={styles.actionButtonHolder}>

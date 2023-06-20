@@ -11,10 +11,10 @@ const UpdateProductCategory = ({ productDetail = {}, name = "", title = "", valu
     const [selectedName, setSelectedName] = useState()
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-    const updateCategory = async () => {
+    const updateCategory = async (id) => {
         const productData = new FormData()
         productData.append('UPID', productDetail?.UPID)
-        productData.append(name, Number(selectedId))
+        productData.append(name, Number(id))
         const response = await postData('seller/products/update', productData, setError, setIsLoading)
     }
     return (
@@ -33,7 +33,7 @@ const UpdateProductCategory = ({ productDetail = {}, name = "", title = "", valu
                         onPress={() => {
                             setSelectedId(item?.id)
                             setSelectedName(item?.name)
-                            updateCategory()
+                            updateCategory(item?.id)
                         }}
                     />
                 )}

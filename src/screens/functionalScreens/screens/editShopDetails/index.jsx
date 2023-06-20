@@ -7,6 +7,7 @@ import EditShopCard from './components/editCard'
 import EditGeolocation from './components/editGeolocation'
 import GeolocationPicker from './components/geolocationPicker'
 import { fetchData } from '../../../../hooks/useFetch'
+import EditShopImagesCard from './components/editShopImagesCard'
 const EditShopDetails = ({ navigation, route }) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -41,6 +42,7 @@ const EditShopDetails = ({ navigation, route }) => {
                 <EditShopCard shopId={route?.params?.shop?.USID} title="Phone Number" field="phone_number" value={route?.params?.shop?.phone_number} color="#560dd4" />
                 <GeolocationPicker list={regions} shopId={route?.params?.shop?.USID} title="Region" field="region" defaultLocation={route?.params?.shop?.region} value={route?.params?.shop?.region?.name} color="#ed0e55" />
                 <GeolocationPicker list={states} shopId={route?.params?.shop?.USID} title="State" field="state" defaultLocation={route?.params?.shop?.state} value={route?.params?.shop?.state?.name} color="#08fce4" />
+                <EditShopImagesCard shopId={route?.params?.shop?.USID} title="Edit ShopImages" navigation={navigation} />
                 <EditGeolocation shop={route?.params?.shop} shopId={route?.params?.shop?.USID} title="GeoLocation" field="GeoLocation" value={route?.params?.shop?.state?.name} color="#08fce4" />
             </ScrollView>
         </View>

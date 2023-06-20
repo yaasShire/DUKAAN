@@ -14,29 +14,10 @@ import { useFocusEffect } from '@react-navigation/native';
 import AppHeader from '../../../components/molecules/header';
 const AddShop = ({ navigation }) => {
     const [currentPosition, setcurrentPosition] = useState(0)
-    const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState(null)
-        ;
-
-    useFocusEffect(
-        React.useCallback(() => {
-            const getUserData = async () => {
-                const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
-                // setUser(userData.data[0]) 
-            }
-            getUserData()
-            return () => {
-                // Actions to perform when the screen loses focus
-            };
-        }, [])
-    );
-
 
     const handlePosition = (position) => {
         setcurrentPosition(position)
     }
-
-
 
     const tabs = new Map();
     // tabs.set(0, <PersonalInfo setcurrentPosition={setcurrentPosition} />)

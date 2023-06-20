@@ -13,10 +13,14 @@ import AppLoader from '../../../../../../components/molecules/AppLoader';
 import UploadingAnimation from '../../../../../../components/molecules/uploadingAnimation'
 import completedImage from '../../../../../../assets/images/completedSteps.png'
 import AppErrorHandler from '../../../../../../components/molecules/appErrorHandler';
+import { setMainCategory, setProductCategory, setSubCategory, setShopsList, setProductImage1, setProductImage2, setProductImage3, setProductImage4, setProductOffers, fillRequiredProductInformation, } from '../../../../../../redux/products'
+import { useDispatch } from 'react-redux';
+import { clearProductRegistrationState } from '../services';
 const ReviewAndPublish = ({ navigation }) => {
     const { subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images } = useSelector((state) => state.productRegistration)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
+    const dispatch = useDispatch()
     const logStates = () => {
     }
     const formatedShopData = productDataGenerator(subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images)
@@ -31,6 +35,8 @@ const ReviewAndPublish = ({ navigation }) => {
     useEffect(() => {
         logStates()
     }, [])
+
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -50,7 +56,7 @@ const ReviewAndPublish = ({ navigation }) => {
                 <ReviewRowCheck label={"Required info"} />
                 <ReviewRowCheck label={"Offers"} />
                 <View style={styles.buttonWrapper}>
-                    <AddProductActionButton label={"Finish"} navigation={navigation} uploadProduct={uploadProduct} />
+                    <AddProductActionButton clearProductRegistrationState={() => clearProductRegistrationState(dispatch)} label={"Finish"} navigation={navigation} uploadProduct={uploadProduct} />
                 </View>
             </ScrollView>
             {

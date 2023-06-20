@@ -134,6 +134,19 @@ export const getShopImages = (shopData) => {
     return data
 }
 
+export const shopImagesList = (shopData) => {
+    const imageNames = ['photos', 'photo2', 'photo3', 'photo4', 'photo5', 'photo6']
+    const data = imageNames.map((image, index) => (
+
+        shopData[imageNames[index]]
+    ))
+    const resultImages = data.map((image, index) => ({
+        url: image,
+        name: imageNames[index]
+    }))
+    return resultImages
+}
+
 export const filterData = (data) => {
     const filteredArray = []
     if (Object.keys(data?.mainCategoryFilter).length > 0) {

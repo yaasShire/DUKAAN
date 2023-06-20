@@ -36,8 +36,6 @@ const ShopProfile = ({ route, navigation }) => {
             if (!result?.data?.length) {
                 setIsNoProducts(true)
             }
-
-
         }
         fetchRelatedProducts()
     }, [])
@@ -45,7 +43,7 @@ const ShopProfile = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <SafeAreaView />
-            <ScrollView style={styles.contentScrollWrapper} stickyHeaderIndices={[0]}>
+            <ScrollView style={styles.contentScrollWrapper} showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
                 <Carousel
                     autoplay={true}
                     loop={true}
@@ -76,7 +74,7 @@ const ShopProfile = ({ route, navigation }) => {
                                     contentContainerStyle={styles.productsScrollWrapper}
                                     showsHorizontalScrollIndicator={false}
                                     data={products}
-                                    keyExtractor={item => item.id}
+                                    keyExtractor={item => item.UPID}
                                     renderItem={({ item }) => (
                                         <ProductSmallCard product={item} />
                                     )}

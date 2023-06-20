@@ -11,7 +11,6 @@ const Order = ({ accept = true, reject = true, status = false, navigation, order
     const [show, setShow] = useState(false)
     const id = order?.UOID.split('-')
     const [orderNumber, setOrderNumber] = useState(id[id?.length - 1])
-
     return (
         <View style={styles.orderCard}>
             <View style={styles.orderInfo1Holder}>

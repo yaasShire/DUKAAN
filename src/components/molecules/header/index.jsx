@@ -9,7 +9,7 @@ import darawalLogo from '../../../assets/darawalLogo.png'
 import AnimatedButton from '../../../components/atoms/animatedButton'
 import { FontAwesome } from '@expo/vector-icons';
 import { globalStyles } from '../../../globalConstants/styles';
-const AppHeader = ({ title = "", backButton = false, menu = false, navigation, addproductButton = false, showLogo = false, screen = "", color = "", showFilter = false, addShopButton = false, cancelButton = false }) => {
+const AppHeader = ({ title = "", backButton = false, menu = false, navigation, addproductButton = false, showLogo = false, screen = "", color = "", showFilter = false, addShopButton = false, cancelButton = false, clearProductRegistrationState = () => { } }) => {
     return (
         <View style={styles.container}>
             {
@@ -22,7 +22,10 @@ const AppHeader = ({ title = "", backButton = false, menu = false, navigation, a
             {
                 cancelButton && (
                     <View >
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <TouchableOpacity onPress={() => {
+                            clearProductRegistrationState()
+                            navigation.goBack()
+                        }}>
                             <Text style={styles.cancelText}>Cancel</Text>
                         </TouchableOpacity>
                     </View>

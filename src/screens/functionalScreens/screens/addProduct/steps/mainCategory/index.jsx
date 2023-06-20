@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, ScrollView, RefreshControl } from 'react-native'
 import React, { useEffect, useMemo, useState } from 'react'
 import styles from './style'
 import SingleCategoryCard from '../../../../../../components/atoms/singCategoryCard';
@@ -7,12 +7,14 @@ import AddProductActionButton from '../../../../../../components/atoms/addProduc
 import ProductRegistrationError from '../../../../../../components/atoms/productRegistrationError';
 import { fetchData } from '../../../../../../hooks/useFetch';
 import AppLoader from '../../../../../../components/molecules/AppLoader';
+import NotFound from '../components/notFound';
 const MainCategory = ({ category, title, setCurrentPosition }) => {
     const mainCategory = useSelector((state) => state.productRegistration.mainCategory)
     const [showError, setShowError] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [categories, setCategories] = useState([])
+    const [refreshing, setRefreshing] = useState(false)
     const errorHandler = (action) => {
         if (action == 'Prev') {
             setCurrentPosition(prev => prev - 1)
@@ -28,20 +30,20 @@ const MainCategory = ({ category, title, setCurrentPosition }) => {
         }
     }
 
+    const fetchMainCategories = async () => {
+        const { data } = await fetchData('seller/category/view', setError, setIsLoading)
+        setCategories(data.data)
+    }
 
     useEffect(() => {
-        const fetShops = async () => {
-            const { data } = await fetchData('seller/category/view', setError, setIsLoading)
-            setCategories(data.data)
-        }
-        fetShops()
+        fetchMainCategories()
 
-    })
+    }, [])
 
 
     return (
         <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false} >
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchMainCategories} />} >
                 {
                     showError && (
                         <ProductRegistrationError label='Please select main category' />
@@ -58,8 +60,12 @@ const MainCategory = ({ category, title, setCurrentPosition }) => {
                             />
                         ))
                     }
-                    {/* </ScrollView> */}
                 </View>
+                {
+                    categories?.length == 0 && (
+                        <NotFound />
+                    )
+                }
             </ScrollView>
             <View style={styles.actionButtonHolder}>
                 <AddProductActionButton label={"Prev"} action="Prev" errorHandler={errorHandler} />

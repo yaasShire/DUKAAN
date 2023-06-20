@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, ScrollView, RefreshControl, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import SingleCategoryCard from '../../../../../../components/atoms/singCategoryCard';
@@ -7,12 +7,16 @@ import AddProductActionButton from '../../../../../../components/atoms/addProduc
 import ProductRegistrationError from '../../../../../../components/atoms/productRegistrationError';
 import { fetchData } from '../../../../../../hooks/useFetch';
 import AppLoader from '../../../../../../components/molecules/AppLoader';
+import { HeightDimension } from '../../../../../../globalConstants/styles';
+import NotFound from '../components/notFound';
 const SubCategory = ({ category, title, index, setCurrentPosition }) => {
     const subCategory = useSelector((state) => state.productRegistration.subCategory)
+    const mainCategory = useSelector((state) => state.productRegistration.mainCategory)
     const [showError, setShowError] = useState(false)
     const [subCategories, setsubCategories] = useState([])
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState([])
+    const [refreshing, setRefreshing] = useState(false)
     const errorHandler = (action) => {
         if (action == 'Prev') {
             setCurrentPosition(prev => prev - 1)
@@ -27,19 +31,19 @@ const SubCategory = ({ category, title, index, setCurrentPosition }) => {
             setCurrentPosition(prev => prev + 1)
         }
     }
+    const fetchSubCategories = async () => {
+        const { data } = await fetchData(`seller/subcategory/get/${mainCategory?.id}`, setError, setIsLoading)
+        setsubCategories(data.data)
+    }
 
     useEffect(() => {
-        const fetShops = async () => {
-            const { data } = await fetchData('seller/subcategory/view', setError, setIsLoading)
-            setsubCategories(data.data)
-        }
-        fetShops()
+        fetchSubCategories()
 
-    })
+    }, [])
 
     return (
         <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchSubCategories} />} showsVerticalScrollIndicator={false}>
                 {
                     showError && (
                         <ProductRegistrationError label='Please select sub category' />
@@ -47,19 +51,22 @@ const SubCategory = ({ category, title, index, setCurrentPosition }) => {
                 }
                 <Text style={styles.textTitle}>{title}</Text>
                 <View style={styles.categoriesHolder}>
-                    <View>
-                        <ScrollView style={{}}>
-                            {
-                                subCategories.map((category, index) => (
-                                    <SingleCategoryCard key={category.id} category={category}
-                                        cat="subCategory"
-                                        finalObject={subCategory}
-                                        idType='id'
-                                    />
-                                ))
-                            }
-                        </ScrollView>
-                    </View>
+                    <ScrollView>
+                        {
+                            subCategories.map((category, index) => (
+                                <SingleCategoryCard key={category.id} category={category}
+                                    cat="subCategory"
+                                    finalObject={subCategory}
+                                    idType='id'
+                                />
+                            ))
+                        }
+                    </ScrollView>
+                    {
+                        subCategories?.length == 0 && (
+                            <NotFound />
+                        )
+                    }
                 </View>
             </ScrollView>
 
@@ -72,6 +79,7 @@ const SubCategory = ({ category, title, index, setCurrentPosition }) => {
                     <AppLoader />
                 )
             }
+
         </View>
     )
 }

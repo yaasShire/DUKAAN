@@ -18,8 +18,11 @@ import ShopList from './steps/shopsList';
 import AppHeader from '../../../../components/molecules/header';
 import ReviewAndPublish from './steps/reviewAndPublish';
 import { stepperCustomStyles } from '../../../../dataStore';
+import { useDispatch } from 'react-redux';
+import { clearProductRegistrationState } from './steps/services';
 const AddProduct = ({ navigation }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
+    const dispatch = useDispatch()
     const tabs = new Map();
     tabs.set(0, <ShopList setCurrentPosition={setCurrentPosition} category={shopsList} title="Please select shop from list below" />);
     tabs.set(1, <MainCategory setCurrentPosition={setCurrentPosition} category={mainCategories} title="Please select  category from  the list below" />);
@@ -33,12 +36,11 @@ const AddProduct = ({ navigation }) => {
     const handlePosition = (position) => {
         setCurrentPosition(position)
     }
-
     return (
         <View style={styles.container}>
             <SafeAreaView />
-            <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
-            <AppHeader navigation={navigation} cancelButton={true} title={"Add Product"} screen="Add Product" />
+            <StatusBar barStyle='light-content' />
+            <AppHeader clearProductRegistrationState={() => clearProductRegistrationState(dispatch)} navigation={navigation} cancelButton={true} title={"Add Product"} screen="Add Product" />
             <View style={styles.subWrapper}>
                 <StepIndicator
                     customStyles={customStyles}

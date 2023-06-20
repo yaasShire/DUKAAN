@@ -26,7 +26,7 @@ const UpdateProduct = ({ navigation, route }) => {
     const [productCategories, setProductCategories] = useState([])
     const [brands, setBrands] = useState([])
     const [targetProduct, setTargetProduct] = useState({})
-    const [refreshing, setRefreshing] = useState(true)
+    const [refreshing, setRefreshing] = useState(false)
 
     const updateSections = new Map()
     updateSections.set(1, <PricingSectionCard navigation={navigation} />)
@@ -98,12 +98,12 @@ const UpdateProduct = ({ navigation, route }) => {
                     </TabView>
                 </View>
             </ScrollView>
-            {/* {
+            {
                 isLoading && (
                     <AppLoader />
                 )
 
-            } */}
+            }
         </View>
     )
 }
