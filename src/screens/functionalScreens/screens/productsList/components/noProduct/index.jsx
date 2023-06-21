@@ -3,16 +3,16 @@ import React from 'react'
 import NoShopsImage from '../../../../../../assets/images/notFound.png'
 import styles from './style'
 
-const NoProduct = ({ navigation }) => {
+const NoProduct = ({ navigation, screen = "", title = "" }) => {
     return (
         <View style={styles.container}>
             <Image source={NoShopsImage} style={styles.image} />
             <View style={styles.textButtonWrapper}>
-                <Text style={styles.descriptinText}>No products Found add product.</Text>
+                <Text style={styles.descriptinText}>{title}</Text>
                 <TouchableOpacity style={styles.button} onPress={() => {
-                    navigation.navigate("addProduct")
+                    navigation.navigate(screen)
                 }}>
-                    <Text style={styles.buttonText}>Add Product</Text>
+                    <Text style={styles.buttonText}>ADD</Text>
                 </TouchableOpacity>
             </View>
         </View>

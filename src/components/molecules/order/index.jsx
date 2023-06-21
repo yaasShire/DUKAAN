@@ -27,7 +27,7 @@ const Order = ({ accept = true, reject = true, status = false, navigation, order
             <View>
                 <View style={styles.nameMinutesHolder}>
                     <View style={styles.nameHolder}>
-                        <Text style={styles.textName} numberOfLines={2}>{order?.name}</Text>
+                        <Text style={styles.textName} numberOfLines={2}>{order?.buyer_name}</Text>
                     </View>
                     {
                         status && (<View style={styles.statusHolder}>

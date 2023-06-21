@@ -8,7 +8,6 @@ export default StyleSheet.create({
     },
     scrollStyle: {
         paddingHorizontal: screenPadding,
-        // flex: 1,
         rowGap: 25,
         paddingVertical: screenPadding,
     },

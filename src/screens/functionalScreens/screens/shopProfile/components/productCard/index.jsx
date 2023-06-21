@@ -6,12 +6,7 @@ import { nameShortner } from '../../../../../../utils/utilityFunctions'
 const ProductCard = ({ product }) => {
     return (
         <View style={styles.container}>
-            <View style={styles.imageWrapper}>
-                <Image source={{ uri: `https://sweyn.co.uk/storage/images/${product?.photo}` }} style={styles.image} />
-            </View>
-            <View style={styles.dividerWrapper}>
-                <Divider style={styles.divider} />
-            </View>
+            <Image source={{ uri: `https://sweyn.co.uk/storage/images/${product?.photo}` }} style={styles.image} />
             <View>
                 <Text style={styles.productName}>{nameShortner(product?.name)}</Text>
                 <View style={styles.qtyHolder}>

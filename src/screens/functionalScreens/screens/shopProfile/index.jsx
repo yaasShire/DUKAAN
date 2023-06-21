@@ -13,6 +13,7 @@ import NoProductForShopProfile from './components/noProducts'
 import { FAB } from 'react-native-paper'
 import EditShopButton from './components/editButton'
 import ProductSmallCard from '../../../../components/molecules/productSmallCard'
+import AppLoader from '../../../../components/molecules/AppLoader'
 const ShopProfile = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -84,6 +85,11 @@ const ShopProfile = ({ route, navigation }) => {
 
                     </View>
                 </View>
+                {
+                    isLoading && (
+                        <AppLoader />
+                    )
+                }
             </ScrollView>
         </View>
     )

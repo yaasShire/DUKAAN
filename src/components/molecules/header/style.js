@@ -9,11 +9,15 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'rgba(184, 191, 189, .3)',
         paddingHorizontal: screenPadding,
-        backgroundColor: globalStyles.colors.miniPrimary
+        backgroundColor: globalStyles.colors.miniPrimary,
     },
     logoImageHolder: {
         width: 400,
         alignItems: "center"
+    },
+    btnTextWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
     },
     logoImage: {
         width: 120,
@@ -29,9 +33,8 @@ export default StyleSheet.create({
         fontWeight: "500",
         fontSize: 19,
         alignSelf: "center",
-        justifyContent: "center",
-        flex: 1,
-        textAlign: "center"
+        textAlign: "center",
+        marginRight: 20
     },
     addHolder: {
         backgroundColor: globalStyles.colors.logoColor,

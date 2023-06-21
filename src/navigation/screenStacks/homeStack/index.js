@@ -15,6 +15,8 @@ import Map from '../../../screens/functionalScreens/screens/map'
 import ShopProducts from '../../../screens/functionalScreens/screens/shopProducts'
 import EditShopDetails from '../../../screens/functionalScreens/screens/editShopDetails'
 import EditShopImages from '../../../screens/functionalScreens/screens/editShopImages'
+import Privacy from '../../../screens/functionalScreens/screens/privacy'
+import Help from '../../../screens/functionalScreens/screens/help'
 const HomeStack = () => {
     const Stack = createNativeStackNavigator()
     return (
@@ -30,6 +32,7 @@ const HomeStack = () => {
             <Stack.Screen name='shopProducts' component={ShopProducts} options={{ headerShown: false }} />
             <Stack.Screen name='editShopDetails' component={EditShopDetails} options={{ headerShown: false }} />
             <Stack.Screen name='editShopImages' component={EditShopImages} options={{ headerShown: false }} />
+
             {/* <Stack.Screen name='settings' component={Settings} options={{ headerShown: false }} /> */}
         </Stack.Navigator>
     )

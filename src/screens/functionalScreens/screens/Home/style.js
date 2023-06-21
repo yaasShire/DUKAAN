@@ -34,6 +34,7 @@ export default StyleSheet.create({
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         padding: screenPadding,
+        height: "100%"
 
     },
     infoCardsWrapper: {

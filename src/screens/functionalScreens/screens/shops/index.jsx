@@ -20,8 +20,8 @@ const Shops = ({ navigation }) => {
 
     const fetchShopData = async () => {
         const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
-        if (data?.data !== undefined) {
-            setShopData(data.data)
+        if (data?.data) {
+            setShopData(data?.data)
             setRefreshing(false)
         }
         if (data?.data?.length == 0) {

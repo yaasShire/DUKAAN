@@ -6,8 +6,6 @@ export default StyleSheet.create({
         height: HeightDimension / 4.8,
         borderRadius: 7,
         padding: "1%",
-        // borderWidth: 1,
-        // borderColor: globalStyles.colors.logoColor
     },
     imageWrapper: {
         width: "100%",

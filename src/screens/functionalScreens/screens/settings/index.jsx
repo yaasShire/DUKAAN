@@ -63,8 +63,8 @@ const Settings = ({ navigation, route }) => {
                 <SingleCardAction navigation={navigation} name='Reports' icon='google-analytics' color='#3430f2' screen='reports' />
                 <SingleCardAction navigation={navigation} name='Add Product' icon='shopping' color='#1da1ab' screen='addProduct' />
                 <SingleCardAction navigation={navigation} name='Add Shop' icon='store-check' color='#1da1ab' screen='addShop' />
-                <SingleCardAction navigation={navigation} name='Privacy & Policy' icon='door-closed-lock' color='#f29e0c' screen='' />
-                <SingleCardAction navigation={navigation} name='Help' icon='help-circle-outline' color='#7d1a7a' screen='' />
+                <SingleCardAction navigation={navigation} name='Privacy & Policy' icon='door-closed-lock' color='#f29e0c' screen='privacy' />
+                <SingleCardAction navigation={navigation} name='Help' icon='help-circle-outline' color='#7d1a7a' screen='help' />
                 <SingleCardAction navigation={navigation} showModal={showModal} name='Log out' icon='logout' color='#ed1909' screen='' />
                 <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.modalContainerStyle}>
                     <View>

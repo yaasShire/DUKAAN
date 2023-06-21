@@ -57,5 +57,3 @@ const UpdateInventoryField = ({ navigation, route }) => {
     )
 }
 export default UpdateInventoryField
-
-// onPress={() => navigation.goBack()}

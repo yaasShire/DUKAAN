@@ -5,7 +5,6 @@ import styles from './style'
 const ProductCardButton = ({ icon = "", onpress = () => { } }) => {
     return (
         <FAB
-            // color='#fff'
             icon={icon}
             style={styles.btn}
             onPress={onpress}

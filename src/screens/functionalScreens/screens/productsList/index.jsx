@@ -19,7 +19,8 @@ import { setFetchedProducts } from '../../../../redux/fetchedProducts'
 const ProductsList = ({ navigation, route }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
-    const [products, setProducts] = useState(route?.params?.data)
+    const [products, setProducts] = useState()
+    const [numberOfShops, setNumberOfShops] = useState(null)
     const [isNoProducts, setIsNoProducts] = useState(false)
     const [isFilterEmpty, setIsFilterEmpty] = useState(false)
     const [refreshing, setRefreshing] = useState(false)
@@ -31,17 +32,22 @@ const ProductsList = ({ navigation, route }) => {
         if (data?.data?.length > 0) {
             dispatch(setFetchedProducts(data?.data))
             setRefreshing(false)
-
         }
         if (data?.data?.length == 0) {
             setIsNoProducts(true)
         }
     }
+    const fetchShopData = async () => {
+        const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
+        if (data?.data) {
+            setNumberOfShops(data?.data?.length)
+        }
+    }
+    fetchShopData()
 
     useEffect(() => {
         fetchProducts()
     }, [])
-
 
     const refetchProducts = async () => {
         setIsLoading(true)
@@ -54,11 +60,9 @@ const ProductsList = ({ navigation, route }) => {
             setIsNoProducts(true)
         }
     }
-
-
-
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <AppHeader title='Products' showAddButton={true} showFilter={true} navigation={navigation} menu={false} addproductButton={true} />
             {refreshing ? <ActivityIndicator /> : null}
@@ -88,17 +92,17 @@ const ProductsList = ({ navigation, route }) => {
                     <AppError error={error} />
                 )
             }
-            {
-                isNoProducts && (
-                    <NoProduct navigation={navigation} />
+
+            {/* {
+                numberOfShops == 0 ? (
+
+                    <NoProduct title="looks like you have no shop, add a shop first then add products" screen='addShop' navigation={navigation} />
+                ) : (
+                    <NoProduct title='No products Found add product.' screen='addProduct' navigation={navigation} />
                 )
-            }
-            {
-                globalProducts?.length == 0 && (
-                    <NoDataFiltered route={route} setIsFilterEmpty={setIsFilterEmpty} setProducts={setProducts} onPress={() => refetchProducts()} />
-                )
-            }
-        </SafeAreaView>
+            } */}
+
+        </View>
     )
 }
 

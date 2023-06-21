@@ -15,7 +15,7 @@ const fontWeights = {
     tertiary: 700
 };
 const colors = {
-    primaryGray: "#c5c7c6",
+    primaryGray: "#e1e1e3",
     secondaryGray: "#8d8f8e",
     tertiary: "#000",
     miniPrimary: "#fff",

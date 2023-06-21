@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
-import { HeightDimension, WidthDimension, globalStyles } from "../../../globalConstants/styles";
+import { HeightDimension, WidthDimension, globalStyles, screenPadding } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         width: WidthDimension / 2.5,
-        height: HeightDimension / 4.8,
+        height: HeightDimension / 4.2,
         borderRadius: 7,
-        padding: "1%",
+        borderWidth: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        borderColor: globalStyles.colors.primaryGray,
+        padding: screenPadding - 4
     },
     imageWrapper: {
         width: "100%",
@@ -17,8 +21,8 @@ export default StyleSheet.create({
         borderColor: globalStyles.colors.logoColor
     },
     image: {
-        width: "97%",
-        height: "97%",
+        width: "100%",
+        height: 100,
         resizeMode: "cover",
         borderRadius: 5
     },
@@ -41,5 +45,32 @@ export default StyleSheet.create({
     },
     dividerWrapper: {
         alignItems: "center"
+    },
+    content: {
+        flex: 1,
+        width: "100%"
+    },
+    sectionWrapper: {
+        flexDirection: "row",
+    },
+    productName: {
+        fontWeight: globalStyles.fontWeights.secondary,
+        fontSize: 16
+    },
+    title: {
+        color: globalStyles.colors.secondaryGray
+    },
+    value: {
+        fontWeight: globalStyles.fontWeights.secondary
+    },
+    priceWrapper: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "flex-end"
+    },
+    priceText: {
+        fontWeight: globalStyles.fontWeights.secondary,
+        fontSize: 18,
+        color: globalStyles.colors.logoColor
     }
 })

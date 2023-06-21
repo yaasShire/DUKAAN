@@ -7,6 +7,8 @@ import Reports from '../../../screens/functionalScreens/screens/reports'
 import AddProduct from '../../../screens/functionalScreens/screens/addProduct'
 import AddShop from '../../../screens/functionalScreens/addShop'
 import EditProfile from '../../../screens/functionalScreens/screens/editProfile'
+import Privacy from '../../../screens/functionalScreens/screens/privacy'
+import Help from '../../../screens/functionalScreens/screens/help'
 
 const SettingsStack = () => {
     const Stack = createNativeStackNavigator()
@@ -18,6 +20,8 @@ const SettingsStack = () => {
             <Stack.Screen name='changePassword' component={ChangePassword} options={{ headerShown: false }} />
             <Stack.Screen name='addShop' component={AddShop} options={{ headerShown: false }} />
             <Stack.Screen name='editProfile' component={EditProfile} options={{ headerShown: false }} />
+            <Stack.Screen name='privacy' component={Privacy} options={{ headerShown: false }} />
+            <Stack.Screen name='help' component={Help} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

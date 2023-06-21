@@ -203,7 +203,6 @@ export default StyleSheet.create({
         flex: 1,
         rowGap: 30,
         padding: screenPadding
-        // backgroundColor: "blue"
     }
 
 })
