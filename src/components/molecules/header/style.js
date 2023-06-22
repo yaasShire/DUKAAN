@@ -34,7 +34,9 @@ export default StyleSheet.create({
         fontSize: 19,
         alignSelf: "center",
         textAlign: "center",
-        marginRight: 20
+        marginRight: 20,
+        flex: 1,
+        marginLeft: 10
     },
     addHolder: {
         backgroundColor: globalStyles.colors.logoColor,

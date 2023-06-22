@@ -15,24 +15,17 @@ import EditShopButton from './components/editButton'
 import ProductSmallCard from '../../../../components/molecules/productSmallCard'
 import AppLoader from '../../../../components/molecules/AppLoader'
 const ShopProfile = ({ route, navigation }) => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [products, setProducts] = useState([])
     const [isNoProducts, setIsNoProducts] = useState(false)
-    const caroselImages = [
-        require('../../../../assets/images/mechanic1.jpg'),
-        require('../../../../assets/images/mechanic2.jpg'),
-        require('../../../../assets/images/mechanic3.jpg'),
-        require('../../../../assets/images/mechanic4.jpg'),
-        require('../../../../assets/images/mechanic5.jpg'),
-    ]
-
 
     useEffect(() => {
         const fetchRelatedProducts = async () => {
             const shopId = new FormData()
             shopId.append('USID', route?.params?.data?.USID)
-            const { result } = await postData('seller/shop/products', shopId, setError, setIsLoading)
+            const { result } = await postData('seller/products/search', shopId, setError, setIsLoading)
+            console.log(route?.params?.data?.USID)
             setProducts(result?.data)
             if (!result?.data?.length) {
                 setIsNoProducts(true)
@@ -82,7 +75,6 @@ const ShopProfile = ({ route, navigation }) => {
                                 /> :
                                 <NoProductForShopProfile navigation={navigation} />
                         }
-
                     </View>
                 </View>
                 {

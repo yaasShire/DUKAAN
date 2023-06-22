@@ -45,7 +45,7 @@ const Help = ({ navigation }) => {
                     <HelpCard image={WhatsAppImage} title="Chat" onPress={() => {
                         Linking.openURL(
                             'http://api.whatsapp.com/send?phone=252' + "612518368"
-                        )
+                        ) 
                     }} />
                     <HelpCard image={PhoneImage} title="Call" onPress={() => {
                         Linking.openURL(`tel:612518368`)

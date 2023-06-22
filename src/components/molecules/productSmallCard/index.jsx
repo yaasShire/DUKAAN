@@ -4,7 +4,6 @@ import styles from './style'
 import { Divider } from 'react-native-paper'
 import { nameShortner } from '../../../utils/utilityFunctions'
 const ProductSmallCard = ({ product }) => {
-    console.log(product)
     return (
         <View style={styles.container}>
             <Image source={{ uri: `https://sweyn.co.uk/storage/images/${product?.photo}` }} style={styles.image} />
@@ -12,7 +11,7 @@ const ProductSmallCard = ({ product }) => {
                 <Text style={styles.productName}>{product?.name}</Text>
                 <View style={styles.sectionWrapper}>
                     <Text style={styles.title}>Brand:</Text>
-                    <Text style={styles.value}>{product?.brand?.name}</Text>
+                    <Text style={styles.value}>{product?.brand?.name || 'No brand'}</Text>
                 </View>
                 <View style={styles.sectionWrapper}>
                     <Text style={styles.title}>Quantity:</Text>

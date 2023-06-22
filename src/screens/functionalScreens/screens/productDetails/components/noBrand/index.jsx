@@ -7,7 +7,7 @@ const NoBrand = () => {
     return (
         <View style={styles.container}>
             <Image source={NoShopsImage} style={styles.image} />
-            <Text>No Brand</Text>
+            <Text>No brand</Text>
         </View>
     )
 }

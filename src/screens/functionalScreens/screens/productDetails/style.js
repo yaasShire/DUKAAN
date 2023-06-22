@@ -9,9 +9,10 @@ export default StyleSheet.create({
     bottomSection: {
         backgroundColor: "#fff",
         zIndex: 10,
-        height: HeightDimension,
+        // height: HeightDimension,
         borderTopRightRadius: 30,
-        borderTopLeftRadius: 30
+        borderTopLeftRadius: 30,
+        paddingVertical: screenPadding
     },
     namePriceSection: {
         flexDirection: "row",
@@ -39,6 +40,16 @@ export default StyleSheet.create({
         fontSize: 14,
         fontWeight: "400",
         color: globalStyles.colors.secondaryGray
+    },
+    bar: {
+        backgroundColor: "gray",
+        width: 58,
+        height: 5,
+        borderRadius: 30,
+        opacity: .5
+    },
+    barWrapper: {
+        alignItems: "center"
     },
     priceValue: {
         fontWeight: "700",

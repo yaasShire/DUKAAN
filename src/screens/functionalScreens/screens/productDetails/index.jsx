@@ -66,6 +66,9 @@ const ProductDetails = ({ route, navigation }) => {
                     </Carousel>
                 </View>
                 <View style={styles.bottomSection}>
+                    <View style={styles.barWrapper}>
+                        <View style={styles.bar} />
+                    </View>
                     <View style={styles.namePriceSection}>
                         <Text style={styles.name}>{productDetail?.name}</Text>
                         <View style={styles.priceValueWrapper}>
