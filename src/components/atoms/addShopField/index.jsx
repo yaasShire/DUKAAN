@@ -2,13 +2,14 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import styles from './style'
 import { TextInput } from 'react-native-paper';
-const AddShopField = ({ label, touched, errors, handleSubmit, user, handleBlur, handleChange, values, setFieldTouched, name }) => {
+const AddShopField = ({ label, touched, errors, keyboardType = "ascii-capable", handleSubmit = "", user, handleBlur, handleChange, values, setFieldTouched, name }) => {
 
     return (
         <>
             <View style={styles.fieldHolder}>
                 <Text style={styles.label}>{label}</Text>
                 <TextInput
+                    keyboardType={keyboardType}
                     style={styles.input}
                     mode="outlined"
                     onChangeText={(text) => {

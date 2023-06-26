@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
     shopCardWrapper: {
         backgroundColor: globalStyles.style.whiteMode.secondaryColor,
-        borderWidth: .5,
+        borderWidth: 1.3,
         borderColor: globalStyles.colors.primaryGray,
         width: "100%",
         height: 145,
@@ -47,11 +47,12 @@ export default StyleSheet.create({
 
     },
     buttonStyle: {
-        borderRadius: 10,
-        backgroundColor: globalStyles.colors.logoColor,
+        borderRadius: 5,
+        width: "100%"
+        // backgroundColor: globalStyles.colors.logoColor,
     },
     btnText: {
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: "600",
     },
     iconStyle: {

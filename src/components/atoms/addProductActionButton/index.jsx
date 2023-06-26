@@ -8,7 +8,7 @@ const AddProductActionButton = ({ setCurrentPosition = () => { }, navigation, la
             errorHandler(action)
             action == 'Prev' && setCurrentPosition(prev => prev - 1)
             label == 'Finish' && uploadProduct()
-            clearProductRegistrationState()
+            // label == 'Finish' && clearProductRegistrationState()
 
         }}>
             <Text style={styles.buttonText(action)}>{label}</Text>

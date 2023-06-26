@@ -17,8 +17,8 @@ const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, ch
         const mainImageChecker = checkMainImage()
         if (mainImageChecker) {
             setIsLoading(true)
-            const { result } = await postData('seller/shop/create', shopInfo, setError, setIsLoading)
-            if (result?.status) {
+            const result = await postData('seller/shop/create', shopInfo, setError, setIsLoading)
+            if (result?.result?.status == 'Shop Added Successfully') {
                 dispatch(setImage1(""))
                 navigation.replace('uploadState', { uploadStatus: result })
             }
@@ -26,6 +26,8 @@ const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, ch
             Alert.alert('Main image is required!')
         }
     }
+
+
     return (
         <>
             <TouchableOpacity style={styles.buttonHolder} onPress={() => {

@@ -6,7 +6,7 @@ export default StyleSheet.create({
         borderWidth: .4,
         alignItems: 'center',
         borderRadius: 15,
-        minHeight: 150,
+        height: 154,
         borderColor: 'rgba(184, 191, 189, 1)',
     },
     namePriceWrapper: {
@@ -15,14 +15,14 @@ export default StyleSheet.create({
         alignItems: "center",
     },
     imageWrapper: {
-        height: 130,
+        minHeight: 135,
         borderRadius: 15,
-        width: "35%",
+        width: "30%",
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
         borderColor: 'rgba(184, 191, 189, .4)',
-        marginLeft: 10
+        marginLeft: "2.3%"
     },
     stockWrapper: {
         flexDirection: "row",
@@ -52,12 +52,13 @@ export default StyleSheet.create({
     },
     priceWrapper: {
         backgroundColor: globalStyles.colors.logoColor,
-        width: 100,
+        width: 80,
         height: 45,
         borderBottomLeftRadius: 15,
         borderTopRightRadius: 15,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        padding: 3
     },
     priceText: {
         fontSize: 18,
@@ -79,8 +80,7 @@ export default StyleSheet.create({
         marginTop: 5
     },
     actionsWrapper: {
-        // backgroundColor: "blue",
-        flex: 1,
+        // flex: 1,
         flexDirection: "row",
         justifyContent: "flex-end",
         paddingHorizontal: "3%",

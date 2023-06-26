@@ -7,10 +7,9 @@ import { FAB } from 'react-native-paper';
 import productImagePlaceHolder from '../../../assets/images/productImagePlaceHolder.jpg'
 import { Button } from 'react-native-paper';
 import ProductCardButton from './components';
+import { nameShortner } from '../../../utils/utilityFunctions';
 const ProductCard = ({ item, navigation }) => {
-    const nameShortener = (name) => {
-        return name.length >= 28 ? name.slice(0, 30) + "..." : name
-    }
+
     return (
         <View style={styles.card}>
             <View style={styles.imageWrapper}>
@@ -18,7 +17,7 @@ const ProductCard = ({ item, navigation }) => {
             </View>
             <View style={styles.rightContentWrapper}>
                 <View style={styles.namePriceWrapper}>
-                    <Text style={styles.productName}>{nameShortener(item?.name)}</Text>
+                    <Text style={styles.productName}>{nameShortner(item?.name, 16)}</Text>
                     <View style={styles.priceWrapper}>
                         <Text style={styles.priceText}>${item?.price}</Text>
                     </View>
@@ -28,7 +27,7 @@ const ProductCard = ({ item, navigation }) => {
                     <Text style={styles.stockValue}>200</Text>
                 </View>
                 <View style={styles.descriptionWrapper}>
-                    <Text style={styles.description}>{item?.description}  </Text>
+                    <Text numberOfLines={3} style={styles.description}>{nameShortner(item?.description, 40)}</Text>
                 </View>
                 <View style={styles.actionsWrapper}>
                     <ProductCardButton icon="pen" onpress={() => navigation.navigate("updateProduct", { data: item })} />

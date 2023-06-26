@@ -52,6 +52,12 @@ const Settings = ({ navigation, route }) => {
             getUserData()
         });
     }, [navigation])
+
+    const logout = async () => {
+        await AsyncStorage.setItem("access_token", "")
+        await AsyncStorage.setItem("token_type", "")
+        await AsyncStorage.setItem("user", "")
+    }
     return (
         <View style={styles.container}>
             <SafeAreaView />
@@ -79,6 +85,7 @@ const Settings = ({ navigation, route }) => {
                         <Button style={styles.logoutButton} mode="outlined" onPress={() => {
                             setVisible(false)
                             navigation.replace("login")
+                            logout()
                         }}>
                             <Text style={styles.logoutText}>Log out</Text>
                         </Button>

@@ -25,6 +25,11 @@ const ReviewAndPublish = ({ navigation }) => {
     }
     const formatedShopData = productDataGenerator(subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images)
     const productData = uploadDataGenerator(formatedShopData, images)
+    // console.log('====================================');
+    // console.log(productData);
+    // console.log('====================================');
+
+
     const uploadProduct = async () => {
         setIsLoading(true)
         const data = await postData('seller/products/create', productData, setError, setIsLoading)

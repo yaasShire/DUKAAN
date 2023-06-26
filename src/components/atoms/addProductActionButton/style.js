@@ -6,11 +6,11 @@ export default StyleSheet.create({
         return (
             {
                 backgroundColor: action == 'Prev' ? globalStyles.colors.miniPrimary : globalStyles.colors.logoColor,
-                width: width / 2.5,
+                width: "45%",
                 height: height / 13,
                 justifyContent: 'center',
                 alignItems: "center",
-                borderRadius: 10,
+                borderRadius: 5,
                 borderWidth: action == 'Prev' ? 1 : 0,
                 borderColor: action == 'Prev' ? globalStyles.colors.primaryGray : globalStyles.colors.primaryGray,
             }

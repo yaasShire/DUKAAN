@@ -1,11 +1,11 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 import styles from './style'
 import { Divider } from 'react-native-paper'
 import { nameShortner } from '../../../utils/utilityFunctions'
-const ProductSmallCard = ({ product }) => {
+const ProductSmallCard = ({ product, navigation }) => {
     return (
-        <View style={styles.container}>
+        <Pressable style={styles.container} onpress={() => navigation.navigate("productDetails", { data: product })}>
             <Image source={{ uri: `https://sweyn.co.uk/storage/images/${product?.photo}` }} style={styles.image} />
             <View style={styles.content}>
                 <Text style={styles.productName}>{product?.name}</Text>
@@ -22,7 +22,7 @@ const ProductSmallCard = ({ product }) => {
                     <Text style={styles.priceText}>${product?.price}</Text>
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

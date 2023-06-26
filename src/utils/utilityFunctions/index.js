@@ -1,8 +1,10 @@
 import { Dimensions } from "react-native"
 import { setMainCategoryFilter, setProductCategoryFilter, setShopFilter, setSubCategoryFilter } from "../../redux/productsFilter"
 import { useDispatch } from "react-redux"
-export const nameShortner = (name) => {
-    return name.length > 19 ? name.slice(0, 16) + '...' : name
+import AsyncStorage from "@react-native-async-storage/async-storage"
+
+export const nameShortner = (name, maximumSize = 16) => {
+    return name.length > maximumSize ? name.slice(0, maximumSize) + '...' : name
 }
 export const formatedShopFormData = (values, shopImages, shopData) => {
     const data = new FormData()
@@ -182,4 +184,13 @@ export const filterFormDataSetter = (state) => {
     filterFormData.append('category', state.mainCategoryFilter?.id)
     filterFormData.append('subcategory', state.subCategoryFilter?.id)
     filterFormData.append('productcategory', state.productCategoryFilter?.id)
+}
+
+export const checkIsUserLogIn = async () => {
+    const user = await AsyncStorage.getItem("user")
+    const access_token = await AsyncStorage.getItem("access_token")
+    if (user && access_token) {
+        return true
+    }
+    return false
 }

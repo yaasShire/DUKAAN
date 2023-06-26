@@ -7,7 +7,6 @@ export default StyleSheet.create({
     textTitle: {
         textAlign: "center",
         opacity: 0.5,
-
     },
     categoriesHolder: {
         borderWidth: 1,
@@ -18,9 +17,8 @@ export default StyleSheet.create({
     },
     actionButtonHolder: {
         justifyContent: "center",
-        alignItems: 'center',
+        alignItems: "flex-end",
         marginTop: "2%"
-
     },
     errorHolder: {
         backgroundColor: "#f25555",
@@ -29,7 +27,6 @@ export default StyleSheet.create({
         height: height / 17,
         borderRadius: 5,
         marginVertical: "5%"
-
     },
     textError: {
         fontWeight: "500",

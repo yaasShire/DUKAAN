@@ -22,6 +22,8 @@ import profileImage from '../../../../assets/images/profile.png'
 import { Image } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
 import { fetchData } from '../../../../hooks/useFetch'
+import { checkIsUserLogIn } from '../../../../utils/utilityFunctions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -30,6 +32,7 @@ const Home = ({ navigation }) => {
     const [refreshing, setRefreshing] = useState(false)
     const [index, setIndex] = useState(0)
     const ref = useRef()
+    // console.log(checkIsUserLogIn())
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {

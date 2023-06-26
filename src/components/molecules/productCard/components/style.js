@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 import { globalStyles } from "../../../../globalConstants/styles";
 export default StyleSheet.create({
     btn: {
-        width: 40,
-        height: 35,
+        width: 30,
+        height: 30,
         // backgroundColor: globalStyles.colors.logoColor,
         borderRadius: 10,
         color: "#fff",

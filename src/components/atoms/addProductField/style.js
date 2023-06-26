@@ -11,7 +11,6 @@ export default StyleSheet.create({
         paddingHorizontal: "3%",
         paddingVertical: "1%",
         width: width / 1.12,
-        height: height / 15.5,
         borderRadius: 6,
         fontSize: 15,
         fontWeight: "400"

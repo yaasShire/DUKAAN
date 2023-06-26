@@ -21,6 +21,7 @@ const AddProductField = ({ name = '', label = '', valuesObj = {}, values = {}, h
 
                 <TextInput
                     mode='outlined'
+                    multiline
                     onChangeText={(text) => {
                         handleChange(name)(text)
                     }} onBlur={() => {

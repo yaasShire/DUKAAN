@@ -25,11 +25,15 @@ const ProductDetails = ({ route, navigation }) => {
             const data = await fetchData(`seller/products/view/${route?.params?.data.UPID}`, setError, setIsLoading)
             setProductDetail(data.data.data[0])
             setProductImages(data.data.images)
+            console.log('====================================');
+            console.log(data.data.data[0]);
+            console.log('====================================');
 
         }
         const fetchProducts = async () => {
             const { data } = await fetchData(`seller/products/view`, setError, setIsLoading)
             if (data?.data?.length > 0) {
+
                 setProducts(data?.data)
             }
         }
@@ -79,19 +83,13 @@ const ProductDetails = ({ route, navigation }) => {
                     <View style={styles.brandsWrapper}>
                         <Text style={styles.availableBrandsText}>Available Brands</Text>
                         {
-                            noBrand && (
+                            !productDetail?.brand?.name && (
                                 <NoBrand />
                             )
                         }
-                        <FlatList
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            contentContainerStyle={styles.flatListStyle}
-                            data={brandsList}
-                            renderItem={({ item }) => (
-                                <BrandCard item={item} />
-                            )}
-                        />
+
+                        <BrandCard item={productDetail?.brand} />
+
                     </View>
                     <View style={styles.totalSalesWrapper}>
                         <Text style={styles.sectionLabel}>Total Sales</Text>

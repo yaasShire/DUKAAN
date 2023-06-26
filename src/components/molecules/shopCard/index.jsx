@@ -10,6 +10,7 @@ import { Button } from 'react-native-paper';
 import { globalStyles } from '../../../globalConstants/styles';
 import { Fontisto } from '@expo/vector-icons';
 import shopPlaceHolder from '../../../assets/images/shopPlaceHolder.png'
+import { nameShortner } from '../../../utils/utilityFunctions';
 const ShopCard = ({ shop, navigation, profileData }) => {
     // console.warn(shop);
     const nameShortener = (name) => {
@@ -23,7 +24,7 @@ const ShopCard = ({ shop, navigation, profileData }) => {
                 <View style={styles.buttonInfoWrapper}>
                     <View style={styles.infoWrapper}>
                         <View>
-                            <Text style={styles.shopName}>{shop.name}</Text>
+                            <Text style={styles.shopName}>{nameShortner(shop.name)}</Text>
                             <Text style={styles.address}>Mogadishu, Somalia</Text>
                             <View style={styles.salesWrapper}>
                                 {/* <Text style={styles.keyText}>Sales rank:</Text> */}
@@ -36,8 +37,7 @@ const ShopCard = ({ shop, navigation, profileData }) => {
                     </View>
                     <Button onPress={() => {
                         navigation.navigate('shopProfile', { data: shop })
-                    }} style={styles.buttonStyle} mode="contained" >
-                        <Entypo style={styles.iconStyle} name='shop' size={15} />
+                    }} style={styles.buttonStyle} mode="outlined" >
                         <Text style={styles.btnText}>View Shop</Text>
                     </Button>
                 </View>

@@ -8,6 +8,7 @@ const SingleCardAction = ({ name = "", icon = "", color = "", screen = "", navig
         <TouchableOpacity style={styles.singleAction} onPress={() => {
             showModal()
             screen && navigation.navigate(screen)
+
         }}>
             <View style={styles.nameIconWrapper}>
                 <MaterialCommunityIcons name={icon} size={27} color={color} />

@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { screenPadding } from "../../../../globalConstants/styles";
+import { HeightDimension, screenPadding } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("window")
 export default StyleSheet.create({
     container: {
@@ -8,13 +8,14 @@ export default StyleSheet.create({
     },
     productCardsHolder: {
         justifyContent: "space-between",
-        paddingHorizontal: "3.5%",
+        // paddingHorizontal: "3.5%",
     },
     cardsHolder: {
     },
     productListsWrapper: {
         rowGap: 10,
-        padding: screenPadding
+        padding: screenPadding,
+        // flex: 1,
     }
 
 })

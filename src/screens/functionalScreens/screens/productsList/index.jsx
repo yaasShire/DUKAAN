@@ -1,5 +1,5 @@
 import { View, Text, StatusBar, ScrollView, FlatList, I18nManager, RefreshControl, } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
 import Header from '../../../../components/atoms/header'
@@ -43,11 +43,19 @@ const ProductsList = ({ navigation, route }) => {
             setNumberOfShops(data?.data?.length)
         }
     }
-    fetchShopData()
 
-    useEffect(() => {
-        fetchProducts()
-    }, [])
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchShopData()
+            fetchProducts()
+        }, [])
+    );
+
+
+    // useEffect(() => {
+    //     fetchShopData()
+    //     fetchProducts()
+    // }, [])
 
     const refetchProducts = async () => {
         setIsLoading(true)
@@ -65,42 +73,45 @@ const ProductsList = ({ navigation, route }) => {
             <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <AppHeader title='Products' showAddButton={true} showFilter={true} navigation={navigation} menu={false} addproductButton={true} />
-            {refreshing ? <ActivityIndicator /> : null}
-            <FlatList
-                keyExtractor={(item) => item.UPID}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.productListsWrapper}
-                data={globalProducts}
-                scrollsToTop={true}
-                initialNumToRender={10}
-                scrollIndicatorInsets={10}
-                enableEmptySections={true}
-                refreshControl={
-                    <RefreshControl refreshing={refreshing} onRefresh={fetchProducts} />
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchProducts} />}>
+                <FlatList
+                    scrollEnabled={false}
+                    keyExtractor={(item) => item.UPID}
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={styles.productListsWrapper}
+                    data={globalProducts}
+                    scrollsToTop={true}
+                    initialNumToRender={10}
+                    scrollIndicatorInsets={10}
+                    enableEmptySections={true}
+                    refreshControl={
+                        <RefreshControl refreshing={refreshing} onRefresh={fetchProducts} />
+                    }
+                    renderItem={({ item }) => (
+                        <ProductCard key={item.id} item={item} navigation={navigation} />
+                    )}
+                />
+                {
+                    isLoading && (
+                        <AppLoader />
+                    )
                 }
-                renderItem={({ item }) => (
-                    <ProductCard key={item.id} item={item} navigation={navigation} />
-                )}
-            />
-            {
-                isLoading && (
-                    <AppLoader />
-                )
-            }
-            {
-                error && (
-                    <AppError error={error} />
-                )
-            }
+                {
+                    error && (
+                        <AppError error={error} />
+                    )
+                }
 
-            {/* {
-                numberOfShops == 0 ? (
+                {
+                    numberOfShops == 0 ? (
 
-                    <NoProduct title="looks like you have no shop, add a shop first then add products" screen='addShop' navigation={navigation} />
-                ) : (
-                    <NoProduct title='No products Found add product.' screen='addProduct' navigation={navigation} />
-                )
-            } */}
+                        <NoProduct title="looks like you have no shop, add a shop first then add products" screen='addShop' navigation={navigation} />
+                    ) : (globalProducts?.length == 0) ? (
+                        <NoProduct title='No products Found add product.' screen='addProduct' navigation={navigation} />
+                    ) : ""
+                }
+
+            </ScrollView>
 
         </View>
     )

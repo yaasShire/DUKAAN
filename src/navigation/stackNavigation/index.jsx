@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import OnboardingC from '../../screens/Auth/onboarding'
@@ -30,11 +30,34 @@ import SalesTabs from '../screenStacks/sales'
 import AddShopFirstTime from '../../screens/functionalScreens/screens/addShopFirstTime'
 import DrawerComponent from '../drawer'
 import Test from './Test'
+import { checkIsUserLogIn } from '../../utils/utilityFunctions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
+
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+    useEffect(() => {
+        const fetchLoginStatus = async () => {
+            const loginStatus = await AsyncStorage.getItem('access_token');
+            setIsLoggedIn(!!loginStatus);
+        };
+
+        fetchLoginStatus();
+    }, []);
+
+    if (isLoggedIn === null) {
+        return
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <ActivityIndicator size={100} />
+        </View>
+    }
+
+    const initialRouteName = isLoggedIn ? 'bottomTabs' : 'login';
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='login'>
+            <Stack.Navigator initialRouteName={initialRouteName}>
                 <Stack.Screen name='drawer' component={DrawerComponent} options={{ headerShown: false }} />
                 <Stack.Screen name='addShopFirstTime' component={AddShopFirstTime} options={{ headerShown: false }} />
                 <Stack.Screen name='onboarding' component={OnboardingC} options={{ headerShown: false }} />

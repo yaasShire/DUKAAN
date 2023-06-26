@@ -16,9 +16,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
   const Stack = createNativeStackNavigator()
-
-
   const [fontsLoaded] = Font.useFonts({
     'AstroSpace-0Wl3o': require('./src/assets/fonts/AstroSpace-0Wl3o.otf'),
   });
@@ -27,6 +27,7 @@ export default function App() {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
+
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
@@ -34,22 +35,12 @@ export default function App() {
   }
 
 
-
   return (
     <Provider store={store}>
       <PaperProfider>
-        <StackNavigator />
+        <StackNavigator isLoggedIn={isLoggedIn} />
       </PaperProfider>
     </Provider>
 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

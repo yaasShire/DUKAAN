@@ -10,6 +10,7 @@ import { globalStyles } from '../../../../globalConstants/styles';
 import NoShopFound from './noShop';
 import { useFocusEffect } from '@react-navigation/native';
 import AppHeader from '../../../../components/molecules/header';
+import { ScrollView } from 'react-native-gesture-handler';
 const Shops = ({ navigation }) => {
     const [shopData, setShopData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -48,33 +49,36 @@ const Shops = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <AppHeader addShopButton={true} title="Shops" navigation={navigation} color={"#000"} backButton={true} screen={"Shops"} />
-            <FlatList
-                keyExtractor={(item) => item.USID}
-                showsVerticalScrollIndicator={true}
-                scrollsToTop={true}
-                initialNumToRender={10}
-                scrollIndicatorInsets={10}
-                contentContainerStyle={{ rowGap: 15, padding: 15 }}
-                style={styles.cards}
-                data={shopData}
-                enableEmptySections={true}
-                refreshControl={
-                    <RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />
+            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />}>
+                <FlatList
+                    scrollEnabled={false}
+                    keyExtractor={(item) => item.USID}
+                    showsVerticalScrollIndicator={true}
+                    scrollsToTop={true}
+                    initialNumToRender={10}
+                    scrollIndicatorInsets={10}
+                    contentContainerStyle={{ rowGap: 15, padding: 15 }}
+                    style={styles.cards}
+                    data={shopData}
+                    enableEmptySections={true}
+                    refreshControl={
+                        <RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />
+                    }
+                    renderItem={({ item }) => (
+                        <ShopCard key={Date().toString()} shop={item} navigation={navigation} />
+                    )}
+                />
+                {
+                    isLoading && (
+                        <AppLoader />
+                    )
                 }
-                renderItem={({ item }) => (
-                    <ShopCard key={Date().toString()} shop={item} navigation={navigation} />
-                )}
-            />
-            {
-                isLoading && (
-                    <AppLoader />
-                )
-            }
-            {
-                isNoShops && (
-                    <NoShopFound navigation={navigation} />
-                )
-            }
+                {
+                    isNoShops && (
+                        <NoShopFound navigation={navigation} />
+                    )
+                }
+            </ScrollView>
         </SafeAreaView>
     )
 }
