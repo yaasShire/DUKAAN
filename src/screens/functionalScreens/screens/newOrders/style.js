@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
+import { screenPadding } from "../../../../globalConstants/styles";
 export default StyleSheet.create({
     orderContainer: {
-        padding: 15,
+        padding: screenPadding,
         rowGap: 10,
 
     }

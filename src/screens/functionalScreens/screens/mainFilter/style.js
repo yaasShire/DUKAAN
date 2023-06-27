@@ -1,21 +1,17 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { globalStyles } from "../../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
 const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     container: {
         flex: 1,
-        // padding: 15
     },
     filterHolder: {
-        // flex: 0.5,
         backgroundColor: "blue"
     },
 
     selectedListHolder: {
-        // backgroundColor: "green",
         width: width,
-        paddingVertical: "4%",
-        // paddingRight: 10,
+        paddingVertical: screenPadding,
         borderBottomColor: "#bec4c0",
         borderBottomWidth: 1,
         paddingRight: 30,

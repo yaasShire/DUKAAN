@@ -8,13 +8,35 @@ import Product from '../../../../components/atoms/product';
 import DecisionButton from '../../../../components/atoms/decisionButton';
 import { nameShortner } from '../../../../utils/utilityFunctions';
 import AppHeader from '../../../../components/molecules/header';
+import ModalComponent from '../../../../components/molecules/modal';
 const ViewOrder = ({ navigation, route }) => {
     const id = route.params?.order.UOID.split('-')
     const [orderId, setOrderId] = useState(id[id.length - 1])
     const [refreshing, setRefreshing] = useState(false)
+    const [visible, setVisible] = React.useState(false);
+    const [showModal, setShowModal] = React.useState(false);
+    const [show, setShow] = useState(true)
+    const [status, setstatus] = useState({})
     const refreshHandler = () => {
         setRefreshing(false)
+    }
 
+    const acceptOrder = () => {
+        setShowModal(true)
+        setVisible(true)
+        setstatus({ state: "ACCEPTED", description: "Order is accepted" })
+        setTimeout(() => {
+            navigation?.replace("orderTopTabs", { screen: "newOrders", initial: false, })
+        }, 2000)
+    }
+
+    const rejectOrder = () => {
+        setShowModal(true)
+        setVisible(true)
+        setstatus({ state: "REJECTED", description: "Order is rejected" })
+        setTimeout(() => {
+            navigation?.navigate("HomeS", { screen: "Home", initial: false, })
+        }, 2000)
     }
     return (
         <SafeAreaView style={styles.container}>
@@ -25,7 +47,7 @@ const ViewOrder = ({ navigation, route }) => {
                     <Text style={styles.orderNumber}>Order id : {orderId}</Text>
                     <View style={styles.nameDateWrapper}>
                         <View style={styles.nameHolder}>
-                            <Text style={styles.customerName} numberOfLines={1}>ALi Nuur Ali</Text>
+                            <Text style={styles.customerName} numberOfLines={1}>{route?.params?.order?.buyer_name}</Text>
                         </View>
                         <View style={styles.dateWrapper}>
                             <Text style={styles.dateText}>{route?.params?.order?.createdAt}</Text>
@@ -65,10 +87,16 @@ const ViewOrder = ({ navigation, route }) => {
                         <Text style={styles.completedText}>Payment Completed</Text>
                     </View>
                 </View>
-                <View style={styles.decisionButtonHolder}>
-                    <DecisionButton title="REJECT" />
-                    <DecisionButton title="ACCEPT" />
-                </View>
+                {
+                    route?.params?.order?.status == 1 && (
+                        <View style={styles.decisionButtonHolder}>
+                            <DecisionButton title="REJECT" onPress={() => rejectOrder()} setVisible={setVisible} show={show} setShowModal={setShowModal} showModal={showModal} visible={visible} status={status} />
+                            <DecisionButton title="ACCEPT" onPress={() => acceptOrder()} setVisible={setVisible} show={show} setShowModal={setShowModal} showModal={showModal} visible={visible} status={status} />
+                        </View>
+                    )
+                }
+
+                <ModalComponent status={status} navigation={navigation} setVisible={setVisible} visible={visible} showModal={showModal} setShowModal={setShowModal} />
 
             </ScrollView>
         </SafeAreaView>

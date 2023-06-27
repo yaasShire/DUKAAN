@@ -22,7 +22,6 @@ const HomeStack = () => {
     return (
         <Stack.Navigator initialRouteName='Home'>
             <Stack.Screen name='Home' component={Home} options={{ headerShown: false }} />
-            <Stack.Screen name='viewOrder' component={ViewOrder} options={{ headerShown: false }} />
             <Stack.Screen name='shops' component={Shops} options={{ headerShown: false }} />
             <Stack.Screen name='addShop' component={AddShop} options={{ headerShown: false }} />
             <Stack.Screen name='reports' component={Reports} options={{ headerShown: false }} />

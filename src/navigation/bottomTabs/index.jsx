@@ -27,8 +27,9 @@ export default function BottomTabs({ navigation }) {
             initialRouteName="HomeS"
             screenOptions={{
                 tabBarActiveTintColor: globalStyles.colors.logoColor,
-                tabBarLabelStyle: { fontSize: 11, fontWeight: '500', },
-                tabBarStyle: { height: Platform.OS == 'android' ? 50 : 85, },
+                tabBarLabelStyle: { fontSize: 11, fontWeight: '500', marginBottom: "12%" },
+                tabBarStyle: { height: Platform.OS == 'android' ? 65 : 85, backgroundColor: globalStyles.colors.miniPrimary, justifyContent: "center", alignItems: "center" },
+
             }}
         >
             <Tab.Screen
@@ -38,7 +39,7 @@ export default function BottomTabs({ navigation }) {
                     headerShown: false,
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size={25} />
+                        <MaterialCommunityIcons name="home" color={color} size={30} />
                     ),
                 }}
             />

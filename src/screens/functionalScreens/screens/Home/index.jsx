@@ -24,6 +24,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import { fetchData } from '../../../../hooks/useFetch'
 import { checkIsUserLogIn } from '../../../../utils/utilityFunctions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import AppLoader from '../../../../components/molecules/AppLoader'
 const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -32,7 +33,6 @@ const Home = ({ navigation }) => {
     const [refreshing, setRefreshing] = useState(false)
     const [index, setIndex] = useState(0)
     const ref = useRef()
-    // console.log(checkIsUserLogIn())
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {
@@ -57,7 +57,10 @@ const Home = ({ navigation }) => {
             <SafeAreaView />
             <StatusBar barStyle='light-content' />
             <AppHeader showLogo={true} navigation={navigation} menu={false} />
-            <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchOrders} />} scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
+            <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => {
+                fetchOrders()
+                fetchShopData()
+            }} />} scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
                 <View style={styles.topContent}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.infoCardsWrapper}>
                         <DashboardCard description={'Today Sales'} ammount={0} sign={true} />
@@ -96,6 +99,11 @@ const Home = ({ navigation }) => {
                         }
                     </View>
                 </View>
+                {
+                    isLoading && (
+                        <AppLoader />
+                    )
+                }
             </ScrollView>
         </View>
     )

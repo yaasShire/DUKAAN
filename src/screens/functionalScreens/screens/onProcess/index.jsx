@@ -25,6 +25,7 @@ const OnProcess = ({ navigation }) => {
     return (
         <>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={orders}
                 contentContainerStyle={styles.orderContainer}
                 keyExtractor={(item) => item.UOID}

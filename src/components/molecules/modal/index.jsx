@@ -13,7 +13,6 @@ import AntiDesign from 'react-native-vector-icons/AntDesign';
 
 import check from '../../../assets/check.png'
 const ModalPoup = ({ visible, showModal, setShowModal, children }) => {
-    // const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
         toggleModal();
@@ -47,16 +46,19 @@ const ModalPoup = ({ visible, showModal, setShowModal, children }) => {
     );
 };
 
-const ModalComponent = ({ visible, setVisible, showModal, setShowModal, status }) => {
+const ModalComponent = ({ visible, setVisible, showModal, setShowModal, status, navigation = {} }) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ModalPoup visible={visible} showModal={showModal} setShowModal={setShowModal}>
                 <View style={{ alignItems: 'center' }}>
-                    <View style={styles.header}>
-                        <TouchableOpacity onPress={() => setVisible(false)}>
+                    {/* <View style={styles.header}>
+                        <TouchableOpacity onPress={() => {
+                            setVisible(false)
+                            navigation?.replace("orderTopTabs", { screen: "newOrders" })
+                        }}>
                             <AntiDesign name='close' size={30} color="#000" />
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
                 </View>
                 <View style={{ alignItems: 'center' }}>
                     <AntiDesign name={status.state == 'ACCEPTED' ? 'check' : 'close'} size={100} color={status.state == 'ACCEPTED' ? 'green' : 'red'} />

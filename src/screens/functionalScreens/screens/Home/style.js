@@ -39,8 +39,7 @@ export default StyleSheet.create({
     },
     infoCardsWrapper: {
         columnGap: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 10
+        padding: screenPadding,
     },
     sellerActionWrapper: {
         flexDirection: "row",

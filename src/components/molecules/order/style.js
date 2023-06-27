@@ -115,19 +115,19 @@ export default StyleSheet.create({
         color: globalStyles.colors.secondaryGray,
     },
     orderDeliveredCard: {
-        backgroundColor: globalStyles.colors.blue,
+        backgroundColor: globalStyles.colors.primaryGray,
         borderRadius: 5,
         justifyContent: "space-around",
         alignItems: "center",
-        height: 45,
-        width: 160,
+        width: width / 2.5,
+        height: height / 18,
         flexDirection: "row",
-        paddingHorizontal: "1%"
+        paddingHorizontal: "2%"
     },
     deliveredText: {
-        fontSize: 15,
+        fontSize: globalStyles.fontSizes.primary2,
         fontWeight: globalStyles.fontWeights.secondary,
-        color: globalStyles.colors.miniPrimary
+        color: globalStyles.colors.tertiary
     }
 
 })

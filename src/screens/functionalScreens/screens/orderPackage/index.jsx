@@ -5,13 +5,17 @@ import styles from './style'
 import { useFocusEffect } from '@react-navigation/native'
 import { fetchData } from '../../../../hooks/useFetch'
 import AppLoader from '../../../../components/molecules/AppLoader'
-const AssignDelivery = ({ navigation }) => {
+import PackageModal from './components/packageModal'
+import BroadcastResponseModal from './components/broadCastResponseModal'
+const OrderPackage = ({ navigation }) => {
     const { width, height } = new Dimensions.get("window")
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
     const [refreshing, setRefreshing] = useState(false)
+    const [modalVisible, setModalVisible] = useState(false)
+    const [responseModal, setResponseModal] = useState(false)
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {
@@ -25,6 +29,7 @@ const AssignDelivery = ({ navigation }) => {
     return (
         <>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={orders}
                 contentContainerStyle={styles.orderContainer}
                 keyExtractor={(item) => item.UOID}
@@ -33,7 +38,7 @@ const AssignDelivery = ({ navigation }) => {
                     <RefreshControl refreshing={refreshing} onRefresh={fetchOrders} />
                 }
                 renderItem={({ item }) => (
-                    <Order navigation={navigation} order={item} assign={true} />
+                    <Order setModalVisible={setModalVisible} navigation={navigation} order={item} assign={true} />
                 )}
             />
             {
@@ -41,8 +46,10 @@ const AssignDelivery = ({ navigation }) => {
                     <AppLoader />
                 )
             }
+            <PackageModal modalVisible={modalVisible} setModalVisible={setModalVisible} setResponseModal={setResponseModal} />
+            <BroadcastResponseModal responseModal={responseModal} setResponseModal={setResponseModal} />
         </>
     )
 }
 
-export default AssignDelivery
+export default OrderPackage

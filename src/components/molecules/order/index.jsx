@@ -7,10 +7,19 @@ import bag3 from '../../../assets/bag2.png'
 import OrderActionButton from '../../atoms/orderActionButton'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { globalStyles } from '../../../globalConstants/styles'
-const Order = ({ accept = true, reject = true, status = false, navigation, order, assign = false, refRBSheet }) => {
+const Order = ({ accept = true, reject = true, status = false, navigation, order, assign = false, setModalVisible = () => { } }) => {
     const [show, setShow] = useState(false)
     const id = order?.UOID.split('-')
     const [orderNumber, setOrderNumber] = useState(id[id?.length - 1])
+
+    const packageReady = () => {
+        setModalVisible(true)
+        // navigation.navigate("courier", { order })
+    }
+    const orderDetails = () => {
+        navigation.navigate("Orders", { screen: "viewOrder", initial: false, params: { order } })
+    }
+
     return (
         <View style={styles.orderCard}>
             <View style={styles.orderInfo1Holder}>
@@ -29,7 +38,7 @@ const Order = ({ accept = true, reject = true, status = false, navigation, order
                     <View style={styles.nameHolder}>
                         <Text style={styles.textName} numberOfLines={2}>{order?.buyer_name}</Text>
                     </View>
-                    { 
+                    {
                         status && (<View style={styles.statusHolder}>
                             <Text style={styles.statusText}>{status}</Text>
                         </View>)
@@ -44,18 +53,18 @@ const Order = ({ accept = true, reject = true, status = false, navigation, order
             <View style={styles.actionButtonsHolder}>
                 {
                     assign && (
-                        <OrderActionButton refRBSheet={refRBSheet} title="Assing" assign={assign} navigation={navigation} order={order} />
+                        <OrderActionButton onPress={() => packageReady()} bgColor={globalStyles.colors.green} title="Broadcast" assign={assign} navigation={navigation} order={order} />
                     )
                 }
                 {
                     status == "completed" && (
                         <View style={styles.orderDeliveredCard}>
                             <Text style={styles.deliveredText}>Order Delivered</Text>
-                            <AntDesign name='check' size={20} color={globalStyles.colors.miniPrimary} />
+                            <AntDesign name='check' size={20} color={globalStyles.colors.green} />
                         </View>
                     )
                 }
-                <OrderActionButton title="Order Details" navigation={navigation} order={order} />
+                <OrderActionButton onPress={() => orderDetails()} title="Order Details" navigation={navigation} order={order} />
             </View>
         </View>
     )
