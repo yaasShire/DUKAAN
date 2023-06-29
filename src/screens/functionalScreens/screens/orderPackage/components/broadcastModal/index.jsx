@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { globalStyles } from '../../../../../../globalConstants/styles';
-import fireBallImage from '../../../../../../assets/images/fireBall2.png'
+import fireBallImage from '../../../../../../assets/images/fireBall2.png';
 import { Image } from 'react-native';
-const BroadcastResponseModal = ({ setResponseModal = () => { }, responseModal = false }) => {
+const BroadcastModal = ({ setResponseModal = () => { }, responseModal = false }) => {
     return (
         <Modal
             animationType="slide"
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default BroadcastResponseModal;
+export default BroadcastModal;

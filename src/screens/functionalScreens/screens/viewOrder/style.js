@@ -55,7 +55,6 @@ export default StyleSheet.create({
         borderWidth: 1,
         height: height / 30,
         borderRadius: 10,
-        marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: "3%"
@@ -179,7 +178,8 @@ export default StyleSheet.create({
     nameDateWrapper: {
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        marginTop: "3%"
     },
     dateText: {
         fontWeight: "400",
@@ -203,6 +203,31 @@ export default StyleSheet.create({
         flex: 1,
         rowGap: 30,
         padding: screenPadding
+    },
+    locationTitleWrapper: {
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center"
+    },
+    acceptedTextWrapper: {
+        backgroundColor: globalStyles.colors.blue,
+        height: 70,
+        borderRadius: 50,
+        padding: screenPadding,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row"
+    },
+    acceptedText: {
+        fontSize: 18,
+        fontWeight: globalStyles.fontWeights.tertiary,
+        color: globalStyles.colors.miniPrimary
+    },
+    statusText: {
+        fontSize: 18,
+        fontWeight: globalStyles.fontWeights.tertiary,
+        color: globalStyles.colors.miniPrimary,
+        marginRight: 10
     }
 
 })

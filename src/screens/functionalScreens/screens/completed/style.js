@@ -4,7 +4,9 @@ export default StyleSheet.create({
     orderContainer: {
         padding: screenPadding,
         rowGap: 10,
-        // flex: 1
-        // marginBottom: 10,
+    },
+    scrollContainer: {
+        height: "100%",
+
     }
 })

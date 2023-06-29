@@ -9,7 +9,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: "3%",
-        paddingVertical: "3%",
+        paddingVertical: "3%",  
     },
     labelStyle: {
         fontSize: 14,

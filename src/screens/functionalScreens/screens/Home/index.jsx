@@ -36,7 +36,8 @@ const Home = ({ navigation }) => {
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {
-            setOrders(data?.message)
+            const orderData = data?.message?.filter(order => order?.status == 1)
+            setOrders(orderData)
         }
     }
 

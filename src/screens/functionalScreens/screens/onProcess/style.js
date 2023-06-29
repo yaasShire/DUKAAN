@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
-import { screenPadding } from "../../../../globalConstants/styles";
+import { HeightDimension, screenPadding } from "../../../../globalConstants/styles";
 export default StyleSheet.create({
     orderContainer: {
         padding: screenPadding,
         rowGap: 10,
-        // flex: 1
-        // marginBottom: 10,
+    },
+    scrollContainer: {
+        height: "100%",
     }
 })

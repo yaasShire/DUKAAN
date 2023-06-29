@@ -5,5 +5,9 @@ export default StyleSheet.create({
         padding: screenPadding,
         rowGap: 10,
 
+    },
+    scrollContainer: {
+        height: "100%",
+
     }
 })

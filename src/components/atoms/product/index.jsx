@@ -5,7 +5,6 @@ import Product3 from '../../../assets/product3.jpg'
 import { nameShortner } from '../../../utils/utilityFunctions'
 
 const Product = ({ order }) => {
-    console.log(order)
     return (
         <View style={styles.product}>
             <View style={styles.productImageNameHolder}>
@@ -13,7 +12,7 @@ const Product = ({ order }) => {
                     <Image source={{ uri: "https://sweyn.co.uk/storage/images/" + order?.photo }} style={styles.productImage} />
                 </View>
                 <View>
-                    <Text style={styles.productName}>{nameShortner(order?.name)}</Text>
+                    <Text style={styles.productName}>{nameShortner(order?.name, 16)}</Text>
                 </View>
             </View>
             <View style={styles.qtyHolder}>
