@@ -89,13 +89,14 @@ export default StyleSheet.create({
     locationIconNameHolder: {
         alignItems: "flex-start",
         justifyContent: "flex-start",
-
+        flex: 1
     },
     countryCityHolder: {
         flexDirection: 'row',
+        flex: .5,
         alignItems: "center",
         justifyContent: "space-around",
-        width: width / 2.7
+        // width: width / 2.7
     },
     product: {
         flexDirection: 'row',

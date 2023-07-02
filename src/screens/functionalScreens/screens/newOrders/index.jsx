@@ -58,7 +58,6 @@ const NewOrderStage = ({ navigation }) => {
                 ) :
                     <View style={{ height: Dimensions.get('screen').height / 1.3, justifyContent: "flex-start" }}>
                         <NoOrderFound />
-
                     </View>
             }
 

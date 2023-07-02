@@ -47,10 +47,17 @@ const Home = ({ navigation }) => {
             setShopsNumber(data?.data?.length)
         }
     }
-    useEffect(() => {
-        fetchShopData()
-        fetchOrders()
-    }, [])
+    // useEffect(() => {
+    //     fetchShopData()
+    //     fetchOrders()
+    // }, [])
+
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchShopData()
+            fetchOrders()
+        }, [])
+    );
 
 
     return (

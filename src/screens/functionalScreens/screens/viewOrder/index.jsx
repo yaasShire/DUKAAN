@@ -13,6 +13,7 @@ import { fetchData } from '../../../../hooks/useFetch';
 import { postData } from '../../../../hooks/usePost';
 import AppLoader from '../../../../components/molecules/AppLoader';
 import OrderStatus from './components/orderStatus';
+import VerificationModal from './components/verificationModal';
 const ViewOrder = ({ navigation, route }) => {
     // console.log(route.params.order)
     const id = route.params?.order?.UOID.split('-')
@@ -26,6 +27,10 @@ const ViewOrder = ({ navigation, route }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [currentOrder, setCurrentOrder] = useState({})
     const [order, setOrder] = useState({})
+    const [verificationModal, setVerificationModal] = useState(false)
+    const [verificationTitle, setVerificationTitle] = useState("")
+    const [verificationDescription, setVerificationDescription] = useState("")
+    const [orderState, setOrderState] = useState("")
     const refreshHandler = () => {
         setRefreshing(false)
     }
@@ -72,6 +77,7 @@ const ViewOrder = ({ navigation, route }) => {
         fetchOrder()
     }, [])
 
+
     return (
         <View style={styles.container}>
             <SafeAreaView />
@@ -100,10 +106,10 @@ const ViewOrder = ({ navigation, route }) => {
                                 <Text style={styles.locationText}>{order?.additional_information},</Text>
                                 <Text style={styles.locationText}>{order?.landmark}</Text>
                             </View>
-                            <View style={styles.countryCityHolder}>
+                            {/* <View style={styles.countryCityHolder}>
                                 <Text>Mogadishu,</Text>
                                 <Text>Somalia</Text>
-                            </View>
+                            </View> */}
                         </View>
                     </View>
                 </View>
@@ -135,12 +141,24 @@ const ViewOrder = ({ navigation, route }) => {
                 {
                     order?.status == 1 && (
                         <View style={styles.decisionButtonHolder}>
-                            <DecisionButton title="REJECT" onPress={() => rejectOrder()} setVisible={setVisible} show={show} setShowModal={setShowModal} showModal={showModal} visible={visible} status={status} />
-                            <DecisionButton title="ACCEPT" onPress={() => acceptOrder()} setVisible={setVisible} show={show} setShowModal={setShowModal} showModal={showModal} visible={visible} status={status} />
+                            <DecisionButton title="REJECT" onPress={() => {
+                                setOrderState("REJECT")
+                                setVerificationTitle("Reject Order")
+                                setVerificationDescription("If you want to reject this order click reject order button.")
+                                setVerificationModal(true)
+
+                            }} />
+                            <DecisionButton title="ACCEPT" onPress={() => {
+                                setOrderState("ACCEPT")
+                                setVerificationTitle("Accept Order")
+                                setVerificationDescription("If you want to accept this order click accept order button.")
+                                setVerificationModal(true)
+                            }} />
                         </View>
                     )
                 }
                 <ModalComponent status={status} navigation={navigation} setVisible={setVisible} visible={visible} showModal={showModal} setShowModal={setShowModal} />
+                <VerificationModal acceptOrder={acceptOrder} rejectOrder={rejectOrder} orderState={orderState} setShowModal={setShowModal} verificationDescription={verificationDescription} verificationTitle={verificationTitle} onPress={() => rejectOrder()} verificationModal={verificationModal} setVerificationModal={setVerificationModal} />
             </ScrollView>
             {
                 isLoading && (

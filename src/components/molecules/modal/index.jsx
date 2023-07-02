@@ -46,7 +46,7 @@ const ModalPoup = ({ visible, showModal, setShowModal, children }) => {
     );
 };
 
-const ModalComponent = ({ visible, setVisible, showModal, setShowModal, status, navigation = {} }) => {
+const ModalComponent = ({ visible, showModal, setShowModal, status, navigation = {} }) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ModalPoup visible={visible} showModal={showModal} setShowModal={setShowModal}>
