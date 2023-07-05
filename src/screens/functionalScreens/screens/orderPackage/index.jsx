@@ -21,11 +21,16 @@ const OrderPackage = ({ navigation }) => {
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {
-            const orderData = data?.message?.filter(order => order?.status == 2)
+            const orderData = data?.message?.filter(order => order?.status == 3)
             setOrders(orderData)
             setRefreshing(false)
         }
     }
+
+    const broadcastOrder = () => {
+
+    }
+
     useEffect(() => {
         fetchOrders()
     }, [])

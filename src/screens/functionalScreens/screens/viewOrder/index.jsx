@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl } from 'react-native'
+import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,6 +14,10 @@ import { postData } from '../../../../hooks/usePost';
 import AppLoader from '../../../../components/molecules/AppLoader';
 import OrderStatus from './components/orderStatus';
 import VerificationModal from './components/verificationModal';
+import { globalStyles } from '../../../../globalConstants/styles';
+import OTPModal from './components/otpModal';
+import SendOTPButton from './components/sendOTPButton';
+import OTPResponseModal from './components/otpResponse';
 const ViewOrder = ({ navigation, route }) => {
     // console.log(route.params.order)
     const id = route.params?.order?.UOID.split('-')
@@ -31,6 +35,9 @@ const ViewOrder = ({ navigation, route }) => {
     const [verificationTitle, setVerificationTitle] = useState("")
     const [verificationDescription, setVerificationDescription] = useState("")
     const [orderState, setOrderState] = useState("")
+    const [showOTPModal, setShowOTPModal] = useState(false)
+    const [otpResponseModal, setOtpResponseModal] = useState(false)
+    const [otpResponseText, setOtpResponseText] = useState(null)
     const refreshHandler = () => {
         setRefreshing(false)
     }
@@ -45,7 +52,7 @@ const ViewOrder = ({ navigation, route }) => {
             setVisible(true)
             setstatus({ state: "ACCEPTED", description: "Order is accepted" })
             setTimeout(() => {
-                navigation?.replace("orderTopTabs", { screen: "newOrders", initial: false, })
+                navigation?.replace("orderTopTabs", { screen: "orderPackage", initial: false, })
             }, 2000)
         }
     }
@@ -77,13 +84,25 @@ const ViewOrder = ({ navigation, route }) => {
         fetchOrder()
     }, [])
 
+    const sendOTP = async () => {
+        const formData = new FormData()
+        // formData.append("UOID", order?.UOID)
+        formData.append('UOID', "b6c28e4d-5159-4e2e-bc88-47ce814f88f6")
+        const data = await postData('seller/orders/sendotp', formData, setError, setIsLoading)
+        if (data?.result?.status == 'OTP generated and inserted successfully') {
+            setOtpResponseText(data?.result?.status)
+            return data?.result?.status
+        }
+        console.log("hello")
+    }
+
 
     return (
         <View style={styles.container}>
             <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <AppHeader backButton={true} title={"Order Details"} navigation={navigation} color={"#000"} />
-            <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchOrder} />} showsVerticalScrollIndicator={false} contentContainerStyle={styles.acionButtonsWrapper}>
+            <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchOrder} />} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 30 }} style={styles.acionButtonsWrapper}>
                 <View style={styles.orderDetailCard}>
                     <Text style={styles.orderNumber}>Order id : {orderId}</Text>
                     <View style={styles.nameDateWrapper}>
@@ -134,11 +153,6 @@ const ViewOrder = ({ navigation, route }) => {
                     </View>
                 </View>
                 {
-                    order?.status == 2 && (
-                        <OrderStatus status="Order accepted" />
-                    )
-                }
-                {
                     order?.status == 1 && (
                         <View style={styles.decisionButtonHolder}>
                             <DecisionButton title="REJECT" onPress={() => {
@@ -157,8 +171,15 @@ const ViewOrder = ({ navigation, route }) => {
                         </View>
                     )
                 }
+                {
+                    order?.status == 3 && (
+                        <SendOTPButton setShowOTPModal={setShowOTPModal} />
+                    )
+                }
                 <ModalComponent status={status} navigation={navigation} setVisible={setVisible} visible={visible} showModal={showModal} setShowModal={setShowModal} />
                 <VerificationModal acceptOrder={acceptOrder} rejectOrder={rejectOrder} orderState={orderState} setShowModal={setShowModal} verificationDescription={verificationDescription} verificationTitle={verificationTitle} onPress={() => rejectOrder()} verificationModal={verificationModal} setVerificationModal={setVerificationModal} />
+                <OTPModal setOtpResponseModal={setOtpResponseModal} sendOTP={sendOTP} acceptOrder={acceptOrder} showOTPModal={showOTPModal} setShowOTPModal={setShowOTPModal} rejectOrder={rejectOrder} orderState={orderState} setShowModal={setShowModal} verificationDescription={verificationDescription} verificationTitle={verificationTitle} onPress={() => rejectOrder()} verificationModal={verificationModal} setVerificationModal={setVerificationModal} />
+                <OTPResponseModal navigation={navigation} otpResponseText={otpResponseText} setOtpResponseModal={setOtpResponseModal} otpResponseModal={otpResponseModal} />
             </ScrollView>
             {
                 isLoading && (

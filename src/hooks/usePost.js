@@ -14,6 +14,10 @@ export const postData = async (endPoint, payload, setError, setIsLoading) => {
                     'Authorization': `${token_type} ${access_token}`
                 }
             })
+            // if (endPoint == 'seller/orders/sendotp') {
+            //     const s = await data.text()
+            //     // console.log(s)
+            // }
             const result = await data.json();
             setIsLoading(false)
             return { result }

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { screenPadding } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -42,7 +43,9 @@ export default StyleSheet.create({
     },
     fieldsHolder: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: "100%",
+        padding: screenPadding,
     },
     buttonHolder: {
         justifyContent: 'center',

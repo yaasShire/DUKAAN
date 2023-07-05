@@ -1,4 +1,4 @@
-import { View, Image, ScrollView, TouchableOpacity, StatusBar, Platform } from 'react-native'
+import { View, Image, ScrollView, TouchableOpacity, StatusBar, Platform, KeyboardAvoidingView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
@@ -50,67 +50,72 @@ const Login = ({ navigation }) => {
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <SafeAreaView />
             <SpreadingCircles bgColor={globalStyles.colors.logoColor} />
-            <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-                <View style={styles.titlesHolder}>
-                    <View >
-                        <Text style={styles.title1}>welcome to</Text>
-                        <Text style={styles.title2}>MECHANICS</Text>
-                    </View>
-                    <View>
-                        <Text style={styles.description}>Access your account </Text>
-                        <Text style={styles.description}> easily by login.</Text>
-                    </View>
-                </View>
-                <View style={styles.imageHolder}>
-                    <Image source={signUpImage} style={styles.image} />
-                </View>
-                {
-                    error && (
-                        <View style={{ alignItems: 'center', marginVertical: "2%" }}>
-                            <Text style={{ color: "red", fontSize: 17 }}>*User not Authorized</Text>
+            <KeyboardAvoidingView
+                enabled
+                style={{ flex: 1 }}
+                keyboardVerticalOffset={15}
+                behavior={Platform.OS == 'ios' ? 'padding' : null}>
+                <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+                    <View style={styles.titlesHolder}>
+                        <View >
+                            <Text style={styles.title1}>welcome to</Text>
+                            <Text style={styles.title2}>MECHANICS</Text>
                         </View>
-                    )
-                }
-
-                <Formik
-                    initialValues={{ email: "", password: "" }}
-                    validationSchema={loginValidationSchema}
-                    onSubmit={(values) => handleSignIn(values)}
-                >
+                        <View>
+                            <Text style={styles.description}>Access your account </Text>
+                            <Text style={styles.description}> easily by login.</Text>
+                        </View>
+                    </View>
+                    <View style={styles.imageHolder}>
+                        <Image source={signUpImage} style={styles.image} />
+                    </View>
                     {
-                        ({ errors, touched, setFieldTouched, handleBlur, handleChange, handleSubmit, values }) => (
-                            <View>
-                                <View style={styles.fieldsHolder}>
-                                    <TextField title="email" name="email" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                    <TextField title="Password" name="password" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
-                                </View>
-                                <TouchableOpacity style={styles.forgetPasswordHolder} onPress={() => navigation.navigate("forgetPassword")}>
-                                    <Text style={styles.forgetPasswordText}>Forget password?</Text>
-                                </TouchableOpacity>
-                                <View style={styles.buttonHolder}>
-                                    <AuthButton title='Login' bgColor={globalStyles.colors.logoColor} cWidth="90%" handleSubmit={() => handleSubmit(values)} />
-                                </View>
-                                <View style={styles.signupLinkWrapper}>
-                                    <View style={styles.newAccount} >
-                                        <Text style={styles.accountCreation} >Don't have account?</Text>
-                                        <TouchableOpacity onPress={() => navigation.navigate("signup")}>
-                                            <Text style={styles.signUpLink}>Sign up</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
+                        error && (
+                            <View style={{ alignItems: 'center', marginVertical: "2%" }}>
+                                <Text style={{ color: "red", fontSize: 17 }}>*User not Authorized</Text>
                             </View>
                         )
                     }
 
-                </Formik>
+                    <Formik
+                        initialValues={{ email: "", password: "" }}
+                        validationSchema={loginValidationSchema}
+                        onSubmit={(values) => handleSignIn(values)}
+                    >
+                        {
+                            ({ errors, touched, setFieldTouched, handleBlur, handleChange, handleSubmit, values }) => (
+                                <View>
+                                    <View style={styles.fieldsHolder}>
+                                        <TextField title="email" name="email" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                        <TextField title="Password" name="password" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
 
-                {
-                    isLoading && (
-                        <SignLoading />
-                    )
-                }
+                                        <TouchableOpacity style={styles.forgetPasswordHolder} onPress={() => navigation.navigate("forgetPassword")}>
+                                            <Text style={styles.forgetPasswordText}>Forget password?</Text>
+                                        </TouchableOpacity>
+                                        <AuthButton title='Login' bgColor={globalStyles.colors.logoColor} cWidth="100%" handleSubmit={() => handleSubmit(values)} />
+                                        <View style={styles.signupLinkWrapper}>
+                                            <View style={styles.newAccount} >
+                                                <Text style={styles.accountCreation} >Don't have account?</Text>
+                                                <TouchableOpacity onPress={() => navigation.navigate("signup")}>
+                                                    <Text style={styles.signUpLink}>Sign up</Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </View>
+                            )
+                        }
 
-            </ScrollView>
+                    </Formik>
+
+                    {
+                        isLoading && (
+                            <SignLoading />
+                        )
+                    }
+
+                </ScrollView>
+            </KeyboardAvoidingView>
 
         </>
     )

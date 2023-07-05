@@ -1,4 +1,4 @@
-import { View, Image, ScrollView, TouchableOpacity, StatusBar, ActivityIndicator, Linking } from 'react-native'
+import { View, Image, ScrollView, TouchableOpacity, StatusBar, ActivityIndicator, Linking, KeyboardAvoidingView, Platform } from 'react-native'
 import { Button, Dialog, Portal, Provider, Text } from 'react-native-paper';
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -49,68 +49,71 @@ const SignUp = ({ navigation }) => {
             <SafeAreaView />
             <StatusBar barStyle="light-content" />
             <SpreadingCircles bgColor='pink' />
-            <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-                <View style={styles.titlesHolder}>
-                    <View style={styles.uperText} >
-                        <Text style={styles.title1}>welcome to</Text>
-                        <Text style={styles.title2}>MECHANICS</Text>
-                    </View>
-                    <View>
-                        <Text style={styles.description}>Welcome back you've </Text>
-                        <Text style={styles.description}> been missed.</Text>
-                    </View>
-                </View>
-                <View style={styles.imageHolder}>
-                    <Image source={bannerImage} style={styles.image} />
-                </View>
-                {
-                    error && (
-                        <View style={styles.errorWrapper}>
-                            <Text style={styles.errorText}>{error}</Text>
+            <KeyboardAvoidingView
+                enabled
+                style={{ flex: 1 }}
+                keyboardVerticalOffset={15}
+                behavior={Platform.OS == 'ios' ? 'padding' : null}>
+                <ScrollView contentContainerStyle={{ alignItems: "center" }} style={styles.container} showsVerticalScrollIndicator={false}>
+                    <View style={styles.titlesHolder}>
+                        <View style={styles.uperText} >
+                            <Text style={styles.title1}>welcome to</Text>
+                            <Text style={styles.title2}>MECHANICS</Text>
                         </View>
-                    )
-                }
-                <Formik
-                    validationSchema={signupValidationSchema}
-                    initialValues={{ name: "", phone_number: "", email: "", city: "", password: "", confirmPassword: "" }}
-                    onSubmit={(values) => handleSignUp(values)}
-                >
+                        <View>
+                            <Text style={styles.description}>Welcome back you've </Text>
+                            <Text style={styles.description}> been missed.</Text>
+                        </View>
+                    </View>
+                    <View style={styles.imageHolder}>
+                        <Image source={bannerImage} style={styles.image} />
+                    </View>
                     {
-                        ({ values, errors, handleChange, handleBlur, touched, handleSubmit, isValid, setFieldTouched }) => (
-                            <>
-                                <View style={styles.fieldsHolder}>
-                                    <TextFieldC title="Full Name" name="name" setFieldTouched={setFieldTouched} values={values.fullName} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                    <TextFieldC title="Phone Number" name="phone_number" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                    <TextFieldC title="email" name="email" setFieldTouched={setFieldTouched} values={values.email} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                    <TextFieldC title="City" name="city" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                    <TextFieldC title="Password" name="password" setFieldTouched={setFieldTouched} values={values.password} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                    <TextFieldC title="Confirm Password" name="confirmPassword" setFieldTouched={setFieldTouched} values={values.confirmPassword} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                    {/* <TextFieldC title="Choose Location" name="chooseLocation" setFieldTouched={setFieldTouched} values={values.confirmPassword} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} /> */}
-                                </View>
-                                <View style={styles.buttonHolder}>
-                                    <AuthButton isLoading={isLoading} bgColor={globalStyles.colors.logoColor} cWidth="90%" title='Sign up' handleSubmit={() => handleSubmit(values)} errors={errors} />
-                                </View>
-                            </>
-
+                        error && (
+                            <View style={styles.errorWrapper}>
+                                <Text style={styles.errorText}>{error}</Text>
+                            </View>
                         )
                     }
-                </Formik>
-                <View style={styles.segmentHolder}>
-                    <View style={styles.segment} />
-                    <Text style={styles.optionText}>Or Sign up with</Text>
-                    <View style={styles.segment} />
-                </View>
-                <View style={styles.signupOptionCardsHolder}>
-                    <SignUpOptionCard image={googleImage} />
-                    <SignUpOptionCard image={facebookImage} />
-                </View>
-                <View style={styles.loginHolder}>
-                    <Text style={styles.textLogin1}>Already have an account?</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('login')}>
-                        <Text style={styles.textLogin2}>Sign in</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
+                    <Formik
+                        validationSchema={signupValidationSchema}
+                        initialValues={{ name: "", phone_number: "", email: "", city: "", password: "", confirmPassword: "" }}
+                        onSubmit={(values) => handleSignUp(values)}
+                    >
+                        {
+                            ({ values, errors, handleChange, handleBlur, touched, handleSubmit, isValid, setFieldTouched }) => (
+                                <>
+                                    <View style={styles.fieldsHolder}>
+                                        <TextFieldC title="Full Name" name="name" setFieldTouched={setFieldTouched} values={values.fullName} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC title="Phone Number" name="phone_number" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC title="email" name="email" setFieldTouched={setFieldTouched} values={values.email} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC title="City" name="city" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC title="Password" name="password" setFieldTouched={setFieldTouched} values={values.password} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC title="Confirm Password" name="confirmPassword" setFieldTouched={setFieldTouched} values={values.confirmPassword} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <AuthButton isLoading={isLoading} bgColor={globalStyles.colors.logoColor} cWidth="100%" title='Sign up' handleSubmit={() => handleSubmit(values)} errors={errors} />
+                                    </View>
+                                </>
+
+                            )
+                        }
+                    </Formik>
+                    <View style={styles.segmentHolder}>
+                        <View style={styles.segment} />
+                        <Text style={styles.optionText}>Or Sign up with</Text>
+                        <View style={styles.segment} />
+                    </View>
+                    <View style={styles.signupOptionCardsHolder}>
+                        <SignUpOptionCard image={googleImage} />
+                        <SignUpOptionCard image={facebookImage} />
+                    </View>
+                    <View style={styles.loginHolder}>
+                        <Text style={styles.textLogin1}>Already have an account?</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('login')}>
+                            <Text style={styles.textLogin2}>Sign in</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
             {
                 isLoading && (
                     <SignLoading />

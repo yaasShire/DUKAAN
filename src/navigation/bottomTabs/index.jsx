@@ -27,7 +27,7 @@ export default function BottomTabs({ navigation }) {
             initialRouteName="HomeS"
             screenOptions={{
                 tabBarActiveTintColor: globalStyles.colors.logoColor,
-                tabBarLabelStyle: { fontSize: 11, fontWeight: '500', marginBottom: "12%" },
+                tabBarLabelStyle: { fontSize: 11, fontWeight: '500', marginBottom: "5%" },
                 tabBarStyle: { height: Platform.OS == 'android' ? 65 : 85, backgroundColor: globalStyles.colors.miniPrimary, justifyContent: "center", alignItems: "center" },
 
             }}

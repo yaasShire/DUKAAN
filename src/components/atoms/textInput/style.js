@@ -13,7 +13,7 @@ export default StyleSheet.create({
         shadowColor: "#000000",
         shadowOpacity: 0.2,
         elevation: 1,
-        width: '90%',
+        width: '100%',
         height: 65,
         borderRadius: 8,
         justifyContent: 'flex-start',

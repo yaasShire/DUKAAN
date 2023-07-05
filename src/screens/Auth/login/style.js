@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { HeightDimension } from "../../../utils/utilityFunctions";
-import { globalStyles } from "../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -44,7 +44,9 @@ export default StyleSheet.create({
     },
     fieldsHolder: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: screenPadding,
+        width: "100%"
     },
     buttonHolder: {
         justifyContent: 'center',

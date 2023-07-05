@@ -4,7 +4,7 @@ export default StyleSheet.create({
     acceptedTextWrapper: {
         backgroundColor: globalStyles.colors.blue,
         height: 70,
-        borderRadius: 50,
+        borderRadius: 10,
         padding: screenPadding,
         justifyContent: "center",
         alignItems: "center",
