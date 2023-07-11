@@ -1,11 +1,11 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 import NoShopsImage from '../../../../../../assets/images/notFound.png'
 import styles from './style'
 
 const NoProduct = ({ navigation, screen = "", title = "" }) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container,]}>
             <Image source={NoShopsImage} style={styles.image} />
             <View style={styles.textButtonWrapper}>
                 <Text style={styles.descriptinText}>{title}</Text>

@@ -16,7 +16,8 @@ const TextFieldC = ({ name = '', title = '', values = {}, handleChange = () => {
                     }} onBlur={() => {
                         handleBlur(name)
                         setFieldTouched(name)
-                    }} value={values[name]} numberOfLines={2} placeholder={title} style={styles.input} secureTextEntry={title == 'Password' && showPassword ? true : title == 'Confirm Password' && showPassword ? true : false} editable={title == 'Choose Location' ? false : true} />
+                    }} value={values[name]}
+                     numberOfLines={2} placeholder={title} style={styles.input} secureTextEntry={title == 'Password' && showPassword ? true : title == 'Confirm Password' && showPassword ? true : false} editable={title == 'Choose Location' ? false : true} />
                 {title == 'Password' ? <TouchableOpacity onPress={() => setShowPassword(!showPassword)}><Ionicons name={showPassword ? 'eye-off' : 'eye'} size={23} /></TouchableOpacity> : title == 'Confirm Password' ? <TouchableOpacity onPress={() => setShowPassword(!showPassword)}><Ionicons name={showPassword ? 'eye-off' : 'eye'} size={23} /></TouchableOpacity> : ''}
             </View>
             <View>

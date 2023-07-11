@@ -14,7 +14,7 @@ import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import SplashAppScreen from './Splash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import messaging from '@react-native-firebase/messaging';
+
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -44,57 +44,6 @@ export default function App() {
   if (loading) {
     return <SplashAppScreen />;
   }
-
-  const requestUserPermission = async () => {
-    const authStatus = await messaging().requestPermission();
-    const enabled =
-      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-
-    if (enabled) {
-      console.log('Authorization status:', authStatus);
-    }
-  }
-
-  useEffect(() => {
-    if (requestUserPermission()) {
-      messaging().getToken().then(async (token) => {
-        console.log(token)
-        // var isLoggedIn = await AsyncStorage.getItem("isUserLoggedIn")
-        // if (isLoggedIn == "true") {
-        //   await updateToken(token)
-        // }
-      });
-    } else {
-      Alert("notification permission declined")
-    }
-
-
-    // Check whether an initial notification is available
-    messaging()
-      .getInitialNotification()
-      .then(remoteMessage => {
-        if (remoteMessage) {
-          console.log(
-            'Notification caused app to open from quit state:',
-            remoteMessage.notification,
-          );
-        }
-      });
-
-
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!', remoteMessage);
-    });
-
-
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
-    });
-
-    return unsubscribe;
-
-  }, [])
 
 
   return (

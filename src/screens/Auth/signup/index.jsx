@@ -41,7 +41,9 @@ const SignUp = ({ navigation }) => {
         }
         if (data?.email) {
             setError(data?.email[0])
-            setError(null)
+            setTimeout(() => {
+                setError(null)
+            }, 2000)
         }
     }
     return (
@@ -97,15 +99,6 @@ const SignUp = ({ navigation }) => {
                             )
                         }
                     </Formik>
-                    <View style={styles.segmentHolder}>
-                        <View style={styles.segment} />
-                        <Text style={styles.optionText}>Or Sign up with</Text>
-                        <View style={styles.segment} />
-                    </View>
-                    <View style={styles.signupOptionCardsHolder}>
-                        <SignUpOptionCard image={googleImage} />
-                        <SignUpOptionCard image={facebookImage} />
-                    </View>
                     <View style={styles.loginHolder}>
                         <Text style={styles.textLogin1}>Already have an account?</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('login')}>

@@ -5,7 +5,8 @@ export default StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: globalStyles.colors.miniPrimary,
-        height: Dimensions.get('window').height
+        height: Dimensions.get('window').height,
+
     },
     image: {
         width: "50%",
