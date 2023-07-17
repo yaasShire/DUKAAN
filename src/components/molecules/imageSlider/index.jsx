@@ -2,16 +2,11 @@
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
 import React from 'react'
 import Swiper from 'react-native-swiper'
-import product1 from '../../../assets/product1.jpg'
-import product2 from '../../../assets/product2.jpg'
-import product3 from '../../../assets/product3.jpg'
-import product4 from '../../../assets/product4.jpg'
-import product5 from '../../../assets/product7.jpg'
 const ImageSlider = () => {
     const { width, height } = new Dimensions.get('screen')
     return (
         <View style={styles.container}>
-            <Swiper
+            {/* <Swiper
                 // showsButtons={true}
                 style={styles.wrapper}
                 height={280}
@@ -71,22 +66,22 @@ const ImageSlider = () => {
                 <ProductImage image={product3} />
 
 
-            </Swiper>
+            </Swiper> */}
         </View>
     )
 }
 
-const ProductImage = ({ image }) => {
-    return <View
-        style={styles.slide}
+// const ProductImage = ({ image }) => {
+//     return <View
+//         style={styles.slide}
 
-    >
-        <Image
-            style={styles.image}
-            source={image}
-        />
-    </View>
-}
+//     >
+//         <Image
+//             style={styles.image}
+//             source={image}
+//         />
+//     </View>
+// }
 
 export default ImageSlider
 const { width, height } = new Dimensions.get('screen')

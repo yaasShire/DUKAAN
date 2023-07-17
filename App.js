@@ -14,11 +14,15 @@ import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import SplashAppScreen from './Splash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import messaging from '@react-native-firebase/messaging';
+import { postData } from './src/hooks/usePost';
 
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const Stack = createNativeStackNavigator()
   const [fontsLoaded] = Font.useFonts({
     'AstroSpace-0Wl3o': require('./src/assets/fonts/AstroSpace-0Wl3o.otf'),
@@ -30,20 +34,81 @@ export default function App() {
     }, 6000);
   }, []);
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+
+  // }, [fontsLoaded]);
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
+
+  // if (loading) {
+  //   return <SplashAppScreen />;
+  // }
+
+
+
+  async function requestUserPermission() {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging?.Status?.AUTHORIZED ||
+      authStatus === messaging?.AuthorizationStatus?.PROVISIONAL;
+
+    if (enabled) {
+      // console.log('Authorization status:', authStatus);
+    }
+  }
+
+  useEffect(() => {
+    if (requestUserPermission()) {
+      messaging().getToken().then(async (token) => {
+        const formData = new FormData()
+        formData.append('fcm', token)
+        // console.log(token)
+        const data = await postData('seller/user/updateFCM', formData, setError, setIsLoading)
+        // var isLoggedIn = await AsyncStorage.getItem("isUserLoggedIn")
+        // if(isLoggedIn == "true"){
+        //   await updateToken(token)
+        // }
+      });
+    } else {
+      alert("notification permission declined")
     }
 
-  }, [fontsLoaded]);
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log(
+        'Notification caused app to open from background state:',
+        remoteMessage.notification,
+      );
+    });
 
-  if (!fontsLoaded) {
-    return null;
-  }
+    // Check whether an initial notification is available
+    messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log(
+            'Notification caused app to open from quit state:',
+            remoteMessage.notification,
+          );
+        }
+      });
 
-  if (loading) {
-    return <SplashAppScreen />;
-  }
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+      console.log('Message handled in the background!', remoteMessage);
+    });
+
+
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
+    });
+
+    return unsubscribe;
+  }, []);
+
 
 
   return (

@@ -1,18 +1,10 @@
 import { View, Text, TouchableOpacity, Image, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
 import styles from './style'
-import product1 from '../../../assets/product3.jpg'
 import Entypo from 'react-native-vector-icons/Entypo';
-import sProduct1 from '../../../assets/sProduct1.png'
 
 const ProductSalesCard = ({ item, navigation }) => {
-    const data = [
-        {
-            id: 1,
-            name: "Motor cleaner",
-            image: sProduct1
-        }
-    ]
+
     const nameShortener = (name) => {
         return name.length >= 28 ? name.slice(0, 30) + "..." : name
     }

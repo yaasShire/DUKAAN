@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './style'
 import person1 from '../../../assets/person2.jpg'
 import Entypo from 'react-native-vector-icons/Entypo';
-import startIcon from '../../../assets/startIcon.png'
+// import startIcon from '../../../assets/startIcon.png'
 const CourierCard = ({ person, navigation }) => {
     return (
         <View style={styles.container}>
@@ -25,7 +25,7 @@ const CourierCard = ({ person, navigation }) => {
                         <Text style={styles.statusText}>active</Text>
                     </View>
                     <View style={styles.raingWraper}>
-                        <Image source={startIcon} style={styles.startIcon} />
+                        {/* <Image source={startIcon} style={styles.startIcon} /> */}
                         <View style={styles.ratingValues}>
                             <Text style={styles.ratingNumber}>{person.rating1}</Text>
                             <Text style={styles.numberOfPeopleRated}>({person.rating2}k)</Text>

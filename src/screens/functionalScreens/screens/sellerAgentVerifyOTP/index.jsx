@@ -1,19 +1,28 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import AppHeader from '../../../../components/molecules/header';
+import { screenPadding } from '../../../../globalConstants/styles';
+import { postData } from '../../../../hooks/usePost';
+import SuccessOTPModal from './components/successModal';
 
-const SellerAgentVerifyOTP = () => {
+const SellerAgentVerifyOTP = ({ route }) => {
     const [otp, setOTP] = useState('');
+    const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    const [otpResponseModal, setOtpResponseModal] = useState(false)
+    const [verificationResult, setVerificationResult] = useState('')
     const inputRef1 = useRef(null);
     const inputRef2 = useRef(null);
     const inputRef3 = useRef(null);
     const inputRef4 = useRef(null);
+    const inputRef5 = useRef(null);
+    const inputRef6 = useRef(null);
 
     const handleOTPChange = (value, inputRef) => {
         setOTP((prevOTP) => {
             const newOTP = prevOTP + value;
-            if (newOTP.length === 4) {
-                handleVerifyOTP();
+            if (newOTP.length === 6) {
+                handleVerifyOTP(newOTP);
             } else {
                 inputRef.current.focus();
             }
@@ -21,8 +30,18 @@ const SellerAgentVerifyOTP = () => {
         });
     };
 
-    const handleVerifyOTP = () => {
-        // Verify OTP functionality here
+    const handleVerifyOTP = async (newOTP) => {
+        const formData = new FormData()
+        formData.append('UOID', route?.params?.UOID)
+        formData.append('OTP', Number(newOTP))
+        formData.append('type', 1)
+        const { result } = await postData('seller/orders/verifyotp', formData, setError, setIsLoading)
+        console.log(formData)
+        if (result?.status) {
+            setVerificationResult(result?.status)
+            setOtpResponseModal(true)
+        }
+
     };
 
     const handleClearOTP = () => {
@@ -63,8 +82,24 @@ const SellerAgentVerifyOTP = () => {
                 <TextInput
                     ref={inputRef4}
                     style={styles.input}
-                    onChangeText={(value) => handleOTPChange(value, null)}
+                    onChangeText={(value) => handleOTPChange(value, inputRef5)}
                     value={otp[3] || ''}
+                    keyboardType="numeric"
+                    maxLength={1}
+                />
+                <TextInput
+                    ref={inputRef5}
+                    style={styles.input}
+                    onChangeText={(value) => handleOTPChange(value, inputRef6)}
+                    value={otp[4] || ''}
+                    keyboardType="numeric"
+                    maxLength={1}
+                />
+                <TextInput
+                    ref={inputRef6}
+                    style={styles.input}
+                    onChangeText={(value) => handleOTPChange(value, null)}
+                    value={otp[5] || ''}
                     keyboardType="numeric"
                     maxLength={1}
                 />
@@ -77,6 +112,7 @@ const SellerAgentVerifyOTP = () => {
                     <Text style={styles.buttonText}>Verify OTP</Text>
                 </TouchableOpacity>
             </View>
+            <SuccessOTPModal handleClearOTP={handleClearOTP} verificationResult={verificationResult} otpResponseModal={otpResponseModal} setOtpResponseModal={setOtpResponseModal} />
         </View>
     );
 };
@@ -86,7 +122,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 20,
     },
     title: {
         fontSize: 24,
@@ -103,7 +138,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 30,
-        paddingHorizontal: 10,
+        paddingHorizontal: screenPadding,
         width: "100%"
     },
     input: {

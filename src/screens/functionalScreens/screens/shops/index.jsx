@@ -1,5 +1,5 @@
 import { StatusBar, FlatList, SafeAreaView, View, Image, Button, TouchableOpacity, RefreshControl } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './style'
 import ShopCard from '../../../../components/molecules/shopCard';
 // import AppHeader from '../../../../components/molecules/appHeader';
@@ -29,21 +29,12 @@ const Shops = ({ navigation }) => {
             setIsNoShops(true)
         }
     }
+    useFocusEffect(
+        useCallback(() => {
+            fetchShopData()
+        }, [])
+    )
 
-    useEffect(() => {
-        const fetchShopData = async () => {
-            const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
-            if (data?.data !== undefined) {
-                setShopData(data.data)
-                setRefreshing(false)
-            }
-            if (data?.data?.length == 0) {
-                setIsNoShops(true)
-            }
-        }
-        fetchShopData()
-
-    }, [])
 
     return (
         <SafeAreaView style={styles.container}>

@@ -44,9 +44,9 @@ const Order = ({ accept = true, reject = true, status = false, navigation, order
                         </View>)
                     }
 
-                    <View style={styles.timePassedWrapper}>
+                    {/* <View style={styles.timePassedWrapper}>
                         <Text style={styles.timePassedText}>3 min ago</Text>
-                    </View>
+                    </View> */}
                 </View>
             </View>
             <View style={styles.divider} />

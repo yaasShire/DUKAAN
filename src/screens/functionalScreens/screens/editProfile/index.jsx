@@ -11,7 +11,6 @@ import { Formik } from 'formik';
 import { editProfileValidation } from '../../../../utils/validationSchema/ediProfileValidation';
 import GlobalHeader from '../../../../components/molecules/globalHeader';
 import { AntDesign } from '@expo/vector-icons';
-// import AppHeader from '../../../../components/molecules/header';
 import { globalStyles } from '../../../../globalConstants/styles';
 import { formValues } from '../../../../utils/utilityFunctions';
 import { postData } from '../../../../hooks/usePost'

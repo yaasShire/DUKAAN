@@ -6,6 +6,6 @@ export default StyleSheet.create({
         rowGap: 10,
     },
     scrollContainer: {
-        height: "100%",
+        flex: 1
     }
 })

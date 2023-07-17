@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 import styles from './style'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { FAB } from 'react-native-paper';
+import { nameShortner } from '../../../utils/utilityFunctions/index'
 const UpdateProductDetailCard = ({ title, value, navigation, name, productDetail }) => {
     return (
         <View style={styles.pricingSectionCard}>
             <View styles={styles.actionContent}>
                 <Text style={styles.actionText}>{title}</Text>
-                <Text style={styles.priceText}>{name == 'price' ? '$' : ""}{value}</Text>
+                <Text style={styles.priceText}>{name == 'price' ? '$' : ""}{nameShortner(value, 35)}</Text>
             </View>
             <View>
                 <FAB

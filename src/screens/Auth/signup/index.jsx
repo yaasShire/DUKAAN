@@ -14,7 +14,6 @@ import { signupValidationSchema } from '../../../utils/validationSchema/signUpVa
 import { Formik } from 'formik'
 import TextFieldC from '../../../components/atoms/textInput'
 import useFetch from '../../../api/auth'
-import { openInbox } from 'react-native-email-link'
 import Feather from 'react-native-vector-icons/Feather';
 import { formDataGenerator, formValues } from '../../../utils/utilityFunctions';
 import { fetchData } from '../../../hooks/useFetch';

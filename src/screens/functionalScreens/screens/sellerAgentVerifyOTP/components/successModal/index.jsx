@@ -3,7 +3,7 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { globalStyles } from '../../../../../../globalConstants/styles';
 import fireBallImage from '../../../../../../assets/images/fireBall2.png';
 import { Image } from 'react-native';
-const OTPResponseModal = ({ orderId = "", setOtpResponseModal = () => { }, otpResponseModal = false, otpResponseText = "", navigation = {} }) => {
+const SuccessOTPModal = ({ handleClearOTP = () => { }, orderId = "", setOtpResponseModal = () => { }, otpResponseModal = false, otpResponseText = "", navigation = {}, verificationResult = "", }) => {
     return (
         <Modal
             animationType="slide"
@@ -20,15 +20,22 @@ const OTPResponseModal = ({ orderId = "", setOtpResponseModal = () => { }, otpRe
                         <Image source={fireBallImage} style={styles.image} />
                     </View>
                     <View style={styles.textWrapper}>
-                        <Text style={styles.title}>OTP Verification</Text>
+                        <Text style={styles.title}>{verificationResult}</Text>
                         <Text style={styles.description}>{otpResponseText}</Text>
                     </View>
                     <View style={styles.btnsWrapper}>
                         <Pressable style={styles.btn} onPress={() => {
-                            navigation.navigate("sellerVerifyOTP", { UOID: orderId })
-                            setOtpResponseModal(false)
+                            // navigation.navigate("sellerVerifyOTP", { UOID: orderId })
+                            // setOtpResponseModal(false)
+                            if (verificationResult == 'OTP not found.' || verificationResult == 'Invalid OTP.') {
+                                handleClearOTP()
+                                setOtpResponseModal(false)
+                            }
+                            if ('OTP verified successfully.') {
+                                // navigation?.replace("orderTopTabs", { screen: "onProcess", initial: false, })
+                            }
                         }}>
-                            <Text style={styles.btnText}>Verify OTP now</Text>
+                            <Text style={styles.btnText}>{verificationResult === 'OTP not found.' ? 'Try again' : 'Ok'}</Text>
                         </Pressable>
                     </View>
                 </View>
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
         width: "90%",
-        height: 350,
+        height: 300,
         paddingTop: 10
     },
     button: {
@@ -130,4 +137,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default OTPResponseModal;
+export default SuccessOTPModal;

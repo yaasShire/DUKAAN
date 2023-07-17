@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Product3 from '../../../../assets/product3.jpg'
-import Product from '../../../../components/atoms/product';
 import DecisionButton from '../../../../components/atoms/decisionButton';
 import { nameShortner } from '../../../../utils/utilityFunctions';
 import AppHeader from '../../../../components/molecules/header';
@@ -18,6 +16,9 @@ import { globalStyles } from '../../../../globalConstants/styles';
 import OTPModal from './components/otpModal';
 import SendOTPButton from './components/sendOTPButton';
 import OTPResponseModal from './components/otpResponse';
+import Product from './components/product';
+import Products from './components/product';
+
 const ViewOrder = ({ navigation, route }) => {
     // console.log(route.params.order)
     const id = route.params?.order?.UOID.split('-')
@@ -87,15 +88,14 @@ const ViewOrder = ({ navigation, route }) => {
     const sendOTP = async () => {
         const formData = new FormData()
         // formData.append("UOID", order?.UOID)
-        formData.append('UOID', "b6c28e4d-5159-4e2e-bc88-47ce814f88f6")
+        formData.append('UOID', order?.UOID)
+        console.log(order?.UOID)
         const data = await postData('seller/orders/sendotp', formData, setError, setIsLoading)
         if (data?.result?.status == 'OTP generated and inserted successfully') {
             setOtpResponseText(data?.result?.status)
             return data?.result?.status
         }
-        console.log("hello")
     }
-
 
     return (
         <View style={styles.container}>
@@ -137,7 +137,7 @@ const ViewOrder = ({ navigation, route }) => {
                     <ScrollView>
                         {
                             order?.name && (
-                                <Product order={order} />
+                                <Products order={order} />
                             )
                         }
                     </ScrollView>
@@ -179,7 +179,7 @@ const ViewOrder = ({ navigation, route }) => {
                 <ModalComponent status={status} navigation={navigation} setVisible={setVisible} visible={visible} showModal={showModal} setShowModal={setShowModal} />
                 <VerificationModal acceptOrder={acceptOrder} rejectOrder={rejectOrder} orderState={orderState} setShowModal={setShowModal} verificationDescription={verificationDescription} verificationTitle={verificationTitle} onPress={() => rejectOrder()} verificationModal={verificationModal} setVerificationModal={setVerificationModal} />
                 <OTPModal setOtpResponseModal={setOtpResponseModal} sendOTP={sendOTP} acceptOrder={acceptOrder} showOTPModal={showOTPModal} setShowOTPModal={setShowOTPModal} rejectOrder={rejectOrder} orderState={orderState} setShowModal={setShowModal} verificationDescription={verificationDescription} verificationTitle={verificationTitle} onPress={() => rejectOrder()} verificationModal={verificationModal} setVerificationModal={setVerificationModal} />
-                <OTPResponseModal navigation={navigation} otpResponseText={otpResponseText} setOtpResponseModal={setOtpResponseModal} otpResponseModal={otpResponseModal} />
+                <OTPResponseModal orderId={order?.UOID} navigation={navigation} otpResponseText={otpResponseText} setOtpResponseModal={setOtpResponseModal} otpResponseModal={otpResponseModal} />
             </ScrollView>
             {
                 isLoading && (

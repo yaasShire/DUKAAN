@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './style'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import AuthButton from '../../../components/atoms/button'
-import successImage from '../../../assets/success.png'
+// import successImage from '../../../assets/success.png'
 const Success = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
@@ -11,7 +11,7 @@ const Success = ({ navigation }) => {
                 <Text style={styles.title}>Password changed Successfully</Text>
             </View>
             <View style={styles.imageHolder}>
-                <Image source={successImage} style={styles.image} />
+                {/* <Image source={successImage} style={styles.image} /> */}
             </View>
             <View style={styles.buttonHolder}>
                 <TouchableOpacity onPress={() => navigation.navigate('login')}>
