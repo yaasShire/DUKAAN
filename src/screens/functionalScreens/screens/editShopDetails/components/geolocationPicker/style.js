@@ -21,11 +21,13 @@ export default StyleSheet.create({
     pickerStyle: {
         height: HeightDimension / 20,
         justifyContent: "center",
-        width: WidthDimension / 1.2
+        width: WidthDimension / 1.15,
+
 
     },
     labelStyle: {
-        marginTop: 23
+        marginTop: 23,
+        color: "gray"
     },
     verticalBar: (bgColor) => ({
         height: "100%",

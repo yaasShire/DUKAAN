@@ -113,7 +113,7 @@ export default StyleSheet.create({
     },
     productHolder: {
         backgroundColor: '#ffffff',
-        padding: '5%',
+        padding: screenPadding,
         borderWidth: 1,
         borderColor: '#dedede',
         borderRadius: 6,
@@ -147,7 +147,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#ffffff",
-        paddingHorizontal: "5%",
+        paddingHorizontal: screenPadding,
         height: height / 10,
         borderRadius: 6,
         borderColor: '#dedede',

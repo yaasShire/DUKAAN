@@ -40,13 +40,13 @@ const RequiredInfo = ({ setCurrentPosition, title }) => {
                 onSubmit={(values) => handleNext(values)}
             >
                 {
-                    ({ errors, values, handleBlur, handleChange, handleSubmit, touched, setFieldTouched }) => (
+                    ({ errors, values, handleBlur, handleChange, handleSubmit, touched, setFieldTouched, setFieldValue }) => (
                         <>
                             <ScrollView showsVerticalScrollIndicator={false}>
                                 <AddProductField step="requiredInfo" label="Product Name" valuesObj={values} name="productName" values={values.productName} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
                                 {/* <AddProductField step="requiredInfo" label="Product Brand" valuesObj={values} name="productBrand" values={values.productBrand} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}
                                 <AddProductField step="requiredInfo" label="Year Of Make" valuesObj={values} name="yearOfMake" values={values.yearOfMake} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
-                                <BrandField brandsList={brandsList} step="requiredInfo" label="Product Brand" valuesObj={values} name="productBrand" values={values.productBrand} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
+                                <BrandField setFieldValue={setFieldValue} brandsList={brandsList} step="requiredInfo" label="Product Brand" valuesObj={values} name="productBrand" values={values.productBrand} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
                             </ScrollView>
                             <View style={styles.actionButtonHolder}>
                                 <AddProductActionButton action="Prev" label={"Prev"} errors={errors} setCurrentPosition={setCurrentPosition} />

@@ -25,9 +25,6 @@ const ProductDetails = ({ route, navigation }) => {
             const data = await fetchData(`seller/products/view/${route?.params?.data.UPID}`, setError, setIsLoading)
             setProductDetail(data.data.data[0])
             setProductImages(data.data.images)
-            console.log('====================================');
-            console.log(data.data.data[0]);
-            console.log('====================================');
 
         }
         const fetchProducts = async () => {
@@ -91,10 +88,10 @@ const ProductDetails = ({ route, navigation }) => {
                         <BrandCard item={productDetail?.brand} />
 
                     </View>
-                    <View style={styles.totalSalesWrapper}>
+                    {/* <View style={styles.totalSalesWrapper}>
                         <Text style={styles.sectionLabel}>Total Sales</Text>
                         <Text style={styles.totalSalesValue}>$0</Text>
-                    </View>
+                    </View> */}
                     <View style={styles.infoCardsWrapper}>
                         <Label label={'Sales'} />
                         <ProductDetailsCard productDetail={productDetail} />

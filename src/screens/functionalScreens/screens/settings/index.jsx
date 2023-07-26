@@ -21,6 +21,7 @@ const Settings = ({ navigation, route }) => {
     const { width, height } = new Dimensions.get("window")
     const [visible, setVisible] = React.useState(false);
     const [user, setUser] = useState({})
+    const [userData, setUserData] = useState({})
     const [imageURL, setImageURL] = useState(route?.params?.image)
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
@@ -30,8 +31,9 @@ const Settings = ({ navigation, route }) => {
 
 
     const getUserData = async () => {
-        const { data: userData } = await fetchData('seller/user/view', setError, setIsLoading)
-        setUser(userData?.data[0])
+        const { data: userDataValues } = await fetchData('seller/user/view', setError, setIsLoading)
+        setUser(userDataValues?.data[0])
+        setUserData(userDataValues?.data[0])
         setRefreshing(false)
     }
     useFocusEffect(
@@ -39,6 +41,7 @@ const Settings = ({ navigation, route }) => {
             getUserData()
         }, [])
     );
+
 
     useEffect(() => {
         const getUserData = async () => {
@@ -64,10 +67,10 @@ const Settings = ({ navigation, route }) => {
             <StatusBar barStyle={Platform.OS == 'android' ? 'light-content' : 'dark-content'} />
             <AppHeader title='Settings' />
             <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getUserData} />} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollStyle} >
-                <ProfileCard user={user} navigation={navigation} />
+                <ProfileCard user={user} navigation={navigation} userData={userData} />
                 <SingleCardAction navigation={navigation} name='Reset Password' icon='lock-reset' color='green' screen='changePassword' />
                 <SingleCardAction navigation={navigation} name='Reports' icon='google-analytics' color='#3430f2' screen='reports' />
-                <SingleCardAction navigation={navigation} name='Add Product' icon='shopping' color='#1da1ab' screen='addProduct' />
+                {/* <SingleCardAction navigation={navigation} name='Add Product' icon='shopping' color='#1da1ab' screen='addProduct' /> */}
                 <SingleCardAction navigation={navigation} name='Add Shop' icon='store-check' color='#1da1ab' screen='addShop' />
                 <SingleCardAction navigation={navigation} name='Privacy & Policy' icon='door-closed-lock' color='#f29e0c' screen='privacy' />
                 <SingleCardAction navigation={navigation} name='Help' icon='help-circle-outline' color='#7d1a7a' screen='help' />

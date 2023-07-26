@@ -9,7 +9,7 @@ import { Button } from 'react-native-paper';
 import ProductCardButton from './components';
 import { nameShortner } from '../../../utils/utilityFunctions';
 const ProductCard = ({ item, navigation }) => {
-
+    console.log(item)
     return (
         <View style={styles.card}>
             <View style={styles.imageWrapper}>
@@ -22,10 +22,10 @@ const ProductCard = ({ item, navigation }) => {
                         <Text style={styles.priceText}>${item?.price}</Text>
                     </View>
                 </View>
-                <View style={styles.stockWrapper}>
+                {/* <View style={styles.stockWrapper}>
                     <Text style={styles.stockText}>stock:</Text>
                     <Text style={styles.stockValue}>200</Text>
-                </View>
+                </View> */}
                 <View style={styles.descriptionWrapper}>
                     <Text numberOfLines={3} style={styles.description}>{nameShortner(item?.description, 40)}</Text>
                 </View>

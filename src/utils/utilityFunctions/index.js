@@ -101,7 +101,7 @@ export const { width: WindowDimension, height: HeightDimension } = new Dimension
 
 export const formValues = (values, image) => {
     const data = new FormData();
-
+    console.log(image)
     if (image) {
         const profileImage = image.split('/');
         const imageName = profileImage[profileImage.length - 1];

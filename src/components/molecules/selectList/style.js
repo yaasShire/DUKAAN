@@ -7,7 +7,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         paddingHorizontal: 10,
         borderRadius: 5,
-        borderColor: "gray"
+        borderColor: "gray",
     },
     listWrapper: {
         // height: HeightDimension,
@@ -18,7 +18,7 @@ export default StyleSheet.create({
         opacity: .4,
         fontSize: 14,
         fontWeight: "500",
-        marginBottom: 6
+        marginBottom: 6,
     },
     dataRow: {
         borderWidth: 1,

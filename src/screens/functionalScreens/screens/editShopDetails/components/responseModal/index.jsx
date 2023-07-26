@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import { Alert, Modal, StyleSheet, Text, Pressable, View, Image } from 'react-native';
 import { globalStyles } from '../../../../../../globalConstants/styles';
-
-const ResponseModal = ({ showResponseModal, setShowResponseModal, responseMessage = "" }) => {
+import fireBallImage from '../../../../../../assets/images/fireBall2.png';
+const ResponseModal = ({ showResponseModal = false, setShowResponseModal = () => { }, responseMessage = "" }) => {
     const [modalVisible, setModalVisible] = useState(false);
     return (
-        <View style={styles.centeredView}>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={showResponseModal}
-                onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    setShowResponseModal(!modalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <View>
-                            <Text style={styles.responseText}>Response</Text>
-                        </View>
-                        <Text style={styles.modalText}>{responseMessage}</Text>
+        <Modal
+            animationType="slide"
+            onDismiss={() => setShowResponseModal(false)}
+            transparent={true}
+            visible={showResponseModal}
+            onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setShowResponseModal(prev => !prev);
+            }}>
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <View>
+                        <Image source={fireBallImage} style={styles.image} />
+                    </View>
+                    <View style={styles.textWrapper}>
+                        <Text style={styles.title}>Geo Location</Text>
+                        <Text style={styles.description}>{responseMessage}</Text>
                     </View>
                 </View>
-            </Modal>
-        </View>
+            </View>
+        </Modal>
     );
 };
 
@@ -33,14 +35,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 22,
-
     },
     modalView: {
-        margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
-        padding: 35,
         alignItems: 'center',
+        justifyContent: "space-between",
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -49,9 +49,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        width: "70%",
-        height: "25%",
-        justifyContent: "center"
+        width: "90%",
+        height: 250,
+        paddingTop: 10
     },
     button: {
         borderRadius: 20,
@@ -73,11 +73,49 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center',
     },
-    responseText: {
-        fontWeight: globalStyles.fontWeights.secondary,
-        fontSize: 19,
-        color: "green"
-
+    btnsWrapper: {
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-around",
+        alignItems: "center",
+        height: 70,
+        borderTopWidth: 1,
+        borderTopColor: globalStyles.colors.primaryGray
+    },
+    btn1: {
+        borderRightWidth: 1,
+        borderRightColor: globalStyles.colors.primaryGray
+    },
+    btn: {
+        width: "100%",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    btnText: {
+        color: globalStyles.colors.blue,
+        fontSize: 18,
+        fontWeight: globalStyles.fontWeights.primary
+    },
+    textWrapper: {
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 20
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: globalStyles.fontWeights.secondary
+    },
+    description: {
+        textAlign: "center",
+        fontSize: 15,
+        fontWeight: globalStyles.fontWeights.primary,
+        opacity: .8
+    },
+    image: {
+        width: 100,
+        height: 100,
+        resizeMode: "contain"
     }
 });
 

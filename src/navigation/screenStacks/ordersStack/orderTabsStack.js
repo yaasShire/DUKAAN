@@ -9,7 +9,7 @@ import AppHeader from '../../../components/molecules/header';
 import { Platform, View } from 'react-native';
 import { globalStyles } from '../../../globalConstants/styles';
 import { Text } from 'react-native-paper';
-
+import OrderPending from '../../../screens/functionalScreens/screens/orderPending';
 export default function OrderTopTabsStack({ navigation }) {
     const Tab = createMaterialTopTabNavigator();
     const PlaceHolder = () => (
@@ -36,7 +36,12 @@ export default function OrderTopTabsStack({ navigation }) {
                 <Tab.Screen
                     name="newOrders"
                     component={OrdersStages}
-                    options={{ tabBarLabel: 'New orders' }}
+                    options={{ tabBarLabel: 'New' }}
+                />
+                <Tab.Screen
+                    name="pending"
+                    component={OrderPending}
+                    options={{ tabBarLabel: 'Pending' }}
                 />
                 <Tab.Screen
                     name="orderPackage"
@@ -46,12 +51,12 @@ export default function OrderTopTabsStack({ navigation }) {
                 <Tab.Screen
                     name="onProcess"
                     component={OnProcess}
-                    options={{ tabBarLabel: 'On Process' }}
+                    options={{ tabBarLabel: 'On Going' }}
                 />
                 <Tab.Screen
                     name="completed"
                     component={Completed}
-                    options={{ tabBarLabel: 'Completed' }}
+                    options={{ tabBarLabel: 'Done' }}
                 />
 
             </Tab.Navigator>

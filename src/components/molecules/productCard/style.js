@@ -80,11 +80,11 @@ export default StyleSheet.create({
         marginTop: 5
     },
     actionsWrapper: {
-        // flex: 1,
+        flex: 1,
         flexDirection: "row",
         justifyContent: "flex-end",
         paddingHorizontal: "3%",
-        alignItems: "center"
+        alignItems: "center",
     },
 
 })

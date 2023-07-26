@@ -32,7 +32,8 @@ const SuccessOTPModal = ({ handleClearOTP = () => { }, orderId = "", setOtpRespo
                                 setOtpResponseModal(false)
                             }
                             if ('OTP verified successfully.') {
-                                // navigation?.replace("orderTopTabs", { screen: "onProcess", initial: false, })
+                                setOtpResponseModal(false)
+                                navigation?.navigate("orderTopTabs", { screen: "onProcess" })
                             }
                         }}>
                             <Text style={styles.btnText}>{verificationResult === 'OTP not found.' ? 'Try again' : 'Ok'}</Text>

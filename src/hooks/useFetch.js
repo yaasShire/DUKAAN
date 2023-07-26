@@ -13,7 +13,6 @@ export const fetchData = async (endPoint, setError, setIsLoading) => {
                 }),
 
             })
-            // console.warn(access_token)
             const data = await result.json()
             return { data }
         }

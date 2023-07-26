@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl, Pressable } from 'react-native'
+import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl, Pressable, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -20,7 +20,6 @@ import Product from './components/product';
 import Products from './components/product';
 
 const ViewOrder = ({ navigation, route }) => {
-    // console.log(route.params.order)
     const id = route.params?.order?.UOID.split('-')
     const [orderId, setOrderId] = useState(id[id?.length - 1])
     const [refreshing, setRefreshing] = useState(false)
@@ -42,18 +41,16 @@ const ViewOrder = ({ navigation, route }) => {
     const refreshHandler = () => {
         setRefreshing(false)
     }
-
     const acceptOrder = async () => {
         const formData = new FormData()
         formData.append('UOID', route?.params?.order?.UOID)
-        // formData.append('status', 2)
         const updatedOrderStatus = await postData('seller/orders/accept', formData, setError, setIsLoading)
         if (updatedOrderStatus?.result?.message == 'Order Accepted') {
             setShowModal(true)
             setVisible(true)
             setstatus({ state: "ACCEPTED", description: "Order is accepted" })
             setTimeout(() => {
-                navigation?.replace("orderTopTabs", { screen: "orderPackage", initial: false, })
+                navigation?.replace("orderTopTabs", { screen: "pending", initial: false, })
             }, 2000)
         }
     }
@@ -87,16 +84,14 @@ const ViewOrder = ({ navigation, route }) => {
 
     const sendOTP = async () => {
         const formData = new FormData()
-        // formData.append("UOID", order?.UOID)
         formData.append('UOID', order?.UOID)
-        console.log(order?.UOID)
         const data = await postData('seller/orders/sendotp', formData, setError, setIsLoading)
+        console.log(data)
         if (data?.result?.status == 'OTP generated and inserted successfully') {
             setOtpResponseText(data?.result?.status)
             return data?.result?.status
         }
     }
-
     return (
         <View style={styles.container}>
             <SafeAreaView />
@@ -134,13 +129,11 @@ const ViewOrder = ({ navigation, route }) => {
                 </View>
                 {/* product items */}
                 <View style={styles.productHolder}>
-                    <ScrollView>
-                        {
-                            order?.name && (
-                                <Products order={order} />
-                            )
-                        }
-                    </ScrollView>
+                    {
+                        order?.name && (
+                            <Products order={order} />
+                        )
+                    }
                 </View>
                 {/* product items ends here */}
                 <View style={styles.totalAmmountWapper}>
@@ -169,6 +162,16 @@ const ViewOrder = ({ navigation, route }) => {
                                 setVerificationModal(true)
                             }} />
                         </View>
+                    )
+                }
+                {
+                    order?.status == 4 && (
+                        <OrderStatus status='On Process' />
+                    )
+                }
+                {
+                    order?.status == 2 && (
+                        <OrderStatus status='Pending for delivery agent to accept' />
                     )
                 }
                 {

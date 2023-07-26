@@ -1,5 +1,5 @@
 import { View, Text, StatusBar } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './style'
 import AppHeader from '../../../../components/molecules/header'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -11,6 +11,7 @@ import { fetchData } from '../../../../hooks/useFetch'
 import { getShopImages, shopImagesList } from '../../../../utils/utilityFunctions'
 import ResponseModal from './components/responseModal'
 import AppLoader from '../../../../components/molecules/AppLoader'
+import { useFocusEffect } from '@react-navigation/native'
 const EditShopImages = ({ navigation, route }) => {
     const [shopData, setShopData] = useState([])
     const [refreshing, setRefreshing] = useState(false)
@@ -28,9 +29,14 @@ const EditShopImages = ({ navigation, route }) => {
             setRefreshing(false)
         }
     }
-    useEffect(() => {
-        fetchShopData()
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            fetchShopData()
+        }, [])
+    )
+    // useEffect(() => {
+    //     fetchShopData()
+    // }, [])
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -41,10 +47,10 @@ const EditShopImages = ({ navigation, route }) => {
             </View>
             <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />}>
                 <View style={styles.imagesWrapper}>
-                    <ShopImagePicker setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[0]?.url} name={images[0]?.name} shopId={route?.params?.shopId} />
-                    <ShopImagePicker setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[1]?.url} name={images[1]?.name} shopId={route?.params?.shopId} />
-                    <ShopImagePicker setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[2]?.url} name={images[2]?.name} shopId={route?.params?.shopId} />
-                    <ShopImagePicker setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[3]?.url} name={images[3]?.name} shopId={route?.params?.shopId} />
+                    <ShopImagePicker fetchShopData={fetchShopData} setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[0]?.url} name={images[0]?.name} shopId={route?.params?.shopId} />
+                    <ShopImagePicker fetchShopData={fetchShopData} setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[1]?.url} name={images[1]?.name} shopId={route?.params?.shopId} />
+                    <ShopImagePicker fetchShopData={fetchShopData} setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[2]?.url} name={images[2]?.name} shopId={route?.params?.shopId} />
+                    <ShopImagePicker fetchShopData={fetchShopData} setResponseMessage={setResponseMessage} setIsLoading={setIsLoading} setModalVisible={setModalVisible} url={images[3]?.url} name={images[3]?.name} shopId={route?.params?.shopId} />
                 </View>
             </ScrollView>
             <ResponseModal responseMessage={responseMessage} modalVisible={modalVisible} setModalVisible={setModalVisible} />

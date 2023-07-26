@@ -52,7 +52,6 @@ export default function BottomTabs({ navigation }) {
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="cart" color={color} size={25} />
                     ),
-                    tabBarBadge: 3,
                 }}
             />
             {/* <Tab.Screen

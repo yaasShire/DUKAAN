@@ -4,7 +4,7 @@ import styles from './style'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { FAB } from 'react-native-paper';
 import { nameShortner } from '../../../utils/utilityFunctions/index'
-const UpdateProductDetailCard = ({ title, value, navigation, name, productDetail }) => {
+const UpdateProductDetailCard = ({ title, value, navigation, name, productDetail = {} }) => {
     return (
         <View style={styles.pricingSectionCard}>
             <View styles={styles.actionContent}>

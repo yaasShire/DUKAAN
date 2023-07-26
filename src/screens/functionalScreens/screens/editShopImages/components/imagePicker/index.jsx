@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import cameraPlaceHolder from '../../../../../../assets/camera1.png'
 import * as ImagePicker from 'expo-image-picker';
 import { postData } from '../../../../../../hooks/usePost';
-const ShopImagePicker = ({ main = false, url = "", name = "", shopId = "", setModalVisible = () => { }, setIsLoading = () => { }, setResponseMessage = () => { } }) => {
+const ShopImagePicker = ({ fetchShopData = () => { }, main = false, url = "", name = "", shopId = "", setModalVisible = () => { }, setIsLoading = () => { }, setResponseMessage = () => { } }) => {
     const [image, setImage] = useState(url);
     const [error, setError] = useState(null)
     const pickImage = async () => {
@@ -27,6 +27,7 @@ const ShopImagePicker = ({ main = false, url = "", name = "", shopId = "", setMo
             })
             const data = await postData('seller/shop/update', shopData, setError, setIsLoading)
             if (data?.result?.status == 'changed') {
+                fetchShopData()
                 setModalVisible(true)
                 setResponseMessage(data?.result?.status)
             }

@@ -12,7 +12,7 @@ const GeolocationMap = ({ showModal = false, setShowModal = () => { }, coordinat
                 <StatusBar hidden />
                 <MapView
                     style={styles.mapStyle}
-                    initialRegion={coordinate}
+                    region={coordinate}
                     provider='google'
                     onPress={(e) => {
                         console.log(e.nativeEvent.coordinate)
@@ -29,7 +29,6 @@ const GeolocationMap = ({ showModal = false, setShowModal = () => { }, coordinat
                         title={"Shop Location"}
                         description={"This location will stored as the shop location"}
                         pinColor="red"
-
                         onDragEnd={(e) => {
                             setCoordinate({
                                 latitude: e.nativeEvent.coordinate.latitude,
@@ -43,7 +42,9 @@ const GeolocationMap = ({ showModal = false, setShowModal = () => { }, coordinat
                     </Marker>
                     <Circle
                         center={coordinate}
-                        radius={500}
+                        radius={200}
+                        strokeColor='red'
+                        strokeWidth={10}
                     />
                 </MapView>
                 <MotiView

@@ -1,8 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     personalData: {},
-    shopData: {},
-    locationData: {},
+    shopData: {
+        shopName: "",
+        shopEmail: "",
+        shopNumber: ""
+    },
+    locationData: {
+        country: "",
+        state: "",
+        city: "",
+        region: "",
+        nearestLANMark: ""
+    },
     coordinates: {
         latitude: 0,
         longitude: 0

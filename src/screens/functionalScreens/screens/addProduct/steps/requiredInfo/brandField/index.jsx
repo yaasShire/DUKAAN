@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { List } from 'react-native-paper'
 import styles from './style'
 import { Picker } from 'react-native-ui-lib/src/components/picker'
-const BrandField = ({ label, list, handleChange, errors, name, value, setState, state, setRegion, setFieldTouched, brandsList }) => {
+const BrandField = ({ label, list, handleChange, errors, name, value, setState, state, setRegion, setFieldTouched, brandsList, setFieldValue = () => { } }) => {
     const [show, setShow] = useState(false)
     const [active, setActive] = useState(`Select ${name}`)
     // const [show, setShow] = useState(false)
@@ -55,11 +55,11 @@ const BrandField = ({ label, list, handleChange, errors, name, value, setState, 
                         <Picker.Item
                             key={item?.id}
                             label={item.name}
-                            onChange={item => console.warn(item)}
                             onPress={() => {
                                 setActive(item?.name)
                                 setShow(prev => !prev)
                                 handleChange(name)((item?.id).toString())
+                                // setFieldValue(name, (item?.id).toString())
                                 // onBlur={() => {
                                 // handleBlur(name)
                                 setFieldTouched(name)

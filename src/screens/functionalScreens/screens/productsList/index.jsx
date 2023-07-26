@@ -39,23 +39,21 @@ const ProductsList = ({ navigation, route }) => {
     }
     const fetchShopData = async () => {
         const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
+        console.log(data)
         if (data?.data) {
             setNumberOfShops(data?.data?.length)
         }
     }
 
+    const fetchShopAndProducts = () => {
+        fetchShopData()
+        fetchProducts()
+    }
     useFocusEffect(
         React.useCallback(() => {
-            fetchShopData()
-            fetchProducts()
+            fetchShopAndProducts()
         }, [])
     );
-
-
-    // useEffect(() => {
-    //     fetchShopData()
-    //     fetchProducts()
-    // }, [])
 
     const refetchProducts = async () => {
         setIsLoading(true)
@@ -73,7 +71,7 @@ const ProductsList = ({ navigation, route }) => {
             <SafeAreaView />
             <StatusBar barStyle={'light-content'} />
             <AppHeader title='Products' showAddButton={true} showFilter={true} navigation={navigation} menu={false} addproductButton={true} />
-            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchProducts} />}>
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchShopAndProducts} />}>
                 <FlatList
                     scrollEnabled={false}
                     keyExtractor={(item) => item.UPID}

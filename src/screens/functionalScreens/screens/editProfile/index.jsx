@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './style'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntiDesign from 'react-native-vector-icons/AntDesign';
-import Profile from '../../../../assets/person2.jpg'
 import EditProfileField from '../../../../components/atoms/editProfileField';
 import * as ImagePicker from 'expo-image-picker';
 import { Formik } from 'formik';
@@ -14,16 +13,19 @@ import { AntDesign } from '@expo/vector-icons';
 import { globalStyles } from '../../../../globalConstants/styles';
 import { formValues } from '../../../../utils/utilityFunctions';
 import { postData } from '../../../../hooks/usePost'
+import profilePlaceholder from '../../../../assets/images/profilePlaceholder.jpg'
 import AppLoader from '../../../../components/molecules/AppLoader';
 import UploadingAnimation from '../../../../components/molecules/uploadingAnimation';
 import AppHeader from '../../../../components/molecules/header';
 import { fetchData } from '../../../../hooks/useFetch';
 const EditProfile = ({ navigation, route }) => {
-    const [image, setImage] = useState(route.params.image)
+    console.log(route.params.userData)
+    const [image, setImage] = useState()
+    const [prevImage, setPrevImage] = useState(route?.params?.userData?.profile_picture)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [imageName, setImageName] = useState(null)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(route?.params?.userData)
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -42,7 +44,7 @@ const EditProfile = ({ navigation, route }) => {
         setIsLoading(true)
         profileData = formValues(values, image)
         const response = await postData('seller/user/update', profileData, setError, setIsLoading)
-        if (response.result.status) {
+        if (response?.result?.status) {
             navigation.navigate('settings')
         }
     }
@@ -50,7 +52,7 @@ const EditProfile = ({ navigation, route }) => {
         const fetchUserData = async () => {
             const data = await fetchData('seller/user/view', setError, setIsLoading)
             // console.warn(data.data.data[0])
-            setUser(data.data.data[0])
+            setUser(data?.data?.data[0])
         }
         fetchUserData()
     }, [])
@@ -63,7 +65,7 @@ const EditProfile = ({ navigation, route }) => {
                 <View style={styles.profileCardWrapper}>
                     <View style={styles.imageAndButtonWrapper}>
                         <View style={styles.imageWrapper}>
-                            <Image style={styles.image} source={image ? { uri: image } : Profile} />
+                            <Image style={styles.image} source={image ? { uri: image } : prevImage ? { uri: `https://sweyn.co.uk/storage/images/avatar/${prevImage}` } : profilePlaceholder} />
                         </View>
                         <View style={styles.cameraIconWrapper}>
                             <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />
@@ -72,7 +74,7 @@ const EditProfile = ({ navigation, route }) => {
                 </View>
                 <View style={styles.txtWrapper}>
                     <Formik
-                        initialValues={{ name: "", email: "", phone_number: "", city: "", landmark: "" }}
+                        initialValues={{ name: user?.name, email: user?.email, phone_number: user?.phone_number }}
                         validationSchema={editProfileValidation}
                         onSubmit={(values) => handleSaveProfile(values)}
                     >

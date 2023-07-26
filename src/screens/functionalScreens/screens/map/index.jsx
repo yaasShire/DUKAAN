@@ -25,9 +25,11 @@ const Map = ({ route, navigation }) => {
     })
 
     const handleSaveLocation = () => {
-        dispatch(setCoordinates(coordinate))
+        navigation.goBack()
+        // dispatch(setCoordinates(coordinate))
     }
 
+    // console.log(route.params)
     return (
         <View style={styles.container}>
             <StatusBar hidden />
@@ -37,6 +39,11 @@ const Map = ({ route, navigation }) => {
                 initialRegion={coordinate}
                 provider='google'
                 onPress={(e) => {
+                    console.log(e.nativeEvent.position.x)
+                    dispatch(setCoordinates({
+                        latitude: e.nativeEvent.coordinate.latitude,
+                        longitude: e.nativeEvent.coordinate.longitude,
+                    }))
                     setCoordinate({
                         latitude: e.nativeEvent.coordinate.latitude,
                         longitude: e.nativeEvent.coordinate.longitude,
@@ -62,7 +69,9 @@ const Map = ({ route, navigation }) => {
                 </Marker>
                 <Circle
                     center={coordinate}
-                    radius={500}
+                    radius={50}
+                    strokeColor='red'
+                    strokeWidth={10}
                 />
             </MapView>
             <MotiView
@@ -83,7 +92,6 @@ const Map = ({ route, navigation }) => {
                     color='#fff'
                     onPress={() => {
                         handleSaveLocation()
-                        navigation.goBack()
                     }}
                 />
             </MotiView>

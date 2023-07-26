@@ -8,7 +8,7 @@ const ProductSmallCard = ({ product, navigation }) => {
         <Pressable style={styles.container} onpress={() => navigation.navigate("productDetails", { data: product })}>
             <Image source={{ uri: `https://sweyn.co.uk/storage/images/${product?.photo}` }} style={styles.image} />
             <View style={styles.content}>
-                <Text style={styles.productName}>{product?.name}</Text>
+                <Text style={styles.productName}>{nameShortner(product?.name, 13)}</Text>
                 <View style={styles.sectionWrapper}>
                     <Text style={styles.title}>Brand:</Text>
                     <Text style={styles.value}>{product?.brand?.name || 'No brand'}</Text>

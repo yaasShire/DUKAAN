@@ -6,7 +6,7 @@ import AddShopButton from '../../../../../components/atoms/addShopButton'
 import { Formik } from 'formik'
 import { shopLocationValidation } from '../../../../../utils/validationSchema/shopLocationValidation'
 import CancelButton from '../../../../../components/atoms/canelButton'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLocationData } from '../../../../../redux/shop'
 import { List } from 'react-native-paper';
 import SelectList from '../../../../../components/molecules/selectList'
@@ -30,6 +30,7 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const handlePress = () => setExpanded(!expanded);
+    const { locationData } = useSelector(state => state.shopRegistration)
     const dispatch = useDispatch()
     const handleDataSubmit = (values) => {
         dispatch(setLocationData(values))
@@ -40,7 +41,6 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
         const fetchStates = async () => {
             const data = await fetchData('global/states/', setError, setIsLoading)
             setStatesList(data.data.data)
-
         }
         fetchStates()
         // regions
@@ -49,7 +49,6 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
             setRegionsList(data.data.data)
         }
         fetchRegions()
-
     }, [])
 
     const [coordinate, setCoordinate] = useState({
@@ -74,22 +73,23 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
             })
         })();
     }, []);
+    console.log(locationData)
     return (
         <View style={styles.container}>
             <ProductRegistrationHeader title="Enter Location Details" />
             <Formik
-                initialValues={{ country: "", state: "", city: "", region: "", nearestLANMark: "" }}
+                initialValues={{ country: locationData?.country, state: locationData?.state, city: locationData?.city, region: locationData?.region, nearestLANMark: locationData?.nearestLANMark }}
                 validationSchema={shopLocationValidation}
                 onSubmit={(values) => handleDataSubmit(values)}
             >
                 {
                     ({ values, errors, handleBlur, handleChange, handleSubmit, touched, setTouched, setFieldTouched }) => (
                         <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 15 }}>
-                            <AddShopField label={'Country'} name="country" values={values.country} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <AddShopField label={'City'} name="city" values={values.city} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <AddShopField label={'Nearest LAN Mark'} name="nearestLANMark" values={values.nearestLANMark} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <SelectList regionsList={regionsList} name="region" errors={errors} setRegion={setRegion} label={'Region'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <SelectList statesList={statesList} onBlur name="state" errors={errors} setState={setState} label={'State'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField label={'Country'} name="country" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField label={'City'} name="city" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField label={'Nearest LAN Mark'} name="nearestLANMark" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <SelectList regionsList={regionsList} value={regionsList.find(regionItem => Number(regionItem?.id) == Number(values.region))} name="region" errors={errors} setRegion={setRegion} label={'Region'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <SelectList statesList={statesList} value={statesList.find(stateItem => Number(stateItem?.id) == Number(values.state))} onBlur name="state" errors={errors} setState={setState} label={'State'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <PickLocation coordinate={coordinate} navigation={navigation} setShowMap={setShowMap} />
                             <View style={styles.buttonHolder}>
                                 <CancelButton disabled={false} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />

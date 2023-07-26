@@ -1,11 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import AppHeader from '../../../../components/molecules/header';
 import { screenPadding } from '../../../../globalConstants/styles';
 import { postData } from '../../../../hooks/usePost';
 import SuccessOTPModal from './components/successModal';
 
-const SellerAgentVerifyOTP = ({ route }) => {
+const SellerAgentVerifyOTP = ({ route, navigation }) => {
     const [otp, setOTP] = useState('');
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -112,7 +111,7 @@ const SellerAgentVerifyOTP = ({ route }) => {
                     <Text style={styles.buttonText}>Verify OTP</Text>
                 </TouchableOpacity>
             </View>
-            <SuccessOTPModal handleClearOTP={handleClearOTP} verificationResult={verificationResult} otpResponseModal={otpResponseModal} setOtpResponseModal={setOtpResponseModal} />
+            <SuccessOTPModal navigation={navigation} handleClearOTP={handleClearOTP} verificationResult={verificationResult} otpResponseModal={otpResponseModal} setOtpResponseModal={setOtpResponseModal} />
         </View>
     );
 };

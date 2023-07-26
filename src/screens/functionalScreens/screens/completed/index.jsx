@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Dimensions, FlatList, RefreshControl, StatusBar } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Order from '../../../../components/molecules/order'
 import styles from './style'
 import { useFocusEffect } from '@react-navigation/native'
@@ -21,9 +21,12 @@ const Completed = ({ navigation }) => {
             setRefreshing(false)
         }
     }
-    useEffect(() => {
-        fetchOrders()
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            fetchOrders()
+
+        }, [])
+    )
     return (
         <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchOrders} />}>
             <StatusBar barStyle={'light-content'} />

@@ -1,6 +1,6 @@
 import { View, StatusBar, Image, TouchableWithoutFeedback, ScrollView, RefreshControl } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './style'
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -16,6 +16,7 @@ import CategorySectionCard from '../../../../components/molecules/categorySectio
 import { fetchData } from '../../../../hooks/useFetch';
 import TopBar from './components/TopBar';
 import AppLoader from '../../../../components/molecules/AppLoader';
+import { useFocusEffect } from '@react-navigation/native';
 const UpdateProduct = ({ navigation, route }) => {
     const [index, setIndex] = React.useState(0);
     const [productDetail, setProductDetail] = useState(route.params?.data)
@@ -64,17 +65,17 @@ const UpdateProduct = ({ navigation, route }) => {
             setTargetProduct(data?.data[0])
             setRefreshing(false)
         }
-
     }
 
-    useEffect(() => {
-        fetchMainCategories()
-        fetchSubCategories()
-        fetchProductCategories()
-        fetchBrands()
-        fetchTargetProduct()
-    }, [])
-
+    useFocusEffect(
+        useCallback(() => {
+            fetchMainCategories()
+            fetchSubCategories()
+            fetchProductCategories()
+            fetchBrands()
+            fetchTargetProduct()
+        }, [])
+    )
 
 
     return (
@@ -87,10 +88,18 @@ const UpdateProduct = ({ navigation, route }) => {
                     <TopBar index={index} setIndex={setIndex} />
                     <TabView value={index} onChange={setIndex} animationType="spring">
                         <TabView.Item style={{ width: "100%" }}>
-                            <ProductInformationSectionCard productDetail={targetProduct} navigation={navigation} />
+                            {
+                                targetProduct.name && (
+                                    <ProductInformationSectionCard productDetail={targetProduct} navigation={navigation} />
+                                )
+                            }
                         </TabView.Item>
                         <TabView.Item style={{ width: "100%" }}>
-                            <InventorySectionCard productDetail={targetProduct} navigation={navigation} />
+                            {
+                                targetProduct.name && (
+                                    <InventorySectionCard productDetail={targetProduct} navigation={navigation} />
+                                )
+                            }
                         </TabView.Item>
                         <TabView.Item style={{ width: "100%" }}>
                             <CategorySectionCard mainCategories={mainCategories} subCategories={subCategories} productCategories={productCategories} brands={brands} productDetail={targetProduct} navigation={navigation} />

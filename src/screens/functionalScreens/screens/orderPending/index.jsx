@@ -6,17 +6,19 @@ import { useFocusEffect } from '@react-navigation/native'
 import { fetchData } from '../../../../hooks/useFetch'
 import AppLoader from '../../../../components/molecules/AppLoader'
 import NoOrderFound from '../../../../components/molecules/noOrderFound'
-const OnProcess = ({ navigation }) => {
+import { HeightDimension } from '../../../../globalConstants/styles'
+const OrderPending = ({ navigation }) => {
     const { width, height } = new Dimensions.get("window")
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
     const [refreshing, setRefreshing] = useState(false)
+
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
         if (data?.message?.length) {
-            const orderData = data?.message?.filter(order => order?.status == 4)
+            const orderData = data?.message?.filter(order => order?.status == 2)
             setOrders(orderData)
             setRefreshing(false)
         }
@@ -27,6 +29,12 @@ const OnProcess = ({ navigation }) => {
 
         }, [])
     )
+
+    if (orders.length == 0) {
+        <NoOrderFound />
+    }
+    console.log(orders.length)
+
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollContainer} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchOrders} />}>
             <StatusBar barStyle={'light-content'} />
@@ -39,14 +47,15 @@ const OnProcess = ({ navigation }) => {
                         contentContainerStyle={styles.orderContainer}
                         keyExtractor={(item) => item.UOID}
                         enableEmptySections={true}
-                        renderItem={({ item }) => (
-                            <Order status="Pending" navigation={navigation} order={item} />
 
+                        renderItem={({ item }) => (
+                            <Order navigation={navigation} order={item} />
                         )}
                     />
-                ) : <View style={{ height: Dimensions.get('screen').height / 1.3, justifyContent: "flex-start" }}>
-                    <NoOrderFound />
-                </View>
+                ) :
+                    <View style={{ height: Dimensions.get('screen').height / 1.3, justifyContent: "flex-start" }}>
+                        <NoOrderFound />
+                    </View>
             }
 
             {
@@ -55,7 +64,8 @@ const OnProcess = ({ navigation }) => {
                 )
             }
         </ScrollView>
+
     )
 }
 
-export default OnProcess
+export default OrderPending

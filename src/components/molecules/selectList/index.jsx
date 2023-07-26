@@ -1,21 +1,26 @@
 import { View, Text, ScrollView, Pressable, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
-import { List } from 'react-native-paper'
+import { List, TextInput } from 'react-native-paper'
 import { HeightDimension, WindowDimension } from '../../../utils/utilityFunctions'
 import { regions, states } from '../../../dataStore'
 import { globalStyles } from '../../../globalConstants/styles'
 import { Picker } from "react-native-ui-lib/src/components/picker";
 import { FlatList } from 'react-native-gesture-handler'
-const SelectList = ({ label, list, handleChange, errors, name, value, setState, state, setRegion, setFieldTouched, regionsList, statesList }) => {
+const SelectList = ({ label, list, handleChange, errors, name, value = "", setState, state, setRegion, setFieldTouched, regionsList, statesList }) => {
     const [show, setShow] = useState(false)
-    const [active, setActive] = useState(`Select ${label}`)
-
+    const [active, setActive] = useState(value?.name !== undefined ? value?.name : 'Select')
     return (
         <>
+            {
+                (errors[name]) && (
+                    <Text style={{ color: "red" }}>{errors[name]}</Text>
+                )
+            }
             <Picker
                 style={styles.container}
                 placeholder={active}
+                placeholderTextColor="#000"
                 shearchPlaceHolder="Search"
                 label={label}
                 labelStyle={styles.labelStyle}
@@ -45,15 +50,7 @@ const SelectList = ({ label, list, handleChange, errors, name, value, setState, 
                     )}
                 />
             </Picker>
-            {
-                (errors[name]) && (
-                    <View style={styles.mainErrorHolder}>
-                        <View style={styles.errorHolder}>
-                            <Text style={{ color: "red" }}>{errors[name]}</Text>
-                        </View>
-                    </View>
-                )
-            }
+
         </>
     )
 }

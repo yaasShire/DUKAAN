@@ -54,14 +54,14 @@ export default StyleSheet.create({
     priceValue: {
         fontWeight: "700",
         fontSize: 20,
-        marginTop: "5%"
+        marginTop: "5%",
+        color: "#000"
     },
     availableBrandsText: {
         fontWeight: "700",
         fontSize: 16,
         textTransform: "capitalize",
-
-
+        color: "#000"
     },
     brandsWrapper: {
         marginTop: "2%",

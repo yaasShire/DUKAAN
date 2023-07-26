@@ -3,17 +3,17 @@ import * as yup from 'yup'
 export const shopLocationValidation = yup.object().shape({
     country: yup
         .string()
-        .required('Country is Required'),
+        .required('required'),
     state: yup
         .string()
-        .required('State is required'),
+        .required('required'),
     city: yup
         .string()
-        .required('City is required'),
+        .required('required'),
     region: yup
         .string()
-        .required('Region is required'),
+        .required('required'),
     nearestLANMark: yup
         .string()
-        .required('Nearest LAN mark is required'),
+        .required('required'),
 })

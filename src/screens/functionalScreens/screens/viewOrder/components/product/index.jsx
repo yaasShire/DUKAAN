@@ -2,13 +2,13 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import styles from './style'
 import { Image } from 'react-native'
+import { nameShortner } from '../../../../../../utils/utilityFunctions'
 const Products = ({ order = {} }) => {
-    console.log(order)
     return (
         <View style={styles.container}>
             <View style={styles.imaegNameWrapper}>
-                <Image source={require('../../../../../../assets/images/mechanic1.jpg')} style={styles.image} />
-                <Text>Product</Text>
+                <Image source={{ uri: `https://sweyn.co.uk/storage/images/${order?.photo}` }} style={styles.image} />
+                <Text style={{ marginLeft: 5 }}>{nameShortner(order?.name, 14)}</Text>
             </View>
             <View style={styles.field}>
                 <Text style={styles.fieldTitle}>Quantity</Text>

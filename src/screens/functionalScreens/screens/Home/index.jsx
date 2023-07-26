@@ -26,7 +26,7 @@ import { checkIsUserLogIn } from '../../../../utils/utilityFunctions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import AppLoader from '../../../../components/molecules/AppLoader'
 const Home = ({ navigation }) => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [shopsNumber, setShopsNumber] = useState(0)
     const [orders, setOrders] = useState([])
@@ -47,11 +47,6 @@ const Home = ({ navigation }) => {
             setShopsNumber(data?.data?.length)
         }
     }
-    // useEffect(() => {
-    //     fetchShopData()
-    //     fetchOrders()
-    // }, [])
-
     useFocusEffect(
         React.useCallback(() => {
             fetchShopData()

@@ -19,7 +19,6 @@ const ShopProfile = ({ route, navigation }) => {
     const [error, setError] = useState(null)
     const [products, setProducts] = useState([])
     const [isNoProducts, setIsNoProducts] = useState(false)
-
     useEffect(() => {
         const fetchRelatedProducts = async () => {
             const shopId = new FormData()
@@ -60,7 +59,7 @@ const ShopProfile = ({ route, navigation }) => {
                         <ShopInfoCard shop={route?.params?.data} />
                     </View>
                     <View style={styles.productInfoWrapper}>
-                        <TitleHeader navigation={navigation} isNoProducts={isNoProducts} />
+                        <TitleHeader navigation={navigation} isNoProducts={true} />
                         {
                             !isNoProducts ?
                                 <FlatList

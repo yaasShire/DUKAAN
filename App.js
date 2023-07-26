@@ -75,7 +75,7 @@ export default function App() {
         // }
       });
     } else {
-      alert("notification permission declined")
+      // alert("notification permission declined")
     }
 
     messaging().onNotificationOpenedApp(remoteMessage => {
@@ -103,7 +103,7 @@ export default function App() {
 
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
+      // Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
     });
 
     return unsubscribe;

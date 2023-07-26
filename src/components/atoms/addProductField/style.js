@@ -2,7 +2,6 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width, height } = new Dimensions.get('screen')
 export default StyleSheet.create({
     fieldContainer: {
-        // backgroundColor: "pink"
         marginBottom: '6%',
         justifyContent: "center",
         alignItems: "flex-start"
@@ -13,8 +12,13 @@ export default StyleSheet.create({
         width: width / 1.12,
         borderRadius: 6,
         fontSize: 15,
-        fontWeight: "400"
-
+        fontWeight: "400",
+        backgroundColor: "#fff",
+        color: "#000",
+        borderWidth: 1,
+        borderColor: "gray",
+        height: 70,
+        marginVertical: 6
     },
     label: {
         fontWeight: "600",

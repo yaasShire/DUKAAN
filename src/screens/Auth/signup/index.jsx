@@ -35,8 +35,15 @@ const SignUp = ({ navigation }) => {
         const payload = formValues(values)
         // setTimeout(async () => {
         const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
+        console.log(data)
         if (data?.message) {
             setVerificationMessage(data?.message)
+        }
+        if (data?.phone_number) {
+            setError(data?.phone_number[0])
+            setTimeout(() => {
+                setError(null)
+            }, 2000)
         }
         if (data?.email) {
             setError(data?.email[0])

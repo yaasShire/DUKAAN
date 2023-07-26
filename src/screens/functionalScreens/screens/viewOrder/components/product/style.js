@@ -6,6 +6,9 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between"
     },
+    name: {
+        marginLeft: 10
+    },
     image: {
         width: 60,
         height: 60,
@@ -14,7 +17,7 @@ export default StyleSheet.create({
     imaegNameWrapper: {
         flexDirection: "row",
         alignItems: "center",
-        minWidth: 120,
+        minWidth: 150,
         justifyContent: "space-between"
     },
     field: {

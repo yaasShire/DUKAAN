@@ -3,7 +3,7 @@ import { HeightDimension, WidthDimension, globalStyles, screenPadding } from "..
 export default StyleSheet.create({
     container: {
         width: WidthDimension / 2.5,
-        height: HeightDimension / 4.2,
+        height: HeightDimension / 4,
         borderRadius: 7,
         borderWidth: 1,
         justifyContent: "flex-start",

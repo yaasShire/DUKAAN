@@ -7,7 +7,7 @@ import { postData } from '../../../hooks/usePost';
 import { API } from '../../../hooks';
 import AppLoader from '../../molecules/AppLoader';
 import { setImage1 } from '../../../redux/shop';
-const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, checkMainImage, setIsLoading }) => {
+const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, checkMainImage, setIsLoading = () => { }, clearShopDetails = () => { } }) => {
     const [error, setError] = useState(null)
     const { locationData, personalData, shopData, shopImages, coordinates } = useSelector(state => state.shopRegistration);
     const shopInformation = shopDataGenerator(shopData, locationData, shopImages, coordinates)
@@ -19,15 +19,14 @@ const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, ch
             setIsLoading(true)
             const result = await postData('seller/shop/create', shopInfo, setError, setIsLoading)
             if (result?.result?.status == 'Shop Added Successfully') {
+                clearShopDetails()
                 dispatch(setImage1(""))
-                navigation.replace('uploadState', { uploadStatus: result })
+                navigation.replace('uploadState', initial = false, { uploadStatus: result })
             }
         } else {
             Alert.alert('Main image is required!')
         }
     }
-
-
     return (
         <>
             <TouchableOpacity style={styles.buttonHolder} onPress={() => {

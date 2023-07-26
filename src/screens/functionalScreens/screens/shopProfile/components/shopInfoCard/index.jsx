@@ -12,19 +12,19 @@ const ShopInfoCard = ({ shop }) => {
                         <Fontisto name='shopping-store' size={30} color={globalStyles.colors.logoColor} />
                         <Text style={styles.shopName}>{shop?.name}</Text>
                     </View>
-                    <View style={styles.salesWrapper}>
+                    {/* <View style={styles.salesWrapper}>
                         <Text style={styles.salesText}>Sales</Text>
                         <Text style={styles.salesValue}>$200</Text>
-                    </View>
+                    </View> */}
                 </View>
                 <View style={styles.cardInfoRow}>
                     <Feather name='phone' size={30} color={globalStyles.colors.logoColor} />
                     <Text style={styles.shopTelephone}>{shop?.phone_number}</Text>
                 </View>
-                <View style={styles.cardInfoRow}>
+                {/* <View style={styles.cardInfoRow}>
                     <FontAwesome5 name='box' size={30} color={globalStyles.colors.logoColor} />
                     <Text style={styles.shopTelephone}>400 products</Text>
-                </View>
+                </View> */}
             </View>
 
         </View>

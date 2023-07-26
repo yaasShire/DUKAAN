@@ -6,10 +6,11 @@ import AddShopButton from '../../../../../components/atoms/addShopButton'
 import { Formik } from 'formik'
 import { shopDetailsValidation } from '../../../../../utils/validationSchema/shopDetailsValidation'
 import CancelButton from '../../../../../components/atoms/canelButton'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setShopData } from '../../../../../redux/shop'
 import ProductRegistrationHeader from '../../components/productRegistrationHeader'
 const PersonalInfo = ({ setcurrentPosition }) => {
+    const { shopData } = useSelector(state => state.shopRegistration)
     const dispatch = useDispatch()
     const handleDataSubmit = (values) => {
         dispatch(setShopData(values))
@@ -19,16 +20,16 @@ const PersonalInfo = ({ setcurrentPosition }) => {
         <View style={styles.container}>
             <ProductRegistrationHeader title="Enter Shop Details" />
             <Formik
-                initialValues={{ shopName: "", shopEmail: "", shopNumber: "" }}
+                initialValues={{ shopName: shopData?.shopName, shopEmail: shopData?.shopEmail, shopNumber: shopData?.shopNumber }}
                 validationSchema={shopDetailsValidation}
                 onSubmit={(values) => handleDataSubmit(values)}
             >
                 {
                     ({ values, errors, handleBlur, handleChange, handleSubmit, touched, setTouched, setFieldTouched }) => (
                         <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 8 }}>
-                            <AddShopField label={'Shop Name'} name="shopName" values={values.shopName} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <AddShopField keyboardType='email-address' label={'Shop Email'} name="shopEmail" values={values.shopEmail} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <AddShopField keyboardType='number-pad' label={'Shop Phone Number'} name="shopNumber" values={values.shopNumber} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField label={'Shop Name'} name="shopName" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField keyboardType='email-address' label={'Shop Email'} name="shopEmail" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField keyboardType='number-pad' label={'Shop Phone Number'} name="shopNumber" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <View style={styles.buttonHolder}>
                                 <CancelButton disabled={true} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
                                 <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />

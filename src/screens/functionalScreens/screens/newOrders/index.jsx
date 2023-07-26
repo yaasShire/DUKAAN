@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Dimensions, FlatList, RefreshControl, StatusBar } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Order from '../../../../components/molecules/order'
 import styles from './style'
 
@@ -24,9 +24,12 @@ const NewOrderStage = ({ navigation }) => {
             setRefreshing(false)
         }
     }
-    useEffect(() => {
-        fetchOrders()
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            fetchOrders()
+
+        }, [])
+    )
     if (orders.length == 0) {
         <NoOrderFound />
     }

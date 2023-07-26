@@ -6,7 +6,7 @@ import cameraPlaceHolder from '../../../assets/camera1.png'
 import * as ImagePicker from 'expo-image-picker';
 import { useDispatch, useSelector } from 'react-redux';
 import { setImage1, setImage2, setImage3, setImage4, setImage5, setImage6 } from '../../../redux/shop';
-const ShopImageTaker = ({ main, image: imageIdentifier, imageURL }) => {
+const ShopImageTaker = ({ main, image: imageIdentifier, imageURL = "" }) => {
     const [image, setImage] = useState(imageURL);
     const dispatch = useDispatch()
 
