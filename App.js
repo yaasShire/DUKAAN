@@ -45,9 +45,9 @@ export default function App() {
   //   return null;
   // }
 
-  // if (loading) {
-  //   return <SplashAppScreen />;
-  // }
+  if (loading) {
+    return <SplashAppScreen />;
+  }
 
 
 

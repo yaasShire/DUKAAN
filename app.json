@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mechanic",
-    "slug": "mechanic",
+    "name": "Dukaan",
+    "slug": "Dukaan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -45,6 +45,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9542421a-f7ef-4aec-bfc6-9ebaef8e24ed"
+      }
     }
   }
 }
