@@ -4,7 +4,7 @@
     "slug": "Dukaan",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/darawalLogo.png",
+    "icon": "./assets/dukaan.png",
     "userInterfaceStyle": "light",
     "plugins": [
       [
@@ -15,7 +15,7 @@
       ]
     ],
     "splash": {
-      "image": "./assets/darawalLogo.png",
+      "image": "./assets/dukaan.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

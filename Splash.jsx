@@ -5,7 +5,7 @@ const SplashAppScreen = () => {
     return (
         <View style={styles.container}>
             <Image
-                source={require('./assets/darawalLogo.png')}
+                source={require('./assets/dukaan.png')}
                 style={styles.image}
             />
         </View>
