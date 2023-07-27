@@ -12,7 +12,7 @@ import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading';
 import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
-import SplashAppScreen from './Splash';
+// import SplashAppScreen from './Splash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 import { postData } from './src/hooks/usePost';
@@ -45,9 +45,9 @@ export default function App() {
   //   return null;
   // }
 
-  if (loading) {
-    return <SplashAppScreen />;
-  }
+  // if (loading) {
+  //   return <SplashAppScreen />;
+  // }
 
 
 
