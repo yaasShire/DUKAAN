@@ -6,6 +6,11 @@ export default StyleSheet.create({
         alignItems: "center",
         backgroundColor: globalStyles.colors.miniPrimary,
         height: Dimensions.get('window').height,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
 
     },
     image: {

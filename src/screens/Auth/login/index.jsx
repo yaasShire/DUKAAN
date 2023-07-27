@@ -86,7 +86,7 @@ const Login = ({ navigation }) => {
                             ({ errors, touched, setFieldTouched, handleBlur, handleChange, handleSubmit, values }) => (
                                 <View>
                                     <View style={styles.fieldsHolder}>
-                                        <TextField title="email" name="email" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
+                                        <TextField keyboardType='email-address' title="email" name="email" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
                                         <TextField title="Password" name="password" values={values} errors={errors} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} touched={touched} setFieldTouched={setFieldTouched} />
 
                                         <TouchableOpacity style={styles.forgetPasswordHolder} onPress={() => navigation.navigate("forgetPassword")}>

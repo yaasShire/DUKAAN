@@ -5,7 +5,7 @@ import styles from './style'
 
 const NoProduct = ({ navigation, screen = "", title = "" }) => {
     return (
-        <View style={[styles.container,]}>
+        <View style={[styles.container]}>
             <Image source={NoShopsImage} style={styles.image} />
             <View style={styles.textButtonWrapper}>
                 <Text style={styles.descriptinText}>{title}</Text>

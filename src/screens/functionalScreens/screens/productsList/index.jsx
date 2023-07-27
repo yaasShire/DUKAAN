@@ -99,16 +99,18 @@ const ProductsList = ({ navigation, route }) => {
                     )
                 }
 
-                {
-                    numberOfShops == 0 ? (
-
-                        <NoProduct title="looks like you have no shop, add a shop first then add products" screen='addShop' navigation={navigation} />
-                    ) : (globalProducts?.length == 0) ? (
-                        <NoProduct title='No products Found add product.' screen='addProduct' navigation={navigation} />
-                    ) : ""
-                }
-
             </ScrollView>
+            {
+                globalProducts?.length == 0 && (
+                    <NoProduct title='No products Found add product.' screen='addProduct' navigation={navigation} />
+                )
+            }
+            {
+                numberOfShops == 0 ? (
+
+                    <NoProduct title="looks like you have no shop, add a shop first then add products" screen='addShop' navigation={navigation} />
+                ) : null
+            }
 
         </View>
     )

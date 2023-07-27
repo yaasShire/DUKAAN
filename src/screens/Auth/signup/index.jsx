@@ -1,5 +1,5 @@
 import { View, Image, ScrollView, TouchableOpacity, StatusBar, ActivityIndicator, Linking, KeyboardAvoidingView, Platform } from 'react-native'
-import { Button, Dialog, Portal, Provider, Text } from 'react-native-paper';
+import { Button, Dialog, Portal, Provider, Text, TextInput } from 'react-native-paper';
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
@@ -93,8 +93,8 @@ const SignUp = ({ navigation }) => {
                                 <>
                                     <View style={styles.fieldsHolder}>
                                         <TextFieldC title="Full Name" name="name" setFieldTouched={setFieldTouched} values={values.fullName} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                        <TextFieldC title="Phone Number" name="phone_number" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                        <TextFieldC title="email" name="email" setFieldTouched={setFieldTouched} values={values.email} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC keyboardType="number-pad" title="Phone Number" name="phone_number" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC keyboardType='email-address' title="email" name="email" setFieldTouched={setFieldTouched} values={values.email} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC title="City" name="city" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC title="Password" name="password" setFieldTouched={setFieldTouched} values={values.password} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC title="Confirm Password" name="confirmPassword" setFieldTouched={setFieldTouched} values={values.confirmPassword} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />

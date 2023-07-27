@@ -23,6 +23,7 @@ const Shops = ({ navigation }) => {
         if (data?.data) {
             setShopData(data?.data)
             setRefreshing(false)
+            setIsNoShops(false)
         }
         if (data?.data?.length == 0) {
             setIsNoShops(true)
@@ -57,12 +58,12 @@ const Shops = ({ navigation }) => {
                         <ShopCard key={Date().toString()} shop={item} navigation={navigation} />
                     )}
                 />
-                {
-                    isNoShops && (
-                        <NoShopFound navigation={navigation} />
-                    )
-                }
             </ScrollView>
+            {
+                isNoShops && (
+                    <NoShopFound navigation={navigation} />
+                )
+            }
             {
                 isLoading && (
                     <AppLoader />

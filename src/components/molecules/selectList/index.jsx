@@ -7,13 +7,13 @@ import { regions, states } from '../../../dataStore'
 import { globalStyles } from '../../../globalConstants/styles'
 import { Picker } from "react-native-ui-lib/src/components/picker";
 import { FlatList } from 'react-native-gesture-handler'
-const SelectList = ({ label, list, handleChange, errors, name, value = "", setState, state, setRegion, setFieldTouched, regionsList, statesList }) => {
+const SelectList = ({ label, list, handleChange, errors, name, value = "", setState, state, setRegion, regionsList, statesList, setFieldTouched = () => { }, touched }) => {
     const [show, setShow] = useState(false)
     const [active, setActive] = useState(value?.name !== undefined ? value?.name : 'Select')
     return (
         <>
             {
-                (errors[name]) && (
+                (errors[name] && touched[name]) && (
                     <Text style={{ color: "red" }}>{errors[name]}</Text>
                 )
             }
@@ -40,6 +40,7 @@ const SelectList = ({ label, list, handleChange, errors, name, value = "", setSt
                                 setActive(item?.name)
                                 setShow(prev => !prev)
                                 handleChange(name)((item?.id).toString())
+                                setFieldTouched(name)
                                 // onBlur={() => {
                                 // handleBlur(name)
                                 setFieldTouched(name)

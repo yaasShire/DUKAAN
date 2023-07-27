@@ -68,9 +68,9 @@ export default StyleSheet.create({
         fontSize: 16
     },
     accountCreation: {
-        opacity: 0.4,
         fontSize: 16,
-        marginRight: "1%"
+        marginRight: "1%",
+        color: globalStyles.colors.secondaryGray
     },
     signUpLink: {
         fontSize: 16,

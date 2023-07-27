@@ -6,7 +6,7 @@ export const signupValidationSchema = yup.object().shape({
         .required('Full name is Required'),
     phone_number: yup
         .string()
-        .min(9, ({ min }) => `Phone number must be at least ${min} characters`)
+        .min(10, ({ min }) => `Phone number must be at least ${min} characters`)
         .required('Phone number is required'),
     email: yup
         .string()

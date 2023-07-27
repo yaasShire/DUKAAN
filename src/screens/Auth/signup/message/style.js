@@ -17,12 +17,13 @@ export default StyleSheet.create({
     contentWrapper: {
         justifyContent: "space-around",
         alignItems: "center",
-        width: "90%",
+        width: "100%",
         height: 170,
     },
     text: {
         fontSize: 18,
         fontWeight: "500",
         textAlign: "center"
-    }
+    },
+
 })

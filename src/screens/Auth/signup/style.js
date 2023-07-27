@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { screenPadding } from "../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -80,8 +80,9 @@ export default StyleSheet.create({
         marginBottom: "10%"
     },
     textLogin1: {
-        opacity: 0.5,
-        marginRight: 2
+        // opacity: 0.5,
+        marginRight: 2,
+        color: globalStyles.colors.secondaryGray
     },
     textLogin2: {
         color: 'blue',

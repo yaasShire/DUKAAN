@@ -12,7 +12,7 @@ import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading';
 import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
-// import SplashAppScreen from './Splash';
+import SplashAppScreen from './Splash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 import { postData } from './src/hooks/usePost';
@@ -28,11 +28,7 @@ export default function App() {
     'AstroSpace-0Wl3o': require('./src/assets/fonts/AstroSpace-0Wl3o.otf'),
   });
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 6000);
-  }, []);
+
 
   // const onLayoutRootView = useCallback(async () => {
   //   if (fontsLoaded) {
@@ -45,9 +41,7 @@ export default function App() {
   //   return null;
   // }
 
-  // if (loading) {
-  //   return <SplashAppScreen />;
-  // }
+
 
 
 
@@ -105,6 +99,15 @@ export default function App() {
     return unsubscribe;
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
+  if (loading) {
+    return <SplashAppScreen />;
+  }
 
 
 
