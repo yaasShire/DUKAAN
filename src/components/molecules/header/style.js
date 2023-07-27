@@ -35,7 +35,6 @@ export default StyleSheet.create({
         alignSelf: "center",
         textAlign: "center",
         flex: 1,
-        marginRight: "5%"
 
     },
     addHolder: {

@@ -7,13 +7,10 @@ import AddShopButton from '../../../../../components/atoms/addShopButton'
 import ShopImageTaker from '../../../../../components/molecules/shopImageTaker'
 import { useDispatch, useSelector } from 'react-redux'
 import AppLoader from '../../../../../components/molecules/AppLoader'
-// console.log(values)
 import { setShopData, setCoordinates, setImage1, setImage2, setImage3, setImage4, setImage5, setImage6, setLocationData, } from '../../../../../redux/shop'
 const ShopImages = ({ setcurrentPosition, navigation }) => {
     const dispatch = useDispatch()
-    // dispatch(setImage1(""))
     const { shopImages } = useSelector(state => state.shopRegistration);
-    console.log(shopImages)
     const [isLoading, setIsLoading] = useState(false)
     const checkMainImage = () => {
         if (shopImages.url1) {

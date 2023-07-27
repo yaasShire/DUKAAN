@@ -111,7 +111,7 @@ const ViewOrder = ({ navigation, route }) => {
                     <View style={styles.divider} />
                     <View style={styles.locationSection}>
                         <View style={styles.locationTitleWrapper}>
-                            <Text style={styles.locationTextTitle}>Location</Text>
+                            <Text style={styles.locationTextTitle}>Address</Text>
                             <Ionicons name='ios-location' size={25} color="red" />
                             <Text style={styles.locationTextTitle}>:</Text>
                         </View>

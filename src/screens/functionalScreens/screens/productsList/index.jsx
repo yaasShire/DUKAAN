@@ -39,7 +39,6 @@ const ProductsList = ({ navigation, route }) => {
     }
     const fetchShopData = async () => {
         const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
-        console.log(data)
         if (data?.data) {
             setNumberOfShops(data?.data?.length)
         }

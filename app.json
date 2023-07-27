@@ -29,7 +29,7 @@
       "googleServicesFile": "./google-services.json",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyBHB6AZMc3WTBqQQ4_D0V5jXKPj9J-rinU"
+          "apiKey": "AIzaSyCsJ_JBbomxUgMeWecFqNcOEk2g60NfKow"
         }
       },
       "adaptiveIcon": {
@@ -45,11 +45,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "9542421a-f7ef-4aec-bfc6-9ebaef8e24ed"
-      }
     }
   }
 }

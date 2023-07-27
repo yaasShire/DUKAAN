@@ -6,9 +6,9 @@ export default StyleSheet.create({
         backgroundColor: globalStyles.colors.miniPrimary
     },
     contentWrapper: {
-        flex: 1,
         padding: screenPadding,
-        height: WidthDimension,
+        alignItems: "center",
+        rowGap: 10
     },
     scrollContainer: {
     },

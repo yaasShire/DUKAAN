@@ -12,6 +12,7 @@ export default StyleSheet.create({
         textAlign: "justify",
         fontWeight: globalStyles.fontWeights.secondary,
         fontSize: 15,
+        color: globalStyles.colors.tertiary
     },
     titleText: {
         fontSize: 24,

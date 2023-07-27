@@ -16,6 +16,9 @@ export default StyleSheet.create({
     input: {
         width: "100%",
         fontSize: 18,
+        // color: globalStyles.colors.tertiary
+        backgroundColor: "#727575",
+        color: "#000"
     },
     errorText: {
         color: "red"

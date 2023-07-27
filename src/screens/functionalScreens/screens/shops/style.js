@@ -52,7 +52,6 @@ export default StyleSheet.create({
     cards: {
         flex: 1,
         marginTop: "2%",
-        height: height,
     },
     shopCard: {
         backgroundColor: "#FFF",

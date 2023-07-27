@@ -18,6 +18,7 @@ import AppLoader from '../../../../components/molecules/AppLoader';
 import UploadingAnimation from '../../../../components/molecules/uploadingAnimation';
 import AppHeader from '../../../../components/molecules/header';
 import { fetchData } from '../../../../hooks/useFetch';
+import TextInputPaper from '../../../../components/atoms/paperTextInput';
 const EditProfile = ({ navigation, route }) => {
     console.log(route.params.userData)
     const [image, setImage] = useState()

@@ -46,8 +46,8 @@ export const shopDataGenerator = (shopData, locationData, shopImages, coordinate
         state: Number(locationData?.state),
         region: Number(locationData?.region),
         landmark: locationData?.nearestLANMark,
+        latitude: Number(coordinates?.latitude),
         longitude: Number(coordinates?.longitude),
-        latitude: Number(coordinates?.longitude),
     }
 }
 
@@ -193,4 +193,10 @@ export const checkIsUserLogIn = async () => {
         return true
     }
     return false
+}
+
+export const storeNotification = async (notification) => {
+    const notifications = []
+    notifications.push(notification)
+    await AsyncStorage.setItem('notifications', JSON.parse(notifications))
 }

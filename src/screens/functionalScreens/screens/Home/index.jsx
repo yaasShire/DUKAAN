@@ -71,7 +71,6 @@ const Home = ({ navigation }) => {
                         <DashboardCard description={'Expense'} ammount={0} sign={true} />
                         <DashboardCard description={'Number Of Shops'} ammount={shopsNumber} sign={false} />
                     </ScrollView>
-
                 </View>
                 <View showsVerticalScrollIndicator={false} nestedScrollEnabled={true} scrollEnabled={true} style={styles.bottomContent}>
                     <View style={styles.subBottomContent}>

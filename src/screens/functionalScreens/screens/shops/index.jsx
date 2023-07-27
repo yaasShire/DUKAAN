@@ -18,7 +18,6 @@ const Shops = ({ navigation }) => {
     const [isNoShops, setIsNoShops] = useState(false)
     const [refreshing, setRefreshing] = useState(false)
 
-
     const fetchShopData = async () => {
         const { data } = await fetchData('seller/shop/view', setError, setIsLoading)
         if (data?.data) {
@@ -35,12 +34,11 @@ const Shops = ({ navigation }) => {
         }, [])
     )
 
-
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <AppHeader addShopButton={true} title="Shops" navigation={navigation} color={"#000"} backButton={true} screen={"Shops"} />
-            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />}>
+            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />} style={{ flex: 1 }}>
                 <FlatList
                     scrollEnabled={false}
                     keyExtractor={(item) => item.USID}
@@ -60,16 +58,16 @@ const Shops = ({ navigation }) => {
                     )}
                 />
                 {
-                    isLoading && (
-                        <AppLoader />
-                    )
-                }
-                {
                     isNoShops && (
                         <NoShopFound navigation={navigation} />
                     )
                 }
             </ScrollView>
+            {
+                isLoading && (
+                    <AppLoader />
+                )
+            }
         </SafeAreaView>
     )
 }

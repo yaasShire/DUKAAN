@@ -54,7 +54,7 @@ export default function App() {
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
     const enabled =
-      authStatus === messaging?.Status?.AUTHORIZED ||
+      authStatus === messaging?.AuthorizationStatus?.AUTHORIZED ||
       authStatus === messaging?.AuthorizationStatus?.PROVISIONAL;
 
     if (enabled) {
@@ -67,21 +67,16 @@ export default function App() {
       messaging().getToken().then(async (token) => {
         const formData = new FormData()
         formData.append('fcm', token)
-        // console.log(token)
         const data = await postData('seller/user/updateFCM', formData, setError, setIsLoading)
-        // var isLoggedIn = await AsyncStorage.getItem("isUserLoggedIn")
-        // if(isLoggedIn == "true"){
-        //   await updateToken(token)
-        // }
       });
     } else {
-      // alert("notification permission declined")
+      alert("notification permission declined")
     }
 
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log(
         'Notification caused app to open from background state:',
-        remoteMessage.notification,
+        remoteMessage.notification, 'yes sir'
       );
     });
 
@@ -103,11 +98,13 @@ export default function App() {
 
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      // Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
+      Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
+      console.log(remoteMessage)
     });
 
     return unsubscribe;
   }, []);
+
 
 
 

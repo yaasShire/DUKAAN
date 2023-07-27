@@ -9,7 +9,7 @@ const UploadState = ({ route, navigation }) => {
         <View color={['#5cd199', '#6cf5b3']} style={styles.container}>
             <Image style={styles.image} source={success} />
             <View style={styles.bottomContent}>
-                <Text style={styles.successLabel}>{route?.params?.uploadStatus?.result?.status}</Text>
+                <Text style={styles.successLabel}>Shop Uploaded Successfully</Text>
                 <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate("shops")}>
                     <Text style={styles.buttonText}>GO BACK TO SHOPS</Text>
                 </TouchableOpacity>

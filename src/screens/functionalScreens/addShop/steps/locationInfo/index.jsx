@@ -17,7 +17,7 @@ import Map from '../../../screens/map'
 import * as Location from 'expo-location';
 import { setCoordinates } from '../../../../../redux/shop'
 import ProductRegistrationHeader from '../../components/productRegistrationHeader'
-
+import Geocoder from 'react-native-geocoding';
 const PersonalInfo = ({ setcurrentPosition, navigation }) => {
     const [expanded, setExpanded] = React.useState(true);
     const [region, setRegion] = useState("")
@@ -29,15 +29,27 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
     const [showMap, setShowMap] = useState(false)
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [locationName, setLocationName] = useState('Pick Location');
     const handlePress = () => setExpanded(!expanded);
-    const { locationData } = useSelector(state => state.shopRegistration)
+    const { locationData, coordinates } = useSelector(state => state.shopRegistration)
     const dispatch = useDispatch()
     const handleDataSubmit = (values) => {
         dispatch(setLocationData(values))
         setcurrentPosition(prev => prev + 1)
     }
+
+
     useEffect(() => {
-        // states
+        (async () => {
+
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+            let location = await Location.getCurrentPositionAsync({});
+            dispatch(setCoordinates({ latitude: location?.coords?.latitude, longitude: location?.coords?.longitude }))
+        })();
         const fetchStates = async () => {
             const data = await fetchData('global/states/', setError, setIsLoading)
             setStatesList(data.data.data)
@@ -49,31 +61,18 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
             setRegionsList(data.data.data)
         }
         fetchRegions()
-    }, [])
-
-    const [coordinate, setCoordinate] = useState({
-        latitude: 0,
-        longitude: 0
-    })
-
-    useEffect(() => {
-        (async () => {
-
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
-                return;
-            }
-
-            let location = await Location.getCurrentPositionAsync({});
-            dispatch(setCoordinates({ latitude: location?.coords?.latitude, longitude: location?.coords?.longitude }))
-            setCoordinate({
-                latitude: location?.coords?.latitude,
-                longitude: location?.coords?.longitude,
-            })
-        })();
     }, []);
-    console.log(locationData)
+
+    Geocoder.init('AIzaSyCsJ_JBbomxUgMeWecFqNcOEk2g60NfKow');
+    const handleRegionChange = (region) => {
+        Geocoder.from(Number(coordinates.latitude), Number(coordinates.longitude))
+            .then((response) => {
+                const address = response.results[0].formatted_address;
+                setLocationName(address);
+            })
+            .catch((error) => console.log(error));
+    };
+    handleRegionChange()
     return (
         <View style={styles.container}>
             <ProductRegistrationHeader title="Enter Location Details" />
@@ -90,7 +89,7 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
                             <AddShopField label={'Nearest LAN Mark'} name="nearestLANMark" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <SelectList regionsList={regionsList} value={regionsList.find(regionItem => Number(regionItem?.id) == Number(values.region))} name="region" errors={errors} setRegion={setRegion} label={'Region'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <SelectList statesList={statesList} value={statesList.find(stateItem => Number(stateItem?.id) == Number(values.state))} onBlur name="state" errors={errors} setState={setState} label={'State'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <PickLocation coordinate={coordinate} navigation={navigation} setShowMap={setShowMap} />
+                            <PickLocation label={locationName} coordinates={coordinates} navigation={navigation} setShowMap={setShowMap} />
                             <View style={styles.buttonHolder}>
                                 <CancelButton disabled={false} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
                                 <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />

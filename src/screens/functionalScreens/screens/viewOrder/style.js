@@ -58,13 +58,11 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: "3%"
-
     },
     locationTextTitle: {
         fontSize: 16,
-        fontWeight: "500",
+        fontWeight: "600",
         fontStyle: "normal",
-        opacity: .7
     },
     locationSection: {
         marginTop: '5%'
@@ -79,7 +77,7 @@ export default StyleSheet.create({
     locationInfoHolder: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: '5%',
+        marginTop: '1%',
         justifyContent: 'space-between'
     },
     locationText: {

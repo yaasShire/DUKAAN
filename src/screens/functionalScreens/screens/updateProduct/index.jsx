@@ -1,39 +1,24 @@
-import { View, StatusBar, Image, TouchableWithoutFeedback, ScrollView, RefreshControl } from 'react-native'
+import { View, Text, StatusBar, RefreshControl } from 'react-native'
+import React, { useCallback, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React, { useCallback, useEffect, useState } from 'react'
+import { ScrollView } from 'react-native-gesture-handler'
+import AppHeader from '../../../../components/molecules/header'
 import styles from './style'
-import Feather from 'react-native-vector-icons/Feather';
-import Entypo from 'react-native-vector-icons/Entypo';
-import sProduct1 from '../../../../assets/sProduct1.png'
-import PricingSectionCard from '../../../../components/molecules/productInformationSectionCard';
-import InventorySectionCard from '../../../../components/molecules/inventorySectionCard';
-import AppHeader from '../../../../components/molecules/header';
-import { Tab, Text, TabView } from '@rneui/themed';
-import { globalStyles } from '../../../../globalConstants/styles';
-import SalesSectionCard from '../../../../components/molecules/categorySectionCard';
-import ProductInformationSectionCard from '../../../../components/molecules/productInformationSectionCard';
-import CategorySectionCard from '../../../../components/molecules/categorySectionCard';
-import { fetchData } from '../../../../hooks/useFetch';
-import TopBar from './components/TopBar';
-import AppLoader from '../../../../components/molecules/AppLoader';
-import { useFocusEffect } from '@react-navigation/native';
-const UpdateProduct = ({ navigation, route }) => {
-    const [index, setIndex] = React.useState(0);
-    const [productDetail, setProductDetail] = useState(route.params?.data)
+import UpdateProductCard from './components/updateProductCard'
+import { fetchData } from '../../../../hooks/useFetch'
+import { useFocusEffect } from '@react-navigation/native'
+import UpdateProductModalField from './components/updateProductModalField'
+import AppLoader from '../../../../components/molecules/AppLoader'
+import UpdatePickerProduct from './components/updatePickerProduct'
+const UpdateProduct = ({ navigation = {}, route }) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [mainCategories, setMainCategories] = useState([])
     const [subCategories, setSubCategories] = useState([])
     const [productCategories, setProductCategories] = useState([])
     const [brands, setBrands] = useState([])
-    const [targetProduct, setTargetProduct] = useState({})
+    const [targetProduct, setTargetProduct] = useState(route?.params?.data)
     const [refreshing, setRefreshing] = useState(false)
-
-    const updateSections = new Map()
-    updateSections.set(1, <PricingSectionCard navigation={navigation} />)
-    updateSections.set(2, <InventorySectionCard navigation={navigation} />)
-    updateSections.set(3, <PricingSectionCard navigation={navigation} />)
-
     const fetchMainCategories = async () => {
         const response = await fetchData('seller/category/view', setError, setIsLoading)
         if (response?.data?.data?.length > 0) {
@@ -76,42 +61,35 @@ const UpdateProduct = ({ navigation, route }) => {
             fetchTargetProduct()
         }, [])
     )
-
-
     return (
         <View style={styles.container}>
+            <StatusBar barStyle={'default'} />
             <SafeAreaView />
-            <StatusBar barStyle={'light-content'} />
-            <AppHeader title={"Edit "} navigation={navigation} color={"#000"} backButton={true} />
-            <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchTargetProduct} />} style={styles.scrollContainer}>
-                <View style={styles.contentWrapper}>
-                    <TopBar index={index} setIndex={setIndex} />
-                    <TabView value={index} onChange={setIndex} animationType="spring">
-                        <TabView.Item style={{ width: "100%" }}>
-                            {
-                                targetProduct.name && (
-                                    <ProductInformationSectionCard productDetail={targetProduct} navigation={navigation} />
-                                )
-                            }
-                        </TabView.Item>
-                        <TabView.Item style={{ width: "100%" }}>
-                            {
-                                targetProduct.name && (
-                                    <InventorySectionCard productDetail={targetProduct} navigation={navigation} />
-                                )
-                            }
-                        </TabView.Item>
-                        <TabView.Item style={{ width: "100%" }}>
-                            <CategorySectionCard mainCategories={mainCategories} subCategories={subCategories} productCategories={productCategories} brands={brands} productDetail={targetProduct} navigation={navigation} />
-                        </TabView.Item>
-                    </TabView>
-                </View>
+            <AppHeader backButton title='Update Product' navigation={navigation} />
+            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => {
+                fetchTargetProduct()
+                fetchBrands()
+                fetchMainCategories()
+                fetchProductCategories()
+                fetchSubCategories()
+            }} />} contentContainerStyle={styles.contentWrapper} style={{ flex: 1 }}>
+                <UpdateProductCard label="Product Name" value={targetProduct?.name} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='name' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard label="Price" value={Number(targetProduct?.price)} color='red' onPress={() => { }} productId={targetProduct?.UPID} fieldName='price' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard label="Quantity Available" value={targetProduct?.quantity_avaliable} color='gold' onPress={() => { }} productId={targetProduct?.UPID} fieldName='quantity_avaliable' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard label="Description" value={targetProduct?.description} color='green' onPress={() => { }} productId={targetProduct?.UPID} fieldName='description' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                {/* <UpdateProductCard label="Brand" value={targetProduct?.brand?.name} category={targetProduct?.brand} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='brand' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
+                {/* <UpdateProductCard label="Main Category" value={targetProduct?.category?.name} category={targetProduct?.category} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='category' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
+                {/* <UpdateProductCard label="Sub Category" value={targetProduct?.subcategory?.name} category={targetProduct?.subcategory} color='blue' onPress={() => { }} productId={targetProduct?.UPID} fieldName='subcategory' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
+                {/* <UpdateProductCard label="Product Category" value={targetProduct?.productcategory?.name} category={targetProduct?.productcategory} color='orange' onPress={() => { }} productId={targetProduct?.UPID} fieldName='productcategory' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
+                <UpdatePickerProduct label="Brand" value={targetProduct?.brand?.name} category={targetProduct?.brand} listData={brands} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='brand' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdatePickerProduct label="Main Category" value={targetProduct?.category?.name} category={targetProduct?.category} listData={mainCategories} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='category' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdatePickerProduct label="Sub Category" value={targetProduct?.subcategory?.name} category={targetProduct?.subcategory} color='blue' listData={subCategories} onPress={() => { }} productId={targetProduct?.UPID} fieldName='subcategory' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdatePickerProduct label="Product Category" value={targetProduct?.productcategory?.name} category={targetProduct?.productcategory} listData={productCategories} color='orange' onPress={() => { }} productId={targetProduct?.UPID} fieldName='productcategory' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
             </ScrollView>
             {
                 isLoading && (
                     <AppLoader />
                 )
-
             }
         </View>
     )

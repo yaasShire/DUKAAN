@@ -7,19 +7,21 @@ import { globalStyles } from '../../../../globalConstants/styles';
 import { FAB } from 'react-native-paper';
 import { MotiView } from '@motify/components';
 import { Easing } from 'react-native-reanimated';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCoordinates } from '../../../../redux/shop';
 const Map = ({ route, navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const { coordinates } = useSelector(state => state.shopRegistration)
+    console.log(coordinates.latitude)
     const dispatch = useDispatch()
     const [pin, setPin] = useState({
         latitude: 37.78825,
         longitude: -122.4324
     })
     const [coordinate, setCoordinate] = useState({
-        latitude: route.params?.location?.latitude,
-        longitude: route.params?.location?.longitude,
+        latitude: coordinates?.latitude,
+        longitude: coordinates?.longitude,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     })
@@ -33,7 +35,6 @@ const Map = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar hidden />
-
             <MapView
                 style={styles.mapStyle}
                 initialRegion={coordinate}

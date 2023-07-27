@@ -11,7 +11,7 @@ export default StyleSheet.create({
         flexDirection: "row"
     },
     acceptedText: {
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: globalStyles.fontWeights.tertiary,
         color: globalStyles.colors.miniPrimary
     },

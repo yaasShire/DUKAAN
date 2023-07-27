@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { HeightDimension, WindowDimension } from "../../../../utils/utilityFunctions";
-import { globalStyles } from "../../../../globalConstants/styles";
+import { globalStyles, screenPadding } from "../../../../globalConstants/styles";
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -12,7 +12,7 @@ export default StyleSheet.create({
         resizeMode: "center"
     },
     successLabel: {
-        fontSize: 20,
+        fontSize: 17,
         fontWeight: "600",
         textAlign: "center",
         fontFamily: "AstroSpace-0Wl3o"
@@ -28,13 +28,14 @@ export default StyleSheet.create({
     },
     buttonText: {
         fontWeight: "600",
-        fontSize: 19,
+        fontSize: 16,
         color: globalStyles.colors.miniPrimary,
     },
     bottomContent: {
         width: "100%",
         flex: 1,
-        alignItems: "center"
+        alignItems: "center",
+        padding: screenPadding
     }
 
 })
