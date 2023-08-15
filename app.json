@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Dukaan",
-    "slug": "Dukaan",
+    "slug": "mechanic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo2.png",
@@ -33,7 +33,7 @@
         }
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo2.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
@@ -48,7 +48,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "9542421a-f7ef-4aec-bfc6-9ebaef8e24ed"
+        "projectId": "3b8b907e-bbe5-4903-ba2d-32dcc57220f8"
       }
     }
   }

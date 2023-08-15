@@ -8,7 +8,10 @@ const VerificationMessage = ({ navigation = () => { }, description = "", screen 
             <View style={styles.contentWrapper}>
                 <Text style={styles.text}>{description}</Text>
                 <Button title='Log in' onPress={() => {
-                    navigation.navigate('login')
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'pending' }],
+                    });
                     setVerificationMessage(false)
                 }
                 } />

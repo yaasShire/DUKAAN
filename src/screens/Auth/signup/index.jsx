@@ -23,6 +23,7 @@ import { authFormData } from '../../../utils/utilityFunctions';
 import VerificationMessage from './message';
 import { globalStyles } from '../../../globalConstants/styles';
 import SpreadingCircles from '../../../components/animations/authCircleAnimation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const SignUp = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -33,10 +34,9 @@ const SignUp = ({ navigation }) => {
     const handleSignUp = async (values) => {
         setIsLoading(true)
         const payload = formValues(values)
-        // setTimeout(async () => {
         const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
-        console.log(data)
         if (data?.message) {
+            await AsyncStorage.setItem('verified', JSON.stringify(false))
             setVerificationMessage(data?.message)
         }
         if (data?.phone_number) {
@@ -101,7 +101,6 @@ const SignUp = ({ navigation }) => {
                                         <AuthButton isLoading={isLoading} bgColor={globalStyles.colors.logoColor} cWidth="100%" title='Sign up' handleSubmit={() => handleSubmit(values)} errors={errors} />
                                     </View>
                                 </>
-
                             )
                         }
                     </Formik>

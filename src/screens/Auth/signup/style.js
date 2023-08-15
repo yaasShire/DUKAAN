@@ -21,21 +21,23 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: "500",
         fontFamily: "AstroSpace-0Wl3o",
-        marginVertical: "2%"
+        marginVertical: "2%",
+        color: globalStyles.colors.tertiary
     },
     title2: {
         fontSize: 30,
         fontWeight: "600",
         textAlign: "center",
-        fontFamily: "AstroSpace-0Wl3o"
+        fontFamily: "AstroSpace-0Wl3o",
+        color: globalStyles.colors.tertiary
     },
     description: {
         textAlign: 'center',
         opacity: 0.8,
         fontSize: 15,
         fontFamily: "AstroSpace-0Wl3o",
-        marginVertical: "1%"
-
+        marginVertical: "1%",
+        color: globalStyles.colors.tertiary
     },
     imageHolder: {
         justifyContent: 'center',

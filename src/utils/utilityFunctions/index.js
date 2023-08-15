@@ -51,18 +51,21 @@ export const shopDataGenerator = (shopData, locationData, shopImages, coordinate
     }
 }
 
-export const productDataGenerator = (subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images) => {
+export const productDataGenerator = (subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images, productColor, recordsFormatted) => {
     return {
         shop_id: shopsList.USID,
         category: Number(mainCategory.id),
         brand: Number(productRequiredInfo.productBrand),
         description: productOffers?.description,
         rating: Number(5),
-        quantity_avaliable: Number(500),
-        price: Number(productOffers.price),
+        quantity_avaliable: recordsFormatted?.quantity,
+        price: recordsFormatted?.price,
         name: productRequiredInfo.productName,
         subcategory: Number(subCategory.id),
-        productcategory: Number(productCategory.id)
+        productcategory: Number(productCategory.id),
+        color: Number(productColor?.id),
+        size: recordsFormatted?.size
+
 
     }
 }
@@ -101,7 +104,6 @@ export const { width: WindowDimension, height: HeightDimension } = new Dimension
 
 export const formValues = (values, image) => {
     const data = new FormData();
-    console.log(image)
     if (image) {
         const profileImage = image.split('/');
         const imageName = profileImage[profileImage.length - 1];
@@ -199,4 +201,23 @@ export const storeNotification = async (notification) => {
     const notifications = []
     notifications.push(notification)
     await AsyncStorage.setItem('notifications', JSON.parse(notifications))
+}
+
+export const logout = async () => {
+    await AsyncStorage.setItem("access_token", "")
+    await AsyncStorage.setItem("token_type", "")
+    await AsyncStorage.setItem("user", "")
+}
+
+export const formatRecord = (records = []) => {
+    const size = []
+    const quantity = []
+    const price = []
+    records?.map(record => {
+        size.push(record?.size)
+        quantity.push(record?.quantity)
+        price.push(record?.price)
+    })
+    return { size, quantity, price }
+
 }

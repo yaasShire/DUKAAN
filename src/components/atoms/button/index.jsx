@@ -5,8 +5,7 @@ const AuthButton = ({ title, handleSubmit = () => { }, errors, navigation, desti
     return (
         <TouchableOpacity style={[styles.actionButton(bgColor, cWidth, cHeight), { opacity: isLoading ? .3 : 1 }]} disabled={isLoading} onPress={() => {
             handleSubmit()
-            navigation && navigation.navigate(destination)
-
+            navigation && navigation.replace(destination)
         }}>
             <Text style={styles.buttonText}>{title}</Text>
         </TouchableOpacity>

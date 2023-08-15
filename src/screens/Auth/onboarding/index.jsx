@@ -10,8 +10,8 @@ const OnboardingC = ({ navigation }) => {
     return (
 
         <Onboarding
-            onDone={() => navigation.navigate('addShopFirstTime')}
-            onSkip={() => navigation.navigate('addShopFirstTime')}
+            onDone={() => navigation.navigate('initial')}
+            onSkip={() => navigation.navigate('initial')}
             pages={[
                 {
                     backgroundColor: '#3bd1d1',

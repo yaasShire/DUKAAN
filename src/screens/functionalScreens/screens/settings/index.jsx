@@ -17,6 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { fetchData } from '../../../../hooks/useFetch';
 import AppHeader from '../../../../components/molecules/header';
+import { logout } from '../../../../utils/utilityFunctions';
 const Settings = ({ navigation, route }) => {
     const { width, height } = new Dimensions.get("window")
     const [visible, setVisible] = React.useState(false);
@@ -56,11 +57,11 @@ const Settings = ({ navigation, route }) => {
         });
     }, [navigation])
 
-    const logout = async () => {
-        await AsyncStorage.setItem("access_token", "")
-        await AsyncStorage.setItem("token_type", "")
-        await AsyncStorage.setItem("user", "")
-    }
+    // const logout = async () => {
+    //     await AsyncStorage.setItem("access_token", "")
+    //     await AsyncStorage.setItem("token_type", "")
+    //     await AsyncStorage.setItem("user", "")
+    // }
     return (
         <View style={styles.container}>
             <SafeAreaView />
@@ -87,7 +88,10 @@ const Settings = ({ navigation, route }) => {
                         </Button>
                         <Button style={styles.logoutButton} mode="outlined" onPress={() => {
                             setVisible(false)
-                            navigation.replace("login")
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'initial' }],
+                            });
                             logout()
                         }}>
                             <Text style={styles.logoutText}>Log out</Text>

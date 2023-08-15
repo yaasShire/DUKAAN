@@ -28,10 +28,8 @@ const Map = ({ route, navigation }) => {
 
     const handleSaveLocation = () => {
         navigation.goBack()
-        // dispatch(setCoordinates(coordinate))
     }
 
-    // console.log(route.params)
     return (
         <View style={styles.container}>
             <StatusBar hidden />

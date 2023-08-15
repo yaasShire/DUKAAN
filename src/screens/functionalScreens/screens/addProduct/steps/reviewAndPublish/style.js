@@ -51,7 +51,9 @@ export default StyleSheet.create({
         fontWeight: globalStyles.fontWeights.secondary
     },
     buttonWrapper: {
-        alignItems: "center",
-        marginVertical: "3%"
+        alignItems: 'center',
+        marginTop: "2%",
+        flexDirection: "row",
+        justifyContent: "space-between",
     }
 })

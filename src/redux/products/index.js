@@ -22,6 +22,8 @@ const initialState = {
     price: "",
     description: ""
   },
+  productColor: {},
+  productRecord: []
 }
 
 
@@ -67,12 +69,21 @@ export const products = createSlice({
       state.productOffers.price = action.payload.price,
         state.productOffers.quantity = action.payload.quantity,
         state.productOffers.description = action.payload.description
+    },
+    setProductColor: (state, action) => {
+      state.productColor = action.payload
+    },
+    setProductRecord: (state, action) => {
+      state.productRecord.push(action.payload)
+    },
+    setRemoveRecord: (state, action) => {
+      state.productRecord = action.payload
     }
 
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setMainCategory, setProductCategory, setSubCategory, setShopsList, setProductImage1, setProductImage2, setProductImage3, setProductImage4, setProductOffers, fillRequiredProductInformation, } = products.actions
+export const { setMainCategory, setProductCategory, setSubCategory, setShopsList, setProductImage1, setProductImage2, setProductImage3, setProductImage4, setProductOffers, fillRequiredProductInformation, setProductColor, setProductRecord, setRemoveRecord } = products.actions
 
 export default products.reducer

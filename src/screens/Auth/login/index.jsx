@@ -13,7 +13,7 @@ import { loginValidationSchema } from '../../../utils/validationSchema/loginVali
 import useFetch from '../../../api/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator } from 'react-native-paper'
-import { Dialog, Portal, Text } from 'react-native-paper';
+import { Dialog, Portal, Text } from 'react-native-paper'
 import { formDataGenerator, formValues } from '../../../utils/utilityFunctions'
 import { authFetchData } from '../../../hooks/auth'
 import { authFormData } from '../../../utils/utilityFunctions'
@@ -25,7 +25,6 @@ const Login = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [userInfo, setUserInfo] = useState({})
-
     const handleSignIn = async (values) => {
         setIsLoading(true)
         const payload = formValues(values)
@@ -35,7 +34,11 @@ const Login = ({ navigation }) => {
                 await AsyncStorage.setItem("access_token", data?.access_token)
                 await AsyncStorage.setItem("token_type", data?.token_type)
                 await AsyncStorage.setItem("user", JSON.stringify(data?.user))
-                navigation.replace("bottomTabs")
+                // navigation.reset("bottomTabs")
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'bottomTabs' }],
+                });
             }
             if (!data.access_token) {
                 setError("Un authorized user.")
@@ -59,7 +62,7 @@ const Login = ({ navigation }) => {
                     <View style={styles.titlesHolder}>
                         <View >
                             <Text style={styles.title1}>welcome to</Text>
-                            <Text style={styles.title2}>MECHANICS</Text>
+                            <Text style={styles.title2}>Dukaan</Text>
                         </View>
                         <View>
                             <Text style={styles.description}>Access your account </Text>

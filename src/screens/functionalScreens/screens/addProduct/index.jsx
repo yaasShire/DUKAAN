@@ -20,6 +20,8 @@ import ReviewAndPublish from './steps/reviewAndPublish';
 import { stepperCustomStyles } from '../../../../dataStore';
 import { useDispatch } from 'react-redux';
 import { clearProductRegistrationState } from './steps/services';
+import AddColor from './steps/addColor';
+import AddRecord from './steps/addRecord';
 const AddProduct = ({ navigation }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const dispatch = useDispatch()
@@ -29,9 +31,11 @@ const AddProduct = ({ navigation }) => {
     tabs.set(2, <SubCategory setCurrentPosition={setCurrentPosition} category={subCategories} title="Please select  sub category from the list below." />);
     tabs.set(3, <ProductCategory setCurrentPosition={setCurrentPosition} category={productCategories} title="Please select product category from the list below" />);
     tabs.set(4, <AddImages setCurrentPosition={setCurrentPosition} title="Please insert product image from your device" />);
-    tabs.set(5, <RequiredInfo setCurrentPosition={setCurrentPosition} category={mainCategories} title="Please fill the required information" />);
-    tabs.set(6, <Offers setCurrentPosition={setCurrentPosition} index={5} category={mainCategories} title="Please fill the offers of the product" />);
-    tabs.set(7, <ReviewAndPublish setCurrentPosition={setCurrentPosition} navigation={navigation} />);
+    tabs.set(5, <AddColor setCurrentPosition={setCurrentPosition} title="Please add Color" />);
+    tabs.set(6, <AddRecord setCurrentPosition={setCurrentPosition} title="Please add size, price and quantity." />);
+    tabs.set(7, <RequiredInfo setCurrentPosition={setCurrentPosition} category={mainCategories} title="Please fill the required information" />);
+    tabs.set(8, <Offers setCurrentPosition={setCurrentPosition} index={5} category={mainCategories} title="Please fill the offers of the product" />);
+    tabs.set(9, <ReviewAndPublish setCurrentPosition={setCurrentPosition} navigation={navigation} />);
     const customStyles = stepperCustomStyles
     const handlePosition = (position) => {
         setCurrentPosition(position)
@@ -45,7 +49,7 @@ const AddProduct = ({ navigation }) => {
                 <StepIndicator
                     customStyles={customStyles}
                     currentPosition={currentPosition}
-                    stepCount={8}
+                    stepCount={10}
                     onPress={handlePosition}
                 />
                 <ScrollView contentContainerStyle={styles.productBodyHolder}>

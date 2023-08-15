@@ -89,7 +89,6 @@ const EditProfile = ({ navigation, route }) => {
                                     <TouchableOpacity style={styles.saveButton} onPress={() => handleSubmit(values)} >
                                         <Text style={styles.buttonText}>Save</Text>
                                     </TouchableOpacity>
-
                                 </View>
                             )
                         }

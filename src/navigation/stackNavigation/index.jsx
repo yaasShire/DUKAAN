@@ -29,23 +29,23 @@ import Courier from '../../screens/functionalScreens/screens/couriers'
 import SalesTabs from '../screenStacks/sales'
 import AddShopFirstTime from '../../screens/functionalScreens/screens/addShopFirstTime'
 import DrawerComponent from '../drawer'
-import Test from './Test'
 import { checkIsUserLogIn } from '../../utils/utilityFunctions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import Initial from '../../screens/Auth/initial'
+import Pending from '../../screens/Auth/pending'
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator()
-
     const [isLoggedIn, setIsLoggedIn] = useState(null);
-
+    const [isVerified, setIsVerified] = useState(null)
     useEffect(() => {
-        const fetchLoginStatus = async () => {
+        const fetchStatu = async () => {
             const loginStatus = await AsyncStorage.getItem('access_token');
+            const verificationStatus = JSON.parse(await AsyncStorage.getItem('verified'))
             setIsLoggedIn(!!loginStatus);
+            setIsVerified(verificationStatus)
         };
-
-        fetchLoginStatus();
-    }, []);
+        fetchStatu();
+    }, [isVerified]);
 
     if (isLoggedIn === null) {
         return
@@ -53,14 +53,19 @@ const StackNavigator = () => {
             <ActivityIndicator size={100} />
         </View>
     }
+    let initialRouteName;
+    if (isVerified !== null) {
+        // initialRouteName = (isLoggedIn && isVerified) ? 'bottomTabs' : isVerified == false ? 'pending' : isVerified == true ? 'login' : 'initial'
 
-    const initialRouteName = isLoggedIn ? 'bottomTabs' : 'login';
+    }
+    initialRouteName = isLoggedIn ? 'bottomTabs' : 'login'
+
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName={initialRouteName}>
-                <Stack.Screen name='drawer' component={DrawerComponent} options={{ headerShown: false }} />
-                <Stack.Screen name='addShopFirstTime' component={AddShopFirstTime} options={{ headerShown: false }} />
                 <Stack.Screen name='onboarding' component={OnboardingC} options={{ headerShown: false }} />
+                <Stack.Screen name='initial' component={Initial} options={{ headerShown: false }} />
+                <Stack.Screen name='pending' component={Pending} options={{ headerShown: false }} />
                 <Stack.Screen name='signup' component={SignUp} options={{ headerShown: false }} />
                 <Stack.Screen name='login' component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name='otp' component={OTP} options={{ headerShown: false }} />
@@ -68,9 +73,6 @@ const StackNavigator = () => {
                 <Stack.Screen name='newPassword' component={NewPassword} options={{ headerShown: false }} />
                 <Stack.Screen name='success' component={Success} options={{ headerShown: false }} />
                 <Stack.Screen name='bottomTabs' component={BottomTabs} options={{ headerShown: false }} />
-                <Stack.Screen name='editProfile' component={EditProfile} options={{ headerShown: false }} />
-                <Stack.Screen name='updateShopDetails' component={UpdateShopDetails} options={{ headerShown: false }} />
-                <Stack.Screen name='test' component={Test} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

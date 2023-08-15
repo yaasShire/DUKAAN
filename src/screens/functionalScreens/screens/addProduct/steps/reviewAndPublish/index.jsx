@@ -6,7 +6,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton';
 import ReviewRowCheck from '../../../../../../components/atoms/reviewRowCheck';
 import { useSelector } from 'react-redux';
-import { productDataGenerator, uploadDataGenerator } from '../../../../../../utils/utilityFunctions';
+import { formatRecord, productDataGenerator, uploadDataGenerator } from '../../../../../../utils/utilityFunctions';
 import { fetchData } from '../../../../../../hooks/useFetch';
 import { postData } from '../../../../../../hooks/usePost';
 import AppLoader from '../../../../../../components/molecules/AppLoader';
@@ -17,30 +17,27 @@ import { setMainCategory, setProductCategory, setSubCategory, setShopsList, setP
 import { useDispatch } from 'react-redux';
 import { clearProductRegistrationState } from '../services';
 const ReviewAndPublish = ({ navigation }) => {
-    const { subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images } = useSelector((state) => state.productRegistration)
+    const { subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images, productColor, productRecord } = useSelector((state) => state.productRegistration)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
-    const logStates = () => {
-    }
-    const formatedShopData = productDataGenerator(subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images)
+
+    const recordsFormatted = formatRecord(productRecord)
+    const formatedShopData = productDataGenerator(subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images, productColor, recordsFormatted)
     const productData = uploadDataGenerator(formatedShopData, images)
-    // console.log('====================================');
-    // console.log(productData);
-    // console.log('====================================');
-
-
+    console.log('====================================');
+    console.log(formatedShopData)
+    console.log('====================================');
     const uploadProduct = async () => {
         setIsLoading(true)
-        const data = await postData('seller/products/create', productData, setError, setIsLoading)
+        const data = await postData('seller/products/create/complex', productData, setError, setIsLoading)
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
         if (data?.result) {
-            navigation.replace("productList")
+            // navigation.replace("productList")
         }
     }
-    useEffect(() => {
-        logStates()
-    }, [])
-
 
     return (
         <View style={styles.container}>
@@ -58,9 +55,12 @@ const ReviewAndPublish = ({ navigation }) => {
                 <ReviewRowCheck label={"Product category"} />
                 <ReviewRowCheck label={"Sub category"} />
                 <ReviewRowCheck label={"Images"} />
+                <ReviewRowCheck label={"Color"} />
+                <ReviewRowCheck label={"Record"} />
                 <ReviewRowCheck label={"Required info"} />
                 <ReviewRowCheck label={"Offers"} />
                 <View style={styles.buttonWrapper}>
+                    <AddProductActionButton action="Prev" label={"Prev"} />
                     <AddProductActionButton clearProductRegistrationState={() => clearProductRegistrationState(dispatch)} label={"Finish"} navigation={navigation} uploadProduct={uploadProduct} />
                 </View>
             </ScrollView>
