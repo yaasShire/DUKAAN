@@ -25,17 +25,11 @@ const ReviewAndPublish = ({ navigation }) => {
     const recordsFormatted = formatRecord(productRecord)
     const formatedShopData = productDataGenerator(subCategory, productCategory, shopsList, productRequiredInfo, productOffers, mainCategory, images, productColor, recordsFormatted)
     const productData = uploadDataGenerator(formatedShopData, images)
-    console.log('====================================');
-    console.log(formatedShopData)
-    console.log('====================================');
     const uploadProduct = async () => {
         setIsLoading(true)
         const data = await postData('seller/products/create/complex', productData, setError, setIsLoading)
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
-        if (data?.result) {
-            // navigation.replace("productList")
+        if (data?.result?.status) {
+            navigation.replace("productList")
         }
     }
 

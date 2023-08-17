@@ -29,7 +29,8 @@ const Offers = ({ setCurrentPosition, title }) => {
             }
             <Text style={styles.textTitle}>{title}</Text>
             <Formik
-                initialValues={{ quantity: offers.quantity, price: offers.price, description: offers.description }}
+                // initialValues={{ quantity: offers.quantity, price: offers.price, description: offers.description }}
+                initialValues={{ description: offers.description }}
                 validationSchema={productOfferDetails}
                 onSubmit={(values) => handleNext(values)}
             >
@@ -38,8 +39,8 @@ const Offers = ({ setCurrentPosition, title }) => {
                         <>
                             <ScrollView showsVerticalScrollIndicator={false}>
                                 {/* <AddProductField step="requiredInfo" label="Product Name" valuesObj={values} name="productName" values={values.productName} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}
-                                <AddProductField step="offer" label="Quantity" valuesObj={values} name="quantity" values={values.quantity} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
-                                <AddProductField step="offer" label="Price" valuesObj={values} name="price" values={values.price} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
+                                {/* <AddProductField step="offer" label="Quantity" valuesObj={values} name="quantity" values={values.quantity} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}
+                                {/* <AddProductField step="offer" label="Price" valuesObj={values} name="price" values={values.price} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}
                                 <AddProductField step="offer" label="Description" valuesObj={values} name="description" values={values.description} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} />
                             </ScrollView>
                             <View style={styles.actionButtonHolder}>

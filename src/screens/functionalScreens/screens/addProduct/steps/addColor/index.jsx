@@ -24,9 +24,6 @@ const AddColor = ({ setCurrentPosition }) => {
     useEffect(() => {
         fetchColors()
     }, [])
-    console.log('====================================');
-    console.log(currentColor);
-    console.log('====================================');
 
     const errorHandler = (action) => {
         if (action == 'Prev') {

@@ -58,13 +58,13 @@ export const productDataGenerator = (subCategory, productCategory, shopsList, pr
         brand: Number(productRequiredInfo.productBrand),
         description: productOffers?.description,
         rating: Number(5),
-        quantity_avaliable: recordsFormatted?.quantity,
-        price: recordsFormatted?.price,
+        quantity_avaliable: JSON.stringify(recordsFormatted?.quantity),
+        price: JSON.stringify(recordsFormatted?.price),
         name: productRequiredInfo.productName,
         subcategory: Number(subCategory.id),
         productcategory: Number(productCategory.id),
         color: Number(productColor?.id),
-        size: recordsFormatted?.size
+        size: JSON.stringify(recordsFormatted?.size)
 
 
     }
