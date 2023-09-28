@@ -10,6 +10,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import UpdateProductModalField from './components/updateProductModalField'
 import AppLoader from '../../../../components/molecules/AppLoader'
 import UpdatePickerProduct from './components/updatePickerProduct'
+import UpdatePickerColor from './components/updatePickerColor'
 const UpdateProduct = ({ navigation = {}, route }) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -19,6 +20,7 @@ const UpdateProduct = ({ navigation = {}, route }) => {
     const [brands, setBrands] = useState([])
     const [targetProduct, setTargetProduct] = useState(route?.params?.data)
     const [refreshing, setRefreshing] = useState(false)
+    const [colors, setColors] = useState([])
     const fetchMainCategories = async () => {
         const response = await fetchData('seller/category/view', setError, setIsLoading)
         if (response?.data?.data?.length > 0) {
@@ -51,6 +53,14 @@ const UpdateProduct = ({ navigation = {}, route }) => {
             setRefreshing(false)
         }
     }
+    const fetchColors = async () => {
+        // const { data } = await fetchData(`seller/products/view/${route?.params?.data?.UPID}`, setError, setIsLoading)
+        const { data } = await fetchData('seller/color/view', setError, setIsLoading)
+        if (data?.data[0]) {
+            setColors(data?.data)
+            setRefreshing(false)
+        }
+    }
 
     useFocusEffect(
         useCallback(() => {
@@ -59,6 +69,7 @@ const UpdateProduct = ({ navigation = {}, route }) => {
             fetchProductCategories()
             fetchBrands()
             fetchTargetProduct()
+            fetchColors()
         }, [])
     )
     return (
@@ -76,6 +87,7 @@ const UpdateProduct = ({ navigation = {}, route }) => {
                 <UpdateProductCard label="Product Name" value={targetProduct?.name} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='name' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdateProductCard label="Price" value={Number(targetProduct?.price)} color='red' onPress={() => { }} productId={targetProduct?.UPID} fieldName='price' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdateProductCard label="Quantity Available" value={targetProduct?.quantity_avaliable} color='gold' onPress={() => { }} productId={targetProduct?.UPID} fieldName='quantity_avaliable' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard label="Size" value={targetProduct?.size} color='chocolate' onPress={() => { }} productId={targetProduct?.UPID} fieldName='size' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdateProductCard label="Description" value={targetProduct?.description} color='green' onPress={() => { }} productId={targetProduct?.UPID} fieldName='description' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 {/* <UpdateProductCard label="Brand" value={targetProduct?.brand?.name} category={targetProduct?.brand} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='brand' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
                 {/* <UpdateProductCard label="Main Category" value={targetProduct?.category?.name} category={targetProduct?.category} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='category' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
@@ -85,6 +97,7 @@ const UpdateProduct = ({ navigation = {}, route }) => {
                 <UpdatePickerProduct label="Main Category" value={targetProduct?.category?.name} category={targetProduct?.category} listData={mainCategories} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='category' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdatePickerProduct label="Sub Category" value={targetProduct?.subcategory?.name} category={targetProduct?.subcategory} color='blue' listData={subCategories} onPress={() => { }} productId={targetProduct?.UPID} fieldName='subcategory' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdatePickerProduct label="Product Category" value={targetProduct?.productcategory?.name} category={targetProduct?.productcategory} listData={productCategories} color='orange' onPress={() => { }} productId={targetProduct?.UPID} fieldName='productcategory' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdatePickerColor label="Color" value={targetProduct?.color} category={"Update Color"} listData={colors} color='orange' onPress={() => { }} productId={targetProduct?.UPID} fieldName='color' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
             </ScrollView>
             {
                 isLoading && (

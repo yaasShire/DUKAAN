@@ -30,6 +30,12 @@ const Login = ({ navigation }) => {
         const payload = formValues(values)
         setTimeout(async () => {
             const data = await authFetchData('seller/user/signin', payload, setError, setIsLoading)
+            if (data?.message == "Contact admin to grant access ") {
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'pending' }],
+                });
+            }
             if (data.access_token) {
                 await AsyncStorage.setItem("access_token", data?.access_token)
                 await AsyncStorage.setItem("token_type", data?.token_type)

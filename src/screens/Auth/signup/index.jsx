@@ -35,9 +35,13 @@ const SignUp = ({ navigation }) => {
         setIsLoading(true)
         const payload = formValues(values)
         const data = await authFetchData('seller/user/signup', payload, setError, setIsLoading)
-        if (data?.message) {
+        if (data?.status == 'account created') {
             await AsyncStorage.setItem('verified', JSON.stringify(false))
-            setVerificationMessage(data?.message)
+            // setVerificationMessage(data?.message)
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'pending' }],
+            });
         }
         if (data?.phone_number) {
             setError(data?.phone_number[0])

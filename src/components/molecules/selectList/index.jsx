@@ -18,6 +18,8 @@ const SelectList = ({ label, list, handleChange, errors, name, value = "", setSt
                 )
             }
             <Picker
+                useSafeArea
+                fieldType='form'
                 style={styles.container}
                 placeholder={active}
                 placeholderTextColor="#000"
@@ -26,6 +28,7 @@ const SelectList = ({ label, list, handleChange, errors, name, value = "", setSt
                 labelStyle={styles.labelStyle}
                 enableModalBlur={false}
                 topBarProps={{ title: label }}
+
             >
                 <FlatList
                     data={label == 'Region' ? regionsList : label == 'State' ? statesList : ""}

@@ -58,7 +58,7 @@ const ProductDetails = ({ route, navigation }) => {
                         loop={true}
                         showCounter={Platform.OS == 'android' ? true : false}
                         pageControlPosition='over'
-                        style={{}}>
+                    >
                         {
                             productImages.map(image => (
                                 <Image key={image} source={{ uri: "https://sweyn.co.uk/storage/images/" + image }} style={{ width: "100%", resizeMode: "cover", height: "100%" }} />

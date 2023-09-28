@@ -38,7 +38,6 @@ const EditShopDetails = ({ navigation, route }) => {
             fetchStates()
         }, [])
     )
-
     return (
         <View style={styles.container}>
             <SafeAreaView />

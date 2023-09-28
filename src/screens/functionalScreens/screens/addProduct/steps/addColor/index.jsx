@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setProductColor } from '../../../../../../redux/products';
 import AddProductActionButton from '../../../../../../components/atoms/addProductActionButton';
 import ProductRegistrationError from '../../../../../../components/atoms/productRegistrationError';
+import styles from './style'
 const AddColor = ({ setCurrentPosition }) => {
     const currentColor = useSelector(state => state.productRegistration.productColor)
     const [isLoading, setIsLoading] = useState(false)
@@ -50,27 +51,15 @@ const AddColor = ({ setCurrentPosition }) => {
                 )
             }
             <View style={{ flex: 1, justifyContent: "space-between" }}>
-                <View style={{
-                    width: "100%",
-                    borderWidth: 1,
-                    paddingHorizontal: 10,
-                    borderRadius: 5,
-                    borderColor: "gray",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between"
-                }}>
+                <View style={styles.pickerButtonWrapper}>
+                    <View style={styles.verticalBar("green")} />
                     <Picker
-                        style={{
-                            // backgroundColor: "pink",
-                            width: 330,
-                            alignItems: "center"
-                        }}
+                        containerStyle={styles.pickerStyle}
                         placeholder={selectedColor?.color || 'Pick color'}
                         placeholderTextColor={globalStyles.colors.tertiary}
-                        // shearchPlaceHolder="Search"
-                        // label={'Pick color'}
-                        // labelStyle={{ fontWeight: "600", fontSize: 15, }}
+                        shearchPlaceHolder={"Search"}
+                        // label={"label"}
+                        labelStyle={styles.labelStyle}
                         enableModalBlur={false}
                         topBarProps={{ title: 'Pick color' }}
                     >
@@ -91,7 +80,7 @@ const AddColor = ({ setCurrentPosition }) => {
                         />
 
                     </Picker>
-                    <Feather name='chevron-down' size={30} color={globalStyles.colors.tertiary} style={{}} />
+                    <Feather name='chevron-down' size={25} color={"gray"} style={{ position: "absolute", right: 14, zIndex: -10, top: 15 }} />
                 </View>
                 <View style={{ alignItems: 'center', marginTop: "2%", flexDirection: "row", justifyContent: "space-between" }}>
                     <AddProductActionButton errorHandler={errorHandler} action="Prev" label={"Prev"} />

@@ -18,10 +18,13 @@ const AddShopField = ({ label, touched, errors, keyboardType = "ascii-capable", 
                     style={styles.input}
                     onChangeText={(text) => {
                         handleChange(name)(text)
-                    }} onBlur={() => {
+                    }}
+                    onBlur={() => {
                         handleBlur(name)
                         setFieldTouched(name)
-                    }} value={values[name]} numberOfLines={2}
+                    }}
+                    value={values[name]}
+                    numberOfLines={2}
                 />
             </View>
 

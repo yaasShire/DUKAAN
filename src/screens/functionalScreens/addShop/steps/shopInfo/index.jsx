@@ -20,7 +20,7 @@ const PersonalInfo = ({ setcurrentPosition }) => {
         <View style={styles.container}>
             <ProductRegistrationHeader title="Enter Shop Details" />
             <Formik
-                initialValues={{ shopName: shopData?.shopName, shopEmail: shopData?.shopEmail, shopNumber: shopData?.shopNumber }}
+                initialValues={{ shopName: shopData?.shopName, shopEmail: shopData?.shopEmail, shopNumber: shopData?.shopNumber, accountHolder: shopData?.accountHolder, accountType: shopData?.accountType, accountNo: shopData?.accountNo }}
                 validationSchema={shopDetailsValidation}
                 onSubmit={(values) => handleDataSubmit(values)}
             >
@@ -30,6 +30,9 @@ const PersonalInfo = ({ setcurrentPosition }) => {
                             <AddShopField label={'Shop Name'} name="shopName" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <AddShopField keyboardType='email-address' label={'Shop Email'} name="shopEmail" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <AddShopField keyboardType='number-pad' label={'Shop Phone Number'} name="shopNumber" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField keyboardType='number-pad' label={'Account Number'} name="accountNo" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField keyboardType='default' label={'Account Type'} name="accountType" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                            <AddShopField keyboardType='default' label={'Account Holder'} name="accountHolder" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
                             <View style={styles.buttonHolder}>
                                 <CancelButton disabled={true} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
                                 <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />

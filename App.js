@@ -29,22 +29,6 @@ export default function App() {
   });
 
 
-
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-
-  // }, [fontsLoaded]);
-
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-
-
-
-
-
   async function requestUserPermission() {
     const authStatus = await messaging().requestPermission();
     const enabled =

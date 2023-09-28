@@ -18,6 +18,7 @@ const AddShopButton = ({ label, handleSubmit, setcurrentPosition, navigation, ch
         if (mainImageChecker) {
             setIsLoading(true)
             const result = await postData('seller/shop/create', shopInfo, setError, setIsLoading)
+            console.log(result)
             if (result?.result?.status == 'Shop Added Successfully') {
                 clearShopDetails()
                 dispatch(setImage1(""))

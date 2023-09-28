@@ -12,5 +12,14 @@ export const shopDetailsValidation = yup.object().shape({
     shopNumber: yup
         .string()
         .min(8, ({ min }) => `Shop number must be at least ${min} length`)
+        .required('required'),
+    accountNo: yup
+        .string()
+        .required('required'),
+    accountType: yup
+        .string()
+        .required('required'),
+    accountHolder: yup
+        .string()
         .required('required')
 })

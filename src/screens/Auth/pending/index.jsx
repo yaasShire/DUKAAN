@@ -16,7 +16,6 @@ const Pending = ({ navigation }) => {
             </View>
             <View style={styles.contactsWrapper}>
                 <ContactCard icon='wechat' title='Message' onPress={() => {
-                    alert('hello')
                     Linking.openURL(
                         'http://api.whatsapp.com/send?phone=252' + "612518368"
                     )
@@ -27,13 +26,13 @@ const Pending = ({ navigation }) => {
             </View>
             <View style={styles.loginBtnWrapper}>
                 <Pressable style={styles.loginBtn} onPress={async () => {
-                    const status = JSON.parse(await AsyncStorage.getItem("verified"))
-                    console.log(status)
+                    // const status = JSON.parse(await AsyncStorage.getItem("verified"))
+                    // console.log(status)
                     // await AsyncStorage.setItem('verified', JSON.stringify(true))
-                    // navigation.reset({
-                    //     index: 0,
-                    //     routes: [{ name: 'login' }],
-                    // });
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'login' }],
+                    });
 
                 }}>
                     <Text style={styles.loginBtnText}>Log In</Text>

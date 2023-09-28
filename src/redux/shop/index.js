@@ -4,7 +4,10 @@ const initialState = {
     shopData: {
         shopName: "",
         shopEmail: "",
-        shopNumber: ""
+        shopNumber: "",
+        accountNo: "",
+        accountType: "MERCHANT",
+        accountHolder: ""
     },
     locationData: {
         country: "",
