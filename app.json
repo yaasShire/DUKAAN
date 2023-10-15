@@ -45,11 +45,6 @@
     },
     "web": {
       "favicon": "./assets/dukaan.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "8367b8ea-433d-4f6d-8500-532c05d6326d"
-      }
     }
   }
 }
