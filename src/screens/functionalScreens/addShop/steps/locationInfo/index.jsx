@@ -63,7 +63,7 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
         fetchRegions()
     }, []);
 
-    Geocoder.init('AIzaSyCsJ_JBbomxUgMeWecFqNcOEk2g60NfKow');
+    Geocoder.init('AIzaSyCm1NrKo7E44lu9k_hqjKqyu2QlhiCK38E');
     const handleRegionChange = (region) => {
         Geocoder.from(Number(coordinates.latitude), Number(coordinates.longitude))
             .then((response) => {

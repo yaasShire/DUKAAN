@@ -20,9 +20,9 @@ export default StyleSheet.create({
         alignItems: "center",
     },
     logoImage: {
-        width: 120,
+        width: 160,
         height: 40,
-        resizeMode: "contain",
+        resizeMode: "cover",
     },
     titleBackButtonWrapper: {
         flexDirection: 'row',

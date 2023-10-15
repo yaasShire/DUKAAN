@@ -12,6 +12,15 @@ export const signupValidationSchema = yup.object().shape({
         .string()
         .email("Please enter a valid email")
         .required('email is required'),
+    accountNo: yup
+        .string()
+        .required('Account Number is required'),
+    accountType: yup
+        .string()
+        .required('Account Type is required'),
+    accountHolder: yup
+        .string()
+        .required('Account Holder is required'),
     city: yup
         .string()
         .required('City is required'),

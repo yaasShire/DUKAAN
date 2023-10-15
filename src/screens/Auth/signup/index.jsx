@@ -70,12 +70,12 @@ const SignUp = ({ navigation }) => {
                     <View style={styles.titlesHolder}>
                         <View style={styles.uperText} >
                             <Text style={styles.title1}>welcome to</Text>
-                            <Text style={styles.title2}>MECHANICS</Text>
+                            <Text style={styles.title2}>DUKAAN</Text>
                         </View>
-                        <View>
+                        {/* <View>
                             <Text style={styles.description}>Welcome back you've </Text>
                             <Text style={styles.description}> been missed.</Text>
-                        </View>
+                        </View> */}
                     </View>
                     <View style={styles.imageHolder}>
                         <Image source={bannerImage} style={styles.image} />
@@ -89,7 +89,7 @@ const SignUp = ({ navigation }) => {
                     }
                     <Formik
                         validationSchema={signupValidationSchema}
-                        initialValues={{ name: "", phone_number: "", email: "", city: "", password: "", confirmPassword: "" }}
+                        initialValues={{ name: "", phone_number: "", email: "", city: "", password: "", confirmPassword: "", accountNo: "", accountType: "", accountHolder: "" }}
                         onSubmit={(values) => handleSignUp(values)}
                     >
                         {
@@ -97,8 +97,11 @@ const SignUp = ({ navigation }) => {
                                 <>
                                     <View style={styles.fieldsHolder}>
                                         <TextFieldC title="Full Name" name="name" setFieldTouched={setFieldTouched} values={values.fullName} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
-                                        <TextFieldC keyboardType="number-pad" title="Phone Number" name="phone_number" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC keyboardType="number-pad" title="Phone Number" name="phone_number" setFieldTouched={setFieldTouched} values={values?.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC keyboardType='email-address' title="email" name="email" setFieldTouched={setFieldTouched} values={values.email} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC keyboardType='number-pad' title="Account Number" name="accountNo" setFieldTouched={setFieldTouched} values={values.accountNo} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC keyboardType='default' title="Account Type" name="accountType" setFieldTouched={setFieldTouched} values={values.accountType} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
+                                        <TextFieldC keyboardType='default' title="Account Holder" name="accountHolder" setFieldTouched={setFieldTouched} values={values.accountHolder} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC title="City" name="city" setFieldTouched={setFieldTouched} values={values.phoneNumber} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC title="Password" name="password" setFieldTouched={setFieldTouched} values={values.password} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />
                                         <TextFieldC title="Confirm Password" name="confirmPassword" setFieldTouched={setFieldTouched} values={values.confirmPassword} handleChange={handleChange} handleBlur={handleBlur} isValid={isValid} handleSubmit={handleSubmit} touched={touched} errors={errors} />

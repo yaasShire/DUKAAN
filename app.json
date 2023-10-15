@@ -4,7 +4,7 @@
     "slug": "mechanic",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo2.png",
+    "icon": "./assets/dukaan.png",
     "userInterfaceStyle": "light",
     "plugins": [
       [
@@ -15,7 +15,7 @@
       ]
     ],
     "splash": {
-      "image": "./assets/logo2.png",
+      "image": "./assets/dukaan.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -29,11 +29,11 @@
       "googleServicesFile": "./google-services.json",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyCsJ_JBbomxUgMeWecFqNcOEk2g60NfKow"
+          "apiKey": "AIzaSyCm1NrKo7E44lu9k_hqjKqyu2QlhiCK38E"
         }
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo2.png",
+        "foregroundImage": "./assets/dukaan.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
@@ -44,11 +44,11 @@
       "package": "com.dukaan.mechanic"
     },
     "web": {
-      "favicon": "./assets/logo2.png"
+      "favicon": "./assets/dukaan.png"
     },
     "extra": {
       "eas": {
-        "projectId": "b60361dc-4b09-4f03-b2a1-71fced05d531"
+        "projectId": "8367b8ea-433d-4f6d-8500-532c05d6326d"
       }
     }
   }

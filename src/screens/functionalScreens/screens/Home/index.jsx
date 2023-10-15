@@ -66,9 +66,9 @@ const Home = ({ navigation }) => {
             }} />} scrollEnabled={true} showsVerticalScrollIndicator={false} nestedScrollEnabled={true} stickyHeaderIndices={[0]} style={styles.mainScroll}>
                 <View style={styles.topContent}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.infoCardsWrapper}>
-                        <DashboardCard description={'Today Sales'} ammount={0} sign={true} />
-                        <DashboardCard description={'Total Customers'} ammount={0} sign={false} />
-                        <DashboardCard description={'Expense'} ammount={0} sign={true} />
+                        {/* <DashboardCard description={'Today Sales'} ammount={0} sign={true} /> */}
+                        {/* <DashboardCard description={'Total Customers'} ammount={0} sign={false} /> */}
+                        {/* <DashboardCard description={'Expense'} ammount={0} sign={true} /> */}
                         <DashboardCard description={'Number Of Shops'} ammount={shopsNumber} sign={false} />
                     </ScrollView>
                 </View>

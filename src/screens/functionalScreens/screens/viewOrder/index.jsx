@@ -45,6 +45,7 @@ const ViewOrder = ({ navigation, route }) => {
         const formData = new FormData()
         formData.append('UOID', route?.params?.order?.UOID)
         const updatedOrderStatus = await postData('seller/orders/accept', formData, setError, setIsLoading)
+        console.log(updatedOrderStatus)
         if (updatedOrderStatus?.result?.message == 'Order Accepted') {
             setShowModal(true)
             setVisible(true)
@@ -55,6 +56,7 @@ const ViewOrder = ({ navigation, route }) => {
         }
     }
 
+    console.log(route.params)
     const rejectOrder = async () => {
         const formData = new FormData()
         formData.append('UOID', route?.params?.order?.UOID)

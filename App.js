@@ -45,6 +45,8 @@ export default function App() {
       messaging().getToken().then(async (token) => {
         const formData = new FormData()
         formData.append('fcm', token)
+        formData.append('FCM_SERVER_KEY', "AAAAjjhnt8w:APA91bGlkqPvp4-hrV2pVLrAxU5ANC1Y5Kt0s2zqvkxWwCCBJQll4iba4CHs01yiKMPQwdsGvuIUcqZzhbSfgMrNjcg_3cRvOBoFdtUi-r1JHcY0tDT6w0VmUDUDbU6zWFqO92VZdCBm")
+        formData.append('FCM_SENDER_ID', "610831677388")
         const data = await postData('seller/user/updateFCM', formData, setError, setIsLoading)
       });
     } else {
