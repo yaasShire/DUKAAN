@@ -5,11 +5,10 @@ import Feather from 'react-native-vector-icons/Feather'
 import logo from '../../../assets/macanicLogo.png'
 import { View } from 'react-native';
 import styles from './style'
-import darawalLogo from '../../../assets/darawalLogo.png'
 import AnimatedButton from '../../../components/atoms/animatedButton'
 import { FontAwesome } from '@expo/vector-icons';
 import { globalStyles } from '../../../globalConstants/styles';
-import dukaanLogo from '../../../assets/images/dukaanLogo.png'
+import dukaanLogo from '../../../assets/images/dukaanLogo.jpeg';
 const AppHeader = ({ title = "", backButton = false, menu = false, navigation, addproductButton = false, showLogo = false, screen = "", color = "", showFilter = false, addShopButton = false, cancelButton = false, clearProductRegistrationState = () => { } }) => {
     return (
         <View style={styles.container}>

@@ -4,7 +4,7 @@
     "slug": "mechanic",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/dukaan.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "plugins": [
       [
@@ -15,7 +15,7 @@
       ]
     ],
     "splash": {
-      "image": "./assets/dukaan.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,7 +23,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dukaan.mechanic"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -33,7 +34,7 @@
         }
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/dukaan.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
@@ -44,7 +45,12 @@
       "package": "com.dukaan.mechanic"
     },
     "web": {
-      "favicon": "./assets/dukaan.png"
+      "favicon": "./assets/logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d7e40509-58dc-4618-baf1-56d692b61712"
+      }
     }
   }
 }
