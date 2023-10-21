@@ -19,7 +19,7 @@ const ShopCard = ({ shop, navigation, profileData }) => {
     return (
         <View style={styles.shopCardWrapper}>
             <View style={styles.imageInfoWrapper}>
-                <Image source={shop?.photos ? { uri: "https://sweyn.co.uk/storage/images/shops/" + shop?.photos } : shopPlaceHolder} style={styles.image} />
+                <Image source={shop?.photos ? { uri: "https://api.elabis.app/storage/images/shops/" + shop?.photos } : shopPlaceHolder} style={styles.image} />
                 {/* <Image source={{uri: "https://sweyn.co.uk/storage/images/shops/"+shop.photos}} /> */}
                 <View style={styles.buttonInfoWrapper}>
                     <View style={styles.infoWrapper}>

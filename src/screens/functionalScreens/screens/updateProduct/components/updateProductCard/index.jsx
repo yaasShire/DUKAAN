@@ -6,7 +6,7 @@ import { nameShortner } from '../../../../../../utils/utilityFunctions'
 import UpdateProductModalField from '../updateProductModalField'
 import ResultModal from '../resultModal'
 import UpdatePickerProduct from '../updatePickerProduct'
-const UpdateProductCard = ({ color = "blue", onPress = () => { }, label = "", value, category = {}, productId = "", fieldName = "", setIsLoading = () => { }, setError = () => { }, fetchTargetProduct = () => { } }) => {
+const UpdateProductCard = ({ color = "blue", keyboardType = "default", onPress = () => { }, label = "", value, category = {}, productId = "", fieldName = "", setIsLoading = () => { }, setError = () => { }, fetchTargetProduct = () => { } }) => {
     const [showModal, setShowModal] = useState(false)
     const [showResultModal, setShowResultModal] = useState(false)
     return (
@@ -21,7 +21,7 @@ const UpdateProductCard = ({ color = "blue", onPress = () => { }, label = "", va
                     setShowModal(true)
                 }} />
             </View>
-            <UpdateProductModalField fetchTargetProduct={fetchTargetProduct} setError={setError} setIsLoading={setIsLoading} setShowResultModal={setShowResultModal} fieldName={fieldName} productId={productId} value={value} label={label} onPress={onPress} showModal={showModal} setShowModal={setShowModal} />
+            <UpdateProductModalField keyboardType={keyboardType} fetchTargetProduct={fetchTargetProduct} setError={setError} setIsLoading={setIsLoading} setShowResultModal={setShowResultModal} fieldName={fieldName} productId={productId} value={value} label={label} onPress={onPress} showModal={showModal} setShowModal={setShowModal} />
             {/* <UpdatePickerProduct /> */}
             <ResultModal setShowResultModal={setShowResultModal} showResultModal={showResultModal} />
         </View>

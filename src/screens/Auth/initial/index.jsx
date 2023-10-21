@@ -6,12 +6,13 @@ import InitialButton from './components/intialButton'
 import { globalStyles, screenPadding } from '../../../globalConstants/styles'
 import { Image } from 'react-native'
 import style from './style'
+import logoImage from '../../../assets/images/dukaanLogo.jpeg'
 const Initial = ({ navigation }) => {
     return (
         <View style={styles.backgroundImage} >
             <StatusBar backgroundColor={"#143d57"} barStyle={'default'} />
             <View style={styles.logoWrapper}>
-                <Image source={require('../../../../assets/logo2.png')} style={style.logoImage} />
+                <Image source={logoImage} style={style.logoImage} />
                 <Text style={styles.appName}>Dukaan</Text>
             </View>
             <View style={styles.wrapper}>

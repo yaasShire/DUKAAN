@@ -18,7 +18,7 @@ const SelectList = ({ label, list, handleChange, errors, name, value = "", setSt
                 )
             }
             <Picker
-                useSafeArea
+                // useSafeArea
                 fieldType='form'
                 style={styles.container}
                 placeholder={active}

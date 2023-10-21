@@ -9,7 +9,6 @@ export default StyleSheet.create({
 
     },
     modalView: {
-        // margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
         alignItems: 'center',
@@ -38,7 +37,6 @@ export default StyleSheet.create({
         backgroundColor: globalStyles.colors.logoColor
     },
     canelButton: {
-        backfaceVisibility: 'gray'
     },
     textStyle: {
         color: 'white',

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './style'
 import { Button } from 'react-native-paper'
 import { postData } from '../../../../../../hooks/usePost'
-const UpdateProductModalField = ({ showModal = false, setShowModal = () => { }, label = "", value = "", productId = "", fieldName = "", setShowResultModal = () => { }, setIsLoading = () => { }, setError = () => { }, fetchTargetProduct = () => { } }) => {
+const UpdateProductModalField = ({ keyboardType = "default", showModal = false, setShowModal = () => { }, label = "", value = "", productId = "", fieldName = "", setShowResultModal = () => { }, setIsLoading = () => { }, setError = () => { }, fetchTargetProduct = () => { } }) => {
     const [fieldValue, setFieldValue] = useState(value)
     const updateField = async () => {
         setIsLoading(true)
@@ -31,6 +31,7 @@ const UpdateProductModalField = ({ showModal = false, setShowModal = () => { }, 
                 <View style={styles.modalView}>
                     <Text style={styles.label}>{label}</Text>
                     <TextInput
+                        keyboardType={keyboardType}
                         style={styles.input}
                         mode="outlined"
                         placeholder="Update value"

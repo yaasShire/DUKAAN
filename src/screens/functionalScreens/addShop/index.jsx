@@ -1,6 +1,5 @@
-import { View, Text, StatusBar, ScrollView } from 'react-native'
+import { View, Text, StatusBar, ScrollView, SafeAreaView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './style'
 import StepIndicator from 'react-native-step-indicator';
 import PersonalInfo from './steps/personalInfo';
@@ -37,7 +36,7 @@ const AddShop = ({ navigation }) => {
                     customStyles={customStyles}
                     currentPosition={currentPosition}
                     labels={labels}
-                    onPress={handlePosition}
+                // onPress={handlePosition}
                 />
                 <View style={styles.contentHolder}>
                     {tabs.get(currentPosition)}

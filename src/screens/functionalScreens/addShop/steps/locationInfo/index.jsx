@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Platform, KeyboardAvoidingView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import AddShopField from '../../../../../components/atoms/addShopField'
@@ -76,28 +76,34 @@ const PersonalInfo = ({ setcurrentPosition, navigation }) => {
     return (
         <View style={styles.container}>
             <ProductRegistrationHeader title="Enter Location Details" />
-            <Formik
-                initialValues={{ country: locationData?.country, state: locationData?.state, city: locationData?.city, region: locationData?.region, nearestLANMark: locationData?.nearestLANMark }}
-                validationSchema={shopLocationValidation}
-                onSubmit={(values) => handleDataSubmit(values)}
-            >
-                {
-                    ({ values, errors, handleBlur, handleChange, handleSubmit, touched, setTouched, setFieldTouched }) => (
-                        <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 15 }}>
-                            <AddShopField label={'Country'} name="country" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <AddShopField label={'City'} name="city" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <AddShopField label={'Nearest LAN Mark'} name="nearestLANMark" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <SelectList touched={touched} setFieldTouched={setFieldTouched} regionsList={regionsList} value={regionsList.find(regionItem => Number(regionItem?.id) == Number(values.region))} name="region" errors={errors} setRegion={setRegion} label={'Region'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <SelectList touched={touched} setFieldTouched={setFieldTouched} statesList={statesList} value={statesList.find(stateItem => Number(stateItem?.id) == Number(values.state))} onBlur name="state" errors={errors} setState={setState} label={'State'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
-                            <PickLocation label={locationName} coordinates={coordinates} navigation={navigation} setShowMap={setShowMap} />
-                            <View style={styles.buttonHolder}>
-                                <CancelButton disabled={false} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
-                                <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />
-                            </View>
-                        </ScrollView>
-                    )
-                }
-            </Formik>
+            <KeyboardAvoidingView
+                enabled
+                style={{ flex: 1 }}
+                keyboardVerticalOffset={15}
+                behavior={Platform.OS == 'ios' ? 'padding' : null}>
+                <Formik
+                    initialValues={{ country: locationData?.country, state: locationData?.state, city: locationData?.city, region: locationData?.region, nearestLANMark: locationData?.nearestLANMark }}
+                    validationSchema={shopLocationValidation}
+                    onSubmit={(values) => handleDataSubmit(values)}
+                >
+                    {
+                        ({ values, errors, handleBlur, handleChange, handleSubmit, touched, setTouched, setFieldTouched }) => (
+                            <ScrollView style={styles.fieldsHolder} showsVerticalScrollIndicator={false} contentContainerStyle={{ rowGap: 15 }}>
+                                <AddShopField label={'Country'} name="country" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                                <AddShopField label={'City'} name="city" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                                <AddShopField label={'Nearest LAN Mark'} name="nearestLANMark" values={values} errors={errors} touched={touched} setTouched={setTouched} handleBlur={handleBlur} handleSubmit={handleSubmit} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                                <SelectList touched={touched} setFieldTouched={setFieldTouched} regionsList={regionsList} value={regionsList.find(regionItem => Number(regionItem?.id) == Number(values.region))} name="region" errors={errors} setRegion={setRegion} label={'Region'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                                <SelectList touched={touched} setFieldTouched={setFieldTouched} statesList={statesList} value={statesList.find(stateItem => Number(stateItem?.id) == Number(values.state))} onBlur name="state" errors={errors} setState={setState} label={'State'} handleChange={handleChange} setFieldTouched={setFieldTouched} />
+                                <PickLocation label={locationName} coordinates={coordinates} navigation={navigation} setShowMap={setShowMap} />
+                                <View style={styles.buttonHolder}>
+                                    <CancelButton disabled={false} handleSubmit={handleSubmit} label="Previous" setcurrentPosition={setcurrentPosition} />
+                                    <AddShopButton handleSubmit={() => handleSubmit(values)} label="Next" setcurrentPosition={setcurrentPosition} />
+                                </View>
+                            </ScrollView>
+                        )
+                    }
+                </Formik>
+            </KeyboardAvoidingView>
             {
                 showMap && (
                     <Map />

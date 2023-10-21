@@ -9,7 +9,7 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'rgba(184, 191, 189, .3)',
         paddingHorizontal: screenPadding,
-        backgroundColor: globalStyles.colors.miniPrimary,
+        backgroundColor: "#f8f9fb",
     },
     logoImageHolder: {
         width: 400,
@@ -20,7 +20,7 @@ export default StyleSheet.create({
         alignItems: "center",
     },
     logoImage: {
-        width: 160,
+        width: 180,
         height: 40,
         resizeMode: "cover",
     },

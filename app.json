@@ -19,20 +19,22 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": [],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.dukaan.mechanic"
+      "bundleIdentifier": "com.dukaan.mechanic",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "podfile": {
+        "modularHeaders": true
+      }
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyCm1NrKo7E44lu9k_hqjKqyu2QlhiCK38E"
         }
       },
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
@@ -48,8 +50,9 @@
       "favicon": "./assets/logo.png"
     },
     "extra": {
+      "googleMapsApiKey": "AIzaSyCm1NrKo7E44lu9k_hqjKqyu2QlhiCK38E",
       "eas": {
-        "projectId": "d7e40509-58dc-4618-baf1-56d692b61712"
+        "projectId": "52b02931-5a0e-4560-891a-175adc93f923"
       }
     }
   }

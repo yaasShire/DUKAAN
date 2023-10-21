@@ -37,7 +37,7 @@ const Offers = ({ setCurrentPosition, title }) => {
                 {
                     ({ errors, values, touched, setFieldTouched, handleBlur, handleChange, handleSubmit }) => (
                         <>
-                            <ScrollView showsVerticalScrollIndicator={false}>
+                            <ScrollView showsVerticalScrollIndicator={false} style={{ width: "100%" }}>
                                 {/* <AddProductField step="requiredInfo" label="Product Name" valuesObj={values} name="productName" values={values.productName} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}
                                 {/* <AddProductField step="offer" label="Quantity" valuesObj={values} name="quantity" values={values.quantity} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}
                                 {/* <AddProductField step="offer" label="Price" valuesObj={values} name="price" values={values.price} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} handleSubmit={handleSubmit} setFieldTouched={setFieldTouched} /> */}

@@ -13,7 +13,7 @@ const ProductCard = ({ item, navigation }) => {
     return (
         <View style={styles.card}>
             <View style={styles.imageWrapper}>
-                <Image source={item?.photo ? { uri: "https://sweyn.co.uk/storage/images/" + item?.photo } : productImagePlaceHolder} style={styles.image} />
+                <Image source={item?.photo ? { uri: "https://api.elabis.app/storage/images/" + item?.photo } : productImagePlaceHolder} style={styles.image} />
             </View>
             <View style={styles.rightContentWrapper}>
                 <View style={styles.namePriceWrapper}>

@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { HeightDimension, WindowDimension } from "../../../utils/utilityFunctions";
 export default StyleSheet.create({
     container: {
-        width: "100%",
+        width: "99.9%",
         minHeight: 55,
         borderWidth: 1,
         paddingHorizontal: 10,

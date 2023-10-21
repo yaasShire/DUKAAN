@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, Image, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { View, Text, StatusBar, Image, TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -66,7 +66,7 @@ const EditProfile = ({ navigation, route }) => {
                 <View style={styles.profileCardWrapper}>
                     <View style={styles.imageAndButtonWrapper}>
                         <View style={styles.imageWrapper}>
-                            <Image style={styles.image} source={image ? { uri: image } : prevImage ? { uri: `https://sweyn.co.uk/storage/images/avatar/${prevImage}` } : profilePlaceholder} />
+                            <Image style={styles.image} source={image ? { uri: image } : prevImage ? { uri: `https://api.elabis.app/storage/images/avatar/${prevImage}` } : profilePlaceholder} />
                         </View>
                         <View style={styles.cameraIconWrapper}>
                             <AntDesign name='camera' size={22} color={globalStyles.colors.miniPrimary} onPress={pickImage} />

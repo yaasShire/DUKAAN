@@ -4,8 +4,8 @@ const { width, height } = new Dimensions.get("screen")
 export default StyleSheet.create({
     fieldHolder: {
         alignItems: "flex-start",
-        justifyContent: "center",
-        zIndex: -10
+        // justifyContent: "center",
+        // zIndex: -10
     },
     inputHolder: {
         height: height / 17,
@@ -16,8 +16,8 @@ export default StyleSheet.create({
     },
     input: {
         width: "100%",
-        height: 55,
-        borderWidth: 1,
+        height: 45,
+        // borderWidth: 1,
         // borderColor: 'gray',
         borderRadius: 6,
         padding: 6,

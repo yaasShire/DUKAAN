@@ -1,7 +1,7 @@
 import { View, Text, StatusBar, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
-import MapView, { Callout, Circle, Marker } from 'react-native-maps'
+import MapView, { Callout, Circle, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import * as Location from 'expo-location';
 import { globalStyles } from '../../../../globalConstants/styles';
 import { FAB } from 'react-native-paper';
@@ -36,7 +36,7 @@ const Map = ({ route, navigation }) => {
             <MapView
                 style={styles.mapStyle}
                 initialRegion={coordinate}
-                provider='google'
+                // provider={PROVIDER_GOOGLE}
                 onPress={(e) => {
                     console.log(e.nativeEvent.position.x)
                     dispatch(setCoordinates({

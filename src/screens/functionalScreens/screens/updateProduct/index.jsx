@@ -1,6 +1,6 @@
-import { View, Text, StatusBar, RefreshControl } from 'react-native'
+import { View, Text, StatusBar, RefreshControl, SafeAreaView } from 'react-native'
 import React, { useCallback, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 import { ScrollView } from 'react-native-gesture-handler'
 import AppHeader from '../../../../components/molecules/header'
 import styles from './style'
@@ -11,6 +11,7 @@ import UpdateProductModalField from './components/updateProductModalField'
 import AppLoader from '../../../../components/molecules/AppLoader'
 import UpdatePickerProduct from './components/updatePickerProduct'
 import UpdatePickerColor from './components/updatePickerColor'
+import { TextInput } from 'react-native-paper'
 const UpdateProduct = ({ navigation = {}, route }) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -84,10 +85,11 @@ const UpdateProduct = ({ navigation = {}, route }) => {
                 fetchProductCategories()
                 fetchSubCategories()
             }} />} contentContainerStyle={styles.contentWrapper} style={{ flex: 1 }}>
-                <UpdateProductCard label="Product Name" value={targetProduct?.name} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='name' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
-                <UpdateProductCard label="Price" value={Number(targetProduct?.price)} color='red' onPress={() => { }} productId={targetProduct?.UPID} fieldName='price' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
-                <UpdateProductCard label="Quantity Available" value={targetProduct?.quantity_avaliable} color='gold' onPress={() => { }} productId={targetProduct?.UPID} fieldName='quantity_avaliable' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
-                <UpdateProductCard label="Size" value={targetProduct?.size} color='chocolate' onPress={() => { }} productId={targetProduct?.UPID} fieldName='size' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <TextInput keyboardType=''></TextInput>
+                <UpdateProductCard keyboardType='default' keyType="" label="Product Name" value={targetProduct?.name} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='name' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard keyboardType='number-pad' label="Price" value={Number(targetProduct?.price)} color='red' onPress={() => { }} productId={targetProduct?.UPID} fieldName='price' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard keyboardType='number-pad' label="Quantity Available" value={targetProduct?.quantity_avaliable} color='gold' onPress={() => { }} productId={targetProduct?.UPID} fieldName='quantity_avaliable' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
+                <UpdateProductCard keyboardType='number-pad' label="Size" value={targetProduct?.size} color='chocolate' onPress={() => { }} productId={targetProduct?.UPID} fieldName='size' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdateProductCard label="Description" value={targetProduct?.description} color='green' onPress={() => { }} productId={targetProduct?.UPID} fieldName='description' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 {/* <UpdateProductCard label="Brand" value={targetProduct?.brand?.name} category={targetProduct?.brand} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='brand' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}
                 {/* <UpdateProductCard label="Main Category" value={targetProduct?.category?.name} category={targetProduct?.category} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='category' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} /> */}

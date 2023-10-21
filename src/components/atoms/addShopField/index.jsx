@@ -1,7 +1,7 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
 import styles from './style'
-// import { TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 const AddShopField = ({ label, touched, errors, keyboardType = "ascii-capable", handleSubmit = "", user, handleBlur, handleChange, values, setFieldTouched, name }) => {
 
     return (

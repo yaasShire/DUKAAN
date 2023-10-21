@@ -58,7 +58,7 @@ const Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <SafeAreaView />
-            <StatusBar barStyle='light-content' />
+            <StatusBar barStyle='light-content' backgroundColor="#f8f9fb" />
             <AppHeader showLogo={true} navigation={navigation} menu={false} />
             <ScrollView enableEmptySections={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => {
                 fetchOrders()
@@ -78,7 +78,7 @@ const Home = ({ navigation }) => {
                             <SellerCardAction actionName={"Profile"} image={profileImage} navigation={navigation} />
                             <SellerCardAction actionName={"Shop"} image={shopImage} navigation={navigation} />
                             <SellerCardAction actionName={"Product"} image={ProductImage} navigation={navigation} />
-                            <SellerCardAction actionName={"Report"} image={reportImage} navigation={navigation} />
+                            {/* <SellerCardAction actionName={"Report"} image={reportImage} navigation={navigation} /> */}
                         </View>
                         <View style={styles.recentOrdersWrapper}>
                             <Text style={styles.header}><Text style={{ color: "red", fontSize: 18 }}>*</Text> Recent Orders</Text>

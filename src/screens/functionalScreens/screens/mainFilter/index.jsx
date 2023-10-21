@@ -1,5 +1,5 @@
-import { View, Text, StatusBar, ScrollView, FlatList, TouchableWithoutFeedback, TextInput, } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { View, Text, StatusBar, ScrollView, FlatList, TouchableWithoutFeedback, TextInput, SafeAreaView } from 'react-native'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';

@@ -9,15 +9,15 @@ export default StyleSheet.create({
     input: {
         paddingHorizontal: "3%",
         paddingVertical: "1%",
-        width: width / 1.12,
+        width: "100%",
         borderRadius: 6,
         fontSize: 15,
         fontWeight: "400",
-        backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         color: "#000",
-        borderWidth: 1,
-        borderColor: "gray",
-        height: 70,
+        // borderWidth: 1,
+        // borderColor: "gray",
+        // height: 70,
         marginVertical: 6
     },
     label: {

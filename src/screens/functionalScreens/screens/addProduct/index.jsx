@@ -1,8 +1,8 @@
-import { View, Text, StatusBar, ScrollView, Platform } from 'react-native'
+import { View, Text, StatusBar, ScrollView, Platform, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import styles from './style'
 import StepIndicator from 'react-native-step-indicator';
-import { SafeAreaView } from 'react-native-safe-area-context';
+// import { SafeAreaView } from 'react-native-safe-area-context';
 import AddProductHeader from '../../../../components/molecules/brandCard/addProductHeader';
 import AddProductBody from '../../../../components/molecules/addProductBody';
 import { mainCategories, productCategories, subCategories, shopsList } from '../../../../dataStore';

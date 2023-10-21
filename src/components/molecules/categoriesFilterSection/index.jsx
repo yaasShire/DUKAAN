@@ -19,7 +19,7 @@ const CategoriesFilterSectionContent = ({ }) => {
     useEffect(() => {
         const fetchMainCategories = async () => {
             setIsLoading(true)
-            const { data } = await fetchData('seller/category/view/', setError, setIsLoading)
+            const { data } = await fetchData('seller/category/view', setError, setIsLoading)
             if (data?.data?.length > 0) {
                 setMainCategory(data?.data)
             }

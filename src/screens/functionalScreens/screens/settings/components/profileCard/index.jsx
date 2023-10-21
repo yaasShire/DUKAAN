@@ -9,7 +9,7 @@ const ProfileCard = ({ user, navigation, userData = {} }) => {
         <Pressable style={styles.profileCardWrapper} onPress={() => navigation.navigate("editProfile", { image: "https://sweyn.co.uk/storage/images/avatar/" + user.profile_picture, userData })}>
             <View style={styles.imageNameNumberWrapper}>
                 <View style={styles.imageWrapper}>
-                    <Image source={user?.profile_picture ? { uri: "https://sweyn.co.uk/storage/images/avatar/" + user?.profile_picture } : profilePlaceholder} style={styles.image} />
+                    <Image source={user?.profile_picture ? { uri: "https://api.elabis.app/storage/images/avatar/" + user?.profile_picture } : profilePlaceholder} style={styles.image} />
                 </View>
                 <View style={styles.nameNumberWrapper}>
                     <Text style={styles.name}>{user?.name}</Text>

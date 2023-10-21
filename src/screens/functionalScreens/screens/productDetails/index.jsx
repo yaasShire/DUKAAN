@@ -1,5 +1,5 @@
-import { View, StatusBar, Platform, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions, SafeAreaView as RNSafeArea, FlatList } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { View, StatusBar, Platform, Image, TouchableWithoutFeedback, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, SafeAreaView as RNSafeArea, FlatList } from 'react-native'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native-paper';
 import styles from './style'
@@ -61,7 +61,7 @@ const ProductDetails = ({ route, navigation }) => {
                     >
                         {
                             productImages.map(image => (
-                                <Image key={image} source={{ uri: "https://sweyn.co.uk/storage/images/" + image }} style={{ width: "100%", resizeMode: "cover", height: "100%" }} />
+                                <Image key={image} source={{ uri: "https://api.elabis.app/storage/images/" + image }} style={{ width: "100%", resizeMode: "cover", height: "100%" }} />
                             ))
                         }
                     </Carousel>

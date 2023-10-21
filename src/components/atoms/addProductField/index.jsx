@@ -1,16 +1,16 @@
-import { View, Text, TextInput } from 'react-native'
-// import { TextInput } from 'react-native-paper'
+import { View, Text } from 'react-native'
+import { TextInput } from 'react-native-paper'
 import React from 'react'
 import styles from './style'
 import { useDispatch } from 'react-redux'
-import TextFieldC from '../textInput'
+// import TextFieldC from '../textInput'
 import { fillRequiredProductInformation } from '../../../redux/requiredProductInformation'
 import { setProductOffers } from '../../../redux/productOffers'
 const AddProductField = ({ name = '', label = '', valuesObj = {}, values = {}, handleChange = () => { }, handleBlur = () => { }, errors = {}, touched = false, setFieldTouched = () => { }, step = "" }) => {
     const dispatch = useDispatch();
     step == 'offer' ? dispatch(setProductOffers(valuesObj)) : step == 'requiredInfo' ? dispatch(fillRequiredProductInformation(valuesObj)) : ""
     return (
-        <View>
+        <View style={{ width: "100%" }}>
             {/* <View style={styles.fieldContainer}> */}
             <View>
                 {(errors[name] && touched[name]) && (

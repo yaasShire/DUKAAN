@@ -1,6 +1,6 @@
-import { View, Text, StatusBar, ScrollView, FlatList, I18nManager, RefreshControl, } from 'react-native'
+import { View, Text, StatusBar, ScrollView, FlatList, I18nManager, RefreshControl, SafeAreaView } from 'react-native'
 import React, { useCallback, useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './style'
 import Header from '../../../../components/atoms/header'
 import Filter from '../../../../components/molecules/filter'

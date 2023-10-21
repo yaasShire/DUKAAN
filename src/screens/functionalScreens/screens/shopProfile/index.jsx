@@ -1,7 +1,7 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, SafeAreaView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
-import { SafeAreaView } from 'react-native-safe-area-context'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 import { Carousel } from 'react-native-ui-lib/src/components/carousel'
 import { postData } from '../../../../hooks/usePost'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
@@ -44,7 +44,7 @@ const ShopProfile = ({ route, navigation }) => {
                     pageControlPosition='over' style={styles.carousel}>
                     {
                         shopImages.map(image => (
-                            <Image key={image} source={{ uri: `https://sweyn.co.uk/storage/images/shops/${image}` }} style={styles.image} />
+                            <Image key={image} source={{ uri: `https://api.elabis.app/storage/images/shops/${image}` }} style={styles.image} />
                         ))
                     }
                 </Carousel>

@@ -10,8 +10,8 @@ export default StyleSheet.create({
         width: WindowDimension
     },
     mapStyle: {
-        height: HeightDimension,
-        width: WindowDimension
+        position: "absolute",
+        top: 0, left: 0, bottom: 0, right: 0
     },
     fabWrapper: {
         margin: 16,

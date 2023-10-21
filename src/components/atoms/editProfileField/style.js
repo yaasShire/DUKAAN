@@ -17,7 +17,7 @@ export default StyleSheet.create({
         width: "100%",
         fontSize: 18,
         // color: globalStyles.colors.tertiary
-        backgroundColor: "#727575",
+        // backgroundColor: "#727575",
         color: "#000"
     },
     errorText: {
