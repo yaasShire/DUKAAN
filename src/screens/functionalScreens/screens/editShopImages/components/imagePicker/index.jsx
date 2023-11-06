@@ -41,7 +41,7 @@ const ShopImagePicker = ({ fetchShopData = () => { }, main = false, url = "", na
                 pickImage()
             }}>
                 {/* {url ? <Image source={{ uri: url }} style={styles.image} /> : <Image source={cameraPlaceHolder} style={styles.image} />} */}
-                <Image style={styles.image} source={{ uri: "https://sweyn.co.uk/storage/images/shops/" + url }} />
+                <Image style={styles.image} source={{ uri: "https://api.elabis.app/storage/images/shops/" + url }} />
                 {main && <View style={styles.mainHolder}>
                     <Text style={styles.mainText}>Main</Text>
                 </View>}

@@ -55,7 +55,7 @@ const Shops = ({ navigation }) => {
                         <RefreshControl refreshing={refreshing} onRefresh={fetchShopData} />
                     }
                     renderItem={({ item }) => (
-                        <ShopCard key={Date().toString()} shop={item} navigation={navigation} />
+                        <ShopCard fetchShopData={fetchShopData} key={Date().toString()} shop={item} navigation={navigation} />
                     )}
                 />
             </ScrollView>

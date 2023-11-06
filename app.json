@@ -23,7 +23,6 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.dukaan.mechanic",
-      "googleServicesFile": "./GoogleService-Info.plist",
       "podfile": {
         "modularHeaders": true
       }

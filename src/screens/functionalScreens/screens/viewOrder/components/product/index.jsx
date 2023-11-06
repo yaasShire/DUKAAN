@@ -7,7 +7,7 @@ const Products = ({ order = {} }) => {
     return (
         <View style={styles.container}>
             <View style={styles.imaegNameWrapper}>
-                <Image source={{ uri: `https://sweyn.co.uk/storage/images/${order?.photo}` }} style={styles.image} />
+                <Image source={{ uri: `https://api.elabis.app/storage/images/${order?.photo}` }} style={styles.image} />
                 <Text style={{ marginLeft: 5 }}>{nameShortner(order?.name, 14)}</Text>
             </View>
             <View style={styles.field}>

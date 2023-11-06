@@ -50,7 +50,7 @@ const AddProduct = ({ navigation }) => {
                     customStyles={customStyles}
                     currentPosition={currentPosition}
                     stepCount={10}
-                    onPress={handlePosition}
+                // onPress={handlePosition}
                 />
                 <ScrollView contentContainerStyle={styles.productBodyHolder}>
                     {tabs.get(currentPosition)}

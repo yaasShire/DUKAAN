@@ -85,7 +85,7 @@ const ProductsList = ({ navigation, route }) => {
                         <RefreshControl refreshing={refreshing} onRefresh={fetchProducts} />
                     }
                     renderItem={({ item }) => (
-                        <ProductCard key={item.id} item={item} navigation={navigation} />
+                        <ProductCard fetchProducts={fetchProducts} key={item.id} item={item} navigation={navigation} />
                     )}
                 />
                 {

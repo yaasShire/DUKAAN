@@ -116,16 +116,8 @@ const ViewOrder = ({ navigation, route }) => {
                             <Text style={styles.locationTextTitle}>Address</Text>
                             <Ionicons name='ios-location' size={25} color="red" />
                             <Text style={styles.locationTextTitle}>:</Text>
-                        </View>
-                        <View style={styles.locationInfoHolder}>
-                            <View style={styles.locationIconNameHolder}>
-                                <Text style={styles.locationText}>{order?.additional_information},</Text>
-                                <Text style={styles.locationText}>{order?.landmark}</Text>
-                            </View>
-                            {/* <View style={styles.countryCityHolder}>
-                                <Text>Mogadishu,</Text>
-                                <Text>Somalia</Text>
-                            </View> */}
+                            <Text style={styles.locationText}>{order?.additional_information},</Text>
+                            <Text style={styles.locationText}>{order?.landmark}</Text>
                         </View>
                     </View>
                 </View>

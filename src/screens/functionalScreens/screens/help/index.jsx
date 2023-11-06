@@ -11,14 +11,14 @@ import { Linking } from 'react-native'
 const Help = ({ navigation }) => {
     const openWhatsApp = () => {
         let msg = "Hello Yusuf";
-        let mobile = "612518368";
+        let mobile = "770834137";
         if (mobile) {
             if (msg) {
                 let url =
                     "whatsapp://send?text=" +
                     "Hello World hello" +
                     "&phone=91" +
-                    "612518368";
+                    "770834137";
                 Linking.openURL(url)
                     .then(data => {
                         console.log("WhatsApp Opened successfully " + data);
@@ -44,11 +44,11 @@ const Help = ({ navigation }) => {
                 <View style={styles.helpCardsWrapper}>
                     <HelpCard image={WhatsAppImage} title="Chat" onPress={() => {
                         Linking.openURL(
-                            'http://api.whatsapp.com/send?phone=252' + "612518368"
-                        ) 
+                            'http://api.whatsapp.com/send?phone=252' + "770834137"
+                        )
                     }} />
                     <HelpCard image={PhoneImage} title="Call" onPress={() => {
-                        Linking.openURL(`tel:612518368`)
+                        Linking.openURL(`tel:770834137`)
                     }} />
                 </View>
             </ScrollView>
