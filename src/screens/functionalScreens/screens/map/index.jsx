@@ -36,7 +36,7 @@ const Map = ({ route, navigation }) => {
             <MapView
                 style={styles.mapStyle}
                 initialRegion={coordinate}
-                // provider={PROVIDER_GOOGLE}
+                provider={PROVIDER_GOOGLE}
                 onPress={(e) => {
                     console.log(e.nativeEvent.position.x)
                     dispatch(setCoordinates({

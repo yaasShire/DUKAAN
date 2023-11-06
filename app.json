@@ -22,10 +22,7 @@
     "assetBundlePatterns": [],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.dukaan.mechanic",
-      "podfile": {
-        "modularHeaders": true
-      }
+      "bundleIdentifier": "com.dukaan.mechanic"
     },
     "android": {
       "config": {
@@ -33,7 +30,6 @@
           "apiKey": "AIzaSyCm1NrKo7E44lu9k_hqjKqyu2QlhiCK38E"
         }
       },
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
