@@ -17,6 +17,12 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "elabisinfo@gmail.com",
+        "ascAppId": "6470447607",
+        "appleTeamId": "G873X87548"
+      }
+    }
   }
 }

@@ -7,12 +7,13 @@ import { globalStyles, screenPadding } from '../../../globalConstants/styles'
 import { Image } from 'react-native'
 import style from './style'
 import logoImage from '../../../assets/images/dukaanLogo.jpeg'
+import logoImage2 from '../../../../assets/logo.png'
 const Initial = ({ navigation }) => {
     return (
         <View style={styles.backgroundImage} >
             <StatusBar backgroundColor={"#143d57"} barStyle={'default'} />
             <View style={styles.logoWrapper}>
-                <Image source={logoImage} style={style.logoImage} />
+                <Image source={logoImage2} style={style.logoImage} />
                 <Text style={styles.appName}>Dukaan</Text>
             </View>
             <View style={styles.wrapper}>

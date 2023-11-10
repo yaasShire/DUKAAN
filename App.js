@@ -14,7 +14,6 @@ import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 // import SplashAppScreen from './Splash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import messaging from '@react-native-firebase/messaging';
 import { postData } from './src/hooks/usePost';
 
 
@@ -29,61 +28,6 @@ export default function App() {
   });
 
 
-  async function requestUserPermission() {
-    const authStatus = await messaging().requestPermission();
-    const enabled =
-      authStatus === messaging?.AuthorizationStatus?.AUTHORIZED ||
-      authStatus === messaging?.AuthorizationStatus?.PROVISIONAL;
-
-    if (enabled) {
-      // console.log('Authorization status:', authStatus);
-    }
-  }
-
-  useEffect(() => {
-    if (requestUserPermission()) {
-      messaging().getToken().then(async (token) => {
-        const formData = new FormData()
-        formData.append('fcm', token)
-        formData.append('FCM_SERVER_KEY', "AAAAjjhnt8w:APA91bGlkqPvp4-hrV2pVLrAxU5ANC1Y5Kt0s2zqvkxWwCCBJQll4iba4CHs01yiKMPQwdsGvuIUcqZzhbSfgMrNjcg_3cRvOBoFdtUi-r1JHcY0tDT6w0VmUDUDbU6zWFqO92VZdCBm")
-        formData.append('FCM_SENDER_ID', "610831677388")
-        const data = await postData('seller/user/updateFCM', formData, setError, setIsLoading)
-      });
-    } else {
-      alert("notification permission declined")
-    }
-
-    messaging().onNotificationOpenedApp(remoteMessage => {
-      console.log(
-        'Notification caused app to open from background state:',
-        remoteMessage.notification, 'yes sir'
-      );
-    });
-
-    // Check whether an initial notification is available
-    messaging()
-      .getInitialNotification()
-      .then(remoteMessage => {
-        if (remoteMessage) {
-          console.log(
-            'Notification caused app to open from quit state:',
-            remoteMessage.notification,
-          );
-        }
-      });
-
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!', remoteMessage);
-    });
-
-
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert(remoteMessage.data.title, remoteMessage.data.message);
-      console.log(remoteMessage)
-    });
-
-    return unsubscribe;
-  }, []);
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
