@@ -85,7 +85,6 @@ const UpdateProduct = ({ navigation = {}, route }) => {
                 fetchProductCategories()
                 fetchSubCategories()
             }} />} contentContainerStyle={styles.contentWrapper} style={{ flex: 1 }}>
-                <TextInput keyboardType=''></TextInput>
                 <UpdateProductCard keyboardType='default' keyType="" label="Product Name" value={targetProduct?.name} color='purple' onPress={() => { }} productId={targetProduct?.UPID} fieldName='name' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdateProductCard keyboardType='number-pad' label="Price" value={Number(targetProduct?.price)} color='red' onPress={() => { }} productId={targetProduct?.UPID} fieldName='price' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />
                 <UpdateProductCard keyboardType='number-pad' label="Quantity Available" value={targetProduct?.quantity_avaliable} color='gold' onPress={() => { }} productId={targetProduct?.UPID} fieldName='quantity_avaliable' setIsLoading={setIsLoading} setError={setError} fetchTargetProduct={fetchTargetProduct} />

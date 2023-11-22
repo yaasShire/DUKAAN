@@ -10,19 +10,9 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {
-      "android": {
-        "buildType": "apk"
-      }
-    }
+    "production": {}
   },
   "submit": {
-    "production": {
-      "ios": {
-        "appleId": "elabisinfo@gmail.com",
-        "ascAppId": "6470447607",
-        "appleTeamId": "G873X87548"
-      }
-    }
+    "production": {}
   }
 }
