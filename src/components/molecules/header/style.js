@@ -12,7 +12,7 @@ export default StyleSheet.create({
         backgroundColor: "#f8f9fb",
     },
     logoImageHolder: {
-        width: 400,
+        width: "100%",
         alignItems: "center"
     },
     btnTextWrapper: {

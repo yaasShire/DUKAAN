@@ -6,7 +6,7 @@
       "icon": "./assets/icon.png",
       "color": "#FFFFFF"
     },
-    "version": "1.0.0",
+    "version": "2.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,7 +14,7 @@
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to get the location of the shop you want to create."
         }
       ]
     ],
@@ -25,7 +25,13 @@
     },
     "assetBundlePatterns": [],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dukaan.mechanicc",
+      "buildNumber": "4",
+      "purposeStrings": {
+        "NSLocationAlwaysUsageDescription": "Allow $(PRODUCT_NAME) to get the location of the shop you want to create.",
+        "NSLocationWhenInUseUsageDescription": "Allow $(PRODUCT_NAME) to set shop location when creating a shop"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -40,7 +46,7 @@
       "package": "com.dukaan.mechanic",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyCsJ_JBbomxUgMeWecFqNcOEk2g60NfKow"
+          "apiKey": "AIzaSyA47XXKuNkOS0Z6m0RdyKsRgw9ydRr35ww"
         }
       }
     },
@@ -49,7 +55,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "52b02931-5a0e-4560-891a-175adc93f923"
+        "projectId": "b60361dc-4b09-4f03-b2a1-71fced05d531"
       }
     }
   }

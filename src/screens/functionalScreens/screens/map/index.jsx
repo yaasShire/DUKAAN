@@ -34,7 +34,7 @@ const Map = ({ route, navigation }) => {
         <View style={styles.container}>
             <StatusBar hidden />
             <MapView
-                key={"AIzaSyCsJ_JBbomxUgMeWecFqNcOEk2g60NfKow"}
+                key={"AIzaSyA47XXKuNkOS0Z6m0RdyKsRgw9ydRr35ww"}
                 style={styles.mapStyle}
                 initialRegion={coordinate}
                 provider={PROVIDER_GOOGLE}

@@ -25,6 +25,20 @@ import { fetchData } from '../../../../hooks/useFetch'
 import { checkIsUserLogIn } from '../../../../utils/utilityFunctions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import AppLoader from '../../../../components/molecules/AppLoader'
+
+
+import { postData } from '../../../../hooks/usePost'
+
+
+
+
+
+
+
+
+
+
+
 const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -32,6 +46,10 @@ const Home = ({ navigation }) => {
     const [orders, setOrders] = useState([])
     const [refreshing, setRefreshing] = useState(false)
     const [index, setIndex] = useState(0)
+    const [expoPushToken, setExpoPushToken] = useState('');
+    const [notification, setNotification] = useState(false);
+    const notificationListener = useRef();
+    const responseListener = useRef();
     const ref = useRef()
     const fetchOrders = async () => {
         const { data } = await fetchData('seller/orders/view', setError, setIsLoading)
@@ -53,6 +71,8 @@ const Home = ({ navigation }) => {
             fetchOrders()
         }, [])
     );
+
+
 
 
     return (

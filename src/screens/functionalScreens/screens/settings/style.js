@@ -127,8 +127,14 @@ export default StyleSheet.create({
         paddingHorizontal: "10%"
     },
     logOutModalText: {
-        fontSize: 19,
+        fontSize: 16,
         fontWeight: "500"
+    },
+    removeAccountText: {
+        fontSize: 16,
+        fontWeight: "500",
+        width: "60%",
+        color: "#000"
     },
     cancelText: {
         color: "green"

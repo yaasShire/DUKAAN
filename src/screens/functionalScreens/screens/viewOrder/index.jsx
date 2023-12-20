@@ -1,8 +1,7 @@
-import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl, Pressable, Alert } from 'react-native'
+import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity, FlatList, SafeAreaView, RefreshControl, Pressable, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import DecisionButton from '../../../../components/atoms/decisionButton';
 import { nameShortner } from '../../../../utils/utilityFunctions';
 import AppHeader from '../../../../components/molecules/header';
@@ -42,10 +41,11 @@ const ViewOrder = ({ navigation, route }) => {
         setRefreshing(false)
     }
     const acceptOrder = async () => {
+        setIsLoading(true)
         const formData = new FormData()
         formData.append('UOID', route?.params?.order?.UOID)
         const updatedOrderStatus = await postData('seller/orders/accept', formData, setError, setIsLoading)
-        console.log(updatedOrderStatus)
+        console.log("order status-------->", updatedOrderStatus)
         if (updatedOrderStatus?.result?.message == 'Order Accepted') {
             setShowModal(true)
             setVisible(true)
@@ -56,8 +56,8 @@ const ViewOrder = ({ navigation, route }) => {
         }
     }
 
-    console.log(route.params)
     const rejectOrder = async () => {
+        setIsLoading(true)
         const formData = new FormData()
         formData.append('UOID', route?.params?.order?.UOID)
         // formData.append('status', -2)
@@ -88,12 +88,13 @@ const ViewOrder = ({ navigation, route }) => {
         const formData = new FormData()
         formData.append('UOID', order?.UOID)
         const data = await postData('seller/orders/sendotp', formData, setError, setIsLoading)
-        console.log(data)
+        console.log("send otp to delivery", data)
         if (data?.result?.status == 'OTP generated and inserted successfully') {
             setOtpResponseText(data?.result?.status)
             return data?.result?.status
         }
     }
+
     return (
         <View style={styles.container}>
             <SafeAreaView />
@@ -116,7 +117,7 @@ const ViewOrder = ({ navigation, route }) => {
                             <Text style={styles.locationTextTitle}>Address</Text>
                             <Ionicons name='ios-location' size={25} color="red" />
                             <Text style={styles.locationTextTitle}>:</Text>
-                            <Text style={styles.locationText}>{order?.additional_information},</Text>
+                            <Text style={styles.locationText}>{order?.title},</Text>
                             <Text style={styles.locationText}>{order?.landmark}</Text>
                         </View>
                     </View>

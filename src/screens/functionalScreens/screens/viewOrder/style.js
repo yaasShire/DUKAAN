@@ -83,6 +83,7 @@ export default StyleSheet.create({
     locationText: {
         fontSize: 15,
         opacity: .7,
+        marginHorizontal: 5
     },
     locationIconNameHolder: {
         alignItems: "flex-start",

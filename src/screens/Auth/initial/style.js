@@ -5,7 +5,7 @@ export default StyleSheet.create({
         width: "100%",
         height: "100%",
         resizeMode: "cover",
-        backgroundColor: "#143d57",
+        backgroundColor: "rgba(255, 252, 252, .8)"
 
     },
     wrapper: {
@@ -28,12 +28,12 @@ export default StyleSheet.create({
     title: {
         fontSize: 25,
         fontWeight: globalStyles.fontWeights.primary,
-        color: globalStyles.colors.miniPrimary,
+        color: globalStyles.colors.tertiary,
         fontFamily: "AstroSpace-0Wl3o",
     },
     description: {
         fontSize: 17,
-        color: globalStyles.colors.miniPrimary,
+        color: globalStyles.colors.tertiary,
         opacity: .7
     },
     logoWrapper: {
@@ -48,6 +48,6 @@ export default StyleSheet.create({
     appName: {
         fontWeight: globalStyles.fontWeights.tertiary,
         fontSize: 30,
-        color: globalStyles.colors.miniPrimary,
+        color: globalStyles.colors.tertiary,
     }
 })
